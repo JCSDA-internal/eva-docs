@@ -30,8 +30,6 @@ html_theme = 'sphinx_holoviz_theme'
 # only change colors in primary, primary_dark, and secondary
 html_theme_options = {
     'custom_css': 'site.css',
-    #'logo': 'logo.png',
-    #'favicon': 'favicon.ico',
     'primary_color': 'MediumSeaGreen',
     'primary_color_dark': 'sienna',
     'secondary_color': 'DarkTurquoise',
@@ -39,28 +37,10 @@ html_theme_options = {
 
 myst_enable_extensions = ["colon_fence"]
 
-#_NAV =  (
-#    ('Getting Started', 'getting_started/index'),
-#    ('User Guide', 'user_guide/index'),
-#    ('Gallery', 'gallery/index'),
-#    ('API', 'Reference_Manual/index'),
-#    ('FAQ', 'FAQ'),
-#    ('About', 'about')
-#)
-
 html_context.update({
     'PROJECT': project,
     'DESCRIPTION': description,
     'AUTHOR': authors,
-    # will work without this - for canonical (so can ignore when building locally or test deploying)
     'WEBSITE_SERVER': site,
     'VERSION': version,
-    #'NAV': _NAV,
-    # by default, footer links are same as those in header
-    #'LINKS': _NAV,
-    #'SOCIAL': (
-    #    ('Gitter', 'https://gitter.im/pyviz/pyviz'),
-    #    ('Twitter', 'https://twitter.com/holoviz_org'),
-    #    ('Github', 'https://github.com/holoviz/{}'.format(project)),
-    #)
 })
