@@ -6,11 +6,9 @@ from nbsite.shared_conf import *
 ###################################################
 # edit things below as appropriate for your project
 
-project = u'EVA'
 authors = u'NOAA-EMC, NASA-GMAO'
 copyright = u'2023 ' + authors
 description = 'Short description for html meta description.'
-site = 'https://{}.pyviz.org'.format(project)
 version = release = '0.0.1'
 
 html_static_path += ['_static']
@@ -38,9 +36,7 @@ html_theme_options = {
 myst_enable_extensions = ["colon_fence"]
 
 html_context.update({
-    'PROJECT': project,
     'DESCRIPTION': description,
     'AUTHOR': authors,
-    'WEBSITE_SERVER': site,
     'VERSION': version,
 })
