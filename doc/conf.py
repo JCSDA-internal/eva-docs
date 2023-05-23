@@ -32,6 +32,8 @@ html_theme_options = {
     'primary_color_dark': 'sienna',
     'secondary_color': 'DarkTurquoise',
 }
+html_favicon = "_static/favicon.ico"
+html_logo = "_static/logo.png"
 
 myst_enable_extensions = ["colon_fence"]
 
