@@ -28,6 +28,8 @@ html_theme = 'sphinx_holoviz_theme'
 # only change colors in primary, primary_dark, and secondary
 html_theme_options = {
     'custom_css': 'site.css',
+    'logo': 'logo.png',
+    'favicon': 'favicon.ico',
     'primary_color': 'MediumSeaGreen',
     'primary_color_dark': 'sienna',
     'secondary_color': 'DarkTurquoise',
