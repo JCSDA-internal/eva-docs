@@ -7,8 +7,8 @@
   
 # Evaluation and Verification of the Analysis (EVA) Documentation
 
-![Build eva documentation](https://github.com/JCSDA-internal/eva-docs/actions/workflows/docs.yaml/badge.svg)
-![Python coding norms](https://github.com/JCSDA-internal/eva-docs/actions/workflows/python_coding_norms.yml/badge.svg)
+[![docs](https://github.com/JCSDA-internal/eva-docs/actions/workflows/docs.yaml/badge.svg)](https://github.com/JCSDA-internal/eva-docs/actions/workflows/docs.yaml)
+[![Python Coding Norms](https://github.com/JCSDA-internal/eva-docs/actions/workflows/python_coding_norms.yml/badge.svg?branch=develop)](https://github.com/JCSDA-internal/eva-docs/actions/workflows/python_coding_norms.yml)
 
 </div>
 
