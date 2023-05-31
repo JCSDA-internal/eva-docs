@@ -1,4 +1,4 @@
-<img src="[https://github.com/JCSDA-internal/eva-docs/blob/gh-pages/logo/eva_logo_round.png](https://github.com/JCSDA-internal/eva-docs/blob/develop/doc/_static/images/eva_logo_ball.png)" width="200" align=left> 
+<img src="https://github.com/JCSDA-internal/eva-docs/blob/develop/doc/_static/images/eva_logo_ball.png" width="200" align=left> 
 
 
 <div
