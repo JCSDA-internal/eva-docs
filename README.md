@@ -1,4 +1,4 @@
-<img src="https://github.com/JCSDA-internal/eva-docs/blob/gh-pages/logo/eva_logo_round.png" width="200" align=left> 
+<img src="[https://github.com/JCSDA-internal/eva-docs/blob/gh-pages/logo/eva_logo_round.png](https://github.com/JCSDA-internal/eva-docs/blob/develop/doc/_static/images/eva_logo_ball.png)" width="200" align=left> 
 
 
 <div
@@ -7,7 +7,7 @@
   
 # Evaluation and Verification of the Analysis (EVA) Documentation
 
-[![docs](https://github.com/JCSDA-internal/eva-docs/actions/workflows/docs.yaml/badge.svg)](https://github.com/JCSDA-internal/eva-docs/actions/workflows/docs.yaml)
+[![docs](https://github.com/JCSDA-internal/eva-docs/actions/workflows/docs.yaml/badge.svg?branch=develop)](https://github.com/JCSDA-internal/eva-docs/actions/workflows/docs.yaml)
 [![Python Coding Norms](https://github.com/JCSDA-internal/eva-docs/actions/workflows/python_coding_norms.yml/badge.svg?branch=develop)](https://github.com/JCSDA-internal/eva-docs/actions/workflows/python_coding_norms.yml)
 
 </div>
