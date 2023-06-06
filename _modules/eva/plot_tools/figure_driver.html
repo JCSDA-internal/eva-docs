@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.plot_tools.figure_driver — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../_static/js/main.js"></script>
+<script src="../../../_static/nbsite.js"></script>
+<script src="../../../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/plot_tools/figure_driver.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../index.html">
+<img alt="Logo" src="../../../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.plot_tools.figure_driver</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2022 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2022 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="kn">from</span> <span class="nn">eva.eva_base</span> <span class="kn">import</span> <span class="n">EvaBase</span>
+<span class="kn">from</span> <span class="nn">eva.eva_path</span> <span class="kn">import</span> <span class="n">return_eva_path</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.stats</span> <span class="kn">import</span> <span class="n">stats_helper</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.utils</span> <span class="kn">import</span> <span class="n">get_schema</span><span class="p">,</span> <span class="n">camelcase_to_underscore</span><span class="p">,</span> <span class="n">parse_channel_list</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.utils</span> <span class="kn">import</span> <span class="n">replace_vars_dict</span>
+<span class="kn">from</span> <span class="nn">emcpy.plots.create_plots</span> <span class="kn">import</span> <span class="n">CreatePlot</span><span class="p">,</span> <span class="n">CreateFigure</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="FigureDriver"><a class="viewcode-back" href="../../../API/eva.plot_tools.html#eva.plot_tools.figure_driver.FigureDriver">[docs]</a><span class="k">class</span> <span class="nc">FigureDriver</span><span class="p">(</span><span class="n">EvaBase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="FigureDriver.execute"><a class="viewcode-back" href="../../../API/eva.plot_tools.html#eva.plot_tools.figure_driver.FigureDriver.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timing</span><span class="p">):</span>
+
+        <span class="c1"># Make copy of config</span>
+        <span class="c1"># -------------------</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span>
+
+        <span class="c1"># Get list of graphics from configuration</span>
+        <span class="c1"># -------------------</span>
+        <span class="n">graphics</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"graphics"</span><span class="p">)</span>
+
+        <span class="c1"># Loop through specified graphics</span>
+        <span class="c1"># -------------------</span>
+        <span class="n">timing</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">'Graphics Loop'</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">graphic</span> <span class="ow">in</span> <span class="n">graphics</span><span class="p">:</span>
+
+            <span class="c1"># Parse configuration for this graphic</span>
+            <span class="c1"># -------------------</span>
+            <span class="n">batch_conf</span> <span class="o">=</span> <span class="n">graphic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"batch figure"</span><span class="p">,</span> <span class="p">{})</span>  <span class="c1"># batch configuration (default nothing)</span>
+            <span class="n">figure_conf</span> <span class="o">=</span> <span class="n">graphic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"figure"</span><span class="p">)</span>  <span class="c1"># figure configuration</span>
+            <span class="n">plots_conf</span> <span class="o">=</span> <span class="n">graphic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"plots"</span><span class="p">)</span>  <span class="c1"># list of plots/subplots</span>
+            <span class="n">dynamic_options_conf</span> <span class="o">=</span> <span class="n">graphic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"dynamic options"</span><span class="p">,</span> <span class="p">[])</span>  <span class="c1"># Dynamic overwrites</span>
+
+            <span class="c1"># update figure conf based on schema</span>
+            <span class="c1"># ----------------------------------</span>
+            <span class="n">fig_schema</span> <span class="o">=</span> <span class="n">figure_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'schema'</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">return_eva_path</span><span class="p">(),</span> <span class="s1">'defaults'</span><span class="p">,</span>
+                                         <span class="s1">'figure.yaml'</span><span class="p">))</span>
+            <span class="n">figure_conf</span> <span class="o">=</span> <span class="n">get_schema</span><span class="p">(</span><span class="n">fig_schema</span><span class="p">,</span> <span class="n">figure_conf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+
+            <span class="c1"># pass configurations and make graphic(s)</span>
+            <span class="c1"># ---------------------------------------</span>
+            <span class="k">if</span> <span class="n">batch_conf</span><span class="p">:</span>
+                <span class="c1"># Get potential variables</span>
+                <span class="n">variables</span> <span class="o">=</span> <span class="n">batch_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'variables'</span><span class="p">,</span> <span class="p">[])</span>
+                <span class="c1"># Get list of channels</span>
+                <span class="n">channels_str_or_list</span> <span class="o">=</span> <span class="n">batch_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'channels'</span><span class="p">,</span> <span class="p">[])</span>
+                <span class="n">channels</span> <span class="o">=</span> <span class="n">parse_channel_list</span><span class="p">(</span><span class="n">channels_str_or_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+
+                <span class="c1"># Set some fake values to ensure the loops are entered</span>
+                <span class="k">if</span> <span class="n">variables</span> <span class="o">==</span> <span class="p">[]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s2">"Batch Figure must provide variables, even if with channels"</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">channels</span> <span class="o">==</span> <span class="p">[]:</span>
+                    <span class="n">channels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'none'</span><span class="p">]</span>
+
+                <span class="c1"># Loop over variables and channels</span>
+                <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+                        <span class="n">batch_conf_this</span> <span class="o">=</span> <span class="p">{}</span>
+                        <span class="n">batch_conf_this</span><span class="p">[</span><span class="s1">'variable'</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable</span>
+                        <span class="c1"># Version to be used in titles</span>
+                        <span class="n">batch_conf_this</span><span class="p">[</span><span class="s1">'variable_title'</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+                        <span class="n">channel_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">channel_str</span> <span class="o">!=</span> <span class="s1">'none'</span><span class="p">:</span>
+                            <span class="n">batch_conf_this</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span> <span class="o">=</span> <span class="n">channel_str</span>
+                            <span class="n">var_title</span> <span class="o">=</span> <span class="n">batch_conf_this</span><span class="p">[</span><span class="s1">'variable_title'</span><span class="p">]</span> <span class="o">+</span> <span class="s1">' Ch. '</span> <span class="o">+</span> <span class="n">channel_str</span>
+                            <span class="n">batch_conf_this</span><span class="p">[</span><span class="s1">'variable_title'</span><span class="p">]</span> <span class="o">=</span> <span class="n">var_title</span>
+
+                        <span class="c1"># Replace templated variables in figure and plots config</span>
+                        <span class="n">figure_conf_fill</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">figure_conf</span><span class="p">)</span>
+                        <span class="n">figure_conf_fill</span> <span class="o">=</span> <span class="n">replace_vars_dict</span><span class="p">(</span><span class="n">figure_conf_fill</span><span class="p">,</span> <span class="o">**</span><span class="n">batch_conf_this</span><span class="p">)</span>
+                        <span class="n">plots_conf_fill</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">plots_conf</span><span class="p">)</span>
+                        <span class="n">plots_conf_fill</span> <span class="o">=</span> <span class="n">replace_vars_dict</span><span class="p">(</span><span class="n">plots_conf_fill</span><span class="p">,</span> <span class="o">**</span><span class="n">batch_conf_this</span><span class="p">)</span>
+                        <span class="n">dynamic_options_conf_fill</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">dynamic_options_conf</span><span class="p">)</span>
+                        <span class="n">dynamic_options_conf_fill</span> <span class="o">=</span> <span class="n">replace_vars_dict</span><span class="p">(</span><span class="n">dynamic_options_conf_fill</span><span class="p">,</span>
+                                                                      <span class="o">**</span><span class="n">batch_conf_this</span><span class="p">)</span>
+
+                        <span class="c1"># Make plot</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">make_figure</span><span class="p">(</span><span class="n">figure_conf_fill</span><span class="p">,</span> <span class="n">plots_conf_fill</span><span class="p">,</span>
+                                         <span class="n">dynamic_options_conf_fill</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># make just one figure per configuration</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">make_figure</span><span class="p">(</span><span class="n">figure_conf</span><span class="p">,</span> <span class="n">plots_conf</span><span class="p">,</span> <span class="n">dynamic_options_conf</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">)</span>
+        <span class="n">timing</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s1">'Graphics Loop'</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FigureDriver.make_figure"><a class="viewcode-back" href="../../../API/eva.plot_tools.html#eva.plot_tools.figure_driver.FigureDriver.make_figure">[docs]</a>    <span class="k">def</span> <span class="nf">make_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figure_conf</span><span class="p">,</span> <span class="n">plots</span><span class="p">,</span> <span class="n">dynamic_options</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">):</span>
+
+        <span class="c1"># Adjust the plots configs if there are dynamic options</span>
+        <span class="c1"># -----------------------------------------------------</span>
+        <span class="k">for</span> <span class="n">dynamic_option</span> <span class="ow">in</span> <span class="n">dynamic_options</span><span class="p">:</span>
+            <span class="n">dynamic_option_module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">"eva.plot_tools.dynamic_config"</span><span class="p">)</span>
+            <span class="n">dynamic_option_method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">dynamic_option_module</span><span class="p">,</span> <span class="n">dynamic_option</span><span class="p">[</span><span class="s1">'type'</span><span class="p">])</span>
+            <span class="n">plots</span> <span class="o">=</span> <span class="n">dynamic_option_method</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">dynamic_option</span><span class="p">,</span> <span class="n">plots</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">)</span>
+
+        <span class="c1"># Grab some figure configuration</span>
+        <span class="c1"># -------------------</span>
+        <span class="n">figure_layout</span> <span class="o">=</span> <span class="n">figure_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"layout"</span><span class="p">)</span>
+        <span class="n">file_type</span> <span class="o">=</span> <span class="n">figure_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"figure file type"</span><span class="p">,</span> <span class="s2">"png"</span><span class="p">)</span>
+        <span class="n">output_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_output_file</span><span class="p">(</span><span class="n">figure_conf</span><span class="p">)</span>
+
+        <span class="c1"># Set up layers and plots</span>
+        <span class="n">plot_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">plot</span> <span class="ow">in</span> <span class="n">plots</span><span class="p">:</span>
+            <span class="n">layer_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">plot</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"layers"</span><span class="p">):</span>
+                <span class="n">eva_class_name</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"type"</span><span class="p">)</span>
+                <span class="n">eva_module_name</span> <span class="o">=</span> <span class="n">camelcase_to_underscore</span><span class="p">(</span><span class="n">eva_class_name</span><span class="p">)</span>
+                <span class="n">full_module</span> <span class="o">=</span> <span class="s2">"eva.diagnostics."</span><span class="o">+</span><span class="n">eva_module_name</span>
+                <span class="n">layer_class</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">full_module</span><span class="p">),</span> <span class="n">eva_class_name</span><span class="p">)</span>
+                <span class="c1"># use the translator class to go from eva to declarative plotting</span>
+                <span class="n">layer_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer_class</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">)</span><span class="o">.</span><span class="n">plotobj</span><span class="p">)</span>
+            <span class="c1"># get mapping dictionary</span>
+            <span class="n">proj</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">domain</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="s1">'mapping'</span> <span class="ow">in</span> <span class="n">plot</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">mapoptions</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'mapping'</span><span class="p">)</span>
+                <span class="c1"># TODO make this configurable and not hard coded</span>
+                <span class="n">proj</span> <span class="o">=</span> <span class="n">mapoptions</span><span class="p">[</span><span class="s1">'projection'</span><span class="p">]</span>
+                <span class="n">domain</span> <span class="o">=</span> <span class="n">mapoptions</span><span class="p">[</span><span class="s1">'domain'</span><span class="p">]</span>
+
+            <span class="c1"># create a subplot based on specified layers</span>
+            <span class="n">plotobj</span> <span class="o">=</span> <span class="n">CreatePlot</span><span class="p">(</span><span class="n">plot_layers</span><span class="o">=</span><span class="n">layer_list</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">proj</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">)</span>
+            <span class="c1"># make changes to subplot based on YAML configuration</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">plot</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'layers'</span><span class="p">,</span> <span class="s1">'mapping'</span><span class="p">,</span> <span class="s1">'statistics'</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                        <span class="nb">getattr</span><span class="p">(</span><span class="n">plotobj</span><span class="p">,</span> <span class="n">key</span><span class="p">)(</span><span class="o">**</span><span class="n">value</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="nb">getattr</span><span class="p">(</span><span class="n">plotobj</span><span class="p">,</span> <span class="n">key</span><span class="p">)()</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="nb">getattr</span><span class="p">(</span><span class="n">plotobj</span><span class="p">,</span> <span class="n">key</span><span class="p">)(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'statistics'</span><span class="p">]:</span>
+                    <span class="c1"># call the stats helper</span>
+                    <span class="n">stats_helper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+            <span class="n">plot_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plotobj</span><span class="p">)</span>
+        <span class="c1"># create figure</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">CreateFigure</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="n">figure_conf</span><span class="p">[</span><span class="s1">'layout'</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+                           <span class="n">ncols</span><span class="o">=</span><span class="n">figure_conf</span><span class="p">[</span><span class="s1">'layout'</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
+                           <span class="n">figsize</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">figure_conf</span><span class="p">[</span><span class="s1">'figure size'</span><span class="p">]))</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">plot_list</span> <span class="o">=</span> <span class="n">plot_list</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">create_figure</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">'title'</span> <span class="ow">in</span> <span class="n">figure_conf</span><span class="p">:</span>
+            <span class="n">fig</span><span class="o">.</span><span class="n">add_suptitle</span><span class="p">(</span><span class="n">figure_conf</span><span class="p">[</span><span class="s1">'title'</span><span class="p">])</span>
+        <span class="n">saveargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_saveargs</span><span class="p">(</span><span class="n">figure_conf</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">save_figure</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="o">**</span><span class="n">saveargs</span><span class="p">)</span>
+
+        <span class="n">fig</span><span class="o">.</span><span class="n">close_figure</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="FigureDriver.get_saveargs"><a class="viewcode-back" href="../../../API/eva.plot_tools.html#eva.plot_tools.figure_driver.FigureDriver.get_saveargs">[docs]</a>    <span class="k">def</span> <span class="nf">get_saveargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figure_conf</span><span class="p">):</span>
+        <span class="n">out_conf</span> <span class="o">=</span> <span class="n">figure_conf</span>
+        <span class="n">delvars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'layout'</span><span class="p">,</span> <span class="s1">'figure file type'</span><span class="p">,</span> <span class="s1">'output path'</span><span class="p">,</span> <span class="s1">'figure size'</span><span class="p">,</span> <span class="s1">'title'</span><span class="p">]</span>
+        <span class="n">out_conf</span><span class="p">[</span><span class="s1">'format'</span><span class="p">]</span> <span class="o">=</span> <span class="n">figure_conf</span><span class="p">[</span><span class="s1">'figure file type'</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">delvars</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">out_conf</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">out_conf</span></div>
+
+<div class="viewcode-block" id="FigureDriver.get_output_file"><a class="viewcode-back" href="../../../API/eva.plot_tools.html#eva.plot_tools.figure_driver.FigureDriver.get_output_file">[docs]</a>    <span class="k">def</span> <span class="nf">get_output_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figure_conf</span><span class="p">):</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">figure_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"output path"</span><span class="p">,</span> <span class="s2">"./"</span><span class="p">)</span>
+        <span class="n">output_name</span> <span class="o">=</span> <span class="n">figure_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"output name"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+        <span class="n">output_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">output_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output_file</span></div></div>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

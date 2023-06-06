@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.data.gsi_obs_space — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../_static/js/main.js"></script>
+<script src="../../../_static/nbsite.js"></script>
+<script src="../../../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/data/gsi_obs_space.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../index.html">
+<img alt="Logo" src="../../../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.data.gsi_obs_space</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2022 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2022 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">groupby</span>
+<span class="kn">from</span> <span class="nn">xarray</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">open_dataset</span>
+
+<span class="kn">from</span> <span class="nn">eva.eva_base</span> <span class="kn">import</span> <span class="n">EvaBase</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.config</span> <span class="kn">import</span> <span class="n">get</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.utils</span> <span class="kn">import</span> <span class="n">parse_channel_list</span>
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="all_equal"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.gsi_obs_space.all_equal">[docs]</a><span class="k">def</span> <span class="nf">all_equal</span><span class="p">(</span><span class="n">iterable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Checks to see if array is all the same. Returns True</span>
+<span class="sd">    if they are else returns False.</span>
+<span class="sd">    """</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">groupby</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="uv"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.gsi_obs_space.uv">[docs]</a><span class="k">def</span> <span class="nf">uv</span><span class="p">(</span><span class="n">group_vars</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Adds 'uv' suffix to beginning of specified variables</span>
+<span class="sd">    if they are included in input list of vars</span>
+<span class="sd">    """</span>
+    <span class="n">change_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Obs_Minus_Forecast_adjusted'</span><span class="p">,</span>
+                   <span class="s1">'Obs_Minus_Forecast_unadjusted'</span><span class="p">,</span>
+                   <span class="s1">'Observation'</span><span class="p">]</span>
+
+    <span class="c1"># Find if change variables are in group_vars</span>
+    <span class="n">good_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">change_vars</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">group_vars</span><span class="p">]</span>
+
+    <span class="c1"># Loop through existing variables, add u_ and v_ versions</span>
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">good_vars</span><span class="p">:</span>
+        <span class="n">group_vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'u_'</span> <span class="o">+</span> <span class="n">var</span><span class="p">)</span>
+        <span class="n">group_vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'v_'</span> <span class="o">+</span> <span class="n">var</span><span class="p">)</span>
+
+    <span class="c1"># Drop existing variables without u/v suffix</span>
+    <span class="n">group_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">group_vars</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">good_vars</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">group_vars</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="subset_channels"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.gsi_obs_space.subset_channels">[docs]</a><span class="k">def</span> <span class="nf">subset_channels</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">add_channels_variable</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="s1">'nchans'</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+
+        <span class="c1"># Number of user requested channels</span>
+        <span class="n">nchan_use</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
+
+        <span class="c1"># Number of channels in the file</span>
+        <span class="n">nchan_in_file</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">nchans</span><span class="o">.</span><span class="n">size</span>
+
+        <span class="k">if</span> <span class="n">nchan_use</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">nchan_use</span> <span class="o">=</span> <span class="n">nchan_in_file</span>
+
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="s1">'sensor_chan'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">):</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">nchans</span><span class="o">=</span><span class="n">channels</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bad_chans</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">channels</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="s1">'sensor_chan'</span><span class="p">]]</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">bad_chans</span><span class="p">)</span><span class="si">}</span><span class="s2"> was inputted as a channel "</span> <span class="o">+</span>
+                         <span class="s2">"but is not a valid entry. Valid channels include: </span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>
+                         <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">ds</span><span class="p">[</span><span class="s1">'sensor_chan'</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ds</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="satellite_dataset"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.gsi_obs_space.satellite_dataset">[docs]</a><span class="k">def</span> <span class="nf">satellite_dataset</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Builds a new dataset_config to reshape satellite</span>
+<span class="sd">    data.</span>
+<span class="sd">    """</span>
+    <span class="n">nchans</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">'nchans'</span><span class="p">]</span>
+    <span class="n">iters</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">'nobs'</span><span class="p">]</span><span class="o">/</span><span class="n">nchans</span><span class="p">)</span>
+
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">'nchans'</span><span class="p">:</span> <span class="p">((</span><span class="s1">'nchans'</span><span class="p">),</span> <span class="n">ds</span><span class="p">[</span><span class="s1">'sensor_chan'</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+        <span class="s1">'nobs'</span><span class="p">:</span> <span class="p">((</span><span class="s1">'nobs'</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">iters</span><span class="p">)),</span>
+        <span class="s1">'BC_angord_arr_dim'</span><span class="p">:</span> <span class="p">((</span><span class="s1">'BC_angord_arr_dim'</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="n">data_vars</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># Loop through each variable</span>
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
+
+        <span class="c1"># Ignore geovals data</span>
+        <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'air_temperature'</span><span class="p">,</span> <span class="s1">'air_pressure'</span><span class="p">,</span> <span class="s1">'air_pressure_levels'</span><span class="p">,</span>
+                   <span class="s1">'atmosphere_absorber_01'</span><span class="p">,</span> <span class="s1">'atmosphere_absorber_02'</span><span class="p">,</span> <span class="s1">'atmosphere_absorber_03'</span><span class="p">]:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># If variable has len of nchans, pass along data</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">])</span> <span class="o">==</span> <span class="n">nchans</span><span class="p">:</span>
+            <span class="n">data_vars</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="s1">'nchans'</span><span class="p">),</span> <span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># If variable is BC_angord, reshape data</span>
+        <span class="k">elif</span> <span class="n">var</span> <span class="o">==</span> <span class="s1">'BC_angord'</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">'BC_angord'</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                              <span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">nchans</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">'BC_angord_arr_dim'</span><span class="p">]))</span>
+            <span class="n">data_vars</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="s1">'nobs'</span><span class="p">,</span> <span class="s1">'nchans'</span><span class="p">,</span> <span class="s1">'BC_angord_arr_dim'</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Deals with how to handle nobs data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Check if values repeat over nchans</span>
+            <span class="n">condition</span> <span class="o">=</span> <span class="n">all_equal</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nchans</span><span class="p">])</span>
+
+            <span class="c1"># If values are repeating over nchan iterations, keep as nobs</span>
+            <span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="n">nchans</span><span class="p">]</span>
+                <span class="n">data_vars</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="s1">'nobs'</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+
+            <span class="c1"># Else, reshape to be a 2d array</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">nchans</span><span class="p">))</span>
+                <span class="n">data_vars</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="s1">'nobs'</span><span class="p">,</span> <span class="s1">'nchans'</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># create dataset_config</span>
+    <span class="n">new_ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">data_vars</span><span class="o">=</span><span class="n">data_vars</span><span class="p">,</span>
+                     <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
+                     <span class="n">attrs</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">new_ds</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="GsiObsSpace"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.gsi_obs_space.GsiObsSpace">[docs]</a><span class="k">class</span> <span class="nc">GsiObsSpace</span><span class="p">(</span><span class="n">EvaBase</span><span class="p">):</span>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="GsiObsSpace.execute"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.gsi_obs_space.GsiObsSpace.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timeing</span><span class="p">):</span>
+
+        <span class="c1"># Get channels for radiances</span>
+        <span class="c1"># --------------------------</span>
+        <span class="n">channels_str_or_list</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'channels'</span><span class="p">,</span> <span class="p">[])</span>
+
+        <span class="c1"># Convert channels to list</span>
+        <span class="n">channels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">channels_str_or_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="p">[]:</span>
+            <span class="n">channels</span> <span class="o">=</span> <span class="n">parse_channel_list</span><span class="p">(</span><span class="n">channels_str_or_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+
+        <span class="c1"># Filenames to be read into this collection</span>
+        <span class="c1"># -----------------------------------------</span>
+        <span class="n">filenames</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'filenames'</span><span class="p">)</span>
+
+        <span class="c1"># File variable type</span>
+        <span class="k">if</span> <span class="s1">'satellite'</span> <span class="ow">in</span> <span class="n">dataset_config</span><span class="p">:</span>
+            <span class="n">satellite</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'satellite'</span><span class="p">)</span>
+            <span class="n">sensor</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'sensor'</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">variable</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'variable'</span><span class="p">)</span>
+
+        <span class="c1"># Get missing value threshold</span>
+        <span class="c1"># ---------------------------</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'missing_value_threshold'</span><span class="p">,</span> <span class="mf">1.0e30</span><span class="p">))</span>
+
+        <span class="c1"># Get the groups to be read</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">groups</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'groups'</span><span class="p">)</span>
+
+        <span class="c1"># Loop over filenames</span>
+        <span class="c1"># -------------------</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+
+            <span class="c1"># Loop over groups</span>
+            <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+
+                <span class="c1"># Group name and variables</span>
+                <span class="n">group_name</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">)</span>
+                <span class="n">group_vars</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'variables'</span><span class="p">,</span> <span class="s1">'all'</span><span class="p">)</span>
+
+                <span class="c1"># Set the collection name</span>
+                <span class="n">collection_name</span> <span class="o">=</span> <span class="n">dataset_config</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span>
+
+                <span class="n">ds</span> <span class="o">=</span> <span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                  <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                <span class="c1"># If user specifies all variables set to group list</span>
+                <span class="k">if</span> <span class="n">group_vars</span> <span class="o">==</span> <span class="s1">'all'</span><span class="p">:</span>
+                    <span class="n">group_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)</span>
+
+                <span class="c1"># Reshape variables if satellite diag</span>
+                <span class="k">if</span> <span class="s1">'nchans'</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+                    <span class="n">ds</span> <span class="o">=</span> <span class="n">satellite_dataset</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+                    <span class="n">ds</span> <span class="o">=</span> <span class="n">subset_channels</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+
+                <span class="c1"># Adjust variable names if uv</span>
+                <span class="k">if</span> <span class="s1">'variable'</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">'uv'</span><span class="p">:</span>
+                        <span class="n">group_vars</span> <span class="o">=</span> <span class="n">uv</span><span class="p">(</span><span class="n">group_vars</span><span class="p">)</span>
+
+                <span class="c1"># Check that all user variables are in the dataset_config</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">group_vars</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'For collection </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span> <span class="n">dataset_config</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span>
+                                      <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1">, group </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span> <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1"> in file '</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">' . Variables </span><span class="si">{</span><span class="n">group_vars</span><span class="si">}</span><span class="s1"> not all present in '</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">'the data set variables: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+                <span class="c1"># Drop data variables not in user requested variables</span>
+                <span class="n">vars_to_remove</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">group_vars</span><span class="p">))</span>
+                <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">drop_vars</span><span class="p">(</span><span class="n">vars_to_remove</span><span class="p">)</span>
+
+                <span class="c1"># Explicitly add the channels to the collection (we do not want to include this</span>
+                <span class="c1"># in the 'variables' list in the YAML to avoid transforms being applied to them)</span>
+                <span class="k">if</span> <span class="s1">'nchans'</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+                    <span class="n">channels_used</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">'nchans'</span><span class="p">]</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="n">group_name</span> <span class="o">+</span> <span class="s1">'::channelNumber'</span><span class="p">]</span> <span class="o">=</span> <span class="n">channels_used</span>
+
+                <span class="c1"># Rename variables with group</span>
+                <span class="n">rename_dict</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">group_var</span> <span class="ow">in</span> <span class="n">group_vars</span><span class="p">:</span>
+                    <span class="n">rename_dict</span><span class="p">[</span><span class="n">group_var</span><span class="p">]</span> <span class="o">=</span> <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'::'</span> <span class="o">+</span> <span class="n">group_var</span>
+                <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">rename_dict</span><span class="p">)</span>
+
+                <span class="c1"># Assert that the collection contains at least one variable</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">ds</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'Collection </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span> <span class="n">dataset_config</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1">, group </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span>
+                                      <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1"> in file '</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span>
+                                      <span class="s1">' does not have any variables.'</span><span class="p">)</span>
+
+            <span class="c1"># Add the dataset_config to the collections</span>
+            <span class="n">data_collections</span><span class="o">.</span><span class="n">create_or_add_to_collection</span><span class="p">(</span><span class="n">collection_name</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="s1">'nobs'</span><span class="p">)</span>
+
+        <span class="c1"># Nan out unphysical values</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">nan_float_values_outside_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
+
+        <span class="c1"># Change the location dimension name</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">adjust_location_dimension_name</span><span class="p">(</span><span class="s1">'nobs'</span><span class="p">)</span>
+
+        <span class="c1"># Change the channel dimension name</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">adjust_channel_dimension_name</span><span class="p">(</span><span class="s1">'nchans'</span><span class="p">)</span>
+
+        <span class="c1"># Display the contents of the collections for helping the user with making plots</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">display_collections</span><span class="p">()</span></div></div>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

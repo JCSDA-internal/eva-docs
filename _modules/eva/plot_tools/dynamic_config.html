@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.plot_tools.dynamic_config — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../_static/js/main.js"></script>
+<script src="../../../_static/nbsite.js"></script>
+<script src="../../../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/plot_tools/dynamic_config.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../index.html">
+<img alt="Logo" src="../../../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.plot_tools.dynamic_config</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2022 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2022 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">skew</span>
+
+<span class="kn">from</span> <span class="nn">eva.utilities.utils</span> <span class="kn">import</span> <span class="n">replace_vars_dict</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="vminvmaxcmap"><a class="viewcode-back" href="../../../API/eva.plot_tools.html#eva.plot_tools.dynamic_config.vminvmaxcmap">[docs]</a><span class="k">def</span> <span class="nf">vminvmaxcmap</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">option_dict</span><span class="p">,</span> <span class="n">plots_dict</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">):</span>
+
+    <span class="c1"># Get percentage of data to use in computing limits. Code will sort the data</span>
+    <span class="c1"># by size and then trim the minimum and maximum until this percentage of data</span>
+    <span class="c1"># is kept</span>
+    <span class="n">percentage_capture</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'percentage capture'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="c1"># Optionally the data might have a channel.</span>
+    <span class="n">channel</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'channel'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># Get the data variable to use for determining cbar limits</span>
+    <span class="n">varname</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'data variable'</span><span class="p">)</span>
+    <span class="n">varname_cgv</span> <span class="o">=</span> <span class="n">varname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'::'</span><span class="p">)</span>
+    <span class="n">datavar</span> <span class="o">=</span> <span class="n">data_collections</span><span class="o">.</span><span class="n">get_variable_data</span><span class="p">(</span><span class="n">varname_cgv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">varname_cgv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                 <span class="n">varname_cgv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">channel</span><span class="p">)</span>
+
+    <span class="c1"># Reorder the data array</span>
+    <span class="n">datavar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">datavar</span><span class="p">)</span>
+
+    <span class="c1"># Decide how many values to throw out on each end of the dataset</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">datavar</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">n_throw_out</span> <span class="o">=</span> <span class="p">((</span><span class="mi">100</span><span class="o">-</span><span class="n">percentage_capture</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># The value needs to be an integer</span>
+    <span class="n">n_throw_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">n_throw_out</span><span class="p">)</span>
+
+    <span class="c1"># Create new array with only the data to consider</span>
+    <span class="k">if</span> <span class="n">n_throw_out</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">datavar_check</span> <span class="o">=</span> <span class="n">datavar</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">datavar_check</span> <span class="o">=</span> <span class="n">datavar</span><span class="p">[</span><span class="n">n_throw_out</span><span class="p">:</span><span class="o">-</span><span class="n">n_throw_out</span><span class="p">]</span>
+
+    <span class="c1"># Find minimum and maximum values</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'sequential colormap'</span><span class="p">,</span> <span class="s1">'viridis'</span><span class="p">)</span>
+
+    <span class="c1"># If everything is nan plot some large min/max (plotting code should do the same)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">datavar_check</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="mf">1.0e38</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="mf">1.0e38</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">datavar_check</span><span class="p">)</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">datavar_check</span><span class="p">)</span>
+
+    <span class="c1"># If positive and negative values are present then a diverging colormap centered on zero should</span>
+    <span class="c1"># be used.</span>
+    <span class="k">if</span> <span class="n">vmin</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">vmax</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">datavar_check</span><span class="p">))</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">vmax</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'diverging colormap'</span><span class="p">,</span> <span class="s1">'seismic'</span><span class="p">)</span>
+
+    <span class="c1"># Check for nan</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">vmax</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">vmin</span><span class="p">):</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'diverging colormap'</span><span class="p">,</span> <span class="s1">'seismic'</span><span class="p">)</span>
+
+    <span class="c1"># Prepare dictionary with values to be overwritten in other dictionaries</span>
+    <span class="n">overwrite_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">overwrite_dict</span><span class="p">[</span><span class="s1">'dynamic_vmax'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vmax</span><span class="p">)</span>
+    <span class="n">overwrite_dict</span><span class="p">[</span><span class="s1">'dynamic_vmin'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vmin</span><span class="p">)</span>
+    <span class="n">overwrite_dict</span><span class="p">[</span><span class="s1">'dynamic_cmap'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmap</span>
+
+    <span class="c1"># Perform the overwrite of the plots_dict dictionary and return new dictionary</span>
+    <span class="k">return</span> <span class="n">replace_vars_dict</span><span class="p">(</span><span class="n">plots_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">overwrite_dict</span><span class="p">)</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="histogram_bins"><a class="viewcode-back" href="../../../API/eva.plot_tools.html#eva.plot_tools.dynamic_config.histogram_bins">[docs]</a><span class="k">def</span> <span class="nf">histogram_bins</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">option_dict</span><span class="p">,</span> <span class="n">plots_dict</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">):</span>
+
+    <span class="c1"># Optionally the data might have a channel.</span>
+    <span class="n">channel</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'channel'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># Get the data variable to use for determining cbar limits</span>
+    <span class="n">varname</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'data variable'</span><span class="p">)</span>
+    <span class="n">varname_cgv</span> <span class="o">=</span> <span class="n">varname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'::'</span><span class="p">)</span>
+    <span class="n">datavar</span> <span class="o">=</span> <span class="n">data_collections</span><span class="o">.</span><span class="n">get_variable_data</span><span class="p">(</span><span class="n">varname_cgv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">varname_cgv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                 <span class="n">varname_cgv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">channel</span><span class="p">)</span>
+
+    <span class="c1"># Compute size of the array of data</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">datavar</span><span class="p">))</span>
+
+    <span class="c1"># Check for zero data, set to 3 as a reasonable minimum</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+
+    <span class="c1"># Compute number of bins using standard rule</span>
+    <span class="n">rule</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'number of bins rule'</span><span class="p">,</span> <span class="s1">'sturges'</span><span class="p">)</span>
+    <span class="n">rule</span> <span class="o">=</span> <span class="n">rule</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="c1"># User might capitalize names so convert to lowercase</span>
+
+    <span class="c1"># Allow for some standard rules for computing the number of bins for the histogram</span>
+    <span class="k">if</span> <span class="n">rule</span> <span class="o">==</span> <span class="s1">'square root'</span><span class="p">:</span>
+        <span class="n">nbins</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">rule</span> <span class="o">==</span> <span class="s1">'sturges'</span><span class="p">:</span>
+        <span class="n">nbins</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">rule</span> <span class="o">==</span> <span class="s1">'rice'</span><span class="p">:</span>
+        <span class="n">nbins</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">rule</span> <span class="o">==</span> <span class="s1">'doane'</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Rule </span><span class="se">\'</span><span class="s1">doane</span><span class="se">\'</span><span class="s1"> is not valid for data with fewer than 3 samples.'</span><span class="p">)</span>
+        <span class="n">g1</span> <span class="o">=</span> <span class="n">skew</span><span class="p">(</span><span class="n">datavar</span><span class="p">,</span> <span class="n">nan_policy</span><span class="o">=</span><span class="s1">'omit'</span><span class="p">)</span>
+        <span class="n">sig_g1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">)))</span>
+        <span class="n">nbins</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span><span class="o">/</span><span class="n">sig_g1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Rule </span><span class="si">{</span><span class="n">rule</span><span class="si">}</span><span class="s1"> for computing the histogram bins is not valid.'</span><span class="p">)</span>
+
+    <span class="c1"># Prepare dictionary with values to be overwritten in other dictionaries</span>
+    <span class="n">overwrite_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">overwrite_dict</span><span class="p">[</span><span class="s1">'dynamic_bins'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">nbins</span><span class="p">))</span>
+
+    <span class="c1"># Perform the overwrite of the plots_dict dictionary and return new dictionary</span>
+    <span class="k">return</span> <span class="n">replace_vars_dict</span><span class="p">(</span><span class="n">plots_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">overwrite_dict</span><span class="p">)</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.data.jedi_log — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../_static/js/main.js"></script>
+<script src="../../../_static/nbsite.js"></script>
+<script src="../../../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/data/jedi_log.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../index.html">
+<img alt="Logo" src="../../../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.data.jedi_log</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2023 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2023 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
+<span class="kn">from</span> <span class="nn">eva.eva_base</span> <span class="kn">import</span> <span class="n">EvaBase</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="c1"># Parameters</span>
+<span class="n">space</span> <span class="o">=</span> <span class="s1">' '</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="get_data_from_line"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.jedi_log.get_data_from_line">[docs]</a><span class="k">def</span> <span class="nf">get_data_from_line</span><span class="p">(</span><span class="n">jedi_log_line</span><span class="p">,</span> <span class="n">search_term</span><span class="p">,</span> <span class="n">separator</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">search_term</span> <span class="ow">in</span> <span class="n">jedi_log_line</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jedi_log_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)[</span><span class="n">position</span><span class="p">]</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="JediLog"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.jedi_log.JediLog">[docs]</a><span class="k">class</span> <span class="nc">JediLog</span><span class="p">(</span><span class="n">EvaBase</span><span class="p">):</span>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="JediLog.execute"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.jedi_log.JediLog.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timing</span><span class="p">):</span>
+
+        <span class="c1"># Get name of the log file to parse</span>
+        <span class="n">jedi_log_to_parse</span> <span class="o">=</span> <span class="n">dataset_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'jedi_log_to_parse'</span><span class="p">)</span>
+
+        <span class="c1"># Collection name to use</span>
+        <span class="n">collection_name</span> <span class="o">=</span> <span class="n">dataset_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'collection_name'</span><span class="p">)</span>
+
+        <span class="c1"># Read log file into a string</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">jedi_log_to_parse</span><span class="p">)</span> <span class="k">as</span> <span class="n">jedi_log_to_parse_open</span><span class="p">:</span>
+            <span class="n">jedi_log_text</span> <span class="o">=</span> <span class="n">jedi_log_to_parse_open</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="c1"># Split log into list of lines</span>
+        <span class="n">jedi_log_lines</span> <span class="o">=</span> <span class="n">jedi_log_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+        <span class="c1"># Check if this was a ctest and if so determine test prepend string</span>
+        <span class="n">test_string</span> <span class="o">=</span> <span class="s1">''</span>
+        <span class="k">for</span> <span class="n">jedi_log_line</span> <span class="ow">in</span> <span class="n">jedi_log_lines</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">jedi_log_line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'test'</span><span class="p">:</span>
+                <span class="n">test_string</span> <span class="o">=</span> <span class="n">jedi_log_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">': '</span>
+
+        <span class="c1"># Clean up lines</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jedi_log_lines</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">jedi_log_line</span> <span class="ow">in</span> <span class="n">jedi_log_lines</span><span class="p">:</span>
+            <span class="c1"># Replace test number</span>
+            <span class="n">new_line</span> <span class="o">=</span> <span class="n">jedi_log_line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">test_string</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+            <span class="c1"># If new line is just spaces then set to empty string</span>
+            <span class="k">if</span> <span class="n">new_line</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
+                <span class="n">new_line</span> <span class="o">=</span> <span class="s1">''</span>
+            <span class="c1"># Assemble new list of strings</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">jedi_log_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_line</span><span class="p">)</span>
+
+        <span class="c1"># Split log into list of strings. Each element is all lines between two empty lines in the</span>
+        <span class="c1"># in the log file.</span>
+        <span class="n">chunk_start_points</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">jedi_log_line_ind</span><span class="p">,</span> <span class="n">jedi_log_line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">jedi_log_lines</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">jedi_log_line</span> <span class="o">==</span> <span class="s1">''</span><span class="p">:</span>
+                <span class="n">chunk_start_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jedi_log_line_ind</span><span class="p">)</span>
+        <span class="n">chunk_start_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">jedi_log_lines</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_chunks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chunk_start_points</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">jedi_log_lines</span><span class="p">[</span><span class="n">chunk_start_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">chunk_start_points</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chunk</span><span class="p">))</span>
+
+        <span class="c1"># Get list of things to parse from the dictionary</span>
+        <span class="n">data_to_parse</span> <span class="o">=</span> <span class="n">dataset_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'data_to_parse'</span><span class="p">)</span>
+
+        <span class="c1"># Loop and add to dataset</span>
+        <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">data_to_parse</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">metric</span> <span class="o">==</span> <span class="s1">'convergence'</span> <span class="ow">and</span> <span class="n">data_to_parse</span><span class="p">[</span><span class="n">metric</span><span class="p">]:</span>
+                <span class="n">convergence_ds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_convergence</span><span class="p">()</span>
+                <span class="c1"># Add to the Eva dataset</span>
+                <span class="n">data_collections</span><span class="o">.</span><span class="n">create_or_add_to_collection</span><span class="p">(</span><span class="n">collection_name</span><span class="p">,</span> <span class="n">convergence_ds</span><span class="p">)</span>
+
+        <span class="c1"># Write out all the collections</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">display_collections</span><span class="p">()</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="JediLog.get_from_log"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.jedi_log.JediLog.get_from_log">[docs]</a>    <span class="k">def</span> <span class="nf">get_from_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_term</span><span class="p">,</span> <span class="n">separator</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">custom_log</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="c1"># This method will search every line of the log for the search term</span>
+
+        <span class="k">if</span> <span class="n">custom_log</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">jedi_log_lines</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">custom_log</span>
+
+        <span class="c1"># Loop over elements of string</span>
+        <span class="k">for</span> <span class="n">jedi_log_line</span> <span class="ow">in</span> <span class="n">log</span><span class="p">:</span>
+            <span class="n">data_val</span> <span class="o">=</span> <span class="n">get_data_from_line</span><span class="p">(</span><span class="n">jedi_log_line</span><span class="p">,</span> <span class="n">search_term</span><span class="p">,</span> <span class="n">separator</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">data_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">data_val</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="JediLog.get_matching_chunks"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.jedi_log.JediLog.get_matching_chunks">[docs]</a>    <span class="k">def</span> <span class="nf">get_matching_chunks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_terms</span><span class="p">):</span>
+
+        <span class="c1"># Create array to hold chunks that match</span>
+        <span class="n">matching_chunks</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Loop over elements of string</span>
+        <span class="k">for</span> <span class="n">log_chunk</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_chunks</span><span class="p">:</span>
+
+            <span class="c1"># Build an array to check each match</span>
+            <span class="n">search_terms_match</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">search_term</span> <span class="ow">in</span> <span class="n">search_terms</span><span class="p">:</span>
+                <span class="n">search_terms_match</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">search_term</span> <span class="ow">in</span> <span class="n">log_chunk</span><span class="p">)</span>
+
+            <span class="c1"># Append if all search terms are in the chunk</span>
+            <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">search_terms_match</span><span class="p">):</span>
+                <span class="n">matching_chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">log_chunk</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">matching_chunks</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="JediLog.parse_convergence"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.jedi_log.JediLog.parse_convergence">[docs]</a>    <span class="k">def</span> <span class="nf">parse_convergence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Get the name of the minimizer</span>
+        <span class="n">minimizer_algorithm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_from_log</span><span class="p">(</span><span class="s1">'Minimizer algorithm'</span><span class="p">,</span> <span class="s1">'='</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Get the chunks for the minimizer part (Norm reduction etc)</span>
+        <span class="n">minimizer_chunks_strings</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">minimizer_algorithm</span><span class="si">}</span><span class="s1"> Starting Iteration'</span><span class="p">,</span>
+                                    <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">minimizer_algorithm</span><span class="si">}</span><span class="s1"> end of iteration'</span><span class="p">]</span>
+        <span class="n">minimizer_chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_matching_chunks</span><span class="p">(</span><span class="n">minimizer_chunks_strings</span><span class="p">)</span>
+
+        <span class="c1"># Get the chunks for the J, Jb, JoJc part</span>
+        <span class="n">j_chunks_strings</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'Quadratic cost function: J '</span><span class="p">,</span>
+                            <span class="sa">f</span><span class="s1">'Quadratic cost function: Jb'</span><span class="p">]</span>
+        <span class="n">j_chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_matching_chunks</span><span class="p">(</span><span class="n">j_chunks_strings</span><span class="p">)</span>
+
+        <span class="c1"># Total number of inner iterations</span>
+        <span class="n">total_iter</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">minimizer_chunks</span><span class="p">)</span>
+
+        <span class="c1"># Check that some minimizer chunks were found</span>
+        <span class="k">if</span> <span class="n">total_iter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'The number of iterations found in the log is zero. Check the '</span> <span class="o">+</span>
+                              <span class="s1">'parsing of the log is correct.'</span><span class="p">)</span>
+
+        <span class="c1"># Create list of variables that need to be built</span>
+        <span class="n">var_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">var_search_criteria</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">var_split</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">var_position</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">var_dtype</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">minimizer_chunks</span><span class="p">:</span>
+
+            <span class="c1"># Inner iteration number</span>
+            <span class="n">var_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'inner_iteration'</span><span class="p">)</span>
+            <span class="n">var_search_criteria</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">minimizer_algorithm</span><span class="si">}</span><span class="s1"> Starting Iteration'</span><span class="p">)</span>
+            <span class="n">var_split</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Iteration'</span><span class="p">)</span>
+            <span class="n">var_position</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">var_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'int32'</span><span class="p">)</span>
+
+            <span class="c1"># Gradient reduction</span>
+            <span class="n">var_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'gradient_reduction'</span><span class="p">)</span>
+            <span class="n">var_search_criteria</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Gradient reduction ('</span><span class="p">)</span>
+            <span class="n">var_split</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'='</span><span class="p">)</span>
+            <span class="n">var_position</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">var_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span>
+
+            <span class="c1"># Norm reduction</span>
+            <span class="n">var_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'norm_reduction'</span><span class="p">)</span>
+            <span class="n">var_search_criteria</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Norm reduction ('</span><span class="p">)</span>
+            <span class="n">var_split</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'='</span><span class="p">)</span>
+            <span class="n">var_position</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">var_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">j_chunks</span><span class="p">:</span>
+
+            <span class="c1"># Inner iteration number</span>
+            <span class="n">var_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'j'</span><span class="p">)</span>
+            <span class="n">var_search_criteria</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Quadratic cost function: J '</span><span class="p">)</span>
+            <span class="n">var_split</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'='</span><span class="p">)</span>
+            <span class="n">var_position</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">var_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span>
+
+            <span class="c1"># Gradient reduction</span>
+            <span class="n">var_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'jb'</span><span class="p">)</span>
+            <span class="n">var_search_criteria</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Quadratic cost function: Jb'</span><span class="p">)</span>
+            <span class="n">var_split</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'='</span><span class="p">)</span>
+            <span class="n">var_position</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">var_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span>
+
+            <span class="c1"># Norm reduction</span>
+            <span class="n">var_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'jojc'</span><span class="p">)</span>
+            <span class="n">var_search_criteria</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Quadratic cost function: JoJc'</span><span class="p">)</span>
+            <span class="n">var_split</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'='</span><span class="p">)</span>
+            <span class="n">var_position</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">var_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span>
+
+        <span class="c1"># Create a dataset to hold the convergence data</span>
+        <span class="n">convergence_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+
+        <span class="c1"># Add array for all iterations</span>
+        <span class="n">gn</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'convergence::total_iteration'</span>
+        <span class="n">convergence_ds</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">total_iter</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'int32'</span><span class="p">))</span>
+        <span class="n">convergence_ds</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">total_iter</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Concatenate chunks to simplify search algorithm</span>
+        <span class="n">min_and_j_chunks</span> <span class="o">=</span> <span class="n">minimizer_chunks</span> <span class="o">+</span> <span class="n">j_chunks</span>
+
+        <span class="k">for</span> <span class="n">var_ind</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">var_names</span><span class="p">):</span>
+            <span class="n">var_array</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">min_and_j_chunk</span> <span class="ow">in</span> <span class="n">min_and_j_chunks</span><span class="p">:</span>
+                <span class="n">min_and_j_chunk_split</span> <span class="o">=</span> <span class="n">min_and_j_chunk</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+                <span class="n">var_found</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_from_log</span><span class="p">(</span><span class="n">var_search_criteria</span><span class="p">[</span><span class="n">var_ind</span><span class="p">],</span> <span class="n">var_split</span><span class="p">[</span><span class="n">var_ind</span><span class="p">],</span>
+                                              <span class="n">var_position</span><span class="p">[</span><span class="n">var_ind</span><span class="p">],</span> <span class="n">min_and_j_chunk_split</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">var_found</span><span class="p">:</span>
+                    <span class="n">var_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var_found</span><span class="p">)</span>
+
+            <span class="c1"># Add to the dataset if there is something to add</span>
+            <span class="k">if</span> <span class="n">var_array</span><span class="p">:</span>
+                <span class="n">gn</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'convergence::</span><span class="si">{</span><span class="n">var_names</span><span class="p">[</span><span class="n">var_ind</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span>  <span class="c1"># group::variable name</span>
+                <span class="n">convergence_ds</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">total_iter</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">var_dtype</span><span class="p">[</span><span class="n">var_ind</span><span class="p">]))</span>
+                <span class="n">convergence_ds</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">var_array</span>
+
+        <span class="c1"># Create special case variables</span>
+
+        <span class="c1"># Outer iteration</span>
+        <span class="c1"># ---------------</span>
+        <span class="n">outer_iteration</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">outer_iterations</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="s1">'convergence::inner_iteration'</span> <span class="ow">in</span> <span class="n">convergence_ds</span><span class="p">:</span>
+            <span class="n">inner_iterations</span> <span class="o">=</span> <span class="n">convergence_ds</span><span class="p">[</span><span class="s1">'convergence::inner_iteration'</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+
+            <span class="c1"># Set outer iteration number</span>
+            <span class="k">for</span> <span class="n">inner_iteration</span> <span class="ow">in</span> <span class="n">inner_iterations</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">inner_iteration</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">outer_iteration</span> <span class="o">=</span> <span class="n">outer_iteration</span> <span class="o">+</span> <span class="mi">1</span>
+
+                <span class="c1"># Append vector of outer iterations</span>
+                <span class="n">outer_iterations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outer_iteration</span><span class="p">)</span>
+
+            <span class="n">gn</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'convergence::outer_iteration'</span>
+            <span class="n">convergence_ds</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">total_iter</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'int32'</span><span class="p">))</span>
+            <span class="n">convergence_ds</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">outer_iterations</span>
+
+        <span class="c1"># Normalized versions of data</span>
+        <span class="c1"># ---------------------------</span>
+        <span class="n">normalize_var_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'gradient_reduction'</span><span class="p">,</span> <span class="s1">'norm_reduction'</span><span class="p">,</span> <span class="s1">'j'</span><span class="p">,</span> <span class="s1">'jb'</span><span class="p">,</span> <span class="s1">'jojc'</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">normalize_var_name</span> <span class="ow">in</span> <span class="n">normalize_var_names</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">normalize_var_name</span> <span class="ow">in</span> <span class="n">var_names</span><span class="p">:</span>
+                <span class="c1"># Index in lists for the variable being normalized</span>
+                <span class="n">var_ind</span> <span class="o">=</span> <span class="n">var_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">normalize_var_name</span><span class="p">)</span>
+
+                <span class="c1"># Extract existing data</span>
+                <span class="n">gn</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'convergence::</span><span class="si">{</span><span class="n">var_names</span><span class="p">[</span><span class="n">var_ind</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span>
+                <span class="n">var_array</span> <span class="o">=</span> <span class="n">convergence_ds</span><span class="p">[</span><span class="n">gn</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+
+                <span class="c1"># Normalize and add back to the data</span>
+                <span class="n">gn_nz</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'convergence::</span><span class="si">{</span><span class="n">var_names</span><span class="p">[</span><span class="n">var_ind</span><span class="p">]</span><span class="si">}</span><span class="s1">_normalized'</span>
+                <span class="n">var_array_nz</span> <span class="o">=</span> <span class="n">var_array</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">var_array</span><span class="p">)</span>
+                <span class="n">convergence_ds</span><span class="p">[</span><span class="n">gn_nz</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">total_iter</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">var_dtype</span><span class="p">[</span><span class="n">var_ind</span><span class="p">]))</span>
+                <span class="n">convergence_ds</span><span class="p">[</span><span class="n">gn_nz</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">var_array_nz</span>
+
+        <span class="k">return</span> <span class="n">convergence_ds</span></div></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

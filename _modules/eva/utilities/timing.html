@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.utilities.timing — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../_static/js/main.js"></script>
+<script src="../../../_static/nbsite.js"></script>
+<script src="../../../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/utilities/timing.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../index.html">
+<img alt="Logo" src="../../../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.utilities.timing</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="c1"># (C) Copyright 2021-2022 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2022 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="kn">import</span> <span class="nn">textwrap</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">eva.utilities.logger</span> <span class="kn">import</span> <span class="n">Logger</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="Timing"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.timing.Timing">[docs]</a><span class="k">class</span> <span class="nc">Timing</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">'Timers'</span><span class="p">)</span>
+
+        <span class="c1"># Record start time for the class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+
+        <span class="c1"># Dictionary to hold timers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="Timing.start"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.timing.Timing.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timer_name</span><span class="p">):</span>
+
+        <span class="c1"># Create this timer and set count to zero</span>
+        <span class="k">if</span> <span class="n">timer_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'count'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'total_time'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="c1"># Check that timer is not already running</span>
+        <span class="k">if</span> <span class="s1">'running'</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'running'</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Trying to start the timer for </span><span class="se">\'</span><span class="si">{</span><span class="n">timer_name</span><span class="si">}</span><span class="se">\'</span><span class="s1"> but it is '</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s1">'already running'</span><span class="p">)</span>
+
+        <span class="c1"># Record current start time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'start_time'</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+
+        <span class="c1"># Set that this timer is running</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'running'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Up the count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'count'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'count'</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="Timing.stop"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.timing.Timing.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timer_name</span><span class="p">):</span>
+
+        <span class="c1"># Check that this timer was initialized</span>
+        <span class="k">if</span> <span class="n">timer_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Trying to stop the timer for </span><span class="si">{</span><span class="n">timer_name</span><span class="si">}</span><span class="s1"> but it was never '</span> <span class="o">+</span>
+                              <span class="sa">f</span><span class="s1">'initialized.'</span><span class="p">)</span>
+
+        <span class="c1"># Check that the timer is in fact running</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'running'</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Trying to stop the timer for </span><span class="se">\'</span><span class="si">{</span><span class="n">timer_name</span><span class="si">}</span><span class="se">\'</span><span class="s1"> but it is not '</span> <span class="o">+</span>
+                              <span class="sa">f</span><span class="s1">'running'</span><span class="p">)</span>
+
+        <span class="c1"># Record the final time</span>
+        <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'start_time'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'total_time'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'total_time'</span><span class="p">]</span> <span class="o">+</span> \
+            <span class="n">elapsed</span>
+
+        <span class="c1"># Set running back to false</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">timer_name</span><span class="p">][</span><span class="s1">'running'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">return</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="Timing.finalize"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.timing.Timing.finalize">[docs]</a>    <span class="k">def</span> <span class="nf">finalize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="kn">import</span> <span class="nn">time</span>
+
+        <span class="c1"># Maximum length of a line with timer name</span>
+        <span class="n">max_len</span> <span class="o">=</span> <span class="mi">35</span>
+
+        <span class="c1"># Total time</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span>
+        <span class="n">total_time_formatted</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{:.2f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_time</span><span class="p">)</span>
+
+        <span class="c1"># Log the times</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+            <span class="c1"># Check that no timer is still running</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">'running'</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'Timer </span><span class="se">\'</span><span class="si">{key}</span><span class="se">\'</span><span class="s1"> is still running. Make sure it was stopped.'</span><span class="p">)</span>
+
+            <span class="n">name</span> <span class="o">=</span> <span class="n">key</span>
+
+            <span class="n">name_list</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">max_len</span><span class="p">,</span> <span class="n">break_long_words</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">name_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">name_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">' ...'</span>
+
+            <span class="n">time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">'total_time'</span><span class="p">]</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">'count'</span><span class="p">]</span>
+            <span class="n">time_per_count</span> <span class="o">=</span> <span class="n">time</span> <span class="o">/</span> <span class="n">count</span>
+            <span class="n">time_percent</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">time</span> <span class="o">/</span> <span class="n">total_time</span>
+
+            <span class="n">name_formatted</span> <span class="o">=</span> <span class="n">name_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">max_len</span><span class="o">+</span><span class="mi">6</span><span class="p">)</span>
+            <span class="n">time_formatted</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{:8.2f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+            <span class="n">count_formatted</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">count</span><span class="si">:</span><span class="s1">03</span><span class="si">}</span><span class="s1">'</span>
+            <span class="n">time_per_count_formatted</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{:8.2f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time_per_count</span><span class="p">)</span>
+            <span class="n">time_percent_formatted</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{:4.1f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time_percent</span><span class="p">)</span>
+
+            <span class="n">write_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">name_formatted</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">time_formatted</span><span class="si">}</span><span class="s1"> seconds | '</span> <span class="o">+</span> \
+                           <span class="sa">f</span><span class="s1">'Instances count: </span><span class="si">{</span><span class="n">count_formatted</span><span class="si">}</span><span class="s1"> | '</span> <span class="o">+</span> \
+                           <span class="sa">f</span><span class="s1">'Per instance: </span><span class="si">{</span><span class="n">time_per_count_formatted</span><span class="si">}</span><span class="s1"> | '</span> <span class="o">+</span> \
+                           <span class="sa">f</span><span class="s1">'Percent of total: </span><span class="si">{</span><span class="n">time_percent_formatted</span><span class="si">}</span><span class="s1">%'</span>
+
+            <span class="k">if</span> <span class="n">first</span><span class="p">:</span>
+                <span class="n">write_str_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">write_string</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'-'</span> <span class="o">*</span> <span class="n">write_str_len</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'TIMING INFORMATION (seconds)'</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">write_str_len</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'----------------------------'</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">write_str_len</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span>
+                <span class="n">first</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="c1"># Write timer info</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">write_string</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_list</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'  '</span> <span class="o">+</span> <span class="n">name_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">max_len</span><span class="o">+</span><span class="mi">4</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Total time taken </span><span class="si">{</span><span class="n">total_time_formatted</span><span class="si">}</span><span class="s1"> seconds.'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'-'</span> <span class="o">*</span> <span class="n">write_str_len</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span></div></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

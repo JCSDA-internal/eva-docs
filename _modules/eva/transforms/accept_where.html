@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.transforms.accept_where — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../_static/js/main.js"></script>
+<script src="../../../_static/nbsite.js"></script>
+<script src="../../../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/transforms/accept_where.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../index.html">
+<img alt="Logo" src="../../../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.transforms.accept_where</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2022 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2022 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="kn">from</span> <span class="nn">eva.transforms.transform_utils</span> <span class="kn">import</span> <span class="n">parse_for_dict</span><span class="p">,</span> <span class="n">split_collectiongroupvariable</span>
+<span class="kn">from</span> <span class="nn">eva.transforms.transform_utils</span> <span class="kn">import</span> <span class="n">replace_cgv</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.config</span> <span class="kn">import</span> <span class="n">get</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.logger</span> <span class="kn">import</span> <span class="n">Logger</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="accept_where"><a class="viewcode-back" href="../../../API/eva.transforms.html#eva.transforms.accept_where.accept_where">[docs]</a><span class="k">def</span> <span class="nf">accept_where</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">):</span>
+
+    <span class="c1"># Create a logger</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">'AcceptWhereTransform'</span><span class="p">)</span>
+
+    <span class="c1"># Parse the for dictionary</span>
+    <span class="p">[</span><span class="n">collections</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">variables</span><span class="p">]</span> <span class="o">=</span> <span class="n">parse_for_dict</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+
+    <span class="c1"># Parse config for the expression and new collection/group/variable naming</span>
+    <span class="n">new_name_template</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="s1">'new name'</span><span class="p">)</span>
+    <span class="n">starting_field_template</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="s1">'starting field'</span><span class="p">)</span>
+
+    <span class="c1"># Get the where dictionary</span>
+    <span class="n">wheres</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="s1">'where'</span><span class="p">)</span>
+
+    <span class="c1"># Loop over the templates</span>
+    <span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="n">collections</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+
+                <span class="c1"># Replace collection, group, variable in template</span>
+                <span class="p">[</span><span class="n">new_name</span><span class="p">,</span> <span class="n">starting_field</span><span class="p">]</span> <span class="o">=</span> <span class="n">replace_cgv</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span>
+                                                         <span class="n">new_name_template</span><span class="p">,</span> <span class="n">starting_field_template</span><span class="p">)</span>
+
+                <span class="c1"># Get the variable to be adjusted</span>
+                <span class="n">cgv</span> <span class="o">=</span> <span class="n">split_collectiongroupvariable</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">starting_field</span><span class="p">)</span>
+                <span class="n">var_to_filter</span> <span class="o">=</span> <span class="n">data_collections</span><span class="o">.</span><span class="n">get_variable_data_array</span><span class="p">(</span><span class="n">cgv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cgv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cgv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+                <span class="c1"># Loop over wheres and create new variable with NaN where filtered</span>
+                <span class="k">for</span> <span class="n">where_expression</span> <span class="ow">in</span> <span class="n">wheres</span><span class="p">:</span>
+
+                    <span class="c1"># Split where into variable, condition and value</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="p">[</span><span class="n">where_var</span><span class="p">,</span> <span class="n">where_con</span><span class="p">,</span> <span class="n">where_val</span><span class="p">]</span> <span class="o">=</span> <span class="n">where_expression</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Failed to split </span><span class="se">\'</span><span class="si">{</span><span class="n">where_expression</span><span class="si">}</span><span class="se">\'</span><span class="s1">. Check that '</span> <span class="o">+</span>
+                                          <span class="s1">'it has the correct format, e.g. '</span> <span class="o">+</span>
+                                          <span class="s1">'</span><span class="se">\'</span><span class="s1">$</span><span class="si">{collection}</span><span class="s1">::$</span><span class="si">{group}</span><span class="s1">::$</span><span class="si">{variable}</span><span class="s1"> &gt;= 0.0</span><span class="se">\'</span><span class="s1">.'</span><span class="p">)</span>
+
+                    <span class="c1"># Replace templated aspects in where statement</span>
+                    <span class="p">[</span><span class="n">where_var</span><span class="p">]</span> <span class="o">=</span> <span class="n">replace_cgv</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">where_var</span><span class="p">)</span>
+
+                    <span class="c1"># Extract Dataarray for that variable</span>
+                    <span class="n">cgv</span> <span class="o">=</span> <span class="n">split_collectiongroupvariable</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">where_var</span><span class="p">)</span>
+                    <span class="n">where_var_dat</span> <span class="o">=</span> <span class="n">data_collections</span><span class="o">.</span><span class="n">get_variable_data_array</span><span class="p">(</span><span class="n">cgv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cgv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cgv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+                    <span class="c1"># Perform evaluation to filter the variable</span>
+                    <span class="n">where_string</span> <span class="o">=</span> <span class="s1">'where_var_dat '</span> <span class="o">+</span> <span class="n">where_con</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="n">where_val</span>
+                    <span class="n">var_to_filter</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s1">'var_to_filter.where('</span> <span class="o">+</span> <span class="n">where_string</span> <span class="o">+</span> <span class="s1">')'</span><span class="p">)</span>
+
+                <span class="c1"># Add the variable to collection</span>
+                <span class="n">cgv</span> <span class="o">=</span> <span class="n">split_collectiongroupvariable</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">new_name</span><span class="p">)</span>
+                <span class="n">data_collections</span><span class="o">.</span><span class="n">add_variable_to_collection</span><span class="p">(</span><span class="n">cgv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cgv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cgv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">var_to_filter</span><span class="p">)</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.utilities.ioda_definitions — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../_static/js/main.js"></script>
+<script src="../../../_static/nbsite.js"></script>
+<script src="../../../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/utilities/ioda_definitions.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../index.html">
+<img alt="Logo" src="../../../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.utilities.ioda_definitions</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2022 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="ioda_platform_dict"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.ioda_definitions.ioda_platform_dict">[docs]</a><span class="k">def</span> <span class="nf">ioda_platform_dict</span><span class="p">():</span>
+
+    <span class="n">ioda_platform_dictionary</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">"aircraft"</span><span class="p">:</span> <span class="s2">"Aircraft"</span><span class="p">,</span>
+      <span class="s2">"airs_aqua"</span><span class="p">:</span> <span class="s2">"AIRS AQUA"</span><span class="p">,</span>
+      <span class="s2">"amsua_aqua"</span><span class="p">:</span> <span class="s2">"AMSUA AQUA"</span><span class="p">,</span>
+      <span class="s2">"amsua_metop-a"</span><span class="p">:</span> <span class="s2">"AMSUA METOP-A"</span><span class="p">,</span>
+      <span class="s2">"amsua_metop-b"</span><span class="p">:</span> <span class="s2">"AMSUA METOP-B"</span><span class="p">,</span>
+      <span class="s2">"amsua_metop-c"</span><span class="p">:</span> <span class="s2">"AMSUA METOP-C"</span><span class="p">,</span>
+      <span class="s2">"amsua_n15"</span><span class="p">:</span> <span class="s2">"AMSUA NOAA-15"</span><span class="p">,</span>
+      <span class="s2">"amsua_n18"</span><span class="p">:</span> <span class="s2">"AMSUA NOAA-18"</span><span class="p">,</span>
+      <span class="s2">"amsua_n19"</span><span class="p">:</span> <span class="s2">"AMSUA NOAA-19"</span><span class="p">,</span>
+      <span class="s2">"atms_n20"</span><span class="p">:</span> <span class="s2">"ATMS NOAA-20"</span><span class="p">,</span>
+      <span class="s2">"atms_npp"</span><span class="p">:</span> <span class="s2">"ATMS NPP"</span><span class="p">,</span>
+      <span class="s2">"avhrr3_metop-a"</span><span class="p">:</span> <span class="s2">"AVHRR3 METOP-A"</span><span class="p">,</span>
+      <span class="s2">"avhrr3_n18"</span><span class="p">:</span> <span class="s2">"AVHRR3 NOAA-18"</span><span class="p">,</span>
+      <span class="s2">"avhrr3_n19"</span><span class="p">:</span> <span class="s2">"AVHRR3 NOAA-19"</span><span class="p">,</span>
+      <span class="s2">"cris-fsr_n20"</span><span class="p">:</span> <span class="s2">"CRIS FSR NOAA-20"</span><span class="p">,</span>
+      <span class="s2">"cris-fsr_npp"</span><span class="p">:</span> <span class="s2">"CRIS FSR NPP"</span><span class="p">,</span>
+      <span class="s2">"gmi_gpm"</span><span class="p">:</span> <span class="s2">"GMI GPM"</span><span class="p">,</span>
+      <span class="s2">"gnssrobndnbam"</span><span class="p">:</span> <span class="s2">"GNSSRO"</span><span class="p">,</span>
+      <span class="s2">"iasi_metop-a"</span><span class="p">:</span> <span class="s2">"IASI METOP-A"</span><span class="p">,</span>
+      <span class="s2">"iasi_metop-b"</span><span class="p">:</span> <span class="s2">"IASI METOP-B"</span><span class="p">,</span>
+      <span class="s2">"mhs_metop-b"</span><span class="p">:</span> <span class="s2">"MHS METOP-B"</span><span class="p">,</span>
+      <span class="s2">"mhs_metop-c"</span><span class="p">:</span> <span class="s2">"MHS METOP-C"</span><span class="p">,</span>
+      <span class="s2">"mhs_n19"</span><span class="p">:</span> <span class="s2">"MHS NOAA-19"</span><span class="p">,</span>
+      <span class="s2">"omi_aura"</span><span class="p">:</span> <span class="s2">"OMI AURA"</span><span class="p">,</span>
+      <span class="s2">"ompsnp_npp"</span><span class="p">:</span> <span class="s2">"OMPSNP NPP"</span><span class="p">,</span>
+      <span class="s2">"ompstc8_npp"</span><span class="p">:</span> <span class="s2">"OMPSTC8 NPP"</span><span class="p">,</span>
+      <span class="s2">"rass_tv"</span><span class="p">:</span> <span class="s2">"RASS Tv"</span><span class="p">,</span>
+      <span class="s2">"satwind"</span><span class="p">:</span> <span class="s2">"Satellite Wind"</span><span class="p">,</span>
+      <span class="s2">"scatwind"</span><span class="p">:</span> <span class="s2">"Scatterometer Wind"</span><span class="p">,</span>
+      <span class="s2">"seviri_m11"</span><span class="p">:</span> <span class="s2">"SEVIRI Meteosat-11"</span><span class="p">,</span>
+      <span class="s2">"sfcship"</span><span class="p">:</span> <span class="s2">"Surface ship"</span><span class="p">,</span>
+      <span class="s2">"sfc"</span><span class="p">:</span> <span class="s2">"Surface"</span><span class="p">,</span>
+      <span class="s2">"sondes"</span><span class="p">:</span> <span class="s2">"Radiosondes"</span><span class="p">,</span>
+      <span class="s2">"ssmis_f17"</span><span class="p">:</span> <span class="s2">"SSMIS DMSP-F17"</span><span class="p">,</span>
+      <span class="s2">"vadwind"</span><span class="p">:</span> <span class="s2">"VAD Winds"</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">ioda_platform_dictionary</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="find_instrument_from_string"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.ioda_definitions.find_instrument_from_string">[docs]</a><span class="k">def</span> <span class="nf">find_instrument_from_string</span><span class="p">(</span><span class="n">full_string</span><span class="p">):</span>
+
+    <span class="c1"># Get the platform dictionary</span>
+    <span class="n">ioda_platform_dictionary</span> <span class="o">=</span> <span class="n">ioda_platform_dict</span><span class="p">()</span>
+
+    <span class="c1"># Set default outputs</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">variable</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Loop over dictionary</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">ioda_platform_dictionary</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">full_string</span><span class="p">:</span>
+            <span class="n">variable</span> <span class="o">=</span> <span class="n">ioda_platform_dictionary</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">key</span><span class="p">,</span> <span class="n">variable</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="ioda_platform_to_full_name"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.ioda_definitions.ioda_platform_to_full_name">[docs]</a><span class="k">def</span> <span class="nf">ioda_platform_to_full_name</span><span class="p">(</span><span class="n">ioda_platform</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+
+    <span class="c1"># Get the platform dictionary</span>
+    <span class="n">ioda_platform_dictionary</span> <span class="o">=</span> <span class="n">ioda_platform_dict</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ioda_platform_out</span> <span class="o">=</span> <span class="n">ioda_platform_dictionary</span><span class="p">[</span><span class="n">ioda_platform</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">ioda_platform_out</span> <span class="o">=</span> <span class="n">ioda_platform</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'</span><span class="se">\'</span><span class="s1">'</span><span class="o">+</span><span class="n">ioda_platform</span><span class="o">+</span><span class="s1">'</span><span class="se">\'</span><span class="s1"> is not in the ioda platform dictionary'</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ioda_platform_out</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="ioda_group_dict"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.ioda_definitions.ioda_group_dict">[docs]</a><span class="k">def</span> <span class="nf">ioda_group_dict</span><span class="p">(</span><span class="n">ioda_group</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+
+    <span class="n">ioda_group_dictionary</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">"omb"</span><span class="p">:</span> <span class="s2">"Observation minus h(x)"</span><span class="p">,</span>
+      <span class="s2">"hofx"</span><span class="p">:</span> <span class="s2">"Simulated observation, h(x)"</span><span class="p">,</span>
+      <span class="s2">"ObsValue"</span><span class="p">:</span> <span class="s2">"Observation value"</span><span class="p">,</span>
+      <span class="s2">"GsiHofX"</span><span class="p">:</span> <span class="s2">"GSI simulated observation, h(x)"</span><span class="p">,</span>
+      <span class="s2">"Gsiomb"</span><span class="p">:</span> <span class="s2">"GSI observation minus h(x)"</span><span class="p">,</span>
+      <span class="s2">"GsiHofXBc"</span><span class="p">:</span> <span class="s2">"GSI simulated observation, h(x), bias corrected"</span><span class="p">,</span>
+      <span class="s2">"GsiombBc"</span><span class="p">:</span> <span class="s2">"GSI observation minus h(x), bias corrected"</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ioda_group_out</span> <span class="o">=</span> <span class="n">ioda_group_dictionary</span><span class="p">[</span><span class="n">ioda_group</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'</span><span class="se">\'</span><span class="s1">'</span><span class="o">+</span><span class="n">ioda_group</span><span class="o">+</span><span class="s1">'</span><span class="se">\'</span><span class="s1"> is not in the ioda group dictionary'</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ioda_group_out</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

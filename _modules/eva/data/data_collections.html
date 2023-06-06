@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.data.data_collections — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../_static/js/main.js"></script>
+<script src="../../../_static/nbsite.js"></script>
+<script src="../../../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/data/data_collections.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../index.html">
+<img alt="Logo" src="../../../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.data.data_collections</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2022 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2022 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">xarray</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">concat</span><span class="p">,</span> <span class="n">DataArray</span>
+
+<span class="kn">from</span> <span class="nn">eva.utilities.logger</span> <span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.utils</span> <span class="kn">import</span> <span class="n">fontColors</span> <span class="k">as</span> <span class="n">fcol</span><span class="p">,</span> <span class="n">string_does_not_contain</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="c1"># Characters that are not permitted in collection, group and variable names.</span>
+<span class="c1"># Math chars not allowed in order to allow evaluation of the variables in the transforms</span>
+<span class="n">disallowed_chars</span> <span class="o">=</span> <span class="s1">'-+*/()'</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="DataCollections"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.data_collections.DataCollections">[docs]</a><span class="k">class</span> <span class="nc">DataCollections</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Dictionary to map between collection name and collection itself</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Create a logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">'DataCollections'</span><span class="p">)</span>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="DataCollections.create_or_add_to_collection"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.data_collections.DataCollections.create_or_add_to_collection">[docs]</a>    <span class="k">def</span> <span class="nf">create_or_add_to_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">concat_dimension</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="c1"># Collections should only be xarray datasets</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">Dataset</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'In add_collection: collection must be an xarray.Dataset'</span><span class="p">)</span>
+
+        <span class="c1"># Check that there is not an existing collection that is empty</span>
+        <span class="k">if</span> <span class="n">collection_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'In create_or_add_to_collection the collection </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span>
+                                  <span class="n">collection_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1"> is already in existence but appears to '</span> <span class="o">+</span>
+                                  <span class="s1">'be empty.'</span><span class="p">)</span>
+
+        <span class="c1"># Create the collection or concatenate with existing collection</span>
+        <span class="c1"># If the collection does not already exist within the dictionary then the incoming</span>
+        <span class="c1"># collection is used to initialize that collection. If the collection already exists the</span>
+        <span class="c1"># below will abort, unless a concatenation dimension is offered and it is a valid dimension</span>
+        <span class="c1"># in the existing collection.</span>
+        <span class="k">if</span> <span class="n">collection_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">concat_dimension</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'In create_or_add_to_collection the collection </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span>
+                                  <span class="n">collection_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1"> being added already exists. Either '</span> <span class="o">+</span>
+                                  <span class="s1">'remove collection or provide a dimension along which to '</span> <span class="o">+</span>
+                                  <span class="s1">'concatenate.'</span><span class="p">)</span>
+            <span class="n">dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">concat_dimension</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dims</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'In create_or_add_to_collection the collection </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span>
+                                  <span class="n">collection_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1"> does not have the dimension </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span>
+                                  <span class="n">concat_dimension</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1"> that is requested as the dimension '</span> <span class="o">+</span>
+                                  <span class="s1">'along which to concatenate. Valid dimensions are '</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">dims</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection_name</span><span class="p">],</span>
+                                                        <span class="n">collection</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="n">concat_dimension</span><span class="p">)</span>
+
+        <span class="c1"># Check that nothing violates the naming conventions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate_names</span><span class="p">()</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="DataCollections.adjust_channel_dimension_name"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.data_collections.DataCollections.adjust_channel_dimension_name">[docs]</a>    <span class="k">def</span> <span class="nf">adjust_channel_dimension_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_dimension_name</span><span class="p">):</span>
+
+        <span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">channel_dimension_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span><span class="o">.</span><span class="n">rename_dims</span><span class="p">({</span><span class="n">channel_dimension_name</span><span class="p">:</span> <span class="s1">'Channel'</span><span class="p">})</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">({</span><span class="s1">'Channel'</span><span class="p">:</span> <span class="n">channel_dimension_name</span><span class="p">})</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="DataCollections.adjust_location_dimension_name"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.data_collections.DataCollections.adjust_location_dimension_name">[docs]</a>    <span class="k">def</span> <span class="nf">adjust_location_dimension_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location_dimension_name</span><span class="p">):</span>
+
+        <span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">location_dimension_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span><span class="o">.</span><span class="n">rename_dims</span><span class="p">({</span><span class="n">location_dimension_name</span><span class="p">:</span> <span class="s1">'Location'</span><span class="p">})</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="DataCollections.add_variable_to_collection"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.data_collections.DataCollections.add_variable_to_collection">[docs]</a>    <span class="k">def</span> <span class="nf">add_variable_to_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
+
+        <span class="c1"># Assert that new variable is an xarray Dataarray</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">DataArray</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'In add_variable_to_collection: variable must be xarray.DataArray'</span><span class="p">)</span>
+
+        <span class="c1"># Check that there is not an existing collection that is empty</span>
+        <span class="k">if</span> <span class="n">collection_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">:</span>
+            <span class="c1"># Create a new collection to hold the variable</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">()</span>
+
+        <span class="c1"># Combine the group and variable name</span>
+        <span class="n">group_variable_name</span> <span class="o">=</span> <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'::'</span> <span class="o">+</span> <span class="n">variable_name</span>
+
+        <span class="c1"># Add the variable to the collection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection_name</span><span class="p">][</span><span class="n">group_variable_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable</span>
+
+        <span class="c1"># Check that nothing violates the naming conventions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate_names</span><span class="p">()</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="DataCollections.get_variable_data_array"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.data_collections.DataCollections.get_variable_data_array">[docs]</a>    <span class="k">def</span> <span class="nf">get_variable_data_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="n">group_variable_name</span> <span class="o">=</span> <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'::'</span> <span class="o">+</span> <span class="n">variable_name</span>
+
+        <span class="n">data_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection_name</span><span class="p">][</span><span class="n">group_variable_name</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">channels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">data_array</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">):</span>
+            <span class="c1"># Channel must be a dimension if it will be used for selection</span>
+            <span class="k">if</span> <span class="s1">'Channel'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'In get_variable_data_array channels is provided but '</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s1">'Channel is not a dimension in Dataset'</span><span class="p">)</span>
+            <span class="c1"># Make sure it is a list</span>
+            <span class="n">channels_sel</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">channels_sel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
+
+            <span class="c1"># Create a new DataArray with the requested channels</span>
+            <span class="n">data_array_channels</span> <span class="o">=</span> <span class="n">data_array</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">Channel</span><span class="o">=</span><span class="n">channels_sel</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">data_array_channels</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'In get_variable_data_array channels is neither none or list of '</span> <span class="o">+</span>
+                              <span class="s1">'integers'</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="DataCollections.get_variable_data"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.data_collections.DataCollections.get_variable_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_variable_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="n">variable_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_variable_data_array</span><span class="p">(</span><span class="n">collection_name</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span>
+                                                      <span class="n">channels</span><span class="p">)</span>
+
+        <span class="c1"># Extract the actual data array</span>
+        <span class="n">variable_data</span> <span class="o">=</span> <span class="n">variable_array</span><span class="o">.</span><span class="n">data</span>
+
+        <span class="c1"># Squeeze in case of dimension of 1 (e.g. when 1 channel is needed)</span>
+        <span class="n">variable_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">variable_data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">variable_data</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="DataCollections.validate_names"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.data_collections.DataCollections.validate_names">[docs]</a>    <span class="k">def</span> <span class="nf">validate_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># This code checks that the naming conventions are compliant with what is expected</span>
+
+        <span class="k">for</span> <span class="n">collection_key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+            <span class="c1"># Assert that the collection name does not contain disallowed characters</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">string_does_not_contain</span><span class="p">(</span><span class="n">disallowed_chars</span><span class="p">,</span> <span class="n">collection_key</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Collection contains the key </span><span class="se">\'</span><span class="si">{</span><span class="n">collection_key</span><span class="si">}</span><span class="se">\'</span><span class="s1">, which '</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s1">'contains a character that is not permitted '</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s1">'(</span><span class="si">{</span><span class="n">disallowed_chars</span><span class="si">}</span><span class="s1">)'</span><span class="p">)</span>
+
+            <span class="c1"># Loop over the data variables</span>
+            <span class="k">for</span> <span class="n">data_var</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection_key</span><span class="p">]</span><span class="o">.</span><span class="n">data_vars</span><span class="p">):</span>
+
+                <span class="c1"># Assert that the datavar contains '::' identifier, splitting group and variable</span>
+                <span class="k">if</span> <span class="s1">'::'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data_var</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Collection </span><span class="se">\'</span><span class="si">{</span><span class="n">collection_key</span><span class="si">}</span><span class="se">\'</span><span class="s1"> contains the following '</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">'data variable </span><span class="se">\'</span><span class="si">{</span><span class="n">data_var</span><span class="si">}</span><span class="se">\'</span><span class="s1">, which does not contain '</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">'</span><span class="se">\'</span><span class="s1">::</span><span class="se">\'</span><span class="s1"> splitting the group and variable.'</span><span class="p">)</span>
+                <span class="p">[</span><span class="n">group</span><span class="p">,</span> <span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_var</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'::'</span><span class="p">)</span>
+                <span class="c1"># Assert that the group name does not contain disallowed characters</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">string_does_not_contain</span><span class="p">(</span><span class="n">disallowed_chars</span><span class="p">,</span> <span class="n">group</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Collection </span><span class="se">\'</span><span class="si">{</span><span class="n">collection_key</span><span class="si">}</span><span class="se">\'</span><span class="s1"> contains the following '</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">'element </span><span class="se">\'</span><span class="si">{</span><span class="n">data_var</span><span class="si">}</span><span class="se">\'</span><span class="s1">. The group </span><span class="se">\'</span><span class="si">{</span><span class="n">group</span><span class="si">}</span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">'contains a character that is not permitted '</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">'(</span><span class="si">{</span><span class="n">disallowed_chars</span><span class="si">}</span><span class="s1">).'</span><span class="p">)</span>
+                <span class="c1"># Assert that the variable name does not contain disallowed characters</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">string_does_not_contain</span><span class="p">(</span><span class="n">disallowed_chars</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Collection </span><span class="se">\'</span><span class="si">{</span><span class="n">collection_key</span><span class="si">}</span><span class="se">\'</span><span class="s1"> contains the following '</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">'element </span><span class="se">\'</span><span class="si">{</span><span class="n">data_var</span><span class="si">}</span><span class="se">\'</span><span class="s1">. The variable </span><span class="se">\'</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">'contains a character that is not permitted '</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">'(</span><span class="si">{</span><span class="n">disallowed_chars</span><span class="si">}</span><span class="s1">).'</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="DataCollections.nan_float_values_outside_threshold"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.data_collections.DataCollections.nan_float_values_outside_threshold">[docs]</a>    <span class="k">def</span> <span class="nf">nan_float_values_outside_threshold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">cgv_to_screen</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="c1"># Set the collection, group and variables</span>
+        <span class="c1"># ---------------------------------------</span>
+        <span class="k">if</span> <span class="n">cgv_to_screen</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">collections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cgv</span> <span class="o">=</span> <span class="n">cgv_to_screen</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'::'</span><span class="p">)</span>
+            <span class="n">collections</span> <span class="o">=</span> <span class="p">[</span><span class="n">cgv</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="n">groups_variables</span> <span class="o">=</span> <span class="p">[</span><span class="n">cgv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s1">'::'</span><span class="o">+</span><span class="n">cgv</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+
+        <span class="c1"># Loop over the collections</span>
+        <span class="c1"># ------------------------------</span>
+        <span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="n">collections</span><span class="p">:</span>
+
+            <span class="c1"># Set the variables to screen</span>
+            <span class="c1"># ---------------------------</span>
+            <span class="k">if</span> <span class="n">cgv_to_screen</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">groups_variables</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)</span>
+
+            <span class="c1"># Loop over the variables and set to nan outside of threshold</span>
+            <span class="c1"># -----------------------------------------------------------</span>
+            <span class="k">for</span> <span class="n">group_variable</span> <span class="ow">in</span> <span class="n">groups_variables</span><span class="p">:</span>
+
+                <span class="c1"># Split name into group and variable</span>
+                <span class="p">[</span><span class="n">group</span><span class="p">,</span> <span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">group_variable</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'::'</span><span class="p">)</span>
+
+                <span class="c1"># Get the data</span>
+                <span class="n">data_var_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_variable_data</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
+
+                <span class="c1"># For float data sceen outside threshold</span>
+                <span class="k">if</span> <span class="s1">'float'</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_var_value</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
+                    <span class="n">data_var_value</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data_var_value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="DataCollections.display_collections"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.data_collections.DataCollections.display_collections">[docs]</a>    <span class="k">def</span> <span class="nf">display_collections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">minmaxrms_format_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">'float64'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:+.4e}</span><span class="s1">'</span><span class="p">,</span>
+            <span class="s1">'float32'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:+.4e}</span><span class="s1">'</span><span class="p">,</span>
+            <span class="s1">'int64'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:+11d}</span><span class="s1">'</span><span class="p">,</span>
+            <span class="s1">'int32'</span><span class="p">:</span> <span class="s1">'</span><span class="si">{:+11d}</span><span class="s1">'</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Display a list of variables that are available in the collection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'-'</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">fcol</span><span class="o">.</span><span class="n">bold</span> <span class="o">+</span> <span class="s1">'Collections available: '</span> <span class="o">+</span> <span class="n">fcol</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Collection name: '</span> <span class="o">+</span> <span class="n">fcol</span><span class="o">.</span><span class="n">underline</span> <span class="o">+</span> <span class="n">collection</span> <span class="o">+</span> <span class="n">fcol</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1"> Dimensions:'</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+                <span class="n">dim_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  </span><span class="si">{</span><span class="n">dim</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">dim_value</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1"> Coordinates:'</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span><span class="o">.</span><span class="n">coords</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'  </span><span class="si">{</span><span class="n">coord</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1"> Data (group::variable):'</span><span class="p">)</span>
+            <span class="n">data_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collections</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)</span>
+            <span class="n">max_name_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">data_vars</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">data_var</span> <span class="ow">in</span> <span class="n">data_vars</span><span class="p">:</span>
+                <span class="n">group_var</span> <span class="o">=</span> <span class="n">data_var</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'::'</span><span class="p">)</span>
+                <span class="n">data_var_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_variable_data</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">group_var</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">group_var</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">minmaxrms</span> <span class="o">=</span> <span class="s1">''</span>
+                <span class="n">minmaxrms_string</span> <span class="o">=</span> <span class="s1">''</span>
+                <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_var_value</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">in</span> <span class="n">minmaxrms_format_dict</span><span class="p">:</span>
+                    <span class="n">minmaxrms_format</span> <span class="o">=</span> <span class="n">minmaxrms_format_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">data_var_value</span><span class="o">.</span><span class="n">dtype</span><span class="p">)]</span>
+                    <span class="n">min_string</span> <span class="o">=</span> <span class="s1">'Min='</span> <span class="o">+</span> <span class="n">minmaxrms_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">data_var_value</span><span class="p">))</span>
+                    <span class="n">max_string</span> <span class="o">=</span> <span class="s1">'Max='</span> <span class="o">+</span> <span class="n">minmaxrms_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data_var_value</span><span class="p">))</span>
+                    <span class="n">rms_string</span> <span class="o">=</span> <span class="s1">''</span>
+                    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_var_value</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'float32'</span> <span class="ow">or</span> \
+                       <span class="nb">str</span><span class="p">(</span><span class="n">data_var_value</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'float64'</span><span class="p">:</span>
+                        <span class="n">rms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">data_var_value</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+                        <span class="n">rms_string</span> <span class="o">=</span> <span class="s1">', RMS='</span> <span class="o">+</span> <span class="n">minmaxrms_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rms</span><span class="p">)</span>
+                    <span class="n">minmaxrms_string</span> <span class="o">=</span> <span class="s1">' | '</span> <span class="o">+</span> <span class="n">min_string</span> <span class="o">+</span> <span class="s1">', '</span> <span class="o">+</span> <span class="n">max_string</span> <span class="o">+</span> <span class="n">rms_string</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'  '</span> <span class="o">+</span> <span class="n">data_var</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">max_name_len</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' ('</span> <span class="o">+</span>
+                                 <span class="nb">str</span><span class="p">(</span><span class="n">data_var_value</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">+</span> <span class="s1">')'</span> <span class="o">+</span> <span class="n">minmaxrms_string</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'-'</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span></div></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

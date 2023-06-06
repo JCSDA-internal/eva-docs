@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.data.cubed_sphere_restart — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../_static/js/main.js"></script>
+<script src="../../../_static/nbsite.js"></script>
+<script src="../../../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/data/cubed_sphere_restart.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../index.html">
+<img alt="Logo" src="../../../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.data.cubed_sphere_restart</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2022-2023 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2022-2023 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">eva.eva_base</span> <span class="kn">import</span> <span class="n">EvaBase</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.config</span> <span class="kn">import</span> <span class="n">get</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="read_fms_tiles"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.cubed_sphere_restart.read_fms_tiles">[docs]</a><span class="k">def</span> <span class="nf">read_fms_tiles</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Given list of FMS netCDF files and a variable name,</span>
+<span class="sd">    stitch the files together into N+1 dimension variable</span>
+<span class="sd">    """</span>
+    <span class="c1"># Check there are no duplicates in files</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">files</span><span class="p">)):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'Duplicate files were found in input file '</span> <span class="o">+</span>
+                     <span class="sa">f</span><span class="s1">'list: </span><span class="si">{</span><span class="n">files</span><span class="si">}</span><span class="s1">. </span><span class="se">\n</span><span class="s1">Exiting ...'</span><span class="p">)</span>
+
+    <span class="c1"># Loop through nc files and store variable data in outvar</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+
+        <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">variable</span><span class="p">][:])</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2"> is not a valid variable. </span><span class="se">\n</span><span class="s2">Exiting ..."</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">variable</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'lon'</span><span class="p">,</span> <span class="s1">'geolon'</span><span class="p">]:</span>
+                <span class="c1"># transform longitudes to be -180 to 180</span>
+                <span class="n">var</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">var</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">)]</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">var</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">360</span>
+
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># need to create outvar on the first file</span>
+                <span class="n">outvar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">shape</span><span class="o">+</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">),),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">var</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+            <span class="c1"># add values to the correct part of the array</span>
+            <span class="n">outvar</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span>
+
+    <span class="k">return</span> <span class="n">outvar</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="CubedSphereRestart"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.cubed_sphere_restart.CubedSphereRestart">[docs]</a><span class="k">class</span> <span class="nc">CubedSphereRestart</span><span class="p">(</span><span class="n">EvaBase</span><span class="p">):</span>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="CubedSphereRestart.execute"><a class="viewcode-back" href="../../../API/eva.data.html#eva.data.cubed_sphere_restart.CubedSphereRestart.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timing</span><span class="p">):</span>
+
+        <span class="c1"># Filenames to be read into this collection</span>
+        <span class="c1"># -----------------------------------------</span>
+        <span class="n">restart_filenames</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'restart_filenames'</span><span class="p">)</span>
+        <span class="n">orog_filenames</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'orog_filenames'</span><span class="p">)</span>
+
+        <span class="c1"># Get missing value threshold</span>
+        <span class="c1"># ---------------------------</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'missing_value_threshold'</span><span class="p">,</span> <span class="mf">1.0e30</span><span class="p">))</span>
+
+        <span class="c1"># Get collection name</span>
+        <span class="c1"># ---------------------------</span>
+        <span class="n">collection_name</span> <span class="o">=</span> <span class="n">dataset_config</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span>
+
+        <span class="c1"># Get the variables to be read</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">orog_vars</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'orography variables'</span><span class="p">)</span>
+        <span class="n">vars_2d</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'2d variables'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="p">[])</span>
+        <span class="n">vars_3d</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'3d variables'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="p">[])</span>
+
+        <span class="c1"># Read orographic fields first</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">var_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">group_name</span> <span class="o">=</span> <span class="s1">'FV3Orog'</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">orog_vars</span><span class="p">:</span>
+            <span class="n">var_dict</span><span class="p">[</span><span class="n">group_name</span> <span class="o">+</span> <span class="s1">'::'</span> <span class="o">+</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s2">"lon"</span><span class="p">,</span> <span class="s2">"lat"</span><span class="p">,</span> <span class="s2">"tile"</span><span class="p">],</span>
+                                                 <span class="n">read_fms_tiles</span><span class="p">(</span><span class="n">orog_filenames</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">))</span>
+
+        <span class="c1"># 2D variables</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">group_name</span> <span class="o">=</span> <span class="s1">'FV3Vars2D'</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">vars_2d</span><span class="p">:</span>
+            <span class="n">var_dict</span><span class="p">[</span><span class="n">group_name</span> <span class="o">+</span> <span class="s1">'::'</span> <span class="o">+</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s2">"lon"</span><span class="p">,</span> <span class="s2">"lat"</span><span class="p">,</span> <span class="s2">"tile"</span><span class="p">],</span>
+                                                 <span class="n">read_fms_tiles</span><span class="p">(</span><span class="n">restart_filenames</span><span class="p">,</span>
+                                                                <span class="n">var</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">))</span>
+
+        <span class="c1"># 3D variables</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">group_name</span> <span class="o">=</span> <span class="s1">'FV3Vars3D'</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">vars_3d</span><span class="p">:</span>
+            <span class="n">var_dict</span><span class="p">[</span><span class="n">group_name</span> <span class="o">+</span> <span class="s1">'::'</span> <span class="o">+</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s2">"lev"</span><span class="p">,</span> <span class="s2">"lon"</span><span class="p">,</span> <span class="s2">"lat"</span><span class="p">,</span> <span class="s2">"tile"</span><span class="p">],</span>
+                                                 <span class="n">read_fms_tiles</span><span class="p">(</span><span class="n">restart_filenames</span><span class="p">,</span>
+                                                                <span class="n">var</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">))</span>
+
+        <span class="c1"># Create dataset_config from data dictionary</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">var_dict</span><span class="p">)</span>
+
+        <span class="c1"># Assert that the collection contains at least one variable</span>
+        <span class="c1"># -------------------------</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ds</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'Collection </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span> <span class="n">collection_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1">, group </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span>
+                              <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1"> does not have any variables.'</span><span class="p">)</span>
+
+        <span class="c1"># Add the dataset_config to the collections</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">create_or_add_to_collection</span><span class="p">(</span><span class="n">collection_name</span><span class="p">,</span> <span class="n">ds</span><span class="p">)</span>
+
+        <span class="c1"># Nan out unphysical values</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">nan_float_values_outside_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
+
+        <span class="c1"># Display the contents of the collections for helping the user with making plots</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">display_collections</span><span class="p">()</span></div></div>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

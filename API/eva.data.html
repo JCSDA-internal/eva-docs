@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.data package — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../_static/css/main.css" rel="stylesheet"/>
+<link href="../_static/nbsite.css" rel="stylesheet"/>
+<link href="../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../_static/js/main.js"></script>
+<script src="../_static/nbsite.js"></script>
+<script src="../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/API/eva.data.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../index.html">
+<img alt="Logo" src="../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">eva.data package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eva.diagnostics.html">eva.diagnostics package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eva.tests.html">eva.tests package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eva.plot_tools.html">eva.plot_tools package</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<section id="eva-data-package">
+<h1>eva.data package<a class="headerlink" href="#eva-data-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-eva.data.cubed_sphere_restart">
+<span id="eva-data-cubed-sphere-restart-module"></span><h2>eva.data.cubed_sphere_restart module<a class="headerlink" href="#module-eva.data.cubed_sphere_restart" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.cubed_sphere_restart.CubedSphereRestart">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.cubed_sphere_restart.</span></span><span class="sig-name descname"><span class="pre">CubedSphereRestart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/cubed_sphere_restart.html#CubedSphereRestart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.cubed_sphere_restart.CubedSphereRestart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="eva.html#eva.eva_base.EvaBase" title="eva.eva_base.EvaBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">eva.eva_base.EvaBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.cubed_sphere_restart.CubedSphereRestart.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/cubed_sphere_restart.html#CubedSphereRestart.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.cubed_sphere_restart.CubedSphereRestart.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Each class must implement this method and it is where it will do all of its work.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.cubed_sphere_restart.read_fms_tiles">
+<span class="sig-prename descclassname"><span class="pre">eva.data.cubed_sphere_restart.</span></span><span class="sig-name descname"><span class="pre">read_fms_tiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/cubed_sphere_restart.html#read_fms_tiles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.cubed_sphere_restart.read_fms_tiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given list of FMS netCDF files and a variable name,
+stitch the files together into N+1 dimension variable</p>
+</dd></dl>
+</section>
+<section id="module-eva.data.data_collections">
+<span id="eva-data-data-collections-module"></span><h2>eva.data.data_collections module<a class="headerlink" href="#module-eva.data.data_collections" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.data_collections.</span></span><span class="sig-name descname"><span class="pre">DataCollections</span></span><a class="reference internal" href="../_modules/eva/data/data_collections.html#DataCollections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.add_variable_to_collection">
+<span class="sig-name descname"><span class="pre">add_variable_to_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_collections.html#DataCollections.add_variable_to_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.add_variable_to_collection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.adjust_channel_dimension_name">
+<span class="sig-name descname"><span class="pre">adjust_channel_dimension_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_dimension_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_collections.html#DataCollections.adjust_channel_dimension_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.adjust_channel_dimension_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.adjust_location_dimension_name">
+<span class="sig-name descname"><span class="pre">adjust_location_dimension_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location_dimension_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_collections.html#DataCollections.adjust_location_dimension_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.adjust_location_dimension_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.create_or_add_to_collection">
+<span class="sig-name descname"><span class="pre">create_or_add_to_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat_dimension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_collections.html#DataCollections.create_or_add_to_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.create_or_add_to_collection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.display_collections">
+<span class="sig-name descname"><span class="pre">display_collections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_collections.html#DataCollections.display_collections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.display_collections" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.get_variable_data">
+<span class="sig-name descname"><span class="pre">get_variable_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_collections.html#DataCollections.get_variable_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.get_variable_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.get_variable_data_array">
+<span class="sig-name descname"><span class="pre">get_variable_data_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_collections.html#DataCollections.get_variable_data_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.get_variable_data_array" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.nan_float_values_outside_threshold">
+<span class="sig-name descname"><span class="pre">nan_float_values_outside_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cgv_to_screen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_collections.html#DataCollections.nan_float_values_outside_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.nan_float_values_outside_threshold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.validate_names">
+<span class="sig-name descname"><span class="pre">validate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_collections.html#DataCollections.validate_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.validate_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.data_driver">
+<span id="eva-data-data-driver-module"></span><h2>eva.data.data_driver module<a class="headerlink" href="#module-eva.data.data_driver" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.data_driver.DataDriver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.data_driver.</span></span><span class="sig-name descname"><span class="pre">DataDriver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_driver.html#DataDriver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_driver.DataDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="eva.html#eva.eva_base.EvaBase" title="eva.eva_base.EvaBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">eva.eva_base.EvaBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_driver.DataDriver.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/data_driver.html#DataDriver.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_driver.DataDriver.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Each class must implement this method and it is where it will do all of its work.</p>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.eva_interactive">
+<span id="eva-data-eva-interactive-module"></span><h2>eva.data.eva_interactive module<a class="headerlink" href="#module-eva.data.eva_interactive" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.eva_interactive.EvaInteractive">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.eva_interactive.</span></span><span class="sig-name descname"><span class="pre">EvaInteractive</span></span><a class="reference internal" href="../_modules/eva/data/eva_interactive.html#EvaInteractive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_interactive.EvaInteractive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.eva_interactive.EvaInteractive.accept_where">
+<span class="sig-name descname"><span class="pre">accept_where</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/eva_interactive.html#EvaInteractive.accept_where"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_interactive.EvaInteractive.accept_where" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.eva_interactive.EvaInteractive.arithmetic">
+<span class="sig-name descname"><span class="pre">arithmetic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/eva_interactive.html#EvaInteractive.arithmetic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_interactive.EvaInteractive.arithmetic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.eva_interactive.EvaInteractive.load_ioda">
+<span class="sig-name descname"><span class="pre">load_ioda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/eva_interactive.html#EvaInteractive.load_ioda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_interactive.EvaInteractive.load_ioda" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.eva_interactive.EvaInteractive.print_data_collection">
+<span class="sig-name descname"><span class="pre">print_data_collection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/eva_interactive.html#EvaInteractive.print_data_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_interactive.EvaInteractive.print_data_collection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.eva_interactive.EvaInteractive.retrieve_var_list">
+<span class="sig-name descname"><span class="pre">retrieve_var_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/eva_interactive.html#EvaInteractive.retrieve_var_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_interactive.EvaInteractive.retrieve_var_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.eva_interactive.EvaInteractive.scatter">
+<span class="sig-name descname"><span class="pre">scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/eva_interactive.html#EvaInteractive.scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_interactive.EvaInteractive.scatter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.gsi_obs_space">
+<span id="eva-data-gsi-obs-space-module"></span><h2>eva.data.gsi_obs_space module<a class="headerlink" href="#module-eva.data.gsi_obs_space" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.GsiObsSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.gsi_obs_space.</span></span><span class="sig-name descname"><span class="pre">GsiObsSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/gsi_obs_space.html#GsiObsSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.GsiObsSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="eva.html#eva.eva_base.EvaBase" title="eva.eva_base.EvaBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">eva.eva_base.EvaBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.GsiObsSpace.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/gsi_obs_space.html#GsiObsSpace.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.GsiObsSpace.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Each class must implement this method and it is where it will do all of its work.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.all_equal">
+<span class="sig-prename descclassname"><span class="pre">eva.data.gsi_obs_space.</span></span><span class="sig-name descname"><span class="pre">all_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/gsi_obs_space.html#all_equal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.all_equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to see if array is all the same. Returns True
+if they are else returns False.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.satellite_dataset">
+<span class="sig-prename descclassname"><span class="pre">eva.data.gsi_obs_space.</span></span><span class="sig-name descname"><span class="pre">satellite_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/gsi_obs_space.html#satellite_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.satellite_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a new dataset_config to reshape satellite
+data.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.subset_channels">
+<span class="sig-prename descclassname"><span class="pre">eva.data.gsi_obs_space.</span></span><span class="sig-name descname"><span class="pre">subset_channels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_channels_variable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/gsi_obs_space.html#subset_channels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.subset_channels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.uv">
+<span class="sig-prename descclassname"><span class="pre">eva.data.gsi_obs_space.</span></span><span class="sig-name descname"><span class="pre">uv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_vars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/gsi_obs_space.html#uv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.uv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds ‘uv’ suffix to beginning of specified variables
+if they are included in input list of vars</p>
+</dd></dl>
+</section>
+<section id="module-eva.data.ioda_obs_space">
+<span id="eva-data-ioda-obs-space-module"></span><h2>eva.data.ioda_obs_space module<a class="headerlink" href="#module-eva.data.ioda_obs_space" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.ioda_obs_space.IodaObsSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.ioda_obs_space.</span></span><span class="sig-name descname"><span class="pre">IodaObsSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/ioda_obs_space.html#IodaObsSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.ioda_obs_space.IodaObsSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="eva.html#eva.eva_base.EvaBase" title="eva.eva_base.EvaBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">eva.eva_base.EvaBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.ioda_obs_space.IodaObsSpace.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/ioda_obs_space.html#IodaObsSpace.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.ioda_obs_space.IodaObsSpace.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Each class must implement this method and it is where it will do all of its work.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.ioda_obs_space.subset_channels">
+<span class="sig-prename descclassname"><span class="pre">eva.data.ioda_obs_space.</span></span><span class="sig-name descname"><span class="pre">subset_channels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_channels_variable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/ioda_obs_space.html#subset_channels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.ioda_obs_space.subset_channels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</section>
+<section id="module-eva.data.jedi_log">
+<span id="eva-data-jedi-log-module"></span><h2>eva.data.jedi_log module<a class="headerlink" href="#module-eva.data.jedi_log" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.jedi_log.</span></span><span class="sig-name descname"><span class="pre">JediLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/jedi_log.html#JediLog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="eva.html#eva.eva_base.EvaBase" title="eva.eva_base.EvaBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">eva.eva_base.EvaBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/jedi_log.html#JediLog.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Each class must implement this method and it is where it will do all of its work.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog.get_from_log">
+<span class="sig-name descname"><span class="pre">get_from_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/jedi_log.html#JediLog.get_from_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog.get_from_log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog.get_matching_chunks">
+<span class="sig-name descname"><span class="pre">get_matching_chunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_terms</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/jedi_log.html#JediLog.get_matching_chunks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog.get_matching_chunks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog.parse_convergence">
+<span class="sig-name descname"><span class="pre">parse_convergence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/jedi_log.html#JediLog.parse_convergence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog.parse_convergence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.jedi_log.get_data_from_line">
+<span class="sig-prename descclassname"><span class="pre">eva.data.jedi_log.</span></span><span class="sig-name descname"><span class="pre">get_data_from_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jedi_log_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/jedi_log.html#get_data_from_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.get_data_from_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</section>
+<section id="module-eva.data.lat_lon">
+<span id="eva-data-lat-lon-module"></span><h2>eva.data.lat_lon module<a class="headerlink" href="#module-eva.data.lat_lon" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.lat_lon.LatLon">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.lat_lon.</span></span><span class="sig-name descname"><span class="pre">LatLon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/lat_lon.html#LatLon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.lat_lon.LatLon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="eva.html#eva.eva_base.EvaBase" title="eva.eva_base.EvaBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">eva.eva_base.EvaBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.lat_lon.LatLon.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/lat_lon.html#LatLon.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.lat_lon.LatLon.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Each class must implement this method and it is where it will do all of its work.</p>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.mon_data_space">
+<span id="eva-data-mon-data-space-module"></span><h2>eva.data.mon_data_space module<a class="headerlink" href="#module-eva.data.mon_data_space" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.mon_data_space.</span></span><span class="sig-name descname"><span class="pre">MonDataSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/mon_data_space.html#MonDataSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="eva.html#eva.eva_base.EvaBase" title="eva.eva_base.EvaBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">eva.eva_base.EvaBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/mon_data_space.html#MonDataSpace.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Each class must implement this method and it is where it will do all of its work.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.get_ctl_dict">
+<span class="sig-name descname"><span class="pre">get_ctl_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/mon_data_space.html#MonDataSpace.get_ctl_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.get_ctl_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.get_dim_ranges">
+<span class="sig-name descname"><span class="pre">get_dim_ranges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/mon_data_space.html#MonDataSpace.get_dim_ranges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.get_dim_ranges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.get_ndims_used">
+<span class="sig-name descname"><span class="pre">get_ndims_used</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dims</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/mon_data_space.html#MonDataSpace.get_ndims_used"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.get_ndims_used" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.load_dset">
+<span class="sig-name descname"><span class="pre">load_dset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nvars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">darr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndims_used</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cyc_darr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/mon_data_space.html#MonDataSpace.load_dset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.load_dset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.read_ieee">
+<span class="sig-name descname"><span class="pre">read_ieee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndims_used</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nvars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/mon_data_space.html#MonDataSpace.read_ieee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.read_ieee" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.subset_coordinate">
+<span class="sig-name descname"><span class="pre">subset_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_subset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/mon_data_space.html#MonDataSpace.subset_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.subset_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.var_to_np_array">
+<span class="sig-name descname"><span class="pre">var_to_np_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndims_used</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eva/data/mon_data_space.html#MonDataSpace.var_to_np_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.var_to_np_array" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</section>
+<section id="module-eva.data">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-eva.data" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

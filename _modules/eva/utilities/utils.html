@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.utilities.utils — Python 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../_static/js/main.js"></script>
+<script src="../../../_static/nbsite.js"></script>
+<script src="../../../_static/require.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/utilities/utils.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../../index.html">
+<img alt="Logo" src="../../../_static/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.utilities.utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2022 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+
+<span class="kn">from</span> <span class="nn">eva.utilities.logger</span> <span class="kn">import</span> <span class="n">Logger</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="fontColors"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.fontColors">[docs]</a><span class="k">class</span> <span class="nc">fontColors</span><span class="p">:</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\033</span><span class="s1">[0m'</span>
+    <span class="n">bold</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\033</span><span class="s1">[1m'</span>
+    <span class="n">underline</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\033</span><span class="s1">[4m'</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="camelcase_to_underscore"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.camelcase_to_underscore">[docs]</a><span class="k">def</span> <span class="nf">camelcase_to_underscore</span><span class="p">(</span><span class="n">CamelCaseString</span><span class="p">):</span>
+
+    <span class="c1"># Convert a string that looks like e.g. ThisIsAString to this_is_a_string</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+
+    <span class="c1"># Create empty output string</span>
+    <span class="n">underscore_string</span> <span class="o">=</span> <span class="s1">''</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">CamelCaseString</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="se">\'</span><span class="s1">diagnostic name</span><span class="se">\'</span><span class="s1">: </span><span class="si">{</span><span class="n">CamelCaseString</span><span class="si">}</span><span class="s1"> - should be a str type. '</span> \
+              <span class="sa">f</span><span class="s1">'Was actually a type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">CamelCaseString</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># limit string to lower case or uppercase letters</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">CamelCaseString</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">'Only a-z A-Z characters allowed in module name. '</span> \
+              <span class="sa">f</span><span class="s1">'Module name was: </span><span class="si">{</span><span class="n">CamelCaseString</span><span class="si">}</span><span class="s1">, should be </span><span class="se">\'</span><span class="s1">CamelCaseString</span><span class="se">\'</span><span class="s1">.'</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># Loop over the elements in the string</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">CamelCaseString</span><span class="p">:</span>
+
+        <span class="c1"># Check if element is upper case and if so prepend with underscore</span>
+        <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+            <span class="n">new_element</span> <span class="o">=</span> <span class="s1">'_'</span><span class="o">+</span><span class="n">element</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_element</span> <span class="o">=</span> <span class="n">element</span>
+
+        <span class="c1"># Add new element to the output string</span>
+        <span class="n">underscore_string</span> <span class="o">=</span> <span class="n">underscore_string</span><span class="o">+</span><span class="n">new_element</span>
+
+    <span class="c1"># If this results in leading underscore then remove it</span>
+    <span class="k">if</span> <span class="n">underscore_string</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"_"</span><span class="p">:</span>
+        <span class="n">underscore_string</span> <span class="o">=</span> <span class="n">underscore_string</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">underscore_string</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="load_yaml_file"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.load_yaml_file">[docs]</a><span class="k">def</span> <span class="nf">load_yaml_file</span><span class="p">(</span><span class="n">eva_config</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="c1"># utility function to help load a yaml file into a dict.</span>
+
+    <span class="k">if</span> <span class="n">logger</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">'LoadYamlFile'</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">eva_config</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">eva_config_opened</span><span class="p">:</span>
+            <span class="n">eva_dict</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">eva_config_opened</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'Eva diagnostics is expecting a valid yaml file, but it encountered '</span> <span class="o">+</span>
+                     <span class="sa">f</span><span class="s1">'errors when attempting to load: </span><span class="si">{</span><span class="n">eva_config</span><span class="si">}</span><span class="s1">, error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">eva_dict</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="get_schema"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.get_schema">[docs]</a><span class="k">def</span> <span class="nf">get_schema</span><span class="p">(</span><span class="n">YamlFile</span><span class="p">,</span> <span class="n">configDict</span><span class="o">=</span><span class="p">{},</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># read YamlFile into a dictionary containing a configuration,</span>
+    <span class="c1"># and overwrite the default configuration with the input configDict</span>
+
+    <span class="k">if</span> <span class="n">logger</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">'EvaSchema'</span><span class="p">)</span>
+
+    <span class="c1"># ignore some fields</span>
+    <span class="n">skipvars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'type'</span><span class="p">,</span> <span class="s1">'comparison'</span><span class="p">]</span>
+
+    <span class="c1"># read schema from YAML file</span>
+    <span class="n">fullConfig</span> <span class="o">=</span> <span class="n">load_yaml_file</span><span class="p">(</span><span class="n">YamlFile</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+
+    <span class="c1"># update full config dict based on input configDict</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">configDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">fullConfig</span> <span class="ow">or</span> <span class="n">skipvars</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+            <span class="n">fullConfig</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"'</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">' not in default schema. Not a valid entry."</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fullConfig</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="update_object"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.update_object">[docs]</a><span class="k">def</span> <span class="nf">update_object</span><span class="p">(</span><span class="n">myObj</span><span class="p">,</span> <span class="n">configDict</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># update input object myObj attributes based on a dictionary</span>
+    <span class="c1"># and return a new, updated myObj</span>
+
+    <span class="k">if</span> <span class="n">logger</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">'EvaUpdateObject'</span><span class="p">)</span>
+
+    <span class="c1"># loop through input dictionary, update input object key values</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">configDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">myObj</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Updating '</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Adding '</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">myObj</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">myObj</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="parse_channel_list"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.parse_channel_list">[docs]</a><span class="k">def</span> <span class="nf">parse_channel_list</span><span class="p">(</span><span class="n">channels_str_or_list</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+
+    <span class="c1"># If the input is an empty list return an empty list</span>
+    <span class="k">if</span> <span class="n">channels_str_or_list</span> <span class="ow">is</span> <span class="p">[]:</span>
+        <span class="n">channel_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="n">channel_list</span>
+
+    <span class="c1"># Check if the input is already a list</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">channels_str_or_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+
+        <span class="c1"># Check if</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">channels_str_or_list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">channels_str_or_list</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'In parse_channel_list the input is a list but not all elements are '</span> <span class="o">+</span>
+                         <span class="s1">'integers. Either use a string or pass a list of integers.'</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">channels_str_or_list</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+
+        <span class="c1"># Convert the string</span>
+        <span class="n">channel_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">channels_str_or_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">'-'</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+                <span class="n">lnum</span><span class="p">,</span> <span class="n">rnum</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
+                <span class="n">lnum</span><span class="p">,</span> <span class="n">rnum</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lnum</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">rnum</span><span class="p">)</span>
+                <span class="n">channel_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">lnum</span><span class="p">,</span> <span class="n">rnum</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">lnum</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="n">channel_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lnum</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">channel_list</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">channels_str_or_list</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+
+        <span class="c1"># Convert int to list</span>
+        <span class="n">channel_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">channels_str_or_list</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">channel_list</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'In parse_channel_list the input is neither a list of integers or a string '</span> <span class="o">+</span>
+                     <span class="s1">'that can be parsed into a list of integers.'</span><span class="p">)</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="replace_vars_str"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.replace_vars_str">[docs]</a><span class="k">def</span> <span class="nf">replace_vars_str</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">**</span><span class="n">defs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Interpolate/replace variables in string</span>
+
+<span class="sd">    Resolved variable formats is: ${var}. Undefined</span>
+<span class="sd">    variables remain unchanged in the returned string. This method will</span>
+<span class="sd">    recursively resolve variables of variables.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s : string, required</span>
+<span class="sd">        Input string containing variables to be resolved.</span>
+<span class="sd">    defs: dict, required</span>
+<span class="sd">        dictionary of definitions for resolving variables expressed</span>
+<span class="sd">        as key-word arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    s_interp: string</span>
+<span class="sd">        Interpolated string. Undefined variables are left unchanged.</span>
+<span class="sd">    """</span>
+
+    <span class="n">expr</span> <span class="o">=</span> <span class="n">s</span>
+
+    <span class="c1"># Resolve special variables: ${var}</span>
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\$\{(\w+)\}'</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">defs</span><span class="p">:</span>
+            <span class="n">expr</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\$\{'</span><span class="o">+</span><span class="n">var</span><span class="o">+</span><span class="sa">r</span><span class="s1">'\}'</span><span class="p">,</span> <span class="n">defs</span><span class="p">[</span><span class="n">var</span><span class="p">],</span> <span class="n">expr</span><span class="p">)</span>
+
+    <span class="c1"># Resolve defs</span>
+    <span class="n">s_interp</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span><span class="o">.</span><span class="n">safe_substitute</span><span class="p">(</span><span class="n">defs</span><span class="p">)</span>
+
+    <span class="c1"># Recurse until no substitutions remain</span>
+    <span class="k">if</span> <span class="n">s_interp</span> <span class="o">!=</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">s_interp</span> <span class="o">=</span> <span class="n">replace_vars_str</span><span class="p">(</span><span class="n">s_interp</span><span class="p">,</span> <span class="o">**</span><span class="n">defs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">s_interp</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="replace_vars_dict"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.replace_vars_dict">[docs]</a><span class="k">def</span> <span class="nf">replace_vars_dict</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="o">**</span><span class="n">defs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    At the highest level of the dictionary are definitions, such as swell_dir: /path/to/swell.</span>
+<span class="sd">    Elsewhere in the dictionary is use of these definitions, such as key: $(swell_dir)/some/file.ext</span>
+<span class="sd">    In this script variables like $(swell_dir) are replaced everywhere in the dictionary using the</span>
+<span class="sd">    definition.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    d : dictionary, required</span>
+<span class="sd">        Dictionary to be modified</span>
+<span class="sd">    defs: dictionary, required</span>
+<span class="sd">          Dictionary of definitions for resolving variables expressed as key-word arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    d_interp: dictionary</span>
+<span class="sd">              Dictionary with any definitions resolved</span>
+<span class="sd">    """</span>
+
+    <span class="c1"># Convert dictionary to string representation in yaml form</span>
+    <span class="n">d_string</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+    <span class="c1"># Replace the definitions everywhere in the dictionary</span>
+    <span class="n">d_string</span> <span class="o">=</span> <span class="n">replace_vars_str</span><span class="p">(</span><span class="n">d_string</span><span class="p">,</span> <span class="o">**</span><span class="n">defs</span><span class="p">)</span>
+
+    <span class="c1"># Convert back to dictionary</span>
+    <span class="n">d_interp</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">d_string</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">d_interp</span></div>
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="replace_vars_notebook"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.replace_vars_notebook">[docs]</a><span class="k">def</span> <span class="nf">replace_vars_notebook</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="o">**</span><span class="n">defs</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    nb : NotebookNode, required</span>
+<span class="sd">        nbconvert dict-like NotebookNode to be modified</span>
+<span class="sd">    defs: dictionary, required</span>
+<span class="sd">          Dictionary of definitions for resolving variables expressed as key-word arguments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    nb : NotebookNode</span>
+<span class="sd">              nbconvert NotebookNode with definitions resolved</span>
+<span class="sd">    """</span>
+
+    <span class="c1"># Iterate through notebook cells, skipping notebook metadata</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nb</span><span class="p">[</span><span class="s1">'cells'</span><span class="p">][</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cell</span><span class="p">[</span><span class="s1">'source'</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">defs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">overwrite_found</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">overwrite_found</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="c1"># Only pass subsection from dictionary that's needed</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span>
+                <span class="n">new_source</span> <span class="o">=</span> <span class="n">replace_vars_str</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">d</span><span class="p">)</span>
+                <span class="c1"># Update notebook cell</span>
+                <span class="n">nb</span><span class="p">[</span><span class="s1">'cells'</span><span class="p">][</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="s1">'source'</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_source</span>
+    <span class="k">return</span> <span class="n">nb</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="remove_list_duplicates"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.remove_list_duplicates">[docs]</a><span class="k">def</span> <span class="nf">remove_list_duplicates</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+
+    <span class="n">output_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="p">[</span><span class="n">output_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">input_list</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">output_list</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">output_list</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="remove_empty_from_list_of_strings"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.remove_empty_from_list_of_strings">[docs]</a><span class="k">def</span> <span class="nf">remove_empty_from_list_of_strings</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="s2">""</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="nb">list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">list</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="string_does_not_contain"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.string_does_not_contain">[docs]</a><span class="k">def</span> <span class="nf">string_does_not_contain</span><span class="p">(</span><span class="n">disallowed_chars</span><span class="p">,</span> <span class="n">string_to_check</span><span class="p">):</span>
+
+    <span class="n">string_does_not_contain_flag</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">disallowed_char</span> <span class="ow">in</span> <span class="n">string_to_check</span> <span class="k">for</span> <span class="n">disallowed_char</span> <span class="ow">in</span> <span class="n">disallowed_chars</span><span class="p">):</span>
+        <span class="n">string_does_not_contain_flag</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="n">string_does_not_contain_flag</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="slice_var_from_str"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.slice_var_from_str">[docs]</a><span class="k">def</span> <span class="nf">slice_var_from_str</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">datavar</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">'slices'</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">datavar</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s2">"datavar"</span><span class="o">+</span><span class="n">config</span><span class="p">[</span><span class="s1">'slices'</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s1">'ABORT'</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"IndexError: </span><span class="si">{</span><span class="n">config</span><span class="p">[</span><span class="s1">'variable'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span> <span class="o">+</span>
+                                         <span class="sa">f</span><span class="s2">" has dimensions </span><span class="si">{</span><span class="n">datavar</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span> <span class="o">+</span>
+                                         <span class="sa">f</span><span class="s2">" and input slices string is </span><span class="si">{</span><span class="n">config</span><span class="p">[</span><span class="s1">'slices'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">datavar</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="is_number"><a class="viewcode-back" href="../../../API/eva.utilities.html#eva.utilities.utils.is_number">[docs]</a><span class="k">def</span> <span class="nf">is_number</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
