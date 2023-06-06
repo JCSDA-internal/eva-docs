@@ -1,9 +1,11 @@
-hvplot==0.8.2
-bokeh==2.4.3
+panel==0.14.4
+bokeh==2.4.0
+hvplot==0.8.3
 jinja2==3.0.3
 nbsite==0.7.1
-myst-nb==0.13.2
 sphinx==4.5.0
+myst-parser==0.15.2
+myst-nb==0.13.2
 sphinx_copybutton==0.5.1
 sphinx_holoviz_theme==0.1.4
 nbconvert==5.6.1
