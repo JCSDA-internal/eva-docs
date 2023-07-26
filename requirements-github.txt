@@ -6,3 +6,4 @@ hvplot
 geopandas
 cycler
 kiwisolver
+geoviews
