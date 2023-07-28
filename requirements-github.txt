@@ -1,8 +1,8 @@
 sphinx==5.3.0
 myst-parser==0.18.1
-nbsite
-bokeh
-hvplot
-geopandas
-cycler
-kiwisolver
+nbsite==0.8.2
+bokeh==3.2.1
+hvplot==0.8.4
+geopandas==0.13.2
+cycler==0.11.0
+kiwisolver==1.4.4
