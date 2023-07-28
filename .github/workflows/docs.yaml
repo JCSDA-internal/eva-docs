@@ -26,6 +26,10 @@ jobs:
     - name: Install pip
       run: conda install pip
 
+    # Install geoviews first
+    - name: Install geoviews
+      run: conda install -c conda-forge geoviews
+
     # Install cartopy
     - name: Install cartopy
       run: conda install -c conda-forge cartopy
