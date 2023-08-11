@@ -1,0 +1,81 @@
+name: docs
+on: workflow_call
+
+jobs:
+  eva_build_docs:
+    name: Build eva documentation
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+
+    # Setup Python
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    # Update conda
+    - name: Update conda
+      run: conda update -n base -c defaults conda
+
+    # Install pip
+    - name: Install pip
+      run: conda install pip
+
+    # Install geoviews first
+    - name: Install geoviews
+      run: conda install -c conda-forge geoviews
+
+    # Install cartopy
+    - name: Install cartopy
+      run: conda install -c conda-forge cartopy
+
+    # Clone the eva-docs repository
+    - name: Clone eva-docs repo
+      uses: actions/checkout@v2
+      with:        
+        lfs: true
+
+    # Clone the eva repository
+    - name: Clone eva repo
+      uses: actions/checkout@v2
+      with:
+        repository: JCSDA-internal/eva
+        path: './eva'
+        lfs: true
+
+    # Install eva-docs
+    #- name: Upgrade pip
+    #  run: $CONDA/bin/pip3 install --upgrade pip
+    - name: Install Python dependencies for eva-docs
+      uses: py-actions/py-dependency-install@v4
+      with:
+        path: "requirements-github.txt"
+
+    # Clone eva repository
+    # Install eva
+    - name: Install eva and dependencies
+      run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r requirements-github.txt --user ./eva/
+    - name: Put eva in the path
+      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    # Install ipykernel
+    - name: Install ipykernel
+      run: $CONDA/bin/pip3 install ipykernel
+
+    # Generate rst files for jupyter notebooks
+    - name: generate rst
+      run: nbsite generate-rst --org JCSDA-internal --project-name eva-docs --examples notebooks
+
+    # Generate sphinx-api docs
+    - name: Generate sphinx-api docs
+      run: sphinx-apidoc -o doc/API/ ./eva/src
+
+    # Fix API index.md to include sphinx-api docs
+    - name: Fix API index.md
+      run: python doc/api_setup.py
+
+    # Build html files for documentation
+    - name: build docs
+      run: nbsite build --what=html --output=builtdocs --org JCSDA-internal --project-name eva-docs
