@@ -52,7 +52,7 @@ jobs:
     - name: Install Python dependencies for eva-docs
       uses: py-actions/py-dependency-install@v4
       with:
-        path: "requirements-github.txt"
+        path: "./eva-docs/requirements-github.txt"
 
     # Clone eva repository
     # Install eva
