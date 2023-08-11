@@ -68,16 +68,16 @@ jobs:
 
     # Generate rst files for jupyter notebooks
     - name: generate rst
-      run: nbsite generate-rst --org JCSDA-internal --project-name eva-docs --examples ./eva-docs/notebooks
+      run: nbsite generate-rst --org JCSDA-internal --project-name eva-docs --examples eva-docs/notebooks --project-root eva-docs/
 
     # Generate sphinx-api docs
     - name: Generate sphinx-api docs
-      run: sphinx-apidoc -o ./eva-docs/doc/API/ ./eva/src
+      run: sphinx-apidoc -o eva-docs/doc/API/ eva/src
 
     # Fix API index.md to include sphinx-api docs
     - name: Fix API index.md
-      run: python ./eva-docs/doc/api_setup.py
+      run: python eva-docs/doc/api_setup.py
 
     # Build html files for documentation
     - name: build docs
-      run: nbsite build --what=html --output=builtdocs --org JCSDA-internal --project-name eva-docs --project-root ./eva-docs
+      run: nbsite build --what=html --output=builtdocs --org JCSDA-internal --project-name eva-docs --project-root eva-docs/
