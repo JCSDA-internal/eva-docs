@@ -71,14 +71,14 @@ jobs:
       run: nbsite generate-rst --org JCSDA-internal --project-name eva-docs --examples notebooks --project-root eva-docs/
 
     # Generate sphinx-api docs
-    - name: Generate sphinx-api docs
-      run: sphinx-apidoc -o eva-docs/doc/API/ eva/src
+    #- name: Generate sphinx-api docs
+    #  run: sphinx-apidoc -o eva-docs/doc/API/ eva/src
 
     # Fix API index.md to include sphinx-api docs
     - name: Fix API index.md
       #run: python eva-docs/doc/api_setup.py
-      run: ls /home/runner/work/eva/eva/eva-docs/doc/
+      run: ls /home/runner/work/eva/eva/eva-docs/
 
     # Build html files for documentation
-    - name: build docs
-      run: nbsite build --what=html --output=builtdocs --org JCSDA-internal --project-name eva-docs --project-root eva-docs/
+    #- name: build docs
+    #  run: nbsite build --what=html --output=builtdocs --org JCSDA-internal --project-name eva-docs --project-root eva-docs/
