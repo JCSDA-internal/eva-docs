@@ -35,6 +35,7 @@ jobs:
     - name: Clone eva-docs repo
       uses: actions/checkout@v2
       with:
+        repository: JCSDA-internal/eva-docs
         path: './eva-docs'
         lfs: true
 
@@ -53,6 +54,7 @@ jobs:
       uses: py-actions/py-dependency-install@v4
       with:
         path: "./eva-docs/requirements-github.txt"
+
 
     # Clone eva repository
     # Install eva
