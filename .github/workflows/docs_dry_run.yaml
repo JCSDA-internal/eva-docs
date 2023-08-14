@@ -66,9 +66,10 @@ jobs:
     - name: Install eva and dependencies
       #run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
       run: $CONDA/bin/pip3 install ./eva/ --user
-    #- name: Put eva in the path
+    - name: Put eva in the path
       #run: echo "$HOME/.local/bin" >> $GITHUB_PATH
       #run: echo $GITHUB_PATH
+      run: echo "::set-env name=PYTHONPATH::home/runner/work/eva/eva/eva/"
 
     # Install ipykernel
     - name: Install ipykernel
