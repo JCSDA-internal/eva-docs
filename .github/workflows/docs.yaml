@@ -77,7 +77,7 @@ jobs:
 
     # Fix API index.md to include sphinx-api docs
     - name: Fix API index.md
-      run: python doc/api_setup.py
+      run: python doc/api_setup.py doc/API/
 
     # Build html files for documentation
     - name: build docs
