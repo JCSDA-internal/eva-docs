@@ -78,7 +78,7 @@ jobs:
 
     # Fix API index.md to include sphinx-api docs
     - name: Fix API index.md
-      run: python eva-docs/doc/api_setup.py
+      run: python eva-docs/doc/api_setup.py eva-docs/doc/API/
       #run: ls /home/runner/work/eva/eva/eva-docs/
 
     # Build html files for documentation
