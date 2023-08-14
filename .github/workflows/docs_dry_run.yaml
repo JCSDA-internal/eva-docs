@@ -47,14 +47,6 @@ jobs:
         path: './eva'
         lfs: true
 
-    # Clone eva repository
-    # Install eva
-    - name: Install eva and dependencies
-      run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
-    - name: Put eva in the path
-      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
-      #run: echo $GITHUB_PATH
-
     # Install eva-docs
     #- name: Upgrade pip
     #  run: $CONDA/bin/pip3 install --upgrade pip
@@ -62,6 +54,14 @@ jobs:
       uses: py-actions/py-dependency-install@v4
       with:
         path: "./eva-docs/requirements-github.txt"
+
+    # Clone eva repository
+    # Install eva
+    - name: Install eva and dependencies
+      run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
+    - name: Put eva in the path
+      #run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+      run: echo $HOME
 
     # Install ipykernel
     - name: Install ipykernel
