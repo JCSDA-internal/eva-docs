@@ -51,9 +51,10 @@ jobs:
     #- name: Upgrade pip
     #  run: $CONDA/bin/pip3 install --upgrade pip
     - name: Create and run conda enviornment
-      run: |
-       conda create --name eva
-       conda activate eva
+      run: conda create --name eva
+
+    - name: Activate enviornment
+      run: conda activate eva
     
     - name: Install Python dependencies for eva-docs
       uses: py-actions/py-dependency-install@v4
