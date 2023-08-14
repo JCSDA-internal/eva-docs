@@ -50,11 +50,11 @@ jobs:
     # Install eva-docs
     #- name: Upgrade pip
     #  run: $CONDA/bin/pip3 install --upgrade pip
-    - name: Create and run conda enviornment
-      run: $CONDA/bin/conda create --name eva
+    #- name: Create and run conda enviornment
+    #  run: $CONDA/bin/conda create --name eva
 
-    - name: Activate enviornment
-      run: $CONDA/bin/conda activate eva
+    #- name: Activate enviornment
+    #  run: $CONDA/bin/conda activate eva
     
     - name: Install Python dependencies for eva-docs
       uses: py-actions/py-dependency-install@v4
@@ -65,7 +65,7 @@ jobs:
     # Install eva
     - name: Install eva and dependencies
       #run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
-      run: $CONDA/bin/pip3 install ./eva/
+      run: $CONDA/bin/pip3 install ./eva/ --user
     #- name: Put eva in the path
       #run: echo "$HOME/.local/bin" >> $GITHUB_PATH
       #run: echo $GITHUB_PATH
