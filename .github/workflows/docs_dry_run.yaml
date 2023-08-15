@@ -19,13 +19,6 @@ jobs:
     - name: Update conda
       run: conda update -n base -c defaults conda
 
-    # Create and activate conda environment
-    #- name: Create and activate conda enviornment
-    #  run: |
-    #   conda update -n base -c defaults conda
-    #   conda create -y --name eva
-    #   conda activate eva || true
-
     # Install pip
     - name: Install pip
       run: conda install pip
@@ -53,20 +46,10 @@ jobs:
         repository: JCSDA-internal/eva
         path: './eva'
         lfs: true
-
-    # Install eva-docs
-    #- name: Upgrade pip
-    #  run: $CONDA/bin/pip3 install --upgrade pip
-    #- name: Create and run conda enviornment
-    #  run: $CONDA/bin/conda create --name eva
-
-    #- name: Activate enviornment
-    #  run: $CONDA/bin/conda activate eva
     
     - name: Install Python dependencies for eva-docs
       uses: py-actions/py-dependency-install@v4
       with:
-        #path: "./eva-docs/requirements-github.txt"
         path: "requirements-github.txt"
 
     # Clone eva repository
@@ -76,11 +59,6 @@ jobs:
       run: $CONDA/bin/pip3 install ./eva/ --user
     - name: Put eva in the path
       run: echo "$HOME/.local/bin" >> $GITHUB_PATH
-      #run: echo $GITHUB_PATH
-      #run: echo "::set-env name=PYTHONPATH::home/runner/work/eva/eva/eva/"
-      #run: |
-      # touch .env
-      # echo PYTHONPATH=home/runner/work/eva/eva/eva/ >> .env
 
     # Install ipykernel
     - name: Install ipykernel
@@ -97,10 +75,7 @@ jobs:
     # Fix API index.md to include sphinx-api docs
     - name: Fix API index.md
       run: python  doc/api_setup.py doc/API/
-      #run: python eva-docs/doc/api_setup.py eva-docs/doc/API/
-      #run: ls /home/runner/work/eva/eva/eva-docs/
 
     # Build html files for documentation
     - name: build docs
-      #run: nbsite build --what=html --output=builtdocs --org JCSDA-internal --project-name eva-docs --project-root eva-docs/
       run: nbsite build --what=html --output=builtdocs --org JCSDA-internal --project-name eva-docs
