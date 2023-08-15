@@ -19,6 +19,12 @@ jobs:
     - name: Update conda
       run: conda update -n base -c defaults conda
 
+    # Create and activate conda environment
+    - name: Create and activate conda enviornment
+      run: |
+       conda create -y --name eva
+       conda activate eva || true
+
     # Install pip
     - name: Install pip
       run: conda install pip
@@ -66,13 +72,13 @@ jobs:
     - name: Install eva and dependencies
       #run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
       run: $CONDA/bin/pip3 install ./eva/ --user
-    - name: Put eva in the path
+    #- name: Put eva in the path
       #run: echo "$HOME/.local/bin" >> $GITHUB_PATH
       #run: echo $GITHUB_PATH
       #run: echo "::set-env name=PYTHONPATH::home/runner/work/eva/eva/eva/"
-      run: |
-       touch .env
-       echo PYTHONPATH=home/runner/work/eva/eva/eva/ >> .env
+      #run: |
+      # touch .env
+      # echo PYTHONPATH=home/runner/work/eva/eva/eva/ >> .env
 
     # Install ipykernel
     - name: Install ipykernel
