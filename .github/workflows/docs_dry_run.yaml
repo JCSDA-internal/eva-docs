@@ -22,6 +22,7 @@ jobs:
     # Create and activate conda environment
     - name: Create and activate conda enviornment
       run: |
+       conda: error: argument COMMAND: invalid choice: 'activate'
        conda create -y --name eva
        conda activate eva || true
 
