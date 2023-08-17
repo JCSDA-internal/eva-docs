@@ -15,6 +15,8 @@ Runs on pull requests that are:
 - synchronized
 - reopened
 
+Developers can run this manually by running `python pycodestyle_run.py` in the root directory of the repository.
+
 ## YAML coding norms
 This workflow uses the `yaml-lint` GitHub action (ibiqlik/action-yamllint@v3) to ensure that the YAML that is added to the repository follows a desired convention. The specific checks/options for the YAML linter are controlled by the `.yamllint.yml` file in the root directory of the repository.
 
@@ -37,6 +39,8 @@ Runs on pull requests that are:
 - synchronized
 - reopened
 
+Developers can run these manually by running `eva_tests application` once eva is installed.
+
 ## Eva notebook tests
 This workflow will build eva and all associated dependencies and run the suite of Jupyter notebook tests defined in eva. Each test is automatically created whenever a Jupyter notebook file is added to `src/eva/tests/notebooks`.  
 
@@ -47,6 +51,8 @@ Runs on pull requests that are:
 - opened
 - synchronized
 - reopened
+
+Developers can run these manually by running `eva_tests notebook` once eva is installed.
 
 ## Eva documentation dry run
 Q for Akira/Dan, what exactly does this do???
