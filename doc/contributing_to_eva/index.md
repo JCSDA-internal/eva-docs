@@ -1,6 +1,6 @@
 # Contributing to eva
 
-This documenation describes the protocols for contributing to eva.
+Contributing to eva!
 
 
 ```{toctree}

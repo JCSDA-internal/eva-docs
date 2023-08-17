@@ -43,7 +43,7 @@ how to use Eva and contribute new diagnostics.
 
 Home <self>
 Getting started <getting_started/index>
+Contributing to eva <contributing_to_eva/index>
 Eva user guide <eva_user_guide/index>
-Contributing to eva <contriburting_to_eva/index>
 Program API documention (developers) <API/index>
 ```
