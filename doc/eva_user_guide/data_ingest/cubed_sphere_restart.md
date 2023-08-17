@@ -40,4 +40,4 @@ Following the eva convention, datasets will be available to the transforms and p
 where:
 - `name`=`name` defined in the YAML
 - `group` is `FV3Orog` for `orography variables`, `FV3Vars2D` for `2d variables`, and `FV3Vars3D` for `3d variables`, respectively
-- `variable` is the name of the variable specified in each of the appropraite lists
+- `variable` is the name of the variable specified in each of the appropriate lists
