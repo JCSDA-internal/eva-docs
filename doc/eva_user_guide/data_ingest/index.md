@@ -1,6 +1,6 @@
-# Data Ingest
+# Eva data ingest classes
 
-Data ingest!
+This section descibed the various classes that exist for reading different data formats.
 
 
 ```{toctree}
@@ -9,7 +9,6 @@ Data ingest!
 :maxdepth: 2
 
 cubed_sphere_restart
-data_collections
 gsi_obs_space
 ioda_obs_space
 jedi_log

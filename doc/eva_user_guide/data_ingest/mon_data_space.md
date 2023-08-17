@@ -1,4 +1,4 @@
-# mon_data_space
+# Monitor data space (NCEP legacy) ingest class
 Mon_data_space enables eva to ingest legacy DA monitoring data and produce plots
 similar to the legacy DA monitoring suite (https://github.com/NOAA-EMC/GSI-Monitor).
 

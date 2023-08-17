@@ -8,3 +8,9 @@ API Docs
 :maxdepth: 2
 
 
+eva.plotting
+eva.data
+eva.utilities
+eva.transforms
+eva.tests
+```

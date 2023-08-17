@@ -1,0 +1,1 @@
+# SOCA restart ingest class
