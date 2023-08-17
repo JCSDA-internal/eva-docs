@@ -9,5 +9,6 @@ Getting started!
 :maxdepth: 2
 
 installing_eva
+eva_hpc
 using_eva
 ```

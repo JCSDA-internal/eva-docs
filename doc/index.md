@@ -43,10 +43,8 @@ how to use Eva and contribute new diagnostics.
 :maxdepth: 2
 
 Home <self>
-Getting Started <getting_started/index>
-Eva Infrastructure <eva_infrastructure/index>
-Diagnostics <diagnostics/index>
-Plot Tools <plot_tools/index>
-Eva Example <eva_example>
+Getting started <getting_started/index>
+Contributing to eva <contriburting_to_eva/index>
+Eva user guide <eva_user_guide/index>
 API <API/index>
 ```
