@@ -12,3 +12,5 @@ dependencies:
     - geopandas==0.13.2
     - cycler==0.11.0
     - kiwisolver==1.4.4
+    - docformatter==1.7.5
+    - pylint==2.17.5
