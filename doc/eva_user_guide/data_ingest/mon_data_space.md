@@ -3,7 +3,7 @@ Mon_data_space enables eva to ingest legacy DA monitoring data and produce plots
 similar to the legacy DA monitoring suite (https://github.com/NOAA-EMC/GSI-Monitor).
 
 The specific yaml file components necessary to accomplish this are described below.
-These example yaml files maybe be found in `eva/src/eva/tests/config`:
+These example yaml files may be found in `eva/src/eva/tests/config`:
 ```
 testMonDataSpaceHirs4Metop-A.yaml
 testMonSummary.yaml
