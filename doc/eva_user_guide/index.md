@@ -1,6 +1,6 @@
-# Eva Infrastructure
+# Eva user guide
 
-Eva Infrastructure!
+User guide
 
 
 ```{toctree}
@@ -8,6 +8,8 @@ Eva Infrastructure!
 :hidden:
 :maxdepth: 2
 
-eva_api
-eva_class_structure
+data_collections
+data_ingest/index
+transforms/index
+plotting_backends/index
 ```
