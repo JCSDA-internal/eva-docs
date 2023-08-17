@@ -55,7 +55,7 @@ Runs on pull requests that are:
 Developers can run these manually by running `eva_tests notebook` once eva is installed.
 
 ## Eva documentation dry run
-Q for Akira/Dan, what exactly does this do???
+This workflow will ensure that the eva documentation (using a combination of sphinx and nbsite) still is generated properly. Note that this workflow does not publish the documentation anywhere and is only published when PRs are merged into eva.
 
 Runs on pull requests that are:
 - opened
