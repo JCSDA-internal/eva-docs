@@ -3,7 +3,7 @@
 Eva is a Python package and is most easily installed using pip. The package can be cloned using:
 
 ```
-git clone https://github.com/danholdaway/eva eva
+git clone https://github.com/jcsda-internal/eva eva
 ```
 
 This will clone the develop branch into a directory called eva.
