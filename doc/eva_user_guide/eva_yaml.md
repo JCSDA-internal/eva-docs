@@ -1,4 +1,4 @@
-# Eva and yaml files
+# Eva and YAML files
 
 Eva uses YAML formatted files to direct data load, data transformation, and 
 plot generation.  YAML is a human-readable data-serialization language.  It is 
@@ -8,13 +8,13 @@ indentation is critical in yaml.
 Eva contains examples of working YAML input files at `eva/src/eva/tests/config`.  
 
 ## YAML general notes
-In YAML the `#` character proceeds comments.  
+In YAML the `#` character precedes comments.  
 
 Keys are identified by a following colon `mykey:`, and are followed by their corresponding value (which may be a single item, 
 other keys, lists, etc.).  
 
 List members are denoted by a leading dash and space `- mylist`, with one list member per line.  Lists can also be 
-specified by square brackets with each entry separated by a coma `[item1, item2]`.
+specified by square brackets with each entry separated by a comma `[item1, item2]`.
 
 Indentation is critical in YAML, as it defnies relationships between elements.  
 
