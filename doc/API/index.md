@@ -6,5 +6,3 @@ API Docs
 :titlesonly:
 :hidden:
 :maxdepth: 2
-
-

@@ -28,7 +28,6 @@ class: dark-light
 <br>
 <br>
 
-
 Eva is a collaborative project to provide diagnostics that can be used to assess the performance of
 a JEDI-based data assimilation system.
 
@@ -43,10 +42,8 @@ how to use Eva and contribute new diagnostics.
 :maxdepth: 2
 
 Home <self>
-Getting Started <getting_started/index>
-Eva Infrastructure <eva_infrastructure/index>
-Diagnostics <diagnostics/index>
-Plot Tools <plot_tools/index>
-Eva Example <eva_example>
-API <API/index>
+Getting started <getting_started/index>
+Contributing to eva <contributing_to_eva/index>
+Eva user guide <eva_user_guide/index>
+Program API documention (developers) <API/index>
 ```
