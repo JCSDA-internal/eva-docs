@@ -6,11 +6,3 @@ API Docs
 :titlesonly:
 :hidden:
 :maxdepth: 2
-
-
-eva.plotting
-eva.data
-eva.utilities
-eva.transforms
-eva.tests
-```
