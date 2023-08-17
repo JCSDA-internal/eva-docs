@@ -18,7 +18,7 @@ Creating a conda environment is recommended, but not required. The dependencies 
 NOTE: git-lfs needs to be installed to be able to clone notebooks from the eva-docs repository. If you make a self-contained environment, you may need to run `conda install git`, `conda install git-lfs`, and `git lfs install`. Then, reclone the eva-docs repository.
 
 1. Clone eva and eva-docs directories
-        -  eva - https://github.com/JCSDA-internal/eva
+        - eva - https://github.com/JCSDA-internal/eva
         - eva-docs - https://github.com/JCSDA-internal/eva-docs
 2. `cd eva-docs`
 3. Set up dependencies for eva-docs
