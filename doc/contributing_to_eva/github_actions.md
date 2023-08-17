@@ -61,3 +61,7 @@ Runs on pull requests that are:
 - opened
 - synchronized
 - reopened
+
+
+## Tips/Notes
+Sometimes the automated tests will fail with seemingly no reason, or a reason unrelated to the opened PR. In this case, what generally happens is that the GitHub Actions runner that is used has changed, so the environment, or libraries/dependencies have changed. To verify this, it is advised to re-run a check that passed previously to see if it still passes or if it now fails. Then, check the log files to see if/how you can fix the problem, which is usually related to incompatibilities in version numbers of libraries/dependencies.

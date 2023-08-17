@@ -11,4 +11,5 @@ Getting started!
 installing_eva
 eva_hpc
 using_eva
+eva_design_principles
 ```
