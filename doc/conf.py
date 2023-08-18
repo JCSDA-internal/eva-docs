@@ -10,8 +10,12 @@ project = u''
 copyright = u''
 
 extensions += [
-    'sphinx_copybutton', 'sphinx.ext.napoleon',
+    'sphinx_copybutton',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.autodoc',
 ]
+
+autoclass_content = 'both'
 
 html_show_sourcelink = False
 html_theme = "pydata_sphinx_theme"
