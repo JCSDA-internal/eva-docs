@@ -2,7 +2,7 @@
 The Sea-Ice Ocean Coupled Analysis (SOCA) data assimilation system uses netCDF restart files to read and write model states. This class can be used to read these SOCA netCDF restart files in to eva.
 
 An example YAML file may look like the following:
-```
+``` yaml
 datasets:
   - name: experiment
     type: SocaRestart

@@ -3,7 +3,7 @@ The Joint Effort for Data assimilation Integration (JEDI) data assimilation syst
 
 An example YAML file may look differently depending on if you are reading in a radiance IODA file or a conventional observation IODA file. For example, `channels` does not apply to conventional data but does to satellite radiance data.
 
-```
+``` yaml
 datasets:
   - name: experiment
     type: IodaObsSpace

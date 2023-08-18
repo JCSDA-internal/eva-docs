@@ -2,7 +2,7 @@
 Eva has the ability to read in simple netCDF files on a latitude-longitude or Gaussian grid that contain two and three dimensional variables as well as the latitude and longitude values needed for plotting on a map. One example type of file that can be read in using this class is a netCDF Gaussian grid increment file produced by the Gridpoint Statistical Interpolation (GSI) data assimilation software.
 
 An example YAML file may look like the following:
-```
+``` yaml
   - name: experiment
     type: LatLon
     group: increment

@@ -2,7 +2,7 @@
 The Joint Effort for Data assimilation Integration (JEDI) data assimilation system uses the Object Oriented Prediction System (OOPS) at its core to handle most high level functionality. During the minimization of variational data assimilation, OOPS will write to a log file information that can be parsed and visualized. This class parses the logfile and reads the data into an eva-compatible format for use in transfomrs and plotting.
 
 An example YAML file may look like the following:
-```
+``` yaml
 datasets:
   - type: JediLog
     collection_name: jedi_log_test_rpcg
