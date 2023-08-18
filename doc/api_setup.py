@@ -15,10 +15,10 @@ for f in api_files:
         if f_parts[1] != 'tests':
             api_names.append(f_parts[0] + '.' + f_parts[1])
 
-# Open API/index.md to write it out 
+# Open API/index.md to write it out
 f_api = open(api_path + '/index.md', 'w')
 # write out the first, fixed part
-outstr="""
+outstr = """
 # API Documentation
 
 API Docs
