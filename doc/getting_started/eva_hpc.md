@@ -1,4 +1,4 @@
-# Use of existing installs of eva on supported HPC platforms
+# Existing installations on supported HPCs
 
 ## Hera
 To load the maintained eva environment on Hera:
@@ -31,7 +31,7 @@ module use -a /discover/nobackup/drholdaw/opt/modulefiles/core
 Next, load the necessary modules. You can do this by running the following command:
 
 ``` bash
-module load miniconda/py39_23.3.1 
+module load miniconda/py39_23.3.1
 module load eva
 ```
 

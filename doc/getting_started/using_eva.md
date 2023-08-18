@@ -1,33 +1,28 @@
 # Using Eva
 
-Eva uses a dictionary/configuration API. This ensures flexible use for different applications. The
-most straightforward use of eva is achieved by passing it a YAML configuration file on the command
-line:
+Eva is provided with a fairly extensive set of tests and it is required that all data ingest and transform classes are tested in at least one test.
 
-```
-	eva obs_correlation.yaml
-```
+In order to get going with eva it is recommended that you first run the tests to ensure you have the installation and environment correct.
 
-Where the YAML must contain a list of the diagnostics to be used in the following format:
+There are two kinds of complete system tests, application tests and notebook tests. These respectively test the batch and interactive processing techniques available in eva.
 
-```
-diagnostics:
-  - diagnostic name: ObsCorrelationScatter
-    ...
-  - diagnostic name: ObsMapScatter
-    ...
+These tests can be run with:
+
+```bash
+eva_tests <test_type>
 ```
 
-Eva can also be invoked from another Python module that passes it a dictionary (or a YAML path).
-This is achieved as follows:
+where `<test_type>` is replaced with either `application` or `notebook`.
 
+The files that drive the YAML-based tests are all contained in `src/eva/tests/config` and the notebooks are contained in `src/eva/tests/notebooks`.
+
+To get started with running eva using a YAML file it is recommended to pick a YAML file from the above tests directory that corresponds to the class you wish to use for reading and modify it to work with the appropriate data. Once a YAML has been constructed it can be run with
+
+```bash
+eva experiment.yaml
 ```
-from eva.eva_base import eva
 
-eva(eva_dict)
-```
+where `experiment.yaml` is replaced with the constructed YAML file.
 
-The dictionary must take the same hierarchy as shown above in the YAML file, i.e. with a list of
-diagnostics to be run. Note that the calling routine can still pass a string with a path to the YAML
-file if so desired.
+It is not possible to run eva by passing it a notebook, though you can execute a notebook as a script using e.g. `nbconvert`. Notebooks are in a sense stand alone applications. You can open one of the test notebooks and modify it to a specific purpose and then run using JupyterHub or as a script.
 

@@ -41,7 +41,8 @@ how to use eva and contribute new diagnostics.
 :hidden:
 :maxdepth: 2
 
-Home <self>
+Eva <self>
+eva_design_principles
 Getting started <getting_started/index>
 Contributing to eva <contributing_to_eva/index>
 Eva user guide <eva_user_guide/index>
