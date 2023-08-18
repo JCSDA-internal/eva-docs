@@ -21,7 +21,7 @@ class: dark-light
 <br>
 <br>
 
-# Eva - Evaluation and Verification of the Analysis
+# Eva - Evaluation and verification of the analysis
 
 <br>
 <br>
@@ -34,7 +34,7 @@ a JEDI-based data assimilation system.
 Eva is designed with a completely flexible API that allows diagnostics to be run in a standalone
 mode, within a workflow system and through, for example, Jupyter notebooks. There are several entry
 points, depending on what the user is interested in looking at. The following documentation explains
-how to use Eva and contribute new diagnostics.
+how to use eva and contribute new diagnostics.
 
 ```{toctree}
 :titlesonly:
