@@ -12,7 +12,8 @@ api_names = []
 for f in api_files:
     f_parts = f.split('.')
     if (len(f_parts) == 3):
-        api_names.append(f_parts[0] + '.' + f_parts[1])
+        if f_parts[1] != 'tests':
+            api_names.append(f_parts[0] + '.' + f_parts[1])
 
 # Open API/index.md to modify
 f_api = open(api_path + '/index.md', 'a')
