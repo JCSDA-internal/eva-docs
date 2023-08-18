@@ -1,7 +1,7 @@
 # Using Eva
 
 Eva uses a dictionary/configuration API. This ensures flexible use for different applications. The
-most straightforward use of Eva is achieved by passing it a YAML configuration file on the command
+most straightforward use of eva is achieved by passing it a YAML configuration file on the command
 line:
 
 ```

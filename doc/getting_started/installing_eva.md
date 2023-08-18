@@ -20,13 +20,13 @@ umask 022
 
 ---
 
-On systems where sudo access is not permitted Eva can be installed using:
+On systems where sudo access is not permitted eva can be installed using:
 ```
 cd eva
 pip install --user .
 ```
 
-To specify the path where Eva gets installed supply the prefix argument:
+To specify the path where eva gets installed supply the prefix argument:
 ```
 cd eva
 pip install --prefix=/path/to/install .
