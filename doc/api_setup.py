@@ -12,10 +12,24 @@ api_names = []
 for f in api_files:
     f_parts = f.split('.')
     if (len(f_parts) == 3):
-        api_names.append(f_parts[0] + '.' + f_parts[1])
+        if f_parts[1] != 'tests':
+            api_names.append(f_parts[0] + '.' + f_parts[1])
 
-# Open API/index.md to modify
-f_api = open(api_path + '/index.md', 'a')
+# Open API/index.md to write it out
+f_api = open(api_path + '/index.md', 'w')
+# write out the first, fixed part
+outstr = """
+# API Documentation
+
+API Docs
+
+```{toctree}
+:titlesonly:
+:hidden:
+:maxdepth: 2
+"""
+f_api.write(outstr)
+# now write out the part we wish to append
 for api_name in api_names:
     # Write api file names
     f_api.write(api_name + '\n')
