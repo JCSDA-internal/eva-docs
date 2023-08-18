@@ -5,7 +5,7 @@
   align="center"
 >
   
-# Evaluation and Verification of the Analysis (EVA) Documentation
+# Evaluation and Verification of the Analysis (eva) Documentation
 
 [![docs](https://github.com/JCSDA-internal/eva-docs/actions/workflows/docs.yaml/badge.svg?branch=develop)](https://github.com/JCSDA-internal/eva-docs/actions/workflows/docs.yaml)
 [![Python Coding Norms](https://github.com/JCSDA-internal/eva-docs/actions/workflows/python_coding_norms.yml/badge.svg?branch=develop)](https://github.com/JCSDA-internal/eva-docs/actions/workflows/python_coding_norms.yml)
@@ -17,7 +17,7 @@
 
 ### Documentation
 
-Documentation for Eva, built from the gh-pages branch, can be found at
+Documentation for eva, built from the gh-pages branch, can be found at
 https://jcsda-internal.github.io/eva-docs
 
 ### Licence

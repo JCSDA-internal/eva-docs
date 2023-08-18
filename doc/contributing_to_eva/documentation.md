@@ -2,12 +2,12 @@
 
 
 
-## Contributing to Eva Docs
+## Contributing to eva Docs
 
 To contribute to the eva documentation website, create a branch with your changes, and then submit a pull request to the eva-docs repository: [https://github.com/JCSDA-internal/eva-docs](https://github.com/JCSDA-internal/eva-docs)
 
 
-## Local Eva Docs Build
+## Local eva Docs Build
 
 It may be useful to build the website locally to ensure that any changes are properly displayed on the website before submitting a pull request.
 
