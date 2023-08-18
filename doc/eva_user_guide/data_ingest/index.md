@@ -4,7 +4,7 @@ This section descibed the various classes that exist for reading different data 
 
 Each of these classes read in data from different formats and place them in an xarray dataset for use in eva. 
 
-The input datasets cover a wide variety of use cases include model gridded data, observation files, diagnostic output from data assimilation software, and parsing of log files. 
+The input datasets cover a wide variety of use cases including model gridded data, observation files, diagnostic output from data assimilation software, and parsing of log files. 
 
 The specific usage of each class is detailed on its respective documentation page.
 
