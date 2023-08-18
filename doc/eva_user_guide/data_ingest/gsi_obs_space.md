@@ -3,7 +3,7 @@ The Gridpoint Statistical Interpolation (GSI) data assimilation software has the
 
 An example YAML file may look differently depending on if you are reading in a radiance diagnostic file or a conventional observation diagnostic file. 
 For example, a conventional diagnostic YAML may look like:
-```
+``` yaml
 datasets:
   - name: experiment
     type: GsiObsSpace
@@ -18,7 +18,7 @@ datasets:
                                Longitude]
 ```
 and a radiance diagnostic YAML may look like:
-```
+``` yaml
 datasets:
   - name: experiment
     type: GsiObsSpace

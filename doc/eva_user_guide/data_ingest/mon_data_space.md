@@ -15,7 +15,7 @@ Note this is still a work in progress.
 
 ## Specify mon_data_space
 The dataset specification must include type MonDataSpace:
-```
+``` yaml
 datasets:
   - name: experiment
     type: MonDataSpace
@@ -23,7 +23,7 @@ datasets:
 ## Input control and data files
 Both a control file and one or more data files are required.  The control file describes
 the contents of the (Fortran) binary data file(s).  The dataset specification is thus:
-```
+``` yaml
 datasets:
   - name: experiment
    type: MonDataSpace

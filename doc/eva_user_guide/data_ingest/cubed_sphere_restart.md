@@ -2,7 +2,7 @@
 The Finite Volume Cubed Sphere (FV3) atmospheric model writes out netCDF restart files on the native cubed sphere using FMS (Flexible Modeling System). Eva supports reading of the restart files written by FV3/FMS for plotting model states.
 
 An example YAML file may look like the following:
-```
+``` yaml
 datasets:
   - name: experiment
     type: CubedSphereRestart
