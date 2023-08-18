@@ -2,7 +2,7 @@
 
 Applies arithmetic transformations to data variables within the provided data collections. 
 It iterates over the specified collections, groups, and variables, and applies arithmetic 
-expressions as defined in the 'equals' expressions within the configuration. The resulting 
+expressions as defined in the 'equals' expression within the configuration. The resulting 
 variables are added to the data collections.
 
     Args:

@@ -30,4 +30,4 @@ This is an example of the config dictionary:
 The configuration components are defined as:
   - `new name`: name of the resulting variable which will be added to `data collections`
   - `starting field`: original variable which will be filtered using the `where` condition
-  - `where`: an arithmetic filter applied to the specified `variable` is met.  Note this could be the `original_variable` or a different variable in `data_collections`.
+  - `where`: an arithmetic filter applied to the specified `variable`.  Note this could be the `original_variable` or a different variable in `data_collections`.
