@@ -37,7 +37,7 @@ jobs:
     # Clone the eva-docs repository
     - name: Clone eva-docs repo
       uses: actions/checkout@v2
-      with:        
+      with:
         lfs: true
 
     # Clone the eva repository
@@ -73,11 +73,11 @@ jobs:
 
     # Generate sphinx-api docs
     - name: Generate sphinx-api docs
-      run: sphinx-apidoc -o doc/API/ ./eva/src
+      run: sphinx-apidoc -o doc/eva_developer_guide/API/ ./eva/src
 
     # Fix API index.md to include sphinx-api docs
     - name: Fix API index.md
-      run: python doc/api_setup.py doc/API/
+      run: python doc/api_setup.py doc/eva_developer_guide/API/
 
     # Build html files for documentation
     - name: build docs

@@ -29,8 +29,8 @@ NOTE: git-lfs needs to be installed to be able to clone notebooks from the eva-d
 		* `pip install -r requirements-github.txt`
 6. Install eva to run jupyter notebooks: `pip install ../eva`
 7. Generate the `.rst` files for the jupyter notebooks: `nbsite generate-rst --org JCSDA-internal --project-name eva-docs --examples notebooks`
-8. Create API docs with this command: `sphinx-apidoc -o doc/API/ ../eva/src`
-9. API documentation setup: `python doc/api_setup.py doc/API/`
+8. Create API docs with this command: `sphinx-apidoc -o doc/eva_developer_guide/API/ ../eva/src`
+9. API documentation setup: `python doc/api_setup.py doc/eva_developer_guide/API/`
 10. Build site: `nbsite build`
 11. `cd builtdocs`
 12. Run `python -m http.server 8000` to start local server
