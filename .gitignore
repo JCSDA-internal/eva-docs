@@ -3,3 +3,6 @@ jupyter_execute/
 doc/eva_developer_guide/API
 .vscode
 .DS_Store
+
+doc/eva_user_guide/plotting_backends/hvplot/*rst
+doc/eva_user_guide/plotting_backends/hvplot/*ipynb

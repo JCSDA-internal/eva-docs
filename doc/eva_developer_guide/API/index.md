@@ -7,3 +7,9 @@ This is the API documentation that is built from the doc-string comments through
 :hidden:
 :maxdepth: 2
 
+eva.plotting
+eva.data
+eva.utilities
+eva.transforms
+eva.tests
+```

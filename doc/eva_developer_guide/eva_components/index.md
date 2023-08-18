@@ -1,6 +1,6 @@
-# Developer best practices
+# Eva components
 
-This part of the documentation describes the various norms adhered to be eva developers.
+This part of the documentation describes some of the components of eva with a level of detail useful for developers.
 
 
 ```{toctree}
