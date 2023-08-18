@@ -10,7 +10,7 @@ project = u''
 copyright = u''
 
 extensions += [
-    'sphinx_copybutton'
+    'sphinx_copybutton', 'sphinx.ext.napoleon',
 ]
 
 html_show_sourcelink = False
