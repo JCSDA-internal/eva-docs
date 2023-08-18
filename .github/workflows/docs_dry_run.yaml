@@ -46,7 +46,7 @@ jobs:
         repository: JCSDA-internal/eva
         path: './eva'
         lfs: true
-    
+
     - name: Install Python dependencies for eva-docs
       uses: py-actions/py-dependency-install@v4
       with:
@@ -70,11 +70,11 @@ jobs:
 
     # Generate sphinx-api docs
     - name: Generate sphinx-api docs
-      run: sphinx-apidoc -o eva-docs/doc/API/ eva/src
+      run: sphinx-apidoc -o eva-docs/doc/eva_developer_guide/API/ eva/src
 
     # Fix API index.md to include sphinx-api docs
     - name: Fix API index.md
-      run: python  doc/api_setup.py doc/API/
+      run: python  doc/api_setup.py doc/eva_developer_guide/API/
 
     # Build html files for documentation
     - name: build docs
