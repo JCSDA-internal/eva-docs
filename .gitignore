@@ -1,5 +1,9 @@
 builtdocs/
 jupyter_execute/
-doc/API
+doc/eva_developer_guide/API
+doc/eva_developer_guide/API/index.md
 .vscode
 .DS_Store
+
+doc/eva_user_guide/plotting_backends/hvplot/*rst
+doc/eva_user_guide/plotting_backends/hvplot/*ipynb

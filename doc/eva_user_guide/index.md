@@ -10,7 +10,6 @@ As noted in the introductory material, eva has two basic running modes: batch pr
 :hidden:
 :maxdepth: 2
 
-data_collections
 data_ingest/index
 transforms/index
 plotting_backends/index
