@@ -29,9 +29,6 @@ This is an example of the config dictionary:
 
 The configuration components are defined as:
 
-  - `collections`: an instance of DataCollections
-  - `groups`: names defined in the group list entry
-  - `variables`:  list of variables to which the transform is to be applied
   - `new name`: name of the resulting variable which will be added to `collections`
   - `starting field`: original variable which will be selected for a time point or averaged over a time slice
     
