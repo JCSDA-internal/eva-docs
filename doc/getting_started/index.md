@@ -1,7 +1,6 @@
 # Getting Started
 
-This section outlines basic principles behing eva and how to get started using the system.
-
+This section provides a basic introduction to eva with some tips for getting going with the system.
 
 ```{toctree}
 :titlesonly:
@@ -12,4 +11,5 @@ This section outlines basic principles behing eva and how to get started using t
 installing_eva
 eva_hpc
 using_eva
+eva_yaml
 ```
