@@ -1,7 +1,8 @@
-# Eva components
+# Eva Developer Guide
 
-This part of the documentation describes some of the components of eva with a level of detail useful to developers of eva.
+This section outlines information for developers who would like to contribute to eva.
 
+Information in this section includes details on how to develop for eva, including detailed API documentation, how to add to and generate documentation, and details on the automated testing performed by GitHub Actions.
 
 ```{toctree}
 :titlesonly:
