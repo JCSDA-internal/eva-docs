@@ -1,6 +1,7 @@
 builtdocs/
 jupyter_execute/
 doc/eva_developer_guide/API
+doc/eva_developer_guide/API/index.md
 .vscode
 .DS_Store
 
