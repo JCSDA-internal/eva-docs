@@ -1,5 +1,5 @@
 builtdocs/
 jupyter_execute/
-#doc/API
+doc/eva_developer_guide/API
 .vscode
 .DS_Store
