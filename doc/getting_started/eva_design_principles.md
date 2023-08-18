@@ -4,7 +4,7 @@ Eva, standing for evaluation and verification of the analysis, is a comprehensiv
 
 ## Custom reading, unified backend
 
-Data comes in many different formats with different properties. For example, when evaluating a data assimilation system, data in observation space would need to be evaluated at the same time as gridded increments and statistics written to a log file. In eva, data ingest classes can be constructed for data of any type, but to ensure consistency these readers are required to translate data into a common eva data structure.
+Data comes in many different formats with different properties. For example, when evaluating a data assimilation system, data in observation space would need to be evaluated at the same time as gridded increments and statistics written to a log file. In eva, data ingest classes can be constructed for data of any type, but to ensure consistency these readers are required to translate data into a common eva data structure. Since the data structure is the same regardless of the starting point a single set of classes can be used to plot data from different sources.
 
 In eva [Xarray](https://docs.xarray.dev/en/stable/) is chosen for this backend data structure. Xarray has much support for Earth science applications and is integrated with cloud technologies such as Dask.
 
@@ -28,3 +28,6 @@ Eva is provided with several example YAML files showing how to use the various i
 
 ## Graphical representation of the eva structure
 
+The below figure shows a graphical representation of the eva structure, showing the unified data holding class central to the design. Other components interact with the data in that object to enable the plotting of data of different formats with the same APIs.
+
+![Eva Structure](eva_design_diagram.png)

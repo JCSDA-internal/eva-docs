@@ -2,3 +2,4 @@ builtdocs/
 jupyter_execute/
 doc/API
 .vscode
+.DS_Store
