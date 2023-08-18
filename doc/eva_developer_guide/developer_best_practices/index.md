@@ -1,6 +1,6 @@
 # Developer best practices
 
-This part of the documentation describes the various norms adhered to be eva developers.
+This part of the documentation describes the various norms adhered to by eva developers.
 
 
 ```{toctree}
