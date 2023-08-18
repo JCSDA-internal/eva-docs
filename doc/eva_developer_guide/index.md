@@ -1,6 +1,6 @@
-# Eva components
+# Eva developer guide
 
-This part of the documentation describes some of the components of eva with a level of detail useful to developers of eva.
+This part of the documentation describes eva with a level of detail useful to developers. In addition to offering a description of aspects of the code it provides information on best practices for development and provides the software API, gnerated from code comments.
 
 
 ```{toctree}
