@@ -1,7 +1,8 @@
-# Eva developer guide
+# Eva Developer Guide
 
-This part of the documentation describes eva with a level of detail useful to developers. In addition to offering a description of aspects of the code it provides information on best practices for development and provides the software API, gnerated from code comments.
+This section outlines information for developers who would like to contribute to eva.
 
+Information in this section includes details on how to develop for eva, including detailed API documentation, how to add to and generate documentation, and details on the automated testing performed by GitHub Actions.
 
 ```{toctree}
 :titlesonly:
