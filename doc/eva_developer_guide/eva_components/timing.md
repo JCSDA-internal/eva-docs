@@ -1,6 +1,6 @@
 # Timing Class
 
-The `Timing` class is a utility class in the EVA (Ensemble Verification and Analysis) system for managing timing profiling of EVA code.
+The `Timing` class is a utility class for managing timing profiling of the code.
 
 ## Class Initialization
 

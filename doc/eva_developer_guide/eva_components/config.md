@@ -1,6 +1,6 @@
 # Config class
 
-The `Config` class in the `eva` package is a utility class for managing configuration parameters. It extends the built-in `dict` class in Python, allowing it to store key-value pairs of configuration parameters.
+The `Config` class is a utility class for managing configuration parameters. It extends the built-in `dict` class in Python, allowing it to store key-value pairs of configuration parameters.
 
 ## Initialization
 
@@ -19,7 +19,7 @@ The `Config` class has one main method: `get(key, default=None, abort_on_failure
 
 Here's a basic usage example:
 
-```yaml
+```python
 logger = Logger()
 config = Config({'param1': 'value1', 'param2': 'value2'}, logger)
 value = config.get('param1')
