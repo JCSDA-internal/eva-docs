@@ -108,7 +108,7 @@ Each section is responsible for different parts of the figure design which are e
 
 ### Figure
 
-This section is responsible for the high-end figure design such as the layout of subplots, the figure title, figure size, output filename and more. 
+This section is responsible for the high-level figure design such as the layout of subplots, the figure title, figure size, output filename and more. 
 
 ```
     figure:
