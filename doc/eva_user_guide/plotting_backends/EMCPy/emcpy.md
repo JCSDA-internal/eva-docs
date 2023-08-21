@@ -1,0 +1,3 @@
+# EMCPy
+
+[EMCPy](https://noaa-emc.github.io/emcpy/) is a collection of Python tools and utilities created within EMC with a purpose of providing a Python "toolkit" for both experienced and novice users. EMCPy's plotting capabilities are designed to create figures using a declarative syntax to make the typical verbose Python plotting code easier. It is simple enough to create rudimentary plots as well as being powerful enough to design and add complex features. Eva can use EMCPy's declarative plotting backend to generate figures within YAML files using libraries such as matplotlib and Cartopy.
