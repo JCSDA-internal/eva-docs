@@ -89,7 +89,7 @@ Given the variables selected in the `datasets` section of the configuration yaml
       variables: *variables
 ```
 
-If the dataset was to use radiance data, the user could indicate specific channels and include them in the batch figure section to create plots for all variables and channels selected.
+If the dataset included radiance data, the user could indicate specific channels and include them in the batch figure section to create plots for all variables and channels selected.
 
 ```
   - batch figure:
