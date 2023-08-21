@@ -30,3 +30,29 @@ The configuration components are defined as:
   - `statistic list`: list of statistics to be calculated and added to `collections`
     - If unspecified the default is ` ['Mean', 'Std', 'Count', 'Median', 'Min', 'Max']`
   - `statistic_dimension`: channel statistical dimension name
+
+
+## Channel statistics filter for batch processing
+
+To apply the channel statistics filter to a yaml for batch processing:
+
+``` yaml
+
+transforms:
+
+  - transform: channel_stats
+    variable_name: experiment::group::${variable}
+    for:
+      variable: *variables
+
+```
+
+Where `group` is a group available for use in the data collection.
+
+
+## Channel statistics filter for interactive processing
+
+The channel statistics filter is currently unavailable for interactive processing.
+
+
+

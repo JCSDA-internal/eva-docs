@@ -37,3 +37,30 @@ The configuration components are defined as:
 OR
   - `start cycle`: 10 digit cycle time for the first cycle of a time slice
   - `end cycle`: 10 digit cycle time for the last cycle of the time slice
+
+
+## Select time filter for batch processing
+
+To apply the select time filter to a yaml for batch processing:
+
+``` yaml
+
+transforms:
+
+  - transform: select time
+    new name: experiment::group::count1
+    starting field: experiment::group::count
+    cycle: 2015051418
+    for:
+      variable: [none]
+
+```
+
+In this example, `group` represents a group available for use in the data collection. No variables are referenced. Instead it is indicated in the starting field as `count`. A new variable called `count1` is created.
+
+
+## Select time filter for interactive processing
+
+The select time filter is currently unavailable for interactive processing.
+
+
