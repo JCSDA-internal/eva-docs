@@ -7,6 +7,6 @@ This section descibes the plotting backends that are supported in eva.
 :hidden:
 :maxdepth: 2
 
-Batch plotting using EMCpy backend <EMCpy/index>
+Batch plotting using EMCPy backend <EMCPy/index>
 Interactive plotting using hvPlot <hvplot/index>
 ```
