@@ -1,6 +1,9 @@
 # SOCA restart ingest class
 The Sea-Ice Ocean Coupled Analysis (SOCA) data assimilation system uses netCDF restart files to read and write model states. This class can be used to read these SOCA netCDF restart files in to eva.
 
+
+## SOCA restart injest for batch processing
+
 An example YAML file may look like the following:
 ``` yaml
 datasets:
@@ -28,3 +31,8 @@ where:
 - `name`=`name` defined in the YAML
 - `group` is `SOCAgrid` for `coordinate variables` and is `SOCAVars` for `variables` defined in the YAML
 - `variable` is the name of the variable specified in each of the appropriate lists in the group
+
+
+## SOCA restart injest for interactive processing
+
+This injest class is not yet implemented for eva interactive.

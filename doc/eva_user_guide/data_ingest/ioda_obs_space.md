@@ -1,6 +1,9 @@
 # IODA observaton space (netCDF) ingest class
 The Joint Effort for Data assimilation Integration (JEDI) data assimilation system has the ability to write out observation-space diagnostic files in the Interface for Observation Data Access (IODA) format. While IODA supports many file formats, one of the most common formats used to read and write IODA files is netCDF4. Using this class, eva can read in a netCDF4 formatted IODA observation or diagnostic file for computing statistics or plotting.
 
+
+## Ioda observation space injest for batch processing
+
 An example YAML file may look differently depending on if you are reading in a radiance IODA file or a conventional observation IODA file. For example, `channels` does not apply to conventional data but does to satellite radiance data.
 
 ``` yaml
@@ -37,3 +40,18 @@ where:
 - `name`=`name` defined in the YAML
 - `group` is the `name` defined in the group list entry
 - `variable` is the name of the variable specified in each of the appropriate lists in the group
+
+
+## Ioda observation space injest for interactive processing
+
+To apply the ioda observation space injest class during an eva interactive, call the `load_collection()` with the ioda data space name:
+
+        EvaInteractive.load_collection(collection_name, filenames, 'IodaObsSpace')
+
+where
+  * `collection_name` is a user-defined label for the loaded collection
+  * `filenames` are the file(s) that are to be loaded into the data collection
+  * `'IodaObsSpace'` selects the ioda observation injest class
+
+
+
