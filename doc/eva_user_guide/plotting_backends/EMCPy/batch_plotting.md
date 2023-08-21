@@ -15,7 +15,7 @@ graphics:
       variables: *variables
     figure:
       layout: [1,1]
-      title: 'Observations vs. JEDI h(x) | Aircraft | ${variable_title}'
+      title: 'Figure Title'
       output name: observation_scatter_plots/aircraft/${variable}/jedi_hofx_vs_obs_aircraft_${variable}.png
     plots:
       - add_xlabel: 'Observation Value'
@@ -49,11 +49,11 @@ graphics:
       variables: *variables
     dynamic options:
       - type: vminvmaxcmap
-        data variable: experiment::ObsValue::${variable}
+        data variable: experiment::ObsValue::variable
     figure:
       figure size: [20,10]
       layout: [1,1]
-      title: 'Observations | Aircraft | Obs Value'
+      title: 'Figure Title'
       output name: map_plots/aircraft/${variable}/observations_aircraft_${variable}.png
     plots:
       - mapping:
@@ -91,7 +91,7 @@ Given the variables selected in the `datasets` section of the configuration yaml
 
 If the dataset included radiance data, the user could indicate specific channels and include them in the batch figure section to create plots for all variables and channels selected.
 
-```
+``` yaml
   - batch figure:
       variables: *variables
       channels: *channels
@@ -110,7 +110,7 @@ Each section is responsible for different parts of the figure design which are e
 
 This section is responsible for the high-level figure design such as the layout of subplots, the figure title, figure size, output filename and more. 
 
-```
+``` yaml
     figure:
       figure size: [20,10]
       layout: [1,1]
@@ -122,7 +122,7 @@ This section is responsible for the high-level figure design such as the layout 
 
 This section adds individual plot features such as adding x and y labels, legends, colorbars, mapping information, grids, etc. These follow [matplotlib](https://matplotlib.org/stable/index.html) conventions and can include specific inputs that the matplotlib functions accept.
 
-```
+``` yaml
     plots:
       - add_xlabel: 'Observation Value'
         add_ylabel: 'JEDI h(x)'
@@ -132,7 +132,7 @@ This section adds individual plot features such as adding x and y labels, legend
 ```
 Above would add x and y labels, a grid, and a legend located in the upper left part of the subplot for a standard plot.
 
-```
+``` yaml
     plots:
       - mapping:
           projection: plcarr
@@ -148,7 +148,7 @@ This would be an example of adding mapping information such as `projection` and 
 
 Within this section, the user will define the plot type, the input data (such as x and y for standard plots or latitude and longitude for map plots), and how the user would like to present that data. This includes design inputs such as color, labels, data limits, or the style of the lines or markers. 
 
-```
+``` yaml
         layers:
         - type: Scatter
           x:
@@ -170,7 +170,7 @@ Within this section, the user will define the plot type, the input data (such as
 
 The above example is plotting two layers of scatter plot data on a single subplot. The first layer compares experiment::ObsValue::${variable} as the x values and variable: experiment::hofx::${variable} as the y values using black dots and adding the appropriate label. The second layer uses different data in red and adds a label as well.
 
-```
+``` yaml
         - type: MapScatter
           longitude:
             variable: experiment::MetaData::longitude
