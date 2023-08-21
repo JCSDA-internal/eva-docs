@@ -4,7 +4,7 @@ In addition to the `datasets` and `transforms` section within the configuration 
 
 An example of a `graphics` section from a test configuration file for both a scatter plot and map scatter plot is shown below:
 
-```
+``` yaml
 graphics:
 
   # Scatter plot
