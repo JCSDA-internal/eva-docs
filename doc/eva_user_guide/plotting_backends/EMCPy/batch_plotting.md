@@ -84,7 +84,7 @@ graphics:
 
 Given the variables selected in the `datasets` section of the configuration yaml, the user can create batch figures for all variables selected. In this example, a scatter plot and map plot will be created for all the variables the user selected to be analyzed.
 
-```
+``` yaml
   - batch figure:
       variables: *variables
 ```
