@@ -168,7 +168,7 @@ Within this section, the user will define the plot type, the input data (such as
           label: 'JEDI h(x) versus obs (passed QC in JEDI)'
 ```
 
-The above example is plotting two layers of scatter plot data on a single subplot. The first layer compares experiment::ObsValue::${variable} as the x values and variable: experiment::hofx::${variable} as the y values using black dots and adding the appropriate label. The second layer uses different data in red and adds a label as well.
+The above example is plotting two layers of scatter plot data on a single subplot. The first layer compares `experiment::ObsValue::${variable}` as the x values and variable: `experiment::hofx::${variable}` as the y values using black dots and adding the appropriate label. The second layer uses different data in red and adds a label as well.
 
 ``` yaml
         - type: MapScatter
