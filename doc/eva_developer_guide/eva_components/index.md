@@ -8,5 +8,8 @@ This part of the documentation describes some of the components of eva with a le
 :hidden:
 :maxdepth: 2
 
+config
+logger
+timing
 data_collections
 ```
