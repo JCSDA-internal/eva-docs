@@ -1,6 +1,9 @@
 # GSI observaton space (ncdiag) ingest class
 The Gridpoint Statistical Interpolation (GSI) data assimilation software has the ability to write out observation-space diagnostic files in a netCDF format. This is used operationally in many National Weather Service modeling systems, including the Global Forecast System (GFS) starting with version 16. Eva can read in these GSI diagnostic files using this GsiObsSpace class described below.
 
+
+## GSI observation space injest for batch processing
+
 An example YAML file may look differently depending on if you are reading in a radiance diagnostic file or a conventional observation diagnostic file. 
 For example, a conventional diagnostic YAML may look like:
 ``` yaml
@@ -57,3 +60,17 @@ where:
 - `name`=`name` defined in the YAML
 - `group` is the `name` defined in the group list entry
 - `variable` is the name of the variable specified in each of the appropriate lists in the group
+
+
+## GSI observation space injest for interactive processing
+
+To apply the gsi observation space injest class during an eva interactive, call the `load_collection()` with the gsi data space name:
+
+        EvaInteractive.load_collection(collection_name, filenames, 'GsiObsSpace')
+
+where
+  * `collection_name` is a user-defined label for the loaded collection
+  * `filenames` is a file path string or list of strings to be loaded into the data collection
+  * `'GsiObsSpace'` selects the GSI observation injest class
+
+

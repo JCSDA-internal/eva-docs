@@ -1,6 +1,9 @@
 # Basic latitude-longitude netCDF ingest class
 Eva has the ability to read in simple netCDF files on a latitude-longitude or Gaussian grid that contain two and three dimensional variables as well as the latitude and longitude values needed for plotting on a map. One example type of file that can be read in using this class is a netCDF Gaussian grid increment file produced by the Gridpoint Statistical Interpolation (GSI) data assimilation software.
 
+
+## Latitude-longitude netCDF injest for batch processing
+
 An example YAML file may look like the following:
 ``` yaml
   - name: experiment
@@ -23,3 +26,8 @@ where:
 - `name`=`name` defined in the YAML
 - `group`=`group` defined in the YAML
 - `variable` is the name of the variable specified in the `variables` list
+
+
+## Latitude-longitude netCDF injest for interactive processing
+
+This injest class is not yet implemented for eva interactive.

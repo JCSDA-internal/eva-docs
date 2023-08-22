@@ -1,6 +1,9 @@
 # Cubed sphere restart ingest class
 The Finite Volume Cubed Sphere (FV3) atmospheric model writes out netCDF restart files on the native cubed sphere using FMS (Flexible Modeling System). Eva supports reading of the restart files written by FV3/FMS for plotting model states.
 
+
+## Cubed sphere restart injest for batch processing
+
 An example YAML file may look like the following:
 ``` yaml
 datasets:
@@ -41,3 +44,9 @@ where:
 - `name`=`name` defined in the YAML
 - `group` is `FV3Orog` for `orography variables`, `FV3Vars2D` for `2d variables`, and `FV3Vars3D` for `3d variables`, respectively
 - `variable` is the name of the variable specified in each of the appropriate lists
+
+
+## Cubed sphere restart injest for interactive processing
+
+This injest class is not yet implemented for eva interactive.
+

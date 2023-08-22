@@ -1,6 +1,9 @@
 # JEDI log files ingest class
 The Joint Effort for Data assimilation Integration (JEDI) data assimilation system uses the Object Oriented Prediction System (OOPS) at its core to handle most high level functionality. During the minimization of variational data assimilation, OOPS will write to a log file information that can be parsed and visualized. This class parses the logfile and reads the data into an eva-compatible format for use in transfomrs and plotting.
 
+
+## JEDI log files injest for batch processing
+
 An example YAML file may look like the following:
 ``` yaml
 datasets:
@@ -26,3 +29,17 @@ where:
 - `name` is the `collection_name` defined in the YAML
 - `group` is the type of data that is parsed (under the `data_to_parse` key)
 - `variable` is the name of the variable that is parsed (see source code for details)
+
+
+## JEDI log files injest for interactive processing
+
+To apply the JEDI log files injest class during an eva interactive, call the `load_collection()` with the JEDI log files name:
+
+        EvaInteractive.load_collection(collection_name, filenames, 'JediLog')
+
+where
+  * `collection_name` is a user-defined label for the loaded collection
+  * `filenames` is a file path string or list of strings to be loaded into the data collection
+  * `'JediLog'` selects the JEDI log files injest class
+
+
