@@ -39,7 +39,7 @@ To apply the JEDI log files injest class during an eva interactive, call the `lo
 
 where
   * `collection_name` is a user-defined label for the loaded collection
-  * `filenames` are the file(s) that are to be loaded into the data collection
+  * `filenames` is a file path string or list of strings to be loaded into the data collection
   * `'JediLog'` selects the JEDI log files injest class
 
 

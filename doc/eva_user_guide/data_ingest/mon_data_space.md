@@ -50,7 +50,7 @@ To apply the monitor data space injest class during an eva interactive, call the
 
 where
   * `collection_name` is a user-defined label for the loaded collection
-  * `filenames` are the file(s) that are to be loaded into the data collection
+  * `filenames` is a file path string or list of strings to be loaded into the data collection
   * `'MonDataSpace'` selects the monitor data space injest class
 
 

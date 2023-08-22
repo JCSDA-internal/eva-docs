@@ -70,7 +70,7 @@ To apply the gsi observation space injest class during an eva interactive, call 
 
 where
   * `collection_name` is a user-defined label for the loaded collection
-  * `filenames` are the file(s) that are to be loaded into the data collection
+  * `filenames` is a file path string or list of strings to be loaded into the data collection
   * `'GsiObsSpace'` selects the GSI observation injest class
 
 
