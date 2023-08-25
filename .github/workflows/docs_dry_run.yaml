@@ -1,4 +1,5 @@
 name: docs_dry_run
+on: workflow_call
 
 jobs:
   eva_build_docs:
