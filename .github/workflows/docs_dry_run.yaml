@@ -1,5 +1,10 @@
 name: docs_dry_run
-on: workflow_call
+on:
+  workflow_dispatch:
+    inputs:
+      branchName:
+        description: 'Branch Name'
+        required: true
 
 jobs:
   eva_build_docs:
