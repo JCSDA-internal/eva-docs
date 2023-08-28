@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eva.plotting.emcpy.plot_tools.dynamic_config —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+<script src="../../../../../_static/jquery.js"></script>
+<script src="../../../../../_static/underscore.js"></script>
+<script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../../../../_static/doctools.js"></script>
+<script src="../../../../../_static/sphinx_highlight.js"></script>
+<script src="../../../../../_static/clipboard.min.js"></script>
+<script src="../../../../../_static/copybutton.js"></script>
+<script src="../../../../../_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = '_modules/eva/plotting/emcpy/plot_tools/dynamic_config';</script>
+<link href="../../../../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../../../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../../../../_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="../../../../../_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../../eva_developer_guide/index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../../../eva_developer_guide/index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../index.html">Eva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../eva_design_principles.html">Design principles for eva</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../getting_started/index.html">Getting started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../getting_started/eva_hpc.html">Existing installations on supported HPCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../getting_started/using_eva.html">Using Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../getting_started/eva_yaml.html">Eva and YAML files</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../eva_user_guide/index.html">Eva user guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../eva_user_guide/data_ingest/index.html">Eva data ingest classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/data_ingest/cubed_sphere_restart.html">Cubed sphere restart ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/data_ingest/gsi_obs_space.html">GSI observaton space (ncdiag) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/data_ingest/ioda_obs_space.html">IODA observaton space (netCDF) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/data_ingest/jedi_log.html">JEDI log files ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/data_ingest/lat_lon.html">Basic latitude-longitude netCDF ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/data_ingest/mon_data_space.html">Monitor data space (NCEP legacy) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/data_ingest/soca_restart.html">SOCA restart ingest class</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../eva_user_guide/transforms/index.html">Eva transform classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/transforms/accept_where.html">Accept where</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/transforms/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/transforms/channel_stats.html">Channel statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_user_guide/transforms/select_time.html">Select time</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../eva_user_guide/plotting_backends/index.html">Eva plotting backends</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../../eva_user_guide/plotting_backends/EMCPy/index.html">Batch plotting using EMCPy backend</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../eva_user_guide/plotting_backends/EMCPy/emcpy.html">EMCPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../eva_user_guide/plotting_backends/EMCPy/batch_plotting.html">Batch Plotting and Using EMCPy Backend for eva</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../../eva_user_guide/plotting_backends/hvplot/index.html">Interactive plotting using hvPlot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../eva_user_guide/plotting_backends/hvplot/Eva_Interactive_Intro.html">Eva Interactive Intro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../eva_user_guide/plotting_backends/hvplot/Plotting_Options.html">Plotting Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../eva_developer_guide/index.html">Eva developer guide</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../eva_developer_guide/developer_best_practices/index.html">Developer best practices</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_developer_guide/developer_best_practices/developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_developer_guide/developer_best_practices/documentation.html">Writing documentation and building the site locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_developer_guide/developer_best_practices/github_actions.html">Automated testing with GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../eva_developer_guide/eva_components/index.html">Eva components</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_developer_guide/eva_components/config.html">Config class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_developer_guide/eva_components/logger.html">Logger class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_developer_guide/eva_components/timing.html">Timing Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_developer_guide/eva_components/data_collections.html">Data collections class for holding data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../eva_developer_guide/API/index.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_developer_guide/API/eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_developer_guide/API/eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../eva_developer_guide/API/eva.data.html">eva.data package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../../eva_developer_guide/API/eva.plotting.html">eva.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../eva_developer_guide/API/eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../eva_developer_guide/API/eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../../../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../../../../index.html">Module code</a></li>
+<li aria-current="page" class="breadcrumb-item active">eva.plotting.emcpy.plot_tools.dynamic_config</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<h1>Source code for eva.plotting.emcpy.plot_tools.dynamic_config</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2022 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2022 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">skew</span>
+
+<span class="kn">from</span> <span class="nn">eva.utilities.utils</span> <span class="kn">import</span> <span class="n">replace_vars_dict</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="vminvmaxcmap"><a class="viewcode-back" href="../../../../../eva_developer_guide/API/eva.plotting.emcpy.plot_tools.html#eva.plotting.emcpy.plot_tools.dynamic_config.vminvmaxcmap">[docs]</a><span class="k">def</span> <span class="nf">vminvmaxcmap</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">option_dict</span><span class="p">,</span> <span class="n">plots_dict</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Computes colormap limits and adjustments based on provided data variable.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        logger (Logger): An instance of the logger for logging messages.</span>
+<span class="sd">        option_dict (dict): A dictionary containing various options for the transformation.</span>
+<span class="sd">        plots_dict (dict): A dictionary containing plot-related information.</span>
+<span class="sd">        data_collections (DataCollections): An instance of the DataCollections class containing</span>
+<span class="sd">        input data.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: A dictionary with adjusted values for colormap limits and colormap.</span>
+
+<span class="sd">    This function computes colormap limits and adjustments based on the provided data variable. It</span>
+<span class="sd">    calculates the minimum and maximum values for colormap limits, determines whether a sequential</span>
+<span class="sd">    or diverging colormap should be used, and updates the provided plots dictionary with the</span>
+<span class="sd">    adjusted values.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        ::</span>
+
+<span class="sd">                option_dict = {</span>
+<span class="sd">                    'percentage capture': 95,</span>
+<span class="sd">                    'data variable': 'my_collection::my_variable',</span>
+<span class="sd">                    'sequential colormap': 'plasma',</span>
+<span class="sd">                    'diverging colormap': 'coolwarm'</span>
+<span class="sd">                }</span>
+<span class="sd">                plots_dict = {</span>
+<span class="sd">                    'dynamic_vmax': '1.0',</span>
+<span class="sd">                    'dynamic_vmin': '-1.0',</span>
+<span class="sd">                    'dynamic_cmap': 'viridis'</span>
+<span class="sd">                }</span>
+<span class="sd">                adjusted_plots_dict = vminvmaxcmap(logger, option_dict, plots_dict,</span>
+<span class="sd">                                                   data_collections)</span>
+<span class="sd">    """</span>
+
+    <span class="c1"># Get percentage of data to use in computing limits. Code will sort the data</span>
+    <span class="c1"># by size and then trim the minimum and maximum until this percentage of data</span>
+    <span class="c1"># is kept</span>
+    <span class="n">percentage_capture</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'percentage capture'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="c1"># Optionally the data might have a channel.</span>
+    <span class="n">channel</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'channel'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># Get the data variable to use for determining cbar limits</span>
+    <span class="n">varname</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'data variable'</span><span class="p">)</span>
+    <span class="n">varname_cgv</span> <span class="o">=</span> <span class="n">varname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'::'</span><span class="p">)</span>
+    <span class="n">datavar</span> <span class="o">=</span> <span class="n">data_collections</span><span class="o">.</span><span class="n">get_variable_data</span><span class="p">(</span><span class="n">varname_cgv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">varname_cgv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                 <span class="n">varname_cgv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">channel</span><span class="p">)</span>
+
+    <span class="c1"># Reorder the data array</span>
+    <span class="n">datavar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">datavar</span><span class="p">)</span>
+
+    <span class="c1"># Decide how many values to throw out on each end of the dataset</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">datavar</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">n_throw_out</span> <span class="o">=</span> <span class="p">((</span><span class="mi">100</span><span class="o">-</span><span class="n">percentage_capture</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># The value needs to be an integer</span>
+    <span class="n">n_throw_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">n_throw_out</span><span class="p">)</span>
+
+    <span class="c1"># Create new array with only the data to consider</span>
+    <span class="k">if</span> <span class="n">n_throw_out</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">datavar_check</span> <span class="o">=</span> <span class="n">datavar</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">datavar_check</span> <span class="o">=</span> <span class="n">datavar</span><span class="p">[</span><span class="n">n_throw_out</span><span class="p">:</span><span class="o">-</span><span class="n">n_throw_out</span><span class="p">]</span>
+
+    <span class="c1"># Find minimum and maximum values</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'sequential colormap'</span><span class="p">,</span> <span class="s1">'viridis'</span><span class="p">)</span>
+
+    <span class="c1"># If everything is nan plot some large min/max (plotting code should do the same)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">datavar_check</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="mf">1.0e38</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="mf">1.0e38</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">datavar_check</span><span class="p">)</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">datavar_check</span><span class="p">)</span>
+
+    <span class="c1"># If positive and negative values are present then a diverging colormap centered on zero should</span>
+    <span class="c1"># be used.</span>
+    <span class="k">if</span> <span class="n">vmin</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">vmax</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">datavar_check</span><span class="p">))</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">vmax</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'diverging colormap'</span><span class="p">,</span> <span class="s1">'seismic'</span><span class="p">)</span>
+
+    <span class="c1"># Check for nan</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">vmax</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">vmin</span><span class="p">):</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'diverging colormap'</span><span class="p">,</span> <span class="s1">'seismic'</span><span class="p">)</span>
+
+    <span class="c1"># Prepare dictionary with values to be overwritten in other dictionaries</span>
+    <span class="n">overwrite_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">overwrite_dict</span><span class="p">[</span><span class="s1">'dynamic_vmax'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vmax</span><span class="p">)</span>
+    <span class="n">overwrite_dict</span><span class="p">[</span><span class="s1">'dynamic_vmin'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vmin</span><span class="p">)</span>
+    <span class="n">overwrite_dict</span><span class="p">[</span><span class="s1">'dynamic_cmap'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmap</span>
+
+    <span class="c1"># Perform the overwrite of the plots_dict dictionary and return new dictionary</span>
+    <span class="k">return</span> <span class="n">replace_vars_dict</span><span class="p">(</span><span class="n">plots_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">overwrite_dict</span><span class="p">)</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="histogram_bins"><a class="viewcode-back" href="../../../../../eva_developer_guide/API/eva.plotting.emcpy.plot_tools.html#eva.plotting.emcpy.plot_tools.dynamic_config.histogram_bins">[docs]</a><span class="k">def</span> <span class="nf">histogram_bins</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">option_dict</span><span class="p">,</span> <span class="n">plots_dict</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Computes the number of bins for a histogram based on the provided data variable.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        logger (Logger): An instance of the logger for logging messages.</span>
+<span class="sd">        option_dict (dict): A dictionary containing various options for the transformation.</span>
+<span class="sd">        plots_dict (dict): A dictionary containing plot-related information.</span>
+<span class="sd">        data_collections (DataCollections): An instance of the DataCollections class containing</span>
+<span class="sd">        input data.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: A dictionary with the number of bins for the histogram.</span>
+
+<span class="sd">    This function computes the number of bins for a histogram based on the provided data variable.</span>
+<span class="sd">    It applies various rules to calculate the appropriate number of bins and updates the provided</span>
+<span class="sd">    plots dictionary with the calculated value.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        ::</span>
+
+<span class="sd">                option_dict = {</span>
+<span class="sd">                    'data variable': 'my_collection::my_variable',</span>
+<span class="sd">                    'number of bins rule': 'sturges'</span>
+<span class="sd">                }</span>
+<span class="sd">                plots_dict = {</span>
+<span class="sd">                    'dynamic_bins': '10'</span>
+<span class="sd">                }</span>
+<span class="sd">                adjusted_plots_dict = histogram_bins(logger, option_dict, plots_dict,</span>
+<span class="sd">                                                     data_collections)</span>
+<span class="sd">    """</span>
+
+    <span class="c1"># Optionally the data might have a channel.</span>
+    <span class="n">channel</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'channel'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># Get the data variable to use for determining cbar limits</span>
+    <span class="n">varname</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'data variable'</span><span class="p">)</span>
+    <span class="n">varname_cgv</span> <span class="o">=</span> <span class="n">varname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'::'</span><span class="p">)</span>
+    <span class="n">datavar</span> <span class="o">=</span> <span class="n">data_collections</span><span class="o">.</span><span class="n">get_variable_data</span><span class="p">(</span><span class="n">varname_cgv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">varname_cgv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                 <span class="n">varname_cgv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">channel</span><span class="p">)</span>
+
+    <span class="c1"># Compute size of the array of data</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">datavar</span><span class="p">))</span>
+
+    <span class="c1"># Check for zero data, set to 3 as a reasonable minimum</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+
+    <span class="c1"># Compute number of bins using standard rule</span>
+    <span class="n">rule</span> <span class="o">=</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'number of bins rule'</span><span class="p">,</span> <span class="s1">'sturges'</span><span class="p">)</span>
+    <span class="n">rule</span> <span class="o">=</span> <span class="n">rule</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="c1"># User might capitalize names so convert to lowercase</span>
+
+    <span class="c1"># Allow for some standard rules for computing the number of bins for the histogram</span>
+    <span class="k">if</span> <span class="n">rule</span> <span class="o">==</span> <span class="s1">'square root'</span><span class="p">:</span>
+        <span class="n">nbins</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">rule</span> <span class="o">==</span> <span class="s1">'sturges'</span><span class="p">:</span>
+        <span class="n">nbins</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">rule</span> <span class="o">==</span> <span class="s1">'rice'</span><span class="p">:</span>
+        <span class="n">nbins</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">rule</span> <span class="o">==</span> <span class="s1">'doane'</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Rule </span><span class="se">\'</span><span class="s1">doane</span><span class="se">\'</span><span class="s1"> is not valid for data with fewer than 3 samples.'</span><span class="p">)</span>
+        <span class="n">g1</span> <span class="o">=</span> <span class="n">skew</span><span class="p">(</span><span class="n">datavar</span><span class="p">,</span> <span class="n">nan_policy</span><span class="o">=</span><span class="s1">'omit'</span><span class="p">)</span>
+        <span class="n">sig_g1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">3</span><span class="p">)))</span>
+        <span class="n">nbins</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span><span class="o">/</span><span class="n">sig_g1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Rule </span><span class="si">{</span><span class="n">rule</span><span class="si">}</span><span class="s1"> for computing the histogram bins is not valid.'</span><span class="p">)</span>
+
+    <span class="c1"># Prepare dictionary with values to be overwritten in other dictionaries</span>
+    <span class="n">overwrite_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">overwrite_dict</span><span class="p">[</span><span class="s1">'dynamic_bins'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">nbins</span><span class="p">))</span>
+
+    <span class="c1"># Perform the overwrite of the plots_dict dictionary and return new dictionary</span>
+    <span class="k">return</span> <span class="n">replace_vars_dict</span><span class="p">(</span><span class="n">plots_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">overwrite_dict</span><span class="p">)</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+</pre></div>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+</div>
+</footer>
+</div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-08-28.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

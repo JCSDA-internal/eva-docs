@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
+<title>Batch Plotting and Using EMCPy Backend for eva —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/sphinx_highlight.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script src="../../../_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'eva_user_guide/plotting_backends/EMCPy/batch_plotting';</script>
+<link href="../../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<link href="../hvplot/index.html" rel="next" title="Interactive plotting using hvPlot"/>
+<link href="emcpy.html" rel="prev" title="EMCPy"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../../_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="../../../_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_developer_guide/index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<label class="sidebar-toggle secondary-toggle" for="__secondary">
+<span class="fa-solid fa-outdent"></span>
+</label>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_developer_guide/index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Eva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_design_principles.html">Design principles for eva</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../getting_started/index.html">Getting started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/eva_hpc.html">Existing installations on supported HPCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/using_eva.html">Using Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/eva_yaml.html">Eva and YAML files</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Eva user guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../data_ingest/index.html">Eva data ingest classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../data_ingest/cubed_sphere_restart.html">Cubed sphere restart ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../data_ingest/gsi_obs_space.html">GSI observaton space (ncdiag) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../data_ingest/ioda_obs_space.html">IODA observaton space (netCDF) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../data_ingest/jedi_log.html">JEDI log files ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../data_ingest/lat_lon.html">Basic latitude-longitude netCDF ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../data_ingest/mon_data_space.html">Monitor data space (NCEP legacy) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../data_ingest/soca_restart.html">SOCA restart ingest class</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../transforms/index.html">Eva transform classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../transforms/accept_where.html">Accept where</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../transforms/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../transforms/channel_stats.html">Channel statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../transforms/select_time.html">Select time</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Eva plotting backends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="index.html">Batch plotting using EMCPy backend</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="emcpy.html">EMCPy</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">Batch Plotting and Using EMCPy Backend for eva</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../hvplot/index.html">Interactive plotting using hvPlot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../hvplot/Eva_Interactive_Intro.html">Eva Interactive Intro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hvplot/Plotting_Options.html">Plotting Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eva_developer_guide/index.html">Eva developer guide</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/index.html">Developer best practices</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/documentation.html">Writing documentation and building the site locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/github_actions.html">Automated testing with GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_developer_guide/eva_components/index.html">Eva components</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/config.html">Config class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/logger.html">Logger class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/timing.html">Timing Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/data_collections.html">Data collections class for holding data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_developer_guide/API/index.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/API/eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/API/eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/API/eva.data.html">eva.data package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../eva_developer_guide/API/eva.plotting.html">eva.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_developer_guide/API/eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_developer_guide/API/eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../../index.html">Eva user guide</a></li>
+<li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Batch plotting using YAML driven configuration and the EMCPy backend</a></li>
+<li aria-current="page" class="breadcrumb-item active">Batch Plotting and Using EMCPy Backend for eva</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="batch-plotting-and-using-emcpy-backend-for-eva">
+<h1>Batch Plotting and Using EMCPy Backend for eva<a class="headerlink" href="#batch-plotting-and-using-emcpy-backend-for-eva" title="Permalink to this heading">#</a></h1>
+<p>In addition to the <code class="docutils literal notranslate"><span class="pre">datasets</span></code> and <code class="docutils literal notranslate"><span class="pre">transforms</span></code> section within the configuration YAMLs used within eva, there is a <code class="docutils literal notranslate"><span class="pre">graphics</span></code> section. This section is used to design the figures needed during analysis of your data using EMCPy’s plotting backend.</p>
+<p>An example of a <code class="docutils literal notranslate"><span class="pre">graphics</span></code> section from a test configuration file for both a scatter plot and map scatter plot is shown below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">graphics</span><span class="p">:</span>
+
+<span class="w">  </span><span class="c1"># Scatter plot</span>
+<span class="w">  </span><span class="c1"># ------------</span>
+
+<span class="w">  </span><span class="c1"># JEDI h(x) vs Observations</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">batch figure</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span><span class="w"> </span><span class="nv">*variables</span>
+<span class="w">    </span><span class="nt">figure</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">layout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="nv">1</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">'Figure</span><span class="nv"> </span><span class="s">Title'</span>
+<span class="w">      </span><span class="nt">output name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">observation_scatter_plots/aircraft/${variable}/jedi_hofx_vs_obs_aircraft_${variable}.png</span>
+<span class="w">    </span><span class="nt">plots</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_xlabel</span><span class="p">:</span><span class="w"> </span><span class="s">'Observation</span><span class="nv"> </span><span class="s">Value'</span>
+<span class="w">        </span><span class="nt">add_ylabel</span><span class="p">:</span><span class="w"> </span><span class="s">'JEDI</span><span class="nv"> </span><span class="s">h(x)'</span>
+<span class="w">        </span><span class="nt">add_grid</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">add_legend</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">loc</span><span class="p">:</span><span class="w"> </span><span class="s">'upper</span><span class="nv"> </span><span class="s">left'</span>
+<span class="w">        </span><span class="nt">layers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scatter</span>
+<span class="w">          </span><span class="nt">x</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::ObsValue::${variable}</span>
+<span class="w">          </span><span class="nt">y</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::hofx::${variable}</span>
+<span class="w">          </span><span class="nt">markersize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">          </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">'black'</span>
+<span class="w">          </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">'JEDI</span><span class="nv"> </span><span class="s">h(x)</span><span class="nv"> </span><span class="s">versus</span><span class="nv"> </span><span class="s">obs</span><span class="nv"> </span><span class="s">(all</span><span class="nv"> </span><span class="s">obs)'</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scatter</span>
+<span class="w">          </span><span class="nt">x</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::ObsValue::${variable}</span>
+<span class="w">          </span><span class="nt">y</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::hofxPassedQc::${variable}</span>
+<span class="w">          </span><span class="nt">markersize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">          </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">'red'</span>
+<span class="w">          </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">'JEDI</span><span class="nv"> </span><span class="s">h(x)</span><span class="nv"> </span><span class="s">versus</span><span class="nv"> </span><span class="s">obs</span><span class="nv"> </span><span class="s">(passed</span><span class="nv"> </span><span class="s">QC</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">JEDI)'</span>
+
+<span class="w">  </span><span class="c1"># Map plot</span>
+<span class="w">  </span><span class="c1"># ---------</span>
+
+<span class="w">  </span><span class="c1"># Observations</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">batch figure</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span><span class="w"> </span><span class="nv">*variables</span>
+<span class="w">    </span><span class="nt">dynamic options</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vminvmaxcmap</span>
+<span class="w">        </span><span class="nt">data variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::ObsValue::variable</span>
+<span class="w">    </span><span class="nt">figure</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">figure size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">20</span><span class="p p-Indicator">,</span><span class="nv">10</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">layout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="nv">1</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">'Figure</span><span class="nv"> </span><span class="s">Title'</span>
+<span class="w">      </span><span class="nt">output name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map_plots/aircraft/${variable}/observations_aircraft_${variable}.png</span>
+<span class="w">    </span><span class="nt">plots</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mapping</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">projection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plcarr</span>
+<span class="w">          </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global</span>
+<span class="w">        </span><span class="nt">add_map_features</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'coastline'</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">add_colorbar</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ObsValue</span>
+<span class="w">        </span><span class="nt">add_grid</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">layers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MapScatter</span>
+<span class="w">          </span><span class="nt">longitude</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::MetaData::longitude</span>
+<span class="w">          </span><span class="nt">latitude</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::MetaData::latitude</span>
+<span class="w">          </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::ObsValue::${variable}</span>
+<span class="w">          </span><span class="nt">markersize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">          </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ObsValue</span>
+<span class="w">          </span><span class="nt">colorbar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">cmap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${dynamic_cmap}</span>
+<span class="w">          </span><span class="nt">vmin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${dynamic_vmin}</span>
+<span class="w">          </span><span class="nt">vmax</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${dynamic_vmax}</span>
+<span class="w">            </span>
+</pre></div>
+</div>
+<section id="batch-figure">
+<h2>Batch Figure<a class="headerlink" href="#batch-figure" title="Permalink to this heading">#</a></h2>
+<p>Given the variables selected in the <code class="docutils literal notranslate"><span class="pre">datasets</span></code> section of the configuration YAML, the user can create batch figures for all variables selected. In this example, a scatter plot and map plot will be created for all the variables the user selected to be analyzed.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">batch figure</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span><span class="w"> </span><span class="nv">*variables</span>
+</pre></div>
+</div>
+<p>If the dataset included radiance data, the user could indicate specific channels and include them in the batch figure section to create plots for all variables and channels selected.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">batch figure</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span><span class="w"> </span><span class="nv">*variables</span>
+<span class="w">      </span><span class="nt">channels</span><span class="p">:</span><span class="w"> </span><span class="nv">*channels</span>
+</pre></div>
+</div>
+</section>
+<section id="emcpy-design">
+<h2>EMCPy Design<a class="headerlink" href="#emcpy-design" title="Permalink to this heading">#</a></h2>
+<p>EMCPy’s declarative plotting design is separated into three sections:</p>
+<ul class="simple">
+<li><p>figure</p></li>
+<li><p>plots</p></li>
+<li><p>layers</p></li>
+</ul>
+<p>Each section is responsible for different parts of the figure design which are explained below.</p>
+<section id="figure">
+<h3>Figure<a class="headerlink" href="#figure" title="Permalink to this heading">#</a></h3>
+<p>This section is responsible for the high-level figure design such as the layout of subplots, the figure title, figure size, output filename and more.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">figure</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">figure size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">20</span><span class="p p-Indicator">,</span><span class="nv">10</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">layout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="nv">1</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">'Observations</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">Aircraft</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">Obs</span><span class="nv"> </span><span class="s">Value'</span>
+<span class="w">      </span><span class="nt">output name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map_plots/aircraft/${variable}/observations_aircraft_${variable}.png</span>
+</pre></div>
+</div>
+</section>
+<section id="plots">
+<h3>Plots<a class="headerlink" href="#plots" title="Permalink to this heading">#</a></h3>
+<p>This section adds individual plot features such as adding x and y labels, legends, colorbars, mapping information, grids, etc. These follow <a class="reference external" href="https://matplotlib.org/stable/index.html">matplotlib</a> conventions and can include specific inputs that the matplotlib functions accept.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">plots</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_xlabel</span><span class="p">:</span><span class="w"> </span><span class="s">'Observation</span><span class="nv"> </span><span class="s">Value'</span>
+<span class="w">        </span><span class="nt">add_ylabel</span><span class="p">:</span><span class="w"> </span><span class="s">'JEDI</span><span class="nv"> </span><span class="s">h(x)'</span>
+<span class="w">        </span><span class="nt">add_grid</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">add_legend</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">loc</span><span class="p">:</span><span class="w"> </span><span class="s">'upper</span><span class="nv"> </span><span class="s">left'</span>
+</pre></div>
+</div>
+<p>Above would add x and y labels, a grid, and a legend located in the upper left part of the subplot for a standard plot.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">plots</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mapping</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">projection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plcarr</span>
+<span class="w">          </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global</span>
+<span class="w">        </span><span class="nt">add_map_features</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'coastline'</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">add_colorbar</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ObsValue</span>
+<span class="w">        </span><span class="nt">add_grid</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>This would be an example of adding mapping information such as <code class="docutils literal notranslate"><span class="pre">projection</span></code> and <code class="docutils literal notranslate"><span class="pre">domain</span></code> when creating a map plot. <code class="docutils literal notranslate"><span class="pre">add_map_features</span></code> adds feature attributes which can be found on the <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/reference/feature.html#feature-attributes">Cartopy website</a>.</p>
+</section>
+<section id="layers">
+<h3>Layers<a class="headerlink" href="#layers" title="Permalink to this heading">#</a></h3>
+<p>Within this section, the user will define the plot type, the input data (such as x and y for standard plots or latitude and longitude for map plots), and how the user would like to present that data. This includes design inputs such as color, labels, data limits, or the style of the lines or markers.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="nt">layers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scatter</span>
+<span class="w">          </span><span class="nt">x</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::ObsValue::${variable}</span>
+<span class="w">          </span><span class="nt">y</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::hofx::${variable}</span>
+<span class="w">          </span><span class="nt">markersize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">          </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">'black'</span>
+<span class="w">          </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">'JEDI</span><span class="nv"> </span><span class="s">h(x)</span><span class="nv"> </span><span class="s">versus</span><span class="nv"> </span><span class="s">obs</span><span class="nv"> </span><span class="s">(all</span><span class="nv"> </span><span class="s">obs)'</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scatter</span>
+<span class="w">          </span><span class="nt">x</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::ObsValue::${variable}</span>
+<span class="w">          </span><span class="nt">y</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::hofxPassedQc::${variable}</span>
+<span class="w">          </span><span class="nt">markersize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">          </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">'red'</span>
+<span class="w">          </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">'JEDI</span><span class="nv"> </span><span class="s">h(x)</span><span class="nv"> </span><span class="s">versus</span><span class="nv"> </span><span class="s">obs</span><span class="nv"> </span><span class="s">(passed</span><span class="nv"> </span><span class="s">QC</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">JEDI)'</span>
+</pre></div>
+</div>
+<p>The above example is plotting two layers of scatter plot data on a single subplot. The first layer compares <code class="docutils literal notranslate"><span class="pre">experiment::ObsValue::${variable}</span></code> as the x values and variable: <code class="docutils literal notranslate"><span class="pre">experiment::hofx::${variable}</span></code> as the y values using black dots and adding the appropriate label. The second layer uses different data in red and adds a label as well.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MapScatter</span>
+<span class="w">          </span><span class="nt">longitude</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::MetaData::longitude</span>
+<span class="w">          </span><span class="nt">latitude</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::MetaData::latitude</span>
+<span class="w">          </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">experiment::ObsValue::${variable}</span>
+<span class="w">          </span><span class="nt">markersize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">          </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ObsValue</span>
+<span class="w">          </span><span class="nt">colorbar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">cmap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${dynamic_cmap}</span>
+<span class="w">          </span><span class="nt">vmin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${dynamic_vmin}</span>
+<span class="w">          </span><span class="nt">vmax</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${dynamic_vmax}</span>
+</pre></div>
+</div>
+<p>This example plots scatter data on a map with longitude, latitude, and data inputs. It also includes a label and colorbar options. Eva also includes dynamic configuration options in its plotting tools for <code class="docutils literal notranslate"><span class="pre">cmap</span></code>, <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code>.</p>
+</section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<p>For more examples on how to use the graphics section within the configuration YAMLs and plotting options, there are test configuration files found on <a class="reference external" href="https://github.com/JCSDA-internal/eva/tree/develop/src/eva/tests/config">eva’s Github page</a>.</p>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="emcpy.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">EMCPy</p>
+</div>
+</a>
+<a class="right-next" href="../hvplot/index.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Interactive plotting using hvPlot</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-figure">Batch Figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emcpy-design">EMCPy Design</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure">Figure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layers">Layers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-08-28.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

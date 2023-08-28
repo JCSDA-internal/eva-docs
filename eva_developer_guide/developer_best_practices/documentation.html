@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
+<title>Writing documentation and building the site locally —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/sphinx_highlight.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'eva_developer_guide/developer_best_practices/documentation';</script>
+<link href="../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="github_actions.html" rel="next" title="Automated testing with GitHub Actions"/>
+<link href="developer_guide.html" rel="prev" title="Developer Guide"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="../../_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<label class="sidebar-toggle secondary-toggle" for="__secondary">
+<span class="fa-solid fa-outdent"></span>
+</label>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Eva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eva_design_principles.html">Design principles for eva</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting_started/index.html">Getting started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_hpc.html">Existing installations on supported HPCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/using_eva.html">Using Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_yaml.html">Eva and YAML files</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eva_user_guide/index.html">Eva user guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/data_ingest/index.html">Eva data ingest classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/cubed_sphere_restart.html">Cubed sphere restart ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/gsi_obs_space.html">GSI observaton space (ncdiag) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/ioda_obs_space.html">IODA observaton space (netCDF) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/jedi_log.html">JEDI log files ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/lat_lon.html">Basic latitude-longitude netCDF ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/mon_data_space.html">Monitor data space (NCEP legacy) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/soca_restart.html">SOCA restart ingest class</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/transforms/index.html">Eva transform classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/accept_where.html">Accept where</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/channel_stats.html">Channel statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/select_time.html">Select time</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/index.html">Eva plotting backends</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/index.html">Batch plotting using EMCPy backend</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/emcpy.html">EMCPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/batch_plotting.html">Batch Plotting and Using EMCPy Backend for eva</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/index.html">Interactive plotting using hvPlot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Eva_Interactive_Intro.html">Eva Interactive Intro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Plotting_Options.html">Plotting Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Eva developer guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Developer best practices</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Writing documentation and building the site locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="github_actions.html">Automated testing with GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../eva_components/index.html">Eva components</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/config.html">Config class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/logger.html">Logger class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/timing.html">Timing Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/data_collections.html">Data collections class for holding data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../API/index.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../API/eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../API/eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../API/eva.data.html">eva.data package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../API/eva.plotting.html">eva.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../API/eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../API/eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Eva Developer Guide</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Developer best practices</a></li>
+<li aria-current="page" class="breadcrumb-item active">Writing documentation and building the site locally</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="writing-documentation-and-building-the-site-locally">
+<h1>Writing documentation and building the site locally<a class="headerlink" href="#writing-documentation-and-building-the-site-locally" title="Permalink to this heading">#</a></h1>
+<section id="contributing-to-eva-docs">
+<h2>Contributing to eva Docs<a class="headerlink" href="#contributing-to-eva-docs" title="Permalink to this heading">#</a></h2>
+<p>To contribute to the eva documentation website, create a branch with your changes, and then submit a pull request to the eva-docs repository: <a class="github reference external" href="https://github.com/JCSDA-internal/eva-docs">JCSDA-internal/eva-docs</a></p>
+</section>
+<section id="local-eva-docs-build">
+<h2>Local eva Docs Build<a class="headerlink" href="#local-eva-docs-build" title="Permalink to this heading">#</a></h2>
+<p>It may be useful to build the website locally to ensure that any changes are properly displayed on the website before submitting a pull request.</p>
+<p>Creating a conda environment is recommended, but not required. The dependencies for nbsite tend to be tricky, and having a pre-existing environment with other package versions may cause the build to not work.</p>
+<section id="steps-for-locally-building-and-viewing-website">
+<h3>Steps for locally building and viewing website:<a class="headerlink" href="#steps-for-locally-building-and-viewing-website" title="Permalink to this heading">#</a></h3>
+<p>NOTE: git-lfs needs to be installed to be able to clone notebooks from the eva-docs repository. If you make a self-contained environment, you may need to run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">git-lfs</span></code>, and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">install</span></code>. Then, reclone the eva-docs repository.</p>
+<ol class="arabic simple">
+<li><p>Clone eva and eva-docs directories</p>
+<ul class="simple">
+<li><p>eva - https://github.com/JCSDA-internal/eva</p></li>
+<li><p>eva-docs - https://github.com/JCSDA-internal/eva-docs</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">eva-docs</span></code></p></li>
+<li><p>Set up dependencies for eva-docs</p>
+<ul class="simple">
+<li><p>To do this in a self-contained environment (recommended):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment.yaml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">eva-docs</span></code></p></li>
+</ul>
+</li>
+<li><p>To add dependencies to current environment:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements-github.txt</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Install eva to run jupyter notebooks: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">../eva</span></code></p></li>
+<li><p>Generate the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files for the jupyter notebooks: <code class="docutils literal notranslate"><span class="pre">nbsite</span> <span class="pre">generate-rst</span> <span class="pre">--org</span> <span class="pre">JCSDA-internal</span> <span class="pre">--project-name</span> <span class="pre">eva-docs</span> <span class="pre">--examples</span> <span class="pre">notebooks</span></code></p></li>
+<li><p>Create API docs with this command: <code class="docutils literal notranslate"><span class="pre">sphinx-apidoc</span> <span class="pre">-o</span> <span class="pre">doc/eva_developer_guide/API/</span> <span class="pre">../eva/src</span></code></p></li>
+<li><p>API documentation setup: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">doc/api_setup.py</span> <span class="pre">doc/eva_developer_guide/API/</span></code></p></li>
+<li><p>Build site: <code class="docutils literal notranslate"><span class="pre">nbsite</span> <span class="pre">build</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">builtdocs</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">http.server</span> <span class="pre">8000</span></code> to start local server</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">localhost:8000</span></code> into a web browser to view the website</p></li>
+</ol>
+</section>
+</section>
+<section id="api-docs">
+<h2>API Docs<a class="headerlink" href="#api-docs" title="Permalink to this heading">#</a></h2>
+<p>To contribute to the eva API documentation, create a branch in eva and write comments directly into the source code, making sure that they adhere to Google-standard docstrings. Then, submit a pull request to eva using this branch. Sphinx-based tools will autogenerate the comments into documentation for the website.</p>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="developer_guide.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Developer Guide</p>
+</div>
+</a>
+<a class="right-next" href="github_actions.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Automated testing with GitHub Actions</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing-to-eva-docs">Contributing to eva Docs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-eva-docs-build">Local eva Docs Build</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-for-locally-building-and-viewing-website">Steps for locally building and viewing website:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-docs">API Docs</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-08-28.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

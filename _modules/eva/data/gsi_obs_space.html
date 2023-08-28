@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eva.data.gsi_obs_space —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/sphinx_highlight.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script src="../../../_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = '_modules/eva/data/gsi_obs_space';</script>
+<link href="../../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../../_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="../../../_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_developer_guide/index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_developer_guide/index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Eva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_design_principles.html">Design principles for eva</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../getting_started/index.html">Getting started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/eva_hpc.html">Existing installations on supported HPCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/using_eva.html">Using Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/eva_yaml.html">Eva and YAML files</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eva_user_guide/index.html">Eva user guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_user_guide/data_ingest/index.html">Eva data ingest classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/cubed_sphere_restart.html">Cubed sphere restart ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/gsi_obs_space.html">GSI observaton space (ncdiag) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/ioda_obs_space.html">IODA observaton space (netCDF) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/jedi_log.html">JEDI log files ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/lat_lon.html">Basic latitude-longitude netCDF ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/mon_data_space.html">Monitor data space (NCEP legacy) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/soca_restart.html">SOCA restart ingest class</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_user_guide/transforms/index.html">Eva transform classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/transforms/accept_where.html">Accept where</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/transforms/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/transforms/channel_stats.html">Channel statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/transforms/select_time.html">Select time</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/index.html">Eva plotting backends</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/EMCPy/index.html">Batch plotting using EMCPy backend</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/EMCPy/emcpy.html">EMCPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/EMCPy/batch_plotting.html">Batch Plotting and Using EMCPy Backend for eva</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/hvplot/index.html">Interactive plotting using hvPlot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/hvplot/Eva_Interactive_Intro.html">Eva Interactive Intro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/hvplot/Plotting_Options.html">Plotting Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eva_developer_guide/index.html">Eva developer guide</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/index.html">Developer best practices</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/documentation.html">Writing documentation and building the site locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/github_actions.html">Automated testing with GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_developer_guide/eva_components/index.html">Eva components</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/config.html">Config class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/logger.html">Logger class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/timing.html">Timing Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/data_collections.html">Data collections class for holding data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_developer_guide/API/index.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/API/eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/API/eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/API/eva.data.html">eva.data package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../eva_developer_guide/API/eva.plotting.html">eva.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_developer_guide/API/eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_developer_guide/API/eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../../index.html">Module code</a></li>
+<li aria-current="page" class="breadcrumb-item active">eva.data.gsi_obs_space</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<h1>Source code for eva.data.gsi_obs_space</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2022 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2022 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">groupby</span>
+<span class="kn">from</span> <span class="nn">xarray</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">open_dataset</span>
+
+<span class="kn">from</span> <span class="nn">eva.data.eva_dataset_base</span> <span class="kn">import</span> <span class="n">EvaDatasetBase</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.config</span> <span class="kn">import</span> <span class="n">get</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.utils</span> <span class="kn">import</span> <span class="n">parse_channel_list</span>
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="all_equal"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.gsi_obs_space.all_equal">[docs]</a><span class="k">def</span> <span class="nf">all_equal</span><span class="p">(</span><span class="n">iterable</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Check if all elements in an iterable are equal.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        iterable: An iterable object to check.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if all elements are equal, False otherwise.</span>
+<span class="sd">    """</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">groupby</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="uv"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.gsi_obs_space.uv">[docs]</a><span class="k">def</span> <span class="nf">uv</span><span class="p">(</span><span class="n">group_vars</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Add 'uv' prefix to specified variables if present.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        group_vars (list): List of variable names.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: List of variable names with 'uv' prefix added.</span>
+<span class="sd">    """</span>
+
+    <span class="n">change_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Obs_Minus_Forecast_adjusted'</span><span class="p">,</span>
+                   <span class="s1">'Obs_Minus_Forecast_unadjusted'</span><span class="p">,</span>
+                   <span class="s1">'Observation'</span><span class="p">]</span>
+
+    <span class="c1"># Find if change variables are in group_vars</span>
+    <span class="n">good_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">change_vars</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">group_vars</span><span class="p">]</span>
+
+    <span class="c1"># Loop through existing variables, add u_ and v_ versions</span>
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">good_vars</span><span class="p">:</span>
+        <span class="n">group_vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'u_'</span> <span class="o">+</span> <span class="n">var</span><span class="p">)</span>
+        <span class="n">group_vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'v_'</span> <span class="o">+</span> <span class="n">var</span><span class="p">)</span>
+
+    <span class="c1"># Drop existing variables without u/v suffix</span>
+    <span class="n">group_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">group_vars</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">good_vars</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">group_vars</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="subset_channels"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.gsi_obs_space.subset_channels">[docs]</a><span class="k">def</span> <span class="nf">subset_channels</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">add_channels_variable</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Subset the dataset based on specified channels.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ds (Dataset): The xarray Dataset to subset.</span>
+<span class="sd">        channels (list): List of channel numbers to keep.</span>
+<span class="sd">        logger (Logger): Logger instance for logging messages.</span>
+<span class="sd">        add_channels_variable (bool, optional): Whether to add 'channelNumber' variable. Default is</span>
+<span class="sd">        False.</span>
+<span class="sd">    """</span>
+
+    <span class="k">if</span> <span class="s1">'nchans'</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+
+        <span class="c1"># Number of user requested channels</span>
+        <span class="n">nchan_use</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
+
+        <span class="c1"># Number of channels in the file</span>
+        <span class="n">nchan_in_file</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">nchans</span><span class="o">.</span><span class="n">size</span>
+
+        <span class="k">if</span> <span class="n">nchan_use</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">nchan_use</span> <span class="o">=</span> <span class="n">nchan_in_file</span>
+
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="s1">'sensor_chan'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">):</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">nchans</span><span class="o">=</span><span class="n">channels</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bad_chans</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">channels</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="s1">'sensor_chan'</span><span class="p">]]</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">bad_chans</span><span class="p">)</span><span class="si">}</span><span class="s2"> was inputted as a channel "</span> <span class="o">+</span>
+                         <span class="s2">"but is not a valid entry. Valid channels include: </span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>
+                         <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">ds</span><span class="p">[</span><span class="s1">'sensor_chan'</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ds</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="satellite_dataset"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.gsi_obs_space.satellite_dataset">[docs]</a><span class="k">def</span> <span class="nf">satellite_dataset</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Build a new dataset to reshape satellite data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ds (Dataset): The input xarray Dataset.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Dataset: Reshaped xarray Dataset.</span>
+<span class="sd">    """</span>
+
+    <span class="n">nchans</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">'nchans'</span><span class="p">]</span>
+    <span class="n">iters</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">'nobs'</span><span class="p">]</span><span class="o">/</span><span class="n">nchans</span><span class="p">)</span>
+
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">'nchans'</span><span class="p">:</span> <span class="p">((</span><span class="s1">'nchans'</span><span class="p">),</span> <span class="n">ds</span><span class="p">[</span><span class="s1">'sensor_chan'</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+        <span class="s1">'nobs'</span><span class="p">:</span> <span class="p">((</span><span class="s1">'nobs'</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">iters</span><span class="p">)),</span>
+        <span class="s1">'BC_angord_arr_dim'</span><span class="p">:</span> <span class="p">((</span><span class="s1">'BC_angord_arr_dim'</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="n">data_vars</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># Loop through each variable</span>
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
+
+        <span class="c1"># Ignore geovals data</span>
+        <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'air_temperature'</span><span class="p">,</span> <span class="s1">'air_pressure'</span><span class="p">,</span> <span class="s1">'air_pressure_levels'</span><span class="p">,</span>
+                   <span class="s1">'atmosphere_absorber_01'</span><span class="p">,</span> <span class="s1">'atmosphere_absorber_02'</span><span class="p">,</span> <span class="s1">'atmosphere_absorber_03'</span><span class="p">]:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># If variable has len of nchans, pass along data</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">])</span> <span class="o">==</span> <span class="n">nchans</span><span class="p">:</span>
+            <span class="n">data_vars</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="s1">'nchans'</span><span class="p">),</span> <span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># If variable is BC_angord, reshape data</span>
+        <span class="k">elif</span> <span class="n">var</span> <span class="o">==</span> <span class="s1">'BC_angord'</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">'BC_angord'</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                              <span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">nchans</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">'BC_angord_arr_dim'</span><span class="p">]))</span>
+            <span class="n">data_vars</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="s1">'nobs'</span><span class="p">,</span> <span class="s1">'nchans'</span><span class="p">,</span> <span class="s1">'BC_angord_arr_dim'</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Deals with how to handle nobs data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Check if values repeat over nchans</span>
+            <span class="n">condition</span> <span class="o">=</span> <span class="n">all_equal</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nchans</span><span class="p">])</span>
+
+            <span class="c1"># If values are repeating over nchan iterations, keep as nobs</span>
+            <span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="n">nchans</span><span class="p">]</span>
+                <span class="n">data_vars</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="s1">'nobs'</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+
+            <span class="c1"># Else, reshape to be a 2d array</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">nchans</span><span class="p">))</span>
+                <span class="n">data_vars</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="s1">'nobs'</span><span class="p">,</span> <span class="s1">'nchans'</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># create dataset_config</span>
+    <span class="n">new_ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">data_vars</span><span class="o">=</span><span class="n">data_vars</span><span class="p">,</span>
+                     <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
+                     <span class="n">attrs</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">new_ds</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="GsiObsSpace"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.gsi_obs_space.GsiObsSpace">[docs]</a><span class="k">class</span> <span class="nc">GsiObsSpace</span><span class="p">(</span><span class="n">EvaDatasetBase</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Eva dataset class for processing GSI observation space data.</span>
+<span class="sd">    """</span>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="GsiObsSpace.execute"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.gsi_obs_space.GsiObsSpace.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timeing</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Execute the GSI observation space data processing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dataset_config (dict): Configuration settings for the dataset processing.</span>
+<span class="sd">            data_collections (DataCollections): Instance of the DataCollections class.</span>
+<span class="sd">            timing (Timing): Timing instance for performance measurement.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># Get channels for radiances</span>
+        <span class="c1"># --------------------------</span>
+        <span class="n">channels_str_or_list</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'channels'</span><span class="p">,</span> <span class="p">[])</span>
+
+        <span class="c1"># Convert channels to list</span>
+        <span class="n">channels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">channels_str_or_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="p">[]:</span>
+            <span class="n">channels</span> <span class="o">=</span> <span class="n">parse_channel_list</span><span class="p">(</span><span class="n">channels_str_or_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+
+        <span class="c1"># Filenames to be read into this collection</span>
+        <span class="c1"># -----------------------------------------</span>
+        <span class="n">filenames</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'filenames'</span><span class="p">)</span>
+
+        <span class="c1"># File variable type</span>
+        <span class="k">if</span> <span class="s1">'satellite'</span> <span class="ow">in</span> <span class="n">dataset_config</span><span class="p">:</span>
+            <span class="n">satellite</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'satellite'</span><span class="p">)</span>
+            <span class="n">sensor</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'sensor'</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">variable</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'variable'</span><span class="p">)</span>
+
+        <span class="c1"># Get missing value threshold</span>
+        <span class="c1"># ---------------------------</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'missing_value_threshold'</span><span class="p">,</span> <span class="mf">1.0e30</span><span class="p">))</span>
+
+        <span class="c1"># Get the groups to be read</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">groups</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'groups'</span><span class="p">)</span>
+
+        <span class="c1"># Loop over filenames</span>
+        <span class="c1"># -------------------</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+
+            <span class="c1"># Loop over groups</span>
+            <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+
+                <span class="c1"># Group name and variables</span>
+                <span class="n">group_name</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">)</span>
+                <span class="n">group_vars</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'variables'</span><span class="p">,</span> <span class="s1">'all'</span><span class="p">)</span>
+
+                <span class="c1"># Set the collection name</span>
+                <span class="n">collection_name</span> <span class="o">=</span> <span class="n">dataset_config</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span>
+
+                <span class="n">ds</span> <span class="o">=</span> <span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                  <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                <span class="c1"># If user specifies all variables set to group list</span>
+                <span class="k">if</span> <span class="n">group_vars</span> <span class="o">==</span> <span class="s1">'all'</span><span class="p">:</span>
+                    <span class="n">group_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)</span>
+
+                <span class="c1"># Reshape variables if satellite diag</span>
+                <span class="k">if</span> <span class="s1">'nchans'</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+                    <span class="n">ds</span> <span class="o">=</span> <span class="n">satellite_dataset</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+                    <span class="n">ds</span> <span class="o">=</span> <span class="n">subset_channels</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+
+                <span class="c1"># Adjust variable names if uv</span>
+                <span class="k">if</span> <span class="s1">'variable'</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">'uv'</span><span class="p">:</span>
+                        <span class="n">group_vars</span> <span class="o">=</span> <span class="n">uv</span><span class="p">(</span><span class="n">group_vars</span><span class="p">)</span>
+
+                <span class="c1"># Check that all user variables are in the dataset_config</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">group_vars</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'For collection </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span> <span class="n">dataset_config</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span>
+                                      <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1">, group </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span> <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1"> in file '</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">' . Variables </span><span class="si">{</span><span class="n">group_vars</span><span class="si">}</span><span class="s1"> not all present in '</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s1">'the data set variables: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+                <span class="c1"># Drop data variables not in user requested variables</span>
+                <span class="n">vars_to_remove</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">group_vars</span><span class="p">))</span>
+                <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">drop_vars</span><span class="p">(</span><span class="n">vars_to_remove</span><span class="p">)</span>
+
+                <span class="c1"># Explicitly add the channels to the collection (we do not want to include this</span>
+                <span class="c1"># in the 'variables' list in the YAML to avoid transforms being applied to them)</span>
+                <span class="k">if</span> <span class="s1">'nchans'</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+                    <span class="n">channels_used</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">'nchans'</span><span class="p">]</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="n">group_name</span> <span class="o">+</span> <span class="s1">'::channelNumber'</span><span class="p">]</span> <span class="o">=</span> <span class="n">channels_used</span>
+
+                <span class="c1"># Rename variables with group</span>
+                <span class="n">rename_dict</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">group_var</span> <span class="ow">in</span> <span class="n">group_vars</span><span class="p">:</span>
+                    <span class="n">rename_dict</span><span class="p">[</span><span class="n">group_var</span><span class="p">]</span> <span class="o">=</span> <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'::'</span> <span class="o">+</span> <span class="n">group_var</span>
+                <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">rename_dict</span><span class="p">)</span>
+
+                <span class="c1"># Assert that the collection contains at least one variable</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">ds</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'Collection </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span> <span class="n">dataset_config</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1">, group </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span>
+                                      <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1"> in file '</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span>
+                                      <span class="s1">' does not have any variables.'</span><span class="p">)</span>
+
+            <span class="c1"># Add the dataset_config to the collections</span>
+            <span class="n">data_collections</span><span class="o">.</span><span class="n">create_or_add_to_collection</span><span class="p">(</span><span class="n">collection_name</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="s1">'nobs'</span><span class="p">)</span>
+
+        <span class="c1"># Nan out unphysical values</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">nan_float_values_outside_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
+
+        <span class="c1"># Change the location dimension name</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">adjust_location_dimension_name</span><span class="p">(</span><span class="s1">'nobs'</span><span class="p">)</span>
+
+        <span class="c1"># Change the channel dimension name</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">adjust_channel_dimension_name</span><span class="p">(</span><span class="s1">'nchans'</span><span class="p">)</span>
+
+        <span class="c1"># Display the contents of the collections for helping the user with making plots</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">display_collections</span><span class="p">()</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="GsiObsSpace.generate_default_config"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.gsi_obs_space.GsiObsSpace.generate_default_config">[docs]</a>    <span class="k">def</span> <span class="nf">generate_default_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Generate the default configuration for the GSI observation space dataset.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            filenames (list): List of filenames associated with the dataset.</span>
+<span class="sd">            collection_name (str): Name of the collection.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Default configuration settings for the dataset.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># Create config template</span>
+        <span class="n">eva_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'datasets'</span><span class="p">:</span> <span class="p">[{</span><span class="s1">'filenames'</span><span class="p">:</span> <span class="n">filenames</span><span class="p">,</span>
+                                  <span class="s1">'groups'</span><span class="p">:</span> <span class="p">[{</span><span class="s1">'name'</span><span class="p">:</span> <span class="s1">'eva_interactive'</span><span class="p">}],</span>
+                                  <span class="s1">'missing_value_threshold'</span><span class="p">:</span> <span class="mf">1.0e06</span><span class="p">,</span>
+                                  <span class="s1">'name'</span><span class="p">:</span> <span class="n">collection_name</span><span class="p">}]}</span>
+
+        <span class="c1"># Find either satellite/sensor or variable and add to config template</span>
+        <span class="n">eva_filename</span> <span class="o">=</span> <span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">eva_filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">name_parts</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'_'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'conv'</span><span class="p">:</span>
+            <span class="n">variable</span> <span class="o">=</span> <span class="n">name_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">eva_dict</span><span class="p">[</span><span class="s1">'datasets'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'variable'</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">satellite</span> <span class="o">=</span> <span class="n">name_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">sensor</span> <span class="o">=</span> <span class="n">name_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">eva_dict</span><span class="p">[</span><span class="s1">'datasets'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'satellite'</span><span class="p">]</span> <span class="o">=</span> <span class="n">satellite</span>
+            <span class="n">eva_dict</span><span class="p">[</span><span class="s1">'datasets'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'sensor'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sensor</span>
+
+        <span class="k">return</span> <span class="n">eva_dict</span></div></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+</pre></div>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+</div>
+</footer>
+</div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-08-28.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

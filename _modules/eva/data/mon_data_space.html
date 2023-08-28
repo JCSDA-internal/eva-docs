@@ -1,0 +1,1083 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eva.data.mon_data_space —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/sphinx_highlight.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script src="../../../_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = '_modules/eva/data/mon_data_space';</script>
+<link href="../../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../../_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="../../../_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_developer_guide/index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../../eva_developer_guide/index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Eva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eva_design_principles.html">Design principles for eva</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../getting_started/index.html">Getting started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/eva_hpc.html">Existing installations on supported HPCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/using_eva.html">Using Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started/eva_yaml.html">Eva and YAML files</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eva_user_guide/index.html">Eva user guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_user_guide/data_ingest/index.html">Eva data ingest classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/cubed_sphere_restart.html">Cubed sphere restart ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/gsi_obs_space.html">GSI observaton space (ncdiag) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/ioda_obs_space.html">IODA observaton space (netCDF) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/jedi_log.html">JEDI log files ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/lat_lon.html">Basic latitude-longitude netCDF ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/mon_data_space.html">Monitor data space (NCEP legacy) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/data_ingest/soca_restart.html">SOCA restart ingest class</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_user_guide/transforms/index.html">Eva transform classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/transforms/accept_where.html">Accept where</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/transforms/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/transforms/channel_stats.html">Channel statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_user_guide/transforms/select_time.html">Select time</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/index.html">Eva plotting backends</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/EMCPy/index.html">Batch plotting using EMCPy backend</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/EMCPy/emcpy.html">EMCPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/EMCPy/batch_plotting.html">Batch Plotting and Using EMCPy Backend for eva</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/hvplot/index.html">Interactive plotting using hvPlot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/hvplot/Eva_Interactive_Intro.html">Eva Interactive Intro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_user_guide/plotting_backends/hvplot/Plotting_Options.html">Plotting Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eva_developer_guide/index.html">Eva developer guide</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/index.html">Developer best practices</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/documentation.html">Writing documentation and building the site locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/developer_best_practices/github_actions.html">Automated testing with GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_developer_guide/eva_components/index.html">Eva components</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/config.html">Config class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/logger.html">Logger class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/timing.html">Timing Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/eva_components/data_collections.html">Data collections class for holding data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../eva_developer_guide/API/index.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/API/eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/API/eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../eva_developer_guide/API/eva.data.html">eva.data package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../eva_developer_guide/API/eva.plotting.html">eva.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_developer_guide/API/eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../eva_developer_guide/API/eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../../index.html">Module code</a></li>
+<li aria-current="page" class="breadcrumb-item active">eva.data.mon_data_space</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<h1>Source code for eva.data.mon_data_space</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2023 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2023 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">xarray</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">concat</span>
+<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">FortranFile</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span> <span class="nn">eva.data.eva_dataset_base</span> <span class="kn">import</span> <span class="n">EvaDatasetBase</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.config</span> <span class="kn">import</span> <span class="n">get</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.utils</span> <span class="kn">import</span> <span class="n">parse_channel_list</span><span class="p">,</span> <span class="n">is_number</span>
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="MonDataSpace"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace">[docs]</a><span class="k">class</span> <span class="nc">MonDataSpace</span><span class="p">(</span><span class="n">EvaDatasetBase</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    A class for handling MonDataSpace dataset configuration and processing.</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="MonDataSpace.execute"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timing</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Executes the processing of MonDataSpace dataset.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dataset_config (dict): Configuration dictionary for the dataset.</span>
+<span class="sd">            data_collections (DataCollections): Object for managing data collections.</span>
+<span class="sd">            timing (Timing): Timing object for tracking execution time.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># Set the collection name</span>
+        <span class="c1"># -----------------------</span>
+        <span class="n">collection_name</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">)</span>
+
+        <span class="c1"># Get control file and parse</span>
+        <span class="c1"># --------------------------</span>
+        <span class="n">control_file</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'control_file'</span><span class="p">)</span>
+        <span class="n">coords</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">attribs</span><span class="p">,</span> <span class="n">nvars</span><span class="p">,</span> <span class="nb">vars</span><span class="p">,</span> <span class="n">scanpo</span><span class="p">,</span> <span class="n">levs_dict</span><span class="p">,</span> <span class="n">chans_dict</span> <span class="o">=</span> <span class="p">(</span>
+                                                      <span class="bp">self</span><span class="o">.</span><span class="n">get_ctl_dict</span><span class="p">(</span><span class="n">control_file</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">ndims_used</span><span class="p">,</span> <span class="n">dims_arr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_ndims_used</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span>
+
+        <span class="c1"># Get the groups to be read</span>
+        <span class="c1"># -------------------------</span>
+        <span class="n">groups</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'groups'</span><span class="p">)</span>
+
+        <span class="c1"># Trim coordinates</span>
+        <span class="c1"># ----------------</span>
+        <span class="n">coord_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="s1">'channels'</span><span class="p">,</span> <span class="s1">'Channel'</span><span class="p">],</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="s1">'regions'</span><span class="p">,</span> <span class="s1">'Region'</span><span class="p">],</span>
+            <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="s1">'levels'</span><span class="p">,</span> <span class="s1">'Level'</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">drop_coord</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+        <span class="n">requested_coord</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coord_dict</span><span class="p">)):</span>
+            <span class="n">str_or_list</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">coord_dict</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">abort_on_failure</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">str_or_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">requested_coord</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">parse_channel_list</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">str_or_list</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+                <span class="n">drop_coord</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Set coordinate ranges</span>
+        <span class="c1"># ---------------------</span>
+        <span class="n">channo</span> <span class="o">=</span> <span class="n">chans_dict</span><span class="p">[</span><span class="s2">"chan_nums"</span><span class="p">]</span> <span class="k">if</span> <span class="n">chans_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">,</span> <span class="n">z_range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dim_ranges</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">channo</span><span class="p">)</span>
+
+        <span class="c1"># Filenames to be read into this collection</span>
+        <span class="c1"># -----------------------------------------</span>
+        <span class="n">filenames</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'filenames'</span><span class="p">)</span>
+        <span class="n">ds_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Get missing value threshold</span>
+        <span class="c1"># ---------------------------</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'missing_value_threshold'</span><span class="p">,</span> <span class="mf">1.0e30</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+
+            <span class="c1"># read data file</span>
+            <span class="n">darr</span><span class="p">,</span> <span class="n">cycle_tm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_ieee</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">ndims_used</span><span class="p">,</span>
+                                            <span class="n">dims_arr</span><span class="p">,</span> <span class="n">nvars</span><span class="p">,</span> <span class="nb">vars</span><span class="p">)</span>
+
+            <span class="c1"># add cycle as a variable to data array</span>
+            <span class="n">cyc_darr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">var_to_np_array</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">ndims_used</span><span class="p">,</span> <span class="n">dims_arr</span><span class="p">,</span> <span class="n">cycle_tm</span><span class="p">)</span>
+
+            <span class="c1"># create dataset from file contents</span>
+            <span class="n">timestep_ds</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="n">timestep_ds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_dset</span><span class="p">(</span><span class="nb">vars</span><span class="p">,</span> <span class="n">nvars</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">darr</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">ndims_used</span><span class="p">,</span>
+                                         <span class="n">dims_arr</span><span class="p">,</span> <span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">,</span> <span class="n">z_range</span><span class="p">,</span> <span class="n">cyc_darr</span><span class="p">,</span> <span class="n">channo</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">attribs</span><span class="p">[</span><span class="s1">'sat'</span><span class="p">]:</span>
+                <span class="n">timestep_ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'satellite'</span><span class="p">]</span> <span class="o">=</span> <span class="n">attribs</span><span class="p">[</span><span class="s1">'sat'</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">attribs</span><span class="p">[</span><span class="s1">'sensor'</span><span class="p">]:</span>
+                <span class="n">timestep_ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'sensor'</span><span class="p">]</span> <span class="o">=</span> <span class="n">attribs</span><span class="p">[</span><span class="s1">'sensor'</span><span class="p">]</span>
+
+            <span class="c1"># add cycle_tm dim for concat</span>
+            <span class="n">timestep_ds</span><span class="p">[</span><span class="s1">'Time'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_tm</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y%m</span><span class="si">%d</span><span class="s2">%H"</span><span class="p">)</span>
+
+            <span class="c1"># Add this dataset to the list of ds_list</span>
+            <span class="n">ds_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timestep_ds</span><span class="p">)</span>
+
+        <span class="c1"># Concatenate datasets from ds_list into a single dataset</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">concat</span><span class="p">(</span><span class="n">ds_list</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">'Time'</span><span class="p">)</span>
+
+        <span class="c1"># Group name and variables</span>
+        <span class="c1"># ------------------------</span>
+        <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+            <span class="n">group_name</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">)</span>
+            <span class="n">group_vars</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'variables'</span><span class="p">,</span> <span class="s1">'all'</span><span class="p">)</span>
+
+            <span class="c1"># Drop coordinates not in requested list</span>
+            <span class="c1"># --------------------------------------</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coord_dict</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">drop_coord</span><span class="p">[</span><span class="n">x</span><span class="p">]:</span>
+                    <span class="n">ds</span><span class="p">,</span> <span class="n">chans_dict</span> <span class="o">=</span> \
+                       <span class="bp">self</span><span class="o">.</span><span class="n">subset_coordinate</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">coord_dict</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">requested_coord</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">chans_dict</span><span class="p">)</span>
+
+            <span class="c1"># Conditionally add channel, level, and scan related variables</span>
+            <span class="c1"># ------------------------------------------------------------</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loadConditionalItems</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">chans_dict</span><span class="p">,</span> <span class="n">levs_dict</span><span class="p">,</span> <span class="n">scanpo</span><span class="p">)</span>
+
+            <span class="c1"># Rename variables with group</span>
+            <span class="n">rename_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">):</span>
+                <span class="n">rename_dict</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'::'</span> <span class="o">+</span> <span class="n">var</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">rename_dict</span><span class="p">)</span>
+
+            <span class="c1"># Assert that the collection contains at least one variable</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">ds</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="s1">'Collection </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span> <span class="n">dataset_config</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1">, group </span><span class="se">\'</span><span class="s1">'</span> <span class="o">+</span>
+                                  <span class="n">group_name</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\'</span><span class="s1"> in file '</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span>
+                                  <span class="s1">' does not have any variables.'</span><span class="p">)</span>
+
+        <span class="c1"># Add the dataset to the collections</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">create_or_add_to_collection</span><span class="p">(</span><span class="n">collection_name</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="s1">'cycle'</span><span class="p">)</span>
+
+        <span class="c1"># Nan out unphysical values</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">nan_float_values_outside_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
+
+        <span class="c1"># Display the contents of the collections for helping the user with making plots</span>
+        <span class="n">data_collections</span><span class="o">.</span><span class="n">display_collections</span><span class="p">()</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="MonDataSpace.generate_default_config"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace.generate_default_config">[docs]</a>    <span class="k">def</span> <span class="nf">generate_default_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">,</span> <span class="n">control_file</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Generates a default configuration for MonDataSpace dataset.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            filenames (list): List of file names.</span>
+<span class="sd">            collection_name (str): Name of the data collection.</span>
+<span class="sd">            control_file (str): Path to the control file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Default configuration dictionary.</span>
+<span class="sd">        """</span>
+
+        <span class="n">eva_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'satellite'</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="s1">'sensor'</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="s1">'control_file'</span><span class="p">:</span> <span class="n">control_file</span><span class="p">,</span>
+                    <span class="s1">'filenames'</span><span class="p">:</span> <span class="n">filenames</span><span class="p">,</span>
+                    <span class="s1">'channels'</span><span class="p">:</span> <span class="p">[],</span>
+                    <span class="s1">'regions'</span><span class="p">:</span> <span class="p">[],</span>
+                    <span class="s1">'levels'</span><span class="p">:</span> <span class="p">[],</span>
+                    <span class="s1">'groups'</span><span class="p">:</span> <span class="p">[],</span>
+                    <span class="s1">'name'</span><span class="p">:</span> <span class="n">collection_name</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">eva_dict</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="MonDataSpace.subset_coordinate"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace.subset_coordinate">[docs]</a>    <span class="k">def</span> <span class="nf">subset_coordinate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="n">coordinate</span><span class="p">,</span> <span class="n">requested_subset</span><span class="p">,</span> <span class="n">chans_dict</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Subset the input dataset along the specified coordinate dimension and update channel</span>
+<span class="sd">        information.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ds (xarray.Dataset): Input dataset to be subset.</span>
+<span class="sd">            coordinate (str): Name of the coordinate dimension to subset.</span>
+<span class="sd">            requested_subset (list): List of values to keep along the specified coordinate.</span>
+<span class="sd">            chans_dict (dict): Dictionary of channel components.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            xarray.Dataset: Subset of the input dataset.</span>
+<span class="sd">            chans_dict (dict): Updated dictionary of channel components.</span>
+<span class="sd">        """</span>
+
+        <span class="k">if</span> <span class="n">coordinate</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+
+            <span class="c1"># Number of entries in requested_subset</span>
+            <span class="n">num_coord_to_use</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">requested_subset</span><span class="p">)</span>
+
+            <span class="c1"># Number of specified coordinate in the ds</span>
+            <span class="n">num_specified_coordinate_in_ds</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">coordinate</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="n">coordinate</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">requested_subset</span><span class="p">):</span>
+                <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">coordinate</span><span class="p">:</span> <span class="n">requested_subset</span><span class="p">})</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">bad_coordinates</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">requested_subset</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">[</span><span class="n">coordinate</span><span class="p">]]</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">bad_coordinates</span><span class="p">)</span><span class="si">}</span><span class="s2"> was inputted"</span> <span class="o">+</span>
+                                  <span class="s2">" as a selected value of the coordinate "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">coordinate</span><span class="p">)</span> <span class="o">+</span>
+                                  <span class="s2">", but that is not a valid value. </span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>
+                                  <span class="s2">"Valid values for "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">coordinate</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" are: </span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">ds</span><span class="p">[</span><span class="n">coordinate</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+            <span class="c1"># If Channel coordinate has been reduced from "all" (by yaml</span>
+            <span class="c1"># file) then reset chan_assim/nassim and channo accordingly</span>
+            <span class="k">if</span> <span class="n">coordinate</span> <span class="o">==</span> <span class="s1">'Channel'</span><span class="p">:</span>
+                <span class="n">new_chan_assim</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">new_chan_nassim</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">requested_subset</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">chans_dict</span><span class="p">[</span><span class="s1">'chans_assim'</span><span class="p">]:</span>
+                        <span class="n">new_chan_assim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">chans_dict</span><span class="p">[</span><span class="s1">'chans_nassim'</span><span class="p">]:</span>
+                        <span class="n">new_chan_nassim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_chan_assim</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">requested_subset</span><span class="p">)):</span>
+                    <span class="n">new_chan_assim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_chan_nassim</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">requested_subset</span><span class="p">)):</span>
+                    <span class="n">new_chan_nassim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="n">chans_dict</span><span class="p">[</span><span class="s1">'chan_nums'</span><span class="p">]</span> <span class="o">=</span> <span class="n">requested_subset</span>
+                <span class="n">chans_dict</span><span class="p">[</span><span class="s1">'chans_assim'</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_chan_assim</span>
+                <span class="n">chans_dict</span><span class="p">[</span><span class="s1">'chans_nassim'</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_chan_nassim</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Warning:  requested coordinate, '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">coordinate</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' is not in '</span> <span class="o">+</span>
+                             <span class="s1">' dataset dimensions valid dimensions include '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">dims</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">ds</span><span class="p">,</span> <span class="n">chans_dict</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+    <span class="c1"># Parse control file and return elements in dictionaries</span>
+<div class="viewcode-block" id="MonDataSpace.get_ctl_dict"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace.get_ctl_dict">[docs]</a>    <span class="k">def</span> <span class="nf">get_ctl_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">control_file</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Parse the control file and extract information into dictionaries.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            control_file (str): Path to the control file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary containing various coordinates and information.</span>
+<span class="sd">            dict: Dictionary containing dimension sizes.</span>
+<span class="sd">            dict: Dictionary containing sensor and satellite attributes.</span>
+<span class="sd">            int: Number of variables.</span>
+<span class="sd">            list: List of variable names.</span>
+<span class="sd">            list: List of scan positions.</span>
+<span class="sd">            dict: Dictionary containing channel information.</span>
+<span class="sd">            dict: Dictionary containing level information.</span>
+<span class="sd">        """</span>
+
+        <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'xdef'</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">'ydef'</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">'zdef'</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+        <span class="n">coord_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dims</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'xdef'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'ydef'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'zdef'</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+        <span class="n">dim_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">attribs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'sensor'</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">'sat'</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+        <span class="nb">vars</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">nvars</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">chans_dict</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">channo</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">chan_assim</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">chan_nassim</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">scanpo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">scan_info</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">levs_dict</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">levs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">level_assim</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">level_nassim</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">coord_dict</span> <span class="o">=</span> <span class="p">{</span>
+                     <span class="s1">'channel'</span><span class="p">:</span> <span class="s1">'Channel'</span><span class="p">,</span>
+                     <span class="s1">'scan'</span><span class="p">:</span> <span class="s1">'Scan'</span><span class="p">,</span>
+                     <span class="s1">'pressure'</span><span class="p">:</span> <span class="s1">'Level'</span><span class="p">,</span>
+                     <span class="s1">'region'</span><span class="p">:</span> <span class="s1">'Region'</span><span class="p">,</span>
+                     <span class="s1">'iter'</span><span class="p">:</span> <span class="s1">'Iteration'</span>
+        <span class="p">}</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">control_file</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+
+                <span class="c1"># Locate the coordinates using coord_dict.  There will be 1-3</span>
+                <span class="c1"># coordinates specified as XDEF, YDEF, and ZDEF.</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">coord_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                    <span class="k">if</span> <span class="s1">'DEF'</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">and</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                        <span class="n">coord_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coord_dict</span><span class="p">[</span><span class="n">item</span><span class="p">])</span>
+
+                <span class="c1"># In most cases xdef, ydef, and zdef specify the size of</span>
+                <span class="c1"># the coresponding coordinate.</span>
+                <span class="c1">#</span>
+                <span class="c1"># Scan is different. If xdef coresponds to Scan then the xdef line</span>
+                <span class="c1"># specifies the number of scan steps, starting position, and step size.</span>
+                <span class="c1"># The last 2 are floats.  Add all to scan_info for later use.</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'xdef'</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">strs</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                            <span class="n">dim_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">st</span><span class="p">))</span>
+                        <span class="k">if</span> <span class="n">is_number</span><span class="p">(</span><span class="n">st</span><span class="p">):</span>
+                            <span class="n">scan_info</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'ydef'</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">strs</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                            <span class="n">dim_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">st</span><span class="p">))</span>
+
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'zdef'</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">strs</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                            <span class="n">dim_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">st</span><span class="p">))</span>
+
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'vars'</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">strs</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                            <span class="n">nvars</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'title'</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'conventional'</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'gsistat'</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                        <span class="n">strs</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                        <span class="n">attribs</span><span class="p">[</span><span class="s1">'sensor'</span><span class="p">]</span> <span class="o">=</span> <span class="n">strs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                        <span class="n">attribs</span><span class="p">[</span><span class="s1">'sat'</span><span class="p">]</span> <span class="o">=</span> <span class="n">strs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+                <span class="c1"># Note we need to extract the actual channel numbers.  We have the</span>
+                <span class="c1"># number of channels via the xdef line, but they are not necessarily</span>
+                <span class="c1"># ordered consecutively.</span>
+                <span class="c1">#</span>
+                <span class="c1"># If channel is used then assign channel numbers to the chan_assim and</span>
+                <span class="c1"># chan_nassim arrays based on the channel's iuse setting in the control</span>
+                <span class="c1"># file.  In the file 1 = assimilated, -1 = not assimilated.</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'channel='</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">strs</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">strs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                        <span class="n">channo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">strs</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
+                    <span class="k">if</span> <span class="n">strs</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+                        <span class="n">chan_assim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">strs</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
+                    <span class="k">if</span> <span class="n">strs</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'-1'</span><span class="p">:</span>
+                        <span class="n">chan_nassim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">strs</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
+
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'level='</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">strs</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="n">tlev</span> <span class="o">=</span> <span class="n">strs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">','</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">tlev</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                        <span class="n">levs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tlev</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">strs</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+                        <span class="n">level_assim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tlev</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">strs</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'-1'</span><span class="p">:</span>
+                        <span class="n">level_nassim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tlev</span><span class="p">))</span>
+
+            <span class="c1"># The list of variables is at the end of the file between the lines</span>
+            <span class="c1"># "vars" and "end vars".</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">nvars</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="n">nvars</span><span class="p">):</span>
+                <span class="n">strs</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                <span class="nb">vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">strs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="c1"># Ignore any coordinates in the control file that have a value of 1.</span>
+            <span class="n">used</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">mydef</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"xdef"</span><span class="p">,</span> <span class="s2">"ydef"</span><span class="p">,</span> <span class="s2">"zdef"</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">dim_list</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">coords</span><span class="p">[</span><span class="n">mydef</span><span class="p">[</span><span class="n">used</span><span class="p">]]</span> <span class="o">=</span> <span class="n">coord_list</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+                    <span class="n">dims</span><span class="p">[</span><span class="n">mydef</span><span class="p">[</span><span class="n">used</span><span class="p">]]</span> <span class="o">=</span> <span class="n">dim_list</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+                    <span class="n">used</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="c1"># If Scan is in the coords calculate the scan positions.</span>
+            <span class="c1"># scan_info[0] = num steps, [1] = start position, [2] = step size</span>
+            <span class="k">if</span> <span class="s1">'Scan'</span> <span class="ow">in</span> <span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">scanpo</span> <span class="o">=</span> <span class="p">[(</span><span class="nb">float</span><span class="p">(</span><span class="n">scan_info</span><span class="p">[</span><span class="mi">1</span><span class="p">]))]</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">scan_info</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                    <span class="n">scanpo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">scan_info</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">scan_info</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+
+            <span class="c1"># If Channel is in the coords then pad out the chan_assim adn chan_nassim</span>
+            <span class="c1"># arrays with zeros.  They need to be the correct length to use 'Channel' as</span>
+            <span class="c1"># the dimension.  Also the yaml file can use the 'select where' transform</span>
+            <span class="c1"># to drop all values &lt; 1 and plot only the assim/nassim channel markers.</span>
+            <span class="k">if</span> <span class="s1">'Channel'</span> <span class="ow">in</span> <span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chan_assim</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">channo</span><span class="p">)):</span>
+                    <span class="n">chan_assim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chan_nassim</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">channo</span><span class="p">)):</span>
+                    <span class="n">chan_nassim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">chans_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'chan_nums'</span><span class="p">:</span> <span class="n">channo</span><span class="p">,</span>
+                              <span class="s1">'chans_assim'</span><span class="p">:</span> <span class="n">chan_assim</span><span class="p">,</span>
+                              <span class="s1">'chans_nassim'</span><span class="p">:</span> <span class="n">chan_nassim</span><span class="p">}</span>
+
+            <span class="k">if</span> <span class="s1">'Level'</span> <span class="ow">in</span> <span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">level_assim</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">levs</span><span class="p">)):</span>
+                    <span class="n">level_assim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">level_nassim</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">levs</span><span class="p">)):</span>
+                    <span class="n">level_nassim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">levs_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'levels'</span><span class="p">:</span> <span class="n">levs</span><span class="p">,</span>
+                             <span class="s1">'levels_assim'</span><span class="p">:</span> <span class="n">level_assim</span><span class="p">,</span>
+                             <span class="s1">'levels_nassim'</span><span class="p">:</span> <span class="n">level_nassim</span><span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">coords</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">attribs</span><span class="p">,</span> <span class="n">nvars</span><span class="p">,</span> <span class="nb">vars</span><span class="p">,</span> <span class="n">scanpo</span><span class="p">,</span> <span class="n">levs_dict</span><span class="p">,</span> <span class="n">chans_dict</span></div>
+
+<div class="viewcode-block" id="MonDataSpace.read_ieee"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace.read_ieee">[docs]</a>    <span class="k">def</span> <span class="nf">read_ieee</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">ndims_used</span><span class="p">,</span> <span class="n">dims_arr</span><span class="p">,</span> <span class="n">nvars</span><span class="p">,</span> <span class="nb">vars</span><span class="p">,</span> <span class="n">file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Read data from an IEEE file and arrange it into a numpy array.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_name (str): Name of the IEEE file to read.</span>
+<span class="sd">            coords (dict): Dictionary of coordinates.</span>
+<span class="sd">            dims (dict): Dictionary of dimension sizes.</span>
+<span class="sd">            ndims_used (int): Number of dimensions used.</span>
+<span class="sd">            dims_arr (list): List of dimension names used.</span>
+<span class="sd">            nvars (int): Number of variables.</span>
+<span class="sd">            vars (list): List of variable names.</span>
+<span class="sd">            file_path (str, optional): Path to the directory containing the file. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            numpy.ndarray: Numpy array containing the read data.</span>
+<span class="sd">            datetime.datetime: Cycle time extracted from the filename.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># find cycle time in filename and create cycle_tm as datetime object</span>
+        <span class="n">cycle_tm</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">cycstrs</span> <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">cycstr</span> <span class="ow">in</span> <span class="n">cycstrs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">cycstr</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">())</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cycstr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)):</span>
+                <span class="n">cycle_tm</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">cycstr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">cycstr</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]),</span>
+                                    <span class="nb">int</span><span class="p">(</span><span class="n">cycstr</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">cycstr</span><span class="p">[</span><span class="mi">8</span><span class="p">:]))</span>
+
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span> <span class="k">if</span> <span class="n">file_path</span> <span class="k">else</span> <span class="n">file_name</span>
+
+        <span class="n">load_data</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">FortranFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="s1">'&gt;u4'</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"WARNING:  file </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> is missing"</span><span class="p">)</span>
+            <span class="n">load_data</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">ndims_used</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>		<span class="c1"># MinMon</span>
+            <span class="n">rtn_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">load_data</span><span class="p">:</span>
+                <span class="n">zarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]),</span> <span class="nb">float</span><span class="p">)</span>
+            <span class="n">dimensions</span> <span class="o">=</span> <span class="p">[</span><span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]]</span>
+
+        <span class="k">if</span> <span class="n">ndims_used</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>		<span class="c1"># RadMon time, bcoef, bcor, OznMon time</span>
+            <span class="n">rtn_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]),</span> <span class="nb">float</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">load_data</span><span class="p">:</span>
+                <span class="n">zarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]),</span> <span class="nb">float</span><span class="p">)</span>
+            <span class="n">dimensions</span> <span class="o">=</span> <span class="p">[</span><span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]]</span>
+
+        <span class="k">if</span> <span class="n">ndims_used</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>		<span class="c1"># RadMon angle</span>
+            <span class="n">rtn_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                                  <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]]),</span> <span class="nb">float</span><span class="p">)</span>
+            <span class="n">zarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                               <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]]),</span> <span class="nb">float</span><span class="p">)</span>
+
+            <span class="n">dimensions</span> <span class="o">=</span> <span class="p">[</span><span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]</span>
+
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvars</span><span class="p">):</span>
+
+                <span class="k">if</span> <span class="n">load_data</span><span class="p">:</span>
+                    <span class="c1"># satang variable is not used and a non-standard size</span>
+                    <span class="k">if</span> <span class="nb">vars</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'satang'</span><span class="p">:</span>
+                        <span class="n">skip</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read_reals</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">'&gt;f4'</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dims</span><span class="p">[</span><span class="s1">'xdef'</span><span class="p">],</span>
+                                                                           <span class="n">dims</span><span class="p">[</span><span class="s1">'ydef'</span><span class="p">])</span>
+                        <span class="n">tarr</span> <span class="o">=</span> <span class="n">zarray</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">mylist</span> <span class="o">=</span> <span class="p">[]</span>
+                        <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+                            <span class="n">arr</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read_reals</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">'&gt;f4'</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dims</span><span class="p">[</span><span class="s1">'ydef'</span><span class="p">],</span>
+                                                                              <span class="n">dims</span><span class="p">[</span><span class="s1">'xdef'</span><span class="p">])</span>
+                            <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+                        <span class="n">tarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">tarr</span> <span class="o">=</span> <span class="n">zarray</span>
+                <span class="n">rtn_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rtn_array</span><span class="p">,</span> <span class="p">[</span><span class="n">tarr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>		<span class="c1"># ndims_used == 1|2</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvars</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">load_data</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">ndims_used</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">arr</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read_reals</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">'&gt;f4'</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read_reals</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">'&gt;f4'</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dimensions</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">arr</span> <span class="o">=</span> <span class="n">zarray</span>
+                <span class="n">rtn_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rtn_array</span><span class="p">,</span> <span class="p">[</span><span class="n">arr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">load_data</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">rtn_array</span><span class="p">,</span> <span class="n">cycle_tm</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="MonDataSpace.var_to_np_array"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace.var_to_np_array">[docs]</a>    <span class="k">def</span> <span class="nf">var_to_np_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">ndims_used</span><span class="p">,</span> <span class="n">dims_arr</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Create a numpy array with specified dimensions and fill it with a given value.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dims (dict): Dictionary of dimension sizes.</span>
+<span class="sd">            ndims_used (int): Number of dimensions used.</span>
+<span class="sd">            dims_arr (list): List of dimension names used.</span>
+<span class="sd">            var: Value to fill the array with.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            numpy.ndarray: Numpy array with the requested dimensions and filled with the given</span>
+<span class="sd">            value.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># build numpy array with requested dimensions</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">([[</span><span class="n">var</span><span class="p">]</span> <span class="o">*</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]],</span> <span class="p">(</span><span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]])),</span>
+            <span class="mi">2</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">([[</span><span class="n">var</span><span class="p">]</span> <span class="o">*</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]]</span> <span class="o">*</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                          <span class="p">(</span><span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]])),</span>
+            <span class="mi">3</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">([[</span><span class="n">var</span><span class="p">]</span> <span class="o">*</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]]],</span>
+                          <span class="p">(</span><span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dims</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]]))</span>
+        <span class="p">}</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cycle_arr</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ndims_used</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'ndims_used must be in range of 1-3, value is </span><span class="si">{</span><span class="n">ndims_used</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">cycle_arr</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="MonDataSpace.get_dim_ranges"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace.get_dim_ranges">[docs]</a>    <span class="k">def</span> <span class="nf">get_dim_ranges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">channo</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Get the valid ranges for each dimension based on the specified coordinates and channel</span>
+<span class="sd">        numbers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            coords (dict): Dictionary of coordinates.</span>
+<span class="sd">            dims (dict): Dictionary of dimension sizes.</span>
+<span class="sd">            channo (list): List of channel numbers.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            numpy.ndarray or None: Valid x coordinate range or None.</span>
+<span class="sd">            numpy.ndarray or None: Valid y coordinate range or None.</span>
+<span class="sd">            numpy.ndarray or None: Valid z coordinate range or None.</span>
+<span class="sd">        """</span>
+
+        <span class="n">x_range</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">y_range</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">z_range</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># - Return None for a coordinate that has value 0 or 1.</span>
+        <span class="c1"># - "Channel" can be either the x or y coordinate and can be</span>
+        <span class="c1">#      numbered non-consecutively, which has been captured in channo.</span>
+        <span class="c1"># - The z coordinate is never used for channel.</span>
+
+        <span class="k">if</span> <span class="n">dims</span><span class="p">[</span><span class="s1">'xdef'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">x_range</span> <span class="o">=</span> <span class="n">channo</span> <span class="k">if</span> <span class="n">coords</span><span class="p">[</span><span class="s1">'xdef'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Channel'</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dims</span><span class="p">[</span><span class="s1">'xdef'</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dims</span><span class="p">[</span><span class="s1">'ydef'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y_range</span> <span class="o">=</span> <span class="n">channo</span> <span class="k">if</span> <span class="n">coords</span><span class="p">[</span><span class="s1">'ydef'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Channel'</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dims</span><span class="p">[</span><span class="s1">'ydef'</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dims</span><span class="p">[</span><span class="s1">'zdef'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">z_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dims</span><span class="p">[</span><span class="s1">'zdef'</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">,</span> <span class="n">z_range</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="MonDataSpace.get_ndims_used"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace.get_ndims_used">[docs]</a>    <span class="k">def</span> <span class="nf">get_ndims_used</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Determine the number of dimensions used based on the provided dimension sizes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dims (dict): Dictionary of dimension sizes.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Number of dimensions used.</span>
+<span class="sd">            list: List of dimension names used.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># Some ieee files (ozn) can be 1 or 2 dimensions depending on the</span>
+        <span class="c1"># number of levels used.  Levels is the xdef, Regions is the ydef.</span>
+        <span class="c1"># All Ozn files use ydef, but many have xdef = 1.  The dims_arr[]</span>
+        <span class="c1"># will return the name(s) of the dimensions actually used.</span>
+
+        <span class="c1"># Ignore dims with values of 0 or 1</span>
+        <span class="n">ndims</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span>
+        <span class="n">dims_arr</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndims</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">list</span><span class="p">(</span><span class="n">dims</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="n">x</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">ndims</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dims_arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">dims</span><span class="p">)[</span><span class="n">x</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndims</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="n">dims_arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">dims</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">ndims</span><span class="p">,</span> <span class="n">dims_arr</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="MonDataSpace.load_dset"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace.load_dset">[docs]</a>    <span class="k">def</span> <span class="nf">load_dset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">vars</span><span class="p">,</span> <span class="n">nvars</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">darr</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">ndims_used</span><span class="p">,</span>
+                  <span class="n">dims_arr</span><span class="p">,</span> <span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">,</span> <span class="n">z_range</span><span class="p">,</span> <span class="n">cyc_darr</span><span class="p">,</span> <span class="n">channo</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Create a dataset from various components.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            vars (list): List of variable names.</span>
+<span class="sd">            nvars (int): Number of variables.</span>
+<span class="sd">            coords (dict): Dictionary of coordinates.</span>
+<span class="sd">            darr (numpy.ndarray): Numpy array of data.</span>
+<span class="sd">            dims (dict): Dictionary of dimension sizes.</span>
+<span class="sd">            ndims_used (int): Number of dimensions used.</span>
+<span class="sd">            dims_arr (list): List of dimension names used.</span>
+<span class="sd">            x_range (numpy.ndarray or None): Valid x coordinate range.</span>
+<span class="sd">            y_range (numpy.ndarray or None): Valid y coordinate range.</span>
+<span class="sd">            z_range (numpy.ndarray or None): Valid z coordinate range.</span>
+<span class="sd">            cyc_darr (numpy.ndarray): Numpy array of cycle data.</span>
+<span class="sd">            channo (list): List of channel numbers.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            xarray.Dataset: Created dataset.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># create dataset from file components</span>
+        <span class="n">rtn_ds</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nvars</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">ndims_used</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="nb">vars</span><span class="p">[</span><span class="n">x</span><span class="p">]:</span> <span class="p">{</span><span class="s2">"dims"</span><span class="p">:</span> <span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]),</span> <span class="s2">"data"</span><span class="p">:</span> <span class="n">darr</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="p">:]}</span>
+                <span class="p">}</span>
+            <span class="k">if</span> <span class="n">ndims_used</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="nb">vars</span><span class="p">[</span><span class="n">x</span><span class="p">]:</span> <span class="p">{</span><span class="s2">"dims"</span><span class="p">:</span> <span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]),</span>
+                              <span class="s2">"data"</span><span class="p">:</span> <span class="n">darr</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]}</span>
+                <span class="p">}</span>
+            <span class="k">if</span> <span class="n">ndims_used</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="nb">vars</span><span class="p">[</span><span class="n">x</span><span class="p">]:</span> <span class="p">{</span><span class="s2">"dims"</span><span class="p">:</span> <span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                                       <span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]]),</span>
+                              <span class="s2">"data"</span><span class="p">:</span> <span class="n">darr</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]}</span>
+                <span class="p">}</span>
+
+            <span class="k">if</span> <span class="s1">'Channel'</span> <span class="ow">in</span> <span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">"Channel"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"dims"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"Channel"</span><span class="p">),</span> <span class="s2">"data"</span><span class="p">:</span> <span class="n">channo</span><span class="p">}})</span>
+
+            <span class="n">new_ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+            <span class="n">rtn_ds</span> <span class="o">=</span> <span class="n">new_ds</span> <span class="k">if</span> <span class="n">rtn_ds</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">rtn_ds</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">new_ds</span><span class="p">)</span>
+
+        <span class="c1"># tack on 'cycle' as a variable</span>
+        <span class="c1"># -----------------------------</span>
+        <span class="k">if</span> <span class="n">ndims_used</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">new_cyc</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s1">'cycle'</span><span class="p">:</span> <span class="p">((</span><span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]),</span> <span class="n">cyc_darr</span><span class="p">),</span>
+                <span class="p">},</span>
+                <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]:</span> <span class="n">x_range</span><span class="p">},</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">ndims_used</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">new_cyc</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s1">'cycle'</span><span class="p">:</span> <span class="p">((</span><span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]),</span> <span class="n">cyc_darr</span><span class="p">),</span>
+                <span class="p">},</span>
+                <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]:</span> <span class="n">x_range</span><span class="p">,</span>
+                        <span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]:</span> <span class="n">y_range</span><span class="p">},</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">ndims_used</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">new_cyc</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s1">'cycle'</span><span class="p">:</span> <span class="p">((</span><span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                               <span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]]),</span> <span class="n">cyc_darr</span><span class="p">),</span>
+                <span class="p">},</span>
+                <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]]:</span> <span class="n">x_range</span><span class="p">,</span>
+                        <span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]:</span> <span class="n">y_range</span><span class="p">,</span>
+                        <span class="n">coords</span><span class="p">[</span><span class="n">dims_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]]:</span> <span class="n">z_range</span><span class="p">},</span>
+            <span class="p">)</span>
+
+        <span class="n">rtn_ds</span> <span class="o">=</span> <span class="n">rtn_ds</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">new_cyc</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rtn_ds</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="MonDataSpace.loadConditionalItems"><a class="viewcode-back" href="../../../eva_developer_guide/API/eva.data.html#eva.data.mon_data_space.MonDataSpace.loadConditionalItems">[docs]</a>    <span class="k">def</span> <span class="nf">loadConditionalItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">chans_dict</span><span class="p">,</span> <span class="n">levs_dict</span><span class="p">,</span> <span class="n">scanpo</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Add channel, level, and scan related variables to the dataset.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dataset (xarray.Dataset): Dataset to which variables will be added.</span>
+<span class="sd">            chans_dict (dict): Dictionary of channel components.</span>
+<span class="sd">            levs_dict (dict): Dictionary of level components.</span>
+<span class="sd">            scanpo (list): List of scan positions.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            xarray.Dataset: Dataset with added scan-related variables.</span>
+<span class="sd">        """</span>
+
+        <span class="k">if</span> <span class="n">chans_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dataset</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">'Channel'</span><span class="p">],</span> <span class="n">chans_dict</span><span class="p">[</span><span class="s2">"chan_nums"</span><span class="p">])</span>
+            <span class="n">dataset</span><span class="p">[</span><span class="s1">'chan_yaxis_z'</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">'Channel'</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">chans_dict</span><span class="p">[</span><span class="s2">"chan_nums"</span><span class="p">]))</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chans_dict</span><span class="p">[</span><span class="s2">"chans_assim"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dataset</span><span class="p">[</span><span class="s1">'chan_assim'</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">'Channel'</span><span class="p">],</span> <span class="n">chans_dict</span><span class="p">[</span><span class="s2">"chans_assim"</span><span class="p">])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chans_dict</span><span class="p">[</span><span class="s2">"chans_nassim"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dataset</span><span class="p">[</span><span class="s1">'chan_nassim'</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">'Channel'</span><span class="p">],</span> <span class="n">chans_dict</span><span class="p">[</span><span class="s2">"chans_nassim"</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">levs_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dataset</span><span class="p">[</span><span class="s1">'level'</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">'Level'</span><span class="p">],</span> <span class="n">levs_dict</span><span class="p">[</span><span class="s2">"levels"</span><span class="p">])</span>
+            <span class="n">dataset</span><span class="p">[</span><span class="s1">'level_yaxis_z'</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">'Level'</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">levs_dict</span><span class="p">[</span><span class="s2">"levels"</span><span class="p">]))</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">levs_dict</span><span class="p">[</span><span class="s2">"levels_assim"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dataset</span><span class="p">[</span><span class="s1">'level_assim'</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">'Level'</span><span class="p">],</span> <span class="n">levs_dict</span><span class="p">[</span><span class="s2">"levels_assim"</span><span class="p">])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">levs_dict</span><span class="p">[</span><span class="s2">"levels_nassim"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dataset</span><span class="p">[</span><span class="s1">'level_nassim'</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">'Level'</span><span class="p">],</span> <span class="n">levs_dict</span><span class="p">[</span><span class="s2">"levels_nassim"</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">scanpo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nscan</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Scan'</span><span class="p">)</span>
+            <span class="n">nchan</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Channel'</span><span class="p">)</span>	      <span class="c1"># 'Channel' is always present with 'Scan'</span>
+            <span class="n">scan_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nscan</span><span class="p">,</span> <span class="n">nchan</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nchan</span><span class="p">):</span>
+                <span class="n">scan_array</span><span class="p">[:,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">scanpo</span><span class="p">])</span>
+                <span class="n">dataset</span><span class="p">[</span><span class="s1">'scan'</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span><span class="s1">'Scan'</span><span class="p">,</span> <span class="s1">'Channel'</span><span class="p">],</span> <span class="n">scan_array</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">dataset</span></div></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+</pre></div>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+</div>
+</footer>
+</div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-08-28.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

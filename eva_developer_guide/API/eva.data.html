@@ -1,0 +1,1578 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
+<title>eva.data package —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/sphinx_highlight.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'eva_developer_guide/API/eva.data';</script>
+<link href="../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="eva.plotting.html" rel="next" title="eva.plotting package"/>
+<link href="eva.transforms.html" rel="prev" title="eva.transforms package"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="../../_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<label class="sidebar-toggle secondary-toggle" for="__secondary">
+<span class="fa-solid fa-outdent"></span>
+</label>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Eva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eva_design_principles.html">Design principles for eva</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting_started/index.html">Getting started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_hpc.html">Existing installations on supported HPCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/using_eva.html">Using Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_yaml.html">Eva and YAML files</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eva_user_guide/index.html">Eva user guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/data_ingest/index.html">Eva data ingest classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/cubed_sphere_restart.html">Cubed sphere restart ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/gsi_obs_space.html">GSI observaton space (ncdiag) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/ioda_obs_space.html">IODA observaton space (netCDF) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/jedi_log.html">JEDI log files ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/lat_lon.html">Basic latitude-longitude netCDF ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/mon_data_space.html">Monitor data space (NCEP legacy) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/soca_restart.html">SOCA restart ingest class</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/transforms/index.html">Eva transform classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/accept_where.html">Accept where</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/channel_stats.html">Channel statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/select_time.html">Select time</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/index.html">Eva plotting backends</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/index.html">Batch plotting using EMCPy backend</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/emcpy.html">EMCPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/batch_plotting.html">Batch Plotting and Using EMCPy Backend for eva</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/index.html">Interactive plotting using hvPlot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Eva_Interactive_Intro.html">Eva Interactive Intro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Plotting_Options.html">Plotting Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Eva developer guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../developer_best_practices/index.html">Developer best practices</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/documentation.html">Writing documentation and building the site locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/github_actions.html">Automated testing with GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../eva_components/index.html">Eva components</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/config.html">Config class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/logger.html">Logger class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/timing.html">Timing Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/data_collections.html">Data collections class for holding data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">API Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">eva.data package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="eva.plotting.html">eva.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Eva Developer Guide</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">API Documentation</a></li>
+<li aria-current="page" class="breadcrumb-item active">eva.data package</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="eva-data-package">
+<h1>eva.data package<a class="headerlink" href="#eva-data-package" title="Permalink to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-eva.data.cubed_sphere_restart">
+<span id="eva-data-cubed-sphere-restart-module"></span><h2>eva.data.cubed_sphere_restart module<a class="headerlink" href="#module-eva.data.cubed_sphere_restart" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.cubed_sphere_restart.CubedSphereRestart">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.cubed_sphere_restart.</span></span><span class="sig-name descname"><span class="pre">CubedSphereRestart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/cubed_sphere_restart.html#CubedSphereRestart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.cubed_sphere_restart.CubedSphereRestart" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eva.data.eva_dataset_base.EvaDatasetBase" title="eva.data.eva_dataset_base.EvaDatasetBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EvaDatasetBase</span></code></a></p>
+<p>A class for handling Cubed Sphere Restart data.</p>
+<p>Initialize the base class for eva dataset objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eva_class_name</strong> (<em>str</em>) – Name of the eva class to instantiate.</p></li>
+<li><p><strong>eva_logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.cubed_sphere_restart.CubedSphereRestart.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/cubed_sphere_restart.html#CubedSphereRestart.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.cubed_sphere_restart.CubedSphereRestart.execute" title="Permalink to this definition">#</a></dt>
+<dd><p>Executes the processing of Cubed Sphere Restart data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_config</strong> (<em>dict</em>) – Configuration dictionary for the dataset.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – Object for managing data collections.</p></li>
+<li><p><strong>timing</strong> – Timing object for tracking execution time.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.cubed_sphere_restart.CubedSphereRestart.generate_default_config">
+<span class="sig-name descname"><span class="pre">generate_default_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/cubed_sphere_restart.html#CubedSphereRestart.generate_default_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.cubed_sphere_restart.CubedSphereRestart.generate_default_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a default configuration for Cubed Sphere Restart data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filenames</strong> (<em>list</em>) – List of file names.</p></li>
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the data collection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Default configuration dictionary.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.cubed_sphere_restart.read_fms_tiles">
+<span class="sig-prename descclassname"><span class="pre">eva.data.cubed_sphere_restart.</span></span><span class="sig-name descname"><span class="pre">read_fms_tiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/cubed_sphere_restart.html#read_fms_tiles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.cubed_sphere_restart.read_fms_tiles" title="Permalink to this definition">#</a></dt>
+<dd><p>Given a list of FMS netCDF files and a variable name,
+stitches the files together into an N+1 dimension variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>files</strong> (<em>list</em>) – List of netCDF file paths.</p></li>
+<li><p><strong>variable</strong> (<em>str</em>) – Name of the variable to extract.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger object for logging messages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Combined variable array from input files.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.data_collections">
+<span id="eva-data-data-collections-module"></span><h2>eva.data.data_collections module<a class="headerlink" href="#module-eva.data.data_collections" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.data_collections.</span></span><span class="sig-name descname"><span class="pre">DataCollections</span></span><a class="reference internal" href="../../_modules/eva/data/data_collections.html#DataCollections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manage collections of xarray Datasets with variable manipulations.</p>
+<p>Initialize the DataCollections instance.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.add_variable_to_collection">
+<span class="sig-name descname"><span class="pre">add_variable_to_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/data_collections.html#DataCollections.add_variable_to_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.add_variable_to_collection" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a new variable to a collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the collection to add the variable to.</p></li>
+<li><p><strong>group_name</strong> (<em>str</em>) – Name of the group where the variable belongs.</p></li>
+<li><p><strong>variable_name</strong> (<em>str</em>) – Name of the variable.</p></li>
+<li><p><strong>variable</strong> (<em>DataArray</em>) – The xarray DataArray to add.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If variable is not an xarray DataArray.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.adjust_channel_dimension_name">
+<span class="sig-name descname"><span class="pre">adjust_channel_dimension_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_dimension_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/data_collections.html#DataCollections.adjust_channel_dimension_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.adjust_channel_dimension_name" title="Permalink to this definition">#</a></dt>
+<dd><p>Adjust the name of the channel dimension in all collections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>channel_dimension_name</strong> (<em>str</em>) – New name for the channel dimension.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.adjust_location_dimension_name">
+<span class="sig-name descname"><span class="pre">adjust_location_dimension_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location_dimension_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/data_collections.html#DataCollections.adjust_location_dimension_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.adjust_location_dimension_name" title="Permalink to this definition">#</a></dt>
+<dd><p>Adjust the name of the location dimension in all collections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>location_dimension_name</strong> (<em>str</em>) – New name for the location dimension.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.create_or_add_to_collection">
+<span class="sig-name descname"><span class="pre">create_or_add_to_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat_dimension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/data_collections.html#DataCollections.create_or_add_to_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.create_or_add_to_collection" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a new collection or add to an existing collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the collection.</p></li>
+<li><p><strong>collection</strong> (<em>Dataset</em>) – The xarray Dataset to add or create.</p></li>
+<li><p><strong>concat_dimension</strong> (<em>str</em>) – Dimension along which to concatenate if adding to an existing</p></li>
+<li><p><strong>collection.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If collection is not an xarray Dataset.</p></li>
+<li><p><strong>ValueError</strong> – If an existing empty collection with the same name is detected.</p></li>
+<li><p><strong>ValueError</strong> – If concatenation dimension is missing or invalid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.display_collections">
+<span class="sig-name descname"><span class="pre">display_collections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/data_collections.html#DataCollections.display_collections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.display_collections" title="Permalink to this definition">#</a></dt>
+<dd><p>Display information about available collections, groups, and variables.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.get_variable_data">
+<span class="sig-name descname"><span class="pre">get_variable_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/data_collections.html#DataCollections.get_variable_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.get_variable_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieve the data of a specific variable from a collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the collection.</p></li>
+<li><p><strong>group_name</strong> (<em>str</em>) – Name of the group where the variable belongs.</p></li>
+<li><p><strong>variable_name</strong> (<em>str</em>) – Name of the variable.</p></li>
+<li><p><strong>channels</strong> (<em>int</em><em> or </em><em>list</em><em>[</em><em>int</em><em>]</em>) – Indices of channels to select (optional).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The selected variable data as a NumPy array.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.get_variable_data_array">
+<span class="sig-name descname"><span class="pre">get_variable_data_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/data_collections.html#DataCollections.get_variable_data_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.get_variable_data_array" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieve a specific variable (as a DataArray) from a collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the collection.</p></li>
+<li><p><strong>group_name</strong> (<em>str</em>) – Name of the group where the variable belongs.</p></li>
+<li><p><strong>variable_name</strong> (<em>str</em>) – Name of the variable.</p></li>
+<li><p><strong>channels</strong> (<em>int</em><em> or </em><em>list</em><em>[</em><em>int</em><em>]</em>) – Indices of channels to select (optional).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The selected variable as an xarray DataArray.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataArray</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If channels are provided but the ‘Channel’ dimension is missing.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.nan_float_values_outside_threshold">
+<span class="sig-name descname"><span class="pre">nan_float_values_outside_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cgv_to_screen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/data_collections.html#DataCollections.nan_float_values_outside_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.nan_float_values_outside_threshold" title="Permalink to this definition">#</a></dt>
+<dd><p>Set values outside a threshold to NaN in selected collections, groups, and variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> (<em>float</em>) – Threshold value for screening.</p></li>
+<li><p><strong>cgv_to_screen</strong> (<em>str</em>) – Collection, group, and variable to screen (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.data_collections.DataCollections.validate_names">
+<span class="sig-name descname"><span class="pre">validate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/data_collections.html#DataCollections.validate_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_collections.DataCollections.validate_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Validate naming conventions for collections, groups, and variables.</p>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.data_driver">
+<span id="eva-data-data-driver-module"></span><h2>eva.data.data_driver module<a class="headerlink" href="#module-eva.data.data_driver" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.data_driver.data_driver">
+<span class="sig-prename descclassname"><span class="pre">eva.data.data_driver.</span></span><span class="sig-name descname"><span class="pre">data_driver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/data_driver.html#data_driver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.data_driver.data_driver" title="Permalink to this definition">#</a></dt>
+<dd><p>Driver for executing data processing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – Configuration settings for data processing.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – Instance of the DataCollections class.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.eva_dataset_base">
+<span id="eva-data-eva-dataset-base-module"></span><h2>eva.data.eva_dataset_base module<a class="headerlink" href="#module-eva.data.eva_dataset_base" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.eva_dataset_base.EvaDatasetBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.eva_dataset_base.</span></span><span class="sig-name descname"><span class="pre">EvaDatasetBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/eva_dataset_base.html#EvaDatasetBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_dataset_base.EvaDatasetBase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract base class for EVA dataset objects.</p>
+<p>Initialize the base class for eva dataset objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eva_class_name</strong> (<em>str</em>) – Name of the eva class to instantiate.</p></li>
+<li><p><strong>eva_logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.eva_dataset_base.EvaDatasetBase.execute">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/eva_dataset_base.html#EvaDatasetBase.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_dataset_base.EvaDatasetBase.execute" title="Permalink to this definition">#</a></dt>
+<dd><p>Execute the dataset processing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – Configuration settings for dataset processing.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – Instance of the DataCollections class.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.eva_dataset_base.EvaDatasetBase.generate_default_config">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_default_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/eva_dataset_base.html#EvaDatasetBase.generate_default_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_dataset_base.EvaDatasetBase.generate_default_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate the default configuration for the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filenames</strong> (<em>list</em>) – List of filenames associated with the dataset.</p></li>
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the collection.</p></li>
+<li><p><strong>control_file</strong> (<em>str</em>) – Path to the control file (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.eva_dataset_base.EvaDatasetFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.eva_dataset_base.</span></span><span class="sig-name descname"><span class="pre">EvaDatasetFactory</span></span><a class="reference internal" href="../../_modules/eva/data/eva_dataset_base.html#EvaDatasetFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_dataset_base.EvaDatasetFactory" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Factory class for creating eva data ingest objects.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.eva_dataset_base.EvaDatasetFactory.create_eva_object">
+<span class="sig-name descname"><span class="pre">create_eva_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_group_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/eva_dataset_base.html#EvaDatasetFactory.create_eva_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.eva_dataset_base.EvaDatasetFactory.create_eva_object" title="Permalink to this definition">#</a></dt>
+<dd><p>Create an eva dataset ingest object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eva_class_name</strong> (<em>str</em>) – Name of the EVA class.</p></li>
+<li><p><strong>eva_group_name</strong> (<em>str</em>) – Name of the EVA group.</p></li>
+<li><p><strong>eva_logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An instance of the specified EVA dataset class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#eva.data.eva_dataset_base.EvaDatasetBase" title="eva.data.eva_dataset_base.EvaDatasetBase">EvaDatasetBase</a></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.gsi_obs_space">
+<span id="eva-data-gsi-obs-space-module"></span><h2>eva.data.gsi_obs_space module<a class="headerlink" href="#module-eva.data.gsi_obs_space" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.GsiObsSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.gsi_obs_space.</span></span><span class="sig-name descname"><span class="pre">GsiObsSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/gsi_obs_space.html#GsiObsSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.GsiObsSpace" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eva.data.eva_dataset_base.EvaDatasetBase" title="eva.data.eva_dataset_base.EvaDatasetBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EvaDatasetBase</span></code></a></p>
+<p>Eva dataset class for processing GSI observation space data.</p>
+<p>Initialize the base class for eva dataset objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eva_class_name</strong> (<em>str</em>) – Name of the eva class to instantiate.</p></li>
+<li><p><strong>eva_logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.GsiObsSpace.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/gsi_obs_space.html#GsiObsSpace.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.GsiObsSpace.execute" title="Permalink to this definition">#</a></dt>
+<dd><p>Execute the GSI observation space data processing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_config</strong> (<em>dict</em>) – Configuration settings for the dataset processing.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – Instance of the DataCollections class.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.GsiObsSpace.generate_default_config">
+<span class="sig-name descname"><span class="pre">generate_default_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/gsi_obs_space.html#GsiObsSpace.generate_default_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.GsiObsSpace.generate_default_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate the default configuration for the GSI observation space dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filenames</strong> (<em>list</em>) – List of filenames associated with the dataset.</p></li>
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the collection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Default configuration settings for the dataset.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.all_equal">
+<span class="sig-prename descclassname"><span class="pre">eva.data.gsi_obs_space.</span></span><span class="sig-name descname"><span class="pre">all_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/gsi_obs_space.html#all_equal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.all_equal" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if all elements in an iterable are equal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>iterable</strong> – An iterable object to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if all elements are equal, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.satellite_dataset">
+<span class="sig-prename descclassname"><span class="pre">eva.data.gsi_obs_space.</span></span><span class="sig-name descname"><span class="pre">satellite_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/gsi_obs_space.html#satellite_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.satellite_dataset" title="Permalink to this definition">#</a></dt>
+<dd><p>Build a new dataset to reshape satellite data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ds</strong> (<em>Dataset</em>) – The input xarray Dataset.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Reshaped xarray Dataset.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.subset_channels">
+<span class="sig-prename descclassname"><span class="pre">eva.data.gsi_obs_space.</span></span><span class="sig-name descname"><span class="pre">subset_channels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_channels_variable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/gsi_obs_space.html#subset_channels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.subset_channels" title="Permalink to this definition">#</a></dt>
+<dd><p>Subset the dataset based on specified channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>Dataset</em>) – The xarray Dataset to subset.</p></li>
+<li><p><strong>channels</strong> (<em>list</em>) – List of channel numbers to keep.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+<li><p><strong>add_channels_variable</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to add ‘channelNumber’ variable. Default is</p></li>
+<li><p><strong>False.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.gsi_obs_space.uv">
+<span class="sig-prename descclassname"><span class="pre">eva.data.gsi_obs_space.</span></span><span class="sig-name descname"><span class="pre">uv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_vars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/gsi_obs_space.html#uv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.gsi_obs_space.uv" title="Permalink to this definition">#</a></dt>
+<dd><p>Add ‘uv’ prefix to specified variables if present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group_vars</strong> (<em>list</em>) – List of variable names.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of variable names with ‘uv’ prefix added.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.ioda_obs_space">
+<span id="eva-data-ioda-obs-space-module"></span><h2>eva.data.ioda_obs_space module<a class="headerlink" href="#module-eva.data.ioda_obs_space" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.ioda_obs_space.IodaObsSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.ioda_obs_space.</span></span><span class="sig-name descname"><span class="pre">IodaObsSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/ioda_obs_space.html#IodaObsSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.ioda_obs_space.IodaObsSpace" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eva.data.eva_dataset_base.EvaDatasetBase" title="eva.data.eva_dataset_base.EvaDatasetBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EvaDatasetBase</span></code></a></p>
+<p>A class for executing data collection processing using IODA observation space.</p>
+<p>This class inherits from <cite>EvaDatasetBase</cite> and implements the execute method to read the data
+and process into the eva data collection format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EvaDatasetBase</strong> (<em>class</em>) – The base class for dataset processing.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">N/A</span></span></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.ioda_obs_space.IodaObsSpace.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/ioda_obs_space.html#IodaObsSpace.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.ioda_obs_space.IodaObsSpace.execute" title="Permalink to this definition">#</a></dt>
+<dd><p>Executes data read and transition to data collection for IODA observation space.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.ioda_obs_space.IodaObsSpace.generate_default_config">
+<span class="sig-name descname"><span class="pre">generate_default_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/ioda_obs_space.html#IodaObsSpace.generate_default_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.ioda_obs_space.IodaObsSpace.generate_default_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a default configuration dictionary for IODA observation space, used for
+more easily accessing the class interactively.</p>
+</dd></dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The class inherits from <cite>EvaDatasetBase</cite> and extends its functionality.</p></li>
+<li><p>(Additional notes, if applicable)</p></li>
+</ul>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate the class</span>
+<span class="n">ioda_instance</span> <span class="o">=</span> <span class="n">IodaObsSpace</span><span class="p">()</span>
+
+<span class="c1"># Execute data collection processing using IODA observation space</span>
+<span class="n">ioda_instance</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timing</span><span class="p">)</span>
+
+<span class="c1"># Generate a default configuration dictionary for IODA observation space</span>
+<span class="n">default_config</span> <span class="o">=</span> <span class="n">ioda_instance</span><span class="o">.</span><span class="n">generate_default_config</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize the base class for eva dataset objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eva_class_name</strong> (<em>str</em>) – Name of the eva class to instantiate.</p></li>
+<li><p><strong>eva_logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/ioda_obs_space.html#IodaObsSpace.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dd><p>Executes data collection processing using IODA observation space.</p>
+<p>This method reads and processes data based on the provided configuration, which contains
+file names, variables etc. It iterates over files, groups, and variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_config</strong> (<em>dict</em>) – Configuration settings for the dataset.</p></li>
+<li><p><strong>data_collections</strong> (<em>DataCollection</em>) – The data collection to store read data.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing information for profiling.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>This method operates on instance-specific attributes.</p></li>
+</ul>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate the class</span>
+<span class="n">ioda_instance</span> <span class="o">=</span> <span class="n">IodaObsSpace</span><span class="p">()</span>
+
+<span class="c1"># Execute data collection processing using IODA observation space</span>
+<span class="n">ioda_instance</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">dataset_config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timing</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">generate_default_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/ioda_obs_space.html#IodaObsSpace.generate_default_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a default configuration dictionary for IODA observation space.</p>
+<p>This method generates a default configuration dictionary for IODA observation space. It sets
+default values for file names, groups, missing value threshold, and collection name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filenames</strong> (<em>list</em>) – List of filenames for the data collection.</p></li>
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the data collection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing default configuration settings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>This method operates on instance-specific attributes.</p></li>
+</ul>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate the class</span>
+<span class="n">ioda_instance</span> <span class="o">=</span> <span class="n">IodaObsSpace</span><span class="p">()</span>
+
+<span class="c1"># Generate a default configuration dictionary for IODA observation space</span>
+<span class="n">default_config</span> <span class="o">=</span> <span class="n">ioda_instance</span><span class="o">.</span><span class="n">generate_default_config</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span>
+                                                       <span class="n">collection_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.ioda_obs_space.subset_channels">
+<span class="sig-prename descclassname"><span class="pre">eva.data.ioda_obs_space.</span></span><span class="sig-name descname"><span class="pre">subset_channels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/ioda_obs_space.html#subset_channels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.ioda_obs_space.subset_channels" title="Permalink to this definition">#</a></dt>
+<dd><p>Subsets a dataset to include specific channels, if provided.</p>
+<p>This function subsets a dataset based on the provided channel numbers.
+It can be used to retain only a subset of channels from the dataset while potentially
+resetting the dimension in the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xarray.Dataset</em>) – The input dataset to be subsetted.</p></li>
+<li><p><strong>channels</strong> (<em>list-like</em>) – List of channel numbers to retain.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The subsetted dataset containing only the specified channels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xarray.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>If the dataset contains a dimension named ‘Channel’, the function
+will attempt to subset based on this dimension.</p></li>
+<li><p>If no ‘channels’ are provided, all channels in the dataset will be retained.</p></li>
+<li><p>If the number of requested channels is less than the number of channels in
+the dataset, the function will perform the subset operation.</p></li>
+</ul>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subset the dataset 'data' to include only channels 1, 5 and 10:</span>
+<span class="n">subset_ds</span> <span class="o">=</span> <span class="n">subset_channels</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.data.jedi_log">
+<span id="eva-data-jedi-log-module"></span><h2>eva.data.jedi_log module<a class="headerlink" href="#module-eva.data.jedi_log" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.jedi_log.</span></span><span class="sig-name descname"><span class="pre">JediLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/jedi_log.html#JediLog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eva.data.eva_dataset_base.EvaDatasetBase" title="eva.data.eva_dataset_base.EvaDatasetBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EvaDatasetBase</span></code></a></p>
+<p>A class for handling Jedi log data.</p>
+<p>Initialize the base class for eva dataset objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eva_class_name</strong> (<em>str</em>) – Name of the eva class to instantiate.</p></li>
+<li><p><strong>eva_logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/jedi_log.html#JediLog.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog.execute" title="Permalink to this definition">#</a></dt>
+<dd><p>Executes the processing of Jedi log data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_config</strong> (<em>dict</em>) – Configuration dictionary for the dataset.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – Object for managing data collections.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing object for tracking execution time.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog.generate_default_config">
+<span class="sig-name descname"><span class="pre">generate_default_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/jedi_log.html#JediLog.generate_default_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog.generate_default_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a default configuration for Jedi log data ingest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filenames</strong> (<em>list</em>) – List of file names.</p></li>
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the data collection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Default configuration dictionary.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog.get_from_log">
+<span class="sig-name descname"><span class="pre">get_from_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/jedi_log.html#JediLog.get_from_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog.get_from_log" title="Permalink to this definition">#</a></dt>
+<dd><p>Searches the Jedi log for a specified term and extracts the corresponding data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>search_term</strong> (<em>str</em>) – Search term to look for in the Jedi log.</p></li>
+<li><p><strong>separator</strong> (<em>str</em>) – Separator used to split the log line.</p></li>
+<li><p><strong>position</strong> (<em>int</em>) – Position of the desired data after splitting.</p></li>
+<li><p><strong>custom_log</strong> – Custom log to search in (optional).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Extracted data value or None if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog.get_matching_chunks">
+<span class="sig-name descname"><span class="pre">get_matching_chunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_terms</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/jedi_log.html#JediLog.get_matching_chunks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog.get_matching_chunks" title="Permalink to this definition">#</a></dt>
+<dd><p>Finds log chunks that match a list of search terms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>search_terms</strong> (<em>list</em>) – List of search terms to match in log chunks.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of matching log chunks.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.jedi_log.JediLog.parse_convergence">
+<span class="sig-name descname"><span class="pre">parse_convergence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/jedi_log.html#JediLog.parse_convergence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.JediLog.parse_convergence" title="Permalink to this definition">#</a></dt>
+<dd><p>Parses convergence data from the Jedi log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dataset containing the parsed convergence data.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.jedi_log.get_data_from_line">
+<span class="sig-prename descclassname"><span class="pre">eva.data.jedi_log.</span></span><span class="sig-name descname"><span class="pre">get_data_from_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jedi_log_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/jedi_log.html#get_data_from_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.jedi_log.get_data_from_line" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts data from a line in a Jedi log based on the specified search term,
+separator, and position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jedi_log_line</strong> (<em>str</em>) – Line from the Jedi log.</p></li>
+<li><p><strong>search_term</strong> (<em>str</em>) – Search term to look for in the line.</p></li>
+<li><p><strong>separator</strong> (<em>str</em>) – Separator used to split the line.</p></li>
+<li><p><strong>position</strong> (<em>int</em>) – Position of the desired data after splitting.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Extracted data value or None if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.lat_lon">
+<span id="eva-data-lat-lon-module"></span><h2>eva.data.lat_lon module<a class="headerlink" href="#module-eva.data.lat_lon" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.lat_lon.LatLon">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.lat_lon.</span></span><span class="sig-name descname"><span class="pre">LatLon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/lat_lon.html#LatLon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.lat_lon.LatLon" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eva.data.eva_dataset_base.EvaDatasetBase" title="eva.data.eva_dataset_base.EvaDatasetBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EvaDatasetBase</span></code></a></p>
+<p>A class for handling LatLon dataset configuration and processing.</p>
+<p>Initialize the base class for eva dataset objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eva_class_name</strong> (<em>str</em>) – Name of the eva class to instantiate.</p></li>
+<li><p><strong>eva_logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.lat_lon.LatLon.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/lat_lon.html#LatLon.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.lat_lon.LatLon.execute" title="Permalink to this definition">#</a></dt>
+<dd><p>Executes the processing of LatLon dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_config</strong> (<em>dict</em>) – Configuration dictionary for the dataset.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – Object for managing data collections.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing object for tracking execution time.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.lat_lon.LatLon.generate_default_config">
+<span class="sig-name descname"><span class="pre">generate_default_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/lat_lon.html#LatLon.generate_default_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.lat_lon.LatLon.generate_default_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a default configuration for LatLon dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filenames</strong> (<em>list</em>) – List of file names.</p></li>
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the data collection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Default configuration dictionary.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.mon_data_space">
+<span id="eva-data-mon-data-space-module"></span><h2>eva.data.mon_data_space module<a class="headerlink" href="#module-eva.data.mon_data_space" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.mon_data_space.</span></span><span class="sig-name descname"><span class="pre">MonDataSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eva.data.eva_dataset_base.EvaDatasetBase" title="eva.data.eva_dataset_base.EvaDatasetBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EvaDatasetBase</span></code></a></p>
+<p>A class for handling MonDataSpace dataset configuration and processing.</p>
+<p>Initialize the base class for eva dataset objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eva_class_name</strong> (<em>str</em>) – Name of the eva class to instantiate.</p></li>
+<li><p><strong>eva_logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.execute" title="Permalink to this definition">#</a></dt>
+<dd><p>Executes the processing of MonDataSpace dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_config</strong> (<em>dict</em>) – Configuration dictionary for the dataset.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – Object for managing data collections.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing object for tracking execution time.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.generate_default_config">
+<span class="sig-name descname"><span class="pre">generate_default_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace.generate_default_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.generate_default_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a default configuration for MonDataSpace dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filenames</strong> (<em>list</em>) – List of file names.</p></li>
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the data collection.</p></li>
+<li><p><strong>control_file</strong> (<em>str</em>) – Path to the control file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Default configuration dictionary.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.get_ctl_dict">
+<span class="sig-name descname"><span class="pre">get_ctl_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace.get_ctl_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.get_ctl_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Parse the control file and extract information into dictionaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>control_file</strong> (<em>str</em>) – Path to the control file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing various coordinates and information.
+dict: Dictionary containing dimension sizes.
+dict: Dictionary containing sensor and satellite attributes.
+int: Number of variables.
+list: List of variable names.
+list: List of scan positions.
+dict: Dictionary containing channel information.
+dict: Dictionary containing level information.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.get_dim_ranges">
+<span class="sig-name descname"><span class="pre">get_dim_ranges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace.get_dim_ranges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.get_dim_ranges" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the valid ranges for each dimension based on the specified coordinates and channel
+numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coords</strong> (<em>dict</em>) – Dictionary of coordinates.</p></li>
+<li><p><strong>dims</strong> (<em>dict</em>) – Dictionary of dimension sizes.</p></li>
+<li><p><strong>channo</strong> (<em>list</em>) – List of channel numbers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Valid x coordinate range or None.
+numpy.ndarray or None: Valid y coordinate range or None.
+numpy.ndarray or None: Valid z coordinate range or None.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or None</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.get_ndims_used">
+<span class="sig-name descname"><span class="pre">get_ndims_used</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dims</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace.get_ndims_used"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.get_ndims_used" title="Permalink to this definition">#</a></dt>
+<dd><p>Determine the number of dimensions used based on the provided dimension sizes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dims</strong> (<em>dict</em>) – Dictionary of dimension sizes.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of dimensions used.
+list: List of dimension names used.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.loadConditionalItems">
+<span class="sig-name descname"><span class="pre">loadConditionalItems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chans_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levs_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scanpo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace.loadConditionalItems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.loadConditionalItems" title="Permalink to this definition">#</a></dt>
+<dd><p>Add channel, level, and scan related variables to the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>xarray.Dataset</em>) – Dataset to which variables will be added.</p></li>
+<li><p><strong>chans_dict</strong> (<em>dict</em>) – Dictionary of channel components.</p></li>
+<li><p><strong>levs_dict</strong> (<em>dict</em>) – Dictionary of level components.</p></li>
+<li><p><strong>scanpo</strong> (<em>list</em>) – List of scan positions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset with added scan-related variables.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xarray.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.load_dset">
+<span class="sig-name descname"><span class="pre">load_dset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nvars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">darr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndims_used</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cyc_darr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace.load_dset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.load_dset" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a dataset from various components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vars</strong> (<em>list</em>) – List of variable names.</p></li>
+<li><p><strong>nvars</strong> (<em>int</em>) – Number of variables.</p></li>
+<li><p><strong>coords</strong> (<em>dict</em>) – Dictionary of coordinates.</p></li>
+<li><p><strong>darr</strong> (<em>numpy.ndarray</em>) – Numpy array of data.</p></li>
+<li><p><strong>dims</strong> (<em>dict</em>) – Dictionary of dimension sizes.</p></li>
+<li><p><strong>ndims_used</strong> (<em>int</em>) – Number of dimensions used.</p></li>
+<li><p><strong>dims_arr</strong> (<em>list</em>) – List of dimension names used.</p></li>
+<li><p><strong>x_range</strong> (<em>numpy.ndarray</em><em> or </em><em>None</em>) – Valid x coordinate range.</p></li>
+<li><p><strong>y_range</strong> (<em>numpy.ndarray</em><em> or </em><em>None</em>) – Valid y coordinate range.</p></li>
+<li><p><strong>z_range</strong> (<em>numpy.ndarray</em><em> or </em><em>None</em>) – Valid z coordinate range.</p></li>
+<li><p><strong>cyc_darr</strong> (<em>numpy.ndarray</em>) – Numpy array of cycle data.</p></li>
+<li><p><strong>channo</strong> (<em>list</em>) – List of channel numbers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Created dataset.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xarray.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.read_ieee">
+<span class="sig-name descname"><span class="pre">read_ieee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndims_used</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nvars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace.read_ieee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.read_ieee" title="Permalink to this definition">#</a></dt>
+<dd><p>Read data from an IEEE file and arrange it into a numpy array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_name</strong> (<em>str</em>) – Name of the IEEE file to read.</p></li>
+<li><p><strong>coords</strong> (<em>dict</em>) – Dictionary of coordinates.</p></li>
+<li><p><strong>dims</strong> (<em>dict</em>) – Dictionary of dimension sizes.</p></li>
+<li><p><strong>ndims_used</strong> (<em>int</em>) – Number of dimensions used.</p></li>
+<li><p><strong>dims_arr</strong> (<em>list</em>) – List of dimension names used.</p></li>
+<li><p><strong>nvars</strong> (<em>int</em>) – Number of variables.</p></li>
+<li><p><strong>vars</strong> (<em>list</em>) – List of variable names.</p></li>
+<li><p><strong>file_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the directory containing the file. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Numpy array containing the read data.
+datetime.datetime: Cycle time extracted from the filename.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.subset_coordinate">
+<span class="sig-name descname"><span class="pre">subset_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_subset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chans_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace.subset_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.subset_coordinate" title="Permalink to this definition">#</a></dt>
+<dd><p>Subset the input dataset along the specified coordinate dimension and update channel
+information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xarray.Dataset</em>) – Input dataset to be subset.</p></li>
+<li><p><strong>coordinate</strong> (<em>str</em>) – Name of the coordinate dimension to subset.</p></li>
+<li><p><strong>requested_subset</strong> (<em>list</em>) – List of values to keep along the specified coordinate.</p></li>
+<li><p><strong>chans_dict</strong> (<em>dict</em>) – Dictionary of channel components.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Subset of the input dataset.
+chans_dict (dict): Updated dictionary of channel components.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xarray.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.mon_data_space.MonDataSpace.var_to_np_array">
+<span class="sig-name descname"><span class="pre">var_to_np_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndims_used</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/mon_data_space.html#MonDataSpace.var_to_np_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.mon_data_space.MonDataSpace.var_to_np_array" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a numpy array with specified dimensions and fill it with a given value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dims</strong> (<em>dict</em>) – Dictionary of dimension sizes.</p></li>
+<li><p><strong>ndims_used</strong> (<em>int</em>) – Number of dimensions used.</p></li>
+<li><p><strong>dims_arr</strong> (<em>list</em>) – List of dimension names used.</p></li>
+<li><p><strong>var</strong> – Value to fill the array with.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Numpy array with the requested dimensions and filled with the given
+value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-eva.data.soca_restart">
+<span id="eva-data-soca-restart-module"></span><h2>eva.data.soca_restart module<a class="headerlink" href="#module-eva.data.soca_restart" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.data.soca_restart.SocaRestart">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.data.soca_restart.</span></span><span class="sig-name descname"><span class="pre">SocaRestart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/soca_restart.html#SocaRestart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.soca_restart.SocaRestart" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eva.data.eva_dataset_base.EvaDatasetBase" title="eva.data.eva_dataset_base.EvaDatasetBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EvaDatasetBase</span></code></a></p>
+<p>A class for reading and processing SOCA restart data.</p>
+<p>This class inherits from <cite>EvaDatasetBase</cite> and provides methods to read and process SOCA restart
+data, including orographic fields and SOCA variables. The processed data is added to the data
+collections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EvaDatasetBase</strong> (<em>class</em>) – The base class for EVITA dataset operations.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.soca_restart.SocaRestart.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/soca_restart.html#SocaRestart.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.soca_restart.SocaRestart.execute" title="Permalink to this definition">#</a></dt>
+<dd><p>Process SOCA restart data and add it to the data collections.
+:param dataset_config: Configuration for the dataset.
+:type dataset_config: dict
+:param data_collections: Data collections to which the processed data
+:type data_collections: EvaDataCollections
+:param will be added.:
+:param timing: Timing information.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.data.soca_restart.SocaRestart.generate_default_config">
+<span class="sig-name descname"><span class="pre">generate_default_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/soca_restart.html#SocaRestart.generate_default_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.soca_restart.SocaRestart.generate_default_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate the default configuration for the dataset.
+:param filenames: Filenames.
+:param collection_name: Name of the collection.</p>
+</dd></dl>
+<p>Initialize the base class for eva dataset objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eva_class_name</strong> (<em>str</em>) – Name of the eva class to instantiate.</p></li>
+<li><p><strong>eva_logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger instance for logging messages.</p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – Timing instance for performance measurement.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/soca_restart.html#SocaRestart.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Permalink to this definition">#</a></dt>
+<dd><p>Process SOCA restart data and add it to the data collections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_config</strong> (<em>dict</em>) – Configuration for the dataset.</p></li>
+<li><p><strong>data_collections</strong> (<em>EvaDataCollections</em>) – Data collections to which the processed data will</p></li>
+<li><p><strong>added.</strong> (<em>be</em>) – </p></li>
+<li><p><strong>timing</strong> – Timing information.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">generate_default_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/soca_restart.html#SocaRestart.generate_default_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a default configuration for the dataset.</p>
+<p>This method generates a default configuration for the dataset based on the provided
+filenames and collection name. It can be used as a starting point for creating a
+configuration for the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filenames</strong> – Filenames or file paths relevant to the dataset.</p></li>
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name of the collection for the dataset.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary representing the default configuration for the dataset.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.data.soca_restart.read_soca">
+<span class="sig-prename descclassname"><span class="pre">eva.data.soca_restart.</span></span><span class="sig-name descname"><span class="pre">read_soca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/data/soca_restart.html#read_soca"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.data.soca_restart.read_soca" title="Permalink to this definition">#</a></dt>
+<dd><p>Read SOCA data from the specified file for the given variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<em>str</em>) – Path to the SOCA data file.</p></li>
+<li><p><strong>variable</strong> (<em>str</em>) – Name of the variable to read.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – Logger for logging messages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing dimensions (list) and data (numpy.ndarray) for the specified
+variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-eva.data">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-eva.data" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="eva.transforms.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">eva.transforms package</p>
+</div>
+</a>
+<a class="right-next" href="eva.plotting.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">eva.plotting package</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data.cubed_sphere_restart">eva.data.cubed_sphere_restart module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.cubed_sphere_restart.CubedSphereRestart"><code class="docutils literal notranslate"><span class="pre">CubedSphereRestart</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.cubed_sphere_restart.CubedSphereRestart.execute"><code class="docutils literal notranslate"><span class="pre">CubedSphereRestart.execute()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.cubed_sphere_restart.CubedSphereRestart.generate_default_config"><code class="docutils literal notranslate"><span class="pre">CubedSphereRestart.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.cubed_sphere_restart.read_fms_tiles"><code class="docutils literal notranslate"><span class="pre">read_fms_tiles()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data.data_collections">eva.data.data_collections module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_collections.DataCollections"><code class="docutils literal notranslate"><span class="pre">DataCollections</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_collections.DataCollections.add_variable_to_collection"><code class="docutils literal notranslate"><span class="pre">DataCollections.add_variable_to_collection()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_collections.DataCollections.adjust_channel_dimension_name"><code class="docutils literal notranslate"><span class="pre">DataCollections.adjust_channel_dimension_name()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_collections.DataCollections.adjust_location_dimension_name"><code class="docutils literal notranslate"><span class="pre">DataCollections.adjust_location_dimension_name()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_collections.DataCollections.create_or_add_to_collection"><code class="docutils literal notranslate"><span class="pre">DataCollections.create_or_add_to_collection()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_collections.DataCollections.display_collections"><code class="docutils literal notranslate"><span class="pre">DataCollections.display_collections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_collections.DataCollections.get_variable_data"><code class="docutils literal notranslate"><span class="pre">DataCollections.get_variable_data()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_collections.DataCollections.get_variable_data_array"><code class="docutils literal notranslate"><span class="pre">DataCollections.get_variable_data_array()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_collections.DataCollections.nan_float_values_outside_threshold"><code class="docutils literal notranslate"><span class="pre">DataCollections.nan_float_values_outside_threshold()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_collections.DataCollections.validate_names"><code class="docutils literal notranslate"><span class="pre">DataCollections.validate_names()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data.data_driver">eva.data.data_driver module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.data_driver.data_driver"><code class="docutils literal notranslate"><span class="pre">data_driver()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data.eva_dataset_base">eva.data.eva_dataset_base module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.eva_dataset_base.EvaDatasetBase"><code class="docutils literal notranslate"><span class="pre">EvaDatasetBase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.eva_dataset_base.EvaDatasetBase.execute"><code class="docutils literal notranslate"><span class="pre">EvaDatasetBase.execute()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.eva_dataset_base.EvaDatasetBase.generate_default_config"><code class="docutils literal notranslate"><span class="pre">EvaDatasetBase.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.eva_dataset_base.EvaDatasetFactory"><code class="docutils literal notranslate"><span class="pre">EvaDatasetFactory</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.eva_dataset_base.EvaDatasetFactory.create_eva_object"><code class="docutils literal notranslate"><span class="pre">EvaDatasetFactory.create_eva_object()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data.gsi_obs_space">eva.data.gsi_obs_space module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.gsi_obs_space.GsiObsSpace"><code class="docutils literal notranslate"><span class="pre">GsiObsSpace</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.gsi_obs_space.GsiObsSpace.execute"><code class="docutils literal notranslate"><span class="pre">GsiObsSpace.execute()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.gsi_obs_space.GsiObsSpace.generate_default_config"><code class="docutils literal notranslate"><span class="pre">GsiObsSpace.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.gsi_obs_space.all_equal"><code class="docutils literal notranslate"><span class="pre">all_equal()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.gsi_obs_space.satellite_dataset"><code class="docutils literal notranslate"><span class="pre">satellite_dataset()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.gsi_obs_space.subset_channels"><code class="docutils literal notranslate"><span class="pre">subset_channels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.gsi_obs_space.uv"><code class="docutils literal notranslate"><span class="pre">uv()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data.ioda_obs_space">eva.data.ioda_obs_space module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.ioda_obs_space.IodaObsSpace"><code class="docutils literal notranslate"><span class="pre">IodaObsSpace</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.ioda_obs_space.IodaObsSpace.execute"><code class="docutils literal notranslate"><span class="pre">IodaObsSpace.execute()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.ioda_obs_space.IodaObsSpace.generate_default_config"><code class="docutils literal notranslate"><span class="pre">IodaObsSpace.generate_default_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">IodaObsSpace.execute()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">IodaObsSpace.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.ioda_obs_space.subset_channels"><code class="docutils literal notranslate"><span class="pre">subset_channels()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data.jedi_log">eva.data.jedi_log module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.jedi_log.JediLog"><code class="docutils literal notranslate"><span class="pre">JediLog</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.jedi_log.JediLog.execute"><code class="docutils literal notranslate"><span class="pre">JediLog.execute()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.jedi_log.JediLog.generate_default_config"><code class="docutils literal notranslate"><span class="pre">JediLog.generate_default_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.jedi_log.JediLog.get_from_log"><code class="docutils literal notranslate"><span class="pre">JediLog.get_from_log()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.jedi_log.JediLog.get_matching_chunks"><code class="docutils literal notranslate"><span class="pre">JediLog.get_matching_chunks()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.jedi_log.JediLog.parse_convergence"><code class="docutils literal notranslate"><span class="pre">JediLog.parse_convergence()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.jedi_log.get_data_from_line"><code class="docutils literal notranslate"><span class="pre">get_data_from_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data.lat_lon">eva.data.lat_lon module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.lat_lon.LatLon"><code class="docutils literal notranslate"><span class="pre">LatLon</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.lat_lon.LatLon.execute"><code class="docutils literal notranslate"><span class="pre">LatLon.execute()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.lat_lon.LatLon.generate_default_config"><code class="docutils literal notranslate"><span class="pre">LatLon.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data.mon_data_space">eva.data.mon_data_space module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace"><code class="docutils literal notranslate"><span class="pre">MonDataSpace</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace.execute"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.execute()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace.generate_default_config"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.generate_default_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace.get_ctl_dict"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.get_ctl_dict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace.get_dim_ranges"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.get_dim_ranges()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace.get_ndims_used"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.get_ndims_used()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace.loadConditionalItems"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.loadConditionalItems()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace.load_dset"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.load_dset()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace.read_ieee"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.read_ieee()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace.subset_coordinate"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.subset_coordinate()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.mon_data_space.MonDataSpace.var_to_np_array"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.var_to_np_array()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data.soca_restart">eva.data.soca_restart module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.soca_restart.SocaRestart"><code class="docutils literal notranslate"><span class="pre">SocaRestart</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.soca_restart.SocaRestart.execute"><code class="docutils literal notranslate"><span class="pre">SocaRestart.execute()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.soca_restart.SocaRestart.generate_default_config"><code class="docutils literal notranslate"><span class="pre">SocaRestart.generate_default_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">SocaRestart.execute()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">SocaRestart.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.data.soca_restart.read_soca"><code class="docutils literal notranslate"><span class="pre">read_soca()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.data">Module contents</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-08-28.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

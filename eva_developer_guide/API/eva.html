@@ -1,0 +1,1006 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
+<title>eva package —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/sphinx_highlight.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'eva_developer_guide/API/eva';</script>
+<link href="../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="../../_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<label class="sidebar-toggle secondary-toggle" for="__secondary">
+<span class="fa-solid fa-outdent"></span>
+</label>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Eva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eva_design_principles.html">Design principles for eva</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting_started/index.html">Getting started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_hpc.html">Existing installations on supported HPCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/using_eva.html">Using Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_yaml.html">Eva and YAML files</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eva_user_guide/index.html">Eva user guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/data_ingest/index.html">Eva data ingest classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/cubed_sphere_restart.html">Cubed sphere restart ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/gsi_obs_space.html">GSI observaton space (ncdiag) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/ioda_obs_space.html">IODA observaton space (netCDF) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/jedi_log.html">JEDI log files ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/lat_lon.html">Basic latitude-longitude netCDF ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/mon_data_space.html">Monitor data space (NCEP legacy) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/soca_restart.html">SOCA restart ingest class</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/transforms/index.html">Eva transform classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/accept_where.html">Accept where</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/channel_stats.html">Channel statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/select_time.html">Select time</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/index.html">Eva plotting backends</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/index.html">Batch plotting using EMCPy backend</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/emcpy.html">EMCPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/batch_plotting.html">Batch Plotting and Using EMCPy Backend for eva</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/index.html">Interactive plotting using hvPlot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Eva_Interactive_Intro.html">Eva Interactive Intro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Plotting_Options.html">Plotting Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">Eva developer guide</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../developer_best_practices/index.html">Developer best practices</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/documentation.html">Writing documentation and building the site locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/github_actions.html">Automated testing with GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../eva_components/index.html">Eva components</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/config.html">Config class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/logger.html">Logger class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/timing.html">Timing Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/data_collections.html">Data collections class for holding data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="index.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html">eva.data package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="eva.plotting.html">eva.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li aria-current="page" class="breadcrumb-item active">eva package</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="eva-package">
+<h1>eva package<a class="headerlink" href="#eva-package" title="Permalink to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="eva.data.html">eva.data package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data.cubed_sphere_restart">eva.data.cubed_sphere_restart module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.cubed_sphere_restart.CubedSphereRestart"><code class="docutils literal notranslate"><span class="pre">CubedSphereRestart</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.cubed_sphere_restart.CubedSphereRestart.execute"><code class="docutils literal notranslate"><span class="pre">CubedSphereRestart.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.cubed_sphere_restart.CubedSphereRestart.generate_default_config"><code class="docutils literal notranslate"><span class="pre">CubedSphereRestart.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.cubed_sphere_restart.read_fms_tiles"><code class="docutils literal notranslate"><span class="pre">read_fms_tiles()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data.data_collections">eva.data.data_collections module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections"><code class="docutils literal notranslate"><span class="pre">DataCollections</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections.add_variable_to_collection"><code class="docutils literal notranslate"><span class="pre">DataCollections.add_variable_to_collection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections.adjust_channel_dimension_name"><code class="docutils literal notranslate"><span class="pre">DataCollections.adjust_channel_dimension_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections.adjust_location_dimension_name"><code class="docutils literal notranslate"><span class="pre">DataCollections.adjust_location_dimension_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections.create_or_add_to_collection"><code class="docutils literal notranslate"><span class="pre">DataCollections.create_or_add_to_collection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections.display_collections"><code class="docutils literal notranslate"><span class="pre">DataCollections.display_collections()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections.get_variable_data"><code class="docutils literal notranslate"><span class="pre">DataCollections.get_variable_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections.get_variable_data_array"><code class="docutils literal notranslate"><span class="pre">DataCollections.get_variable_data_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections.nan_float_values_outside_threshold"><code class="docutils literal notranslate"><span class="pre">DataCollections.nan_float_values_outside_threshold()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections.validate_names"><code class="docutils literal notranslate"><span class="pre">DataCollections.validate_names()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data.data_driver">eva.data.data_driver module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.data_driver.data_driver"><code class="docutils literal notranslate"><span class="pre">data_driver()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data.eva_dataset_base">eva.data.eva_dataset_base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.eva_dataset_base.EvaDatasetBase"><code class="docutils literal notranslate"><span class="pre">EvaDatasetBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.eva_dataset_base.EvaDatasetBase.execute"><code class="docutils literal notranslate"><span class="pre">EvaDatasetBase.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.eva_dataset_base.EvaDatasetBase.generate_default_config"><code class="docutils literal notranslate"><span class="pre">EvaDatasetBase.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.eva_dataset_base.EvaDatasetFactory"><code class="docutils literal notranslate"><span class="pre">EvaDatasetFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.eva_dataset_base.EvaDatasetFactory.create_eva_object"><code class="docutils literal notranslate"><span class="pre">EvaDatasetFactory.create_eva_object()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data.gsi_obs_space">eva.data.gsi_obs_space module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.gsi_obs_space.GsiObsSpace"><code class="docutils literal notranslate"><span class="pre">GsiObsSpace</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.gsi_obs_space.GsiObsSpace.execute"><code class="docutils literal notranslate"><span class="pre">GsiObsSpace.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.gsi_obs_space.GsiObsSpace.generate_default_config"><code class="docutils literal notranslate"><span class="pre">GsiObsSpace.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.gsi_obs_space.all_equal"><code class="docutils literal notranslate"><span class="pre">all_equal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.gsi_obs_space.satellite_dataset"><code class="docutils literal notranslate"><span class="pre">satellite_dataset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.gsi_obs_space.subset_channels"><code class="docutils literal notranslate"><span class="pre">subset_channels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.gsi_obs_space.uv"><code class="docutils literal notranslate"><span class="pre">uv()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data.ioda_obs_space">eva.data.ioda_obs_space module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.ioda_obs_space.IodaObsSpace"><code class="docutils literal notranslate"><span class="pre">IodaObsSpace</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.ioda_obs_space.IodaObsSpace.execute"><code class="docutils literal notranslate"><span class="pre">IodaObsSpace.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.ioda_obs_space.IodaObsSpace.generate_default_config"><code class="docutils literal notranslate"><span class="pre">IodaObsSpace.generate_default_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#id0"><code class="docutils literal notranslate"><span class="pre">IodaObsSpace.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#id1"><code class="docutils literal notranslate"><span class="pre">IodaObsSpace.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.ioda_obs_space.subset_channels"><code class="docutils literal notranslate"><span class="pre">subset_channels()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data.jedi_log">eva.data.jedi_log module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.jedi_log.JediLog"><code class="docutils literal notranslate"><span class="pre">JediLog</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.jedi_log.JediLog.execute"><code class="docutils literal notranslate"><span class="pre">JediLog.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.jedi_log.JediLog.generate_default_config"><code class="docutils literal notranslate"><span class="pre">JediLog.generate_default_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.jedi_log.JediLog.get_from_log"><code class="docutils literal notranslate"><span class="pre">JediLog.get_from_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.jedi_log.JediLog.get_matching_chunks"><code class="docutils literal notranslate"><span class="pre">JediLog.get_matching_chunks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.jedi_log.JediLog.parse_convergence"><code class="docutils literal notranslate"><span class="pre">JediLog.parse_convergence()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.jedi_log.get_data_from_line"><code class="docutils literal notranslate"><span class="pre">get_data_from_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data.lat_lon">eva.data.lat_lon module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.lat_lon.LatLon"><code class="docutils literal notranslate"><span class="pre">LatLon</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.lat_lon.LatLon.execute"><code class="docutils literal notranslate"><span class="pre">LatLon.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.lat_lon.LatLon.generate_default_config"><code class="docutils literal notranslate"><span class="pre">LatLon.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data.mon_data_space">eva.data.mon_data_space module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace"><code class="docutils literal notranslate"><span class="pre">MonDataSpace</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace.execute"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace.generate_default_config"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.generate_default_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace.get_ctl_dict"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.get_ctl_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace.get_dim_ranges"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.get_dim_ranges()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace.get_ndims_used"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.get_ndims_used()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace.loadConditionalItems"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.loadConditionalItems()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace.load_dset"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.load_dset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace.read_ieee"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.read_ieee()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace.subset_coordinate"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.subset_coordinate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.mon_data_space.MonDataSpace.var_to_np_array"><code class="docutils literal notranslate"><span class="pre">MonDataSpace.var_to_np_array()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data.soca_restart">eva.data.soca_restart module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.soca_restart.SocaRestart"><code class="docutils literal notranslate"><span class="pre">SocaRestart</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.soca_restart.SocaRestart.execute"><code class="docutils literal notranslate"><span class="pre">SocaRestart.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#eva.data.soca_restart.SocaRestart.generate_default_config"><code class="docutils literal notranslate"><span class="pre">SocaRestart.generate_default_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#id2"><code class="docutils literal notranslate"><span class="pre">SocaRestart.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.data.html#id3"><code class="docutils literal notranslate"><span class="pre">SocaRestart.generate_default_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html#eva.data.soca_restart.read_soca"><code class="docutils literal notranslate"><span class="pre">read_soca()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.data.html#module-eva.data">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eva.plotting.html">eva.plotting package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eva.plotting.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.plotting.emcpy.html">eva.plotting.emcpy package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.emcpy.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.emcpy.html#module-eva.plotting.emcpy">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eva.plotting.hvplot.html">eva.plotting.hvplot package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.hvplot.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.hvplot.html#module-eva.plotting.hvplot.interactive_plot_tools">eva.plotting.hvplot.interactive_plot_tools module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.hvplot.html#module-eva.plotting.hvplot">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.plotting.html#module-eva.plotting">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eva.tests.html">eva.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eva.tests.html#module-eva.tests">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eva.transforms.html">eva.transforms package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eva.transforms.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eva.transforms.html#module-eva.transforms.accept_where">eva.transforms.accept_where module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.accept_where.accept_where"><code class="docutils literal notranslate"><span class="pre">accept_where()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.accept_where.generate_accept_where_config"><code class="docutils literal notranslate"><span class="pre">generate_accept_where_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.transforms.html#module-eva.transforms.arithmetic">eva.transforms.arithmetic module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.arithmetic.arithmetic"><code class="docutils literal notranslate"><span class="pre">arithmetic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.arithmetic.generate_arithmetic_config"><code class="docutils literal notranslate"><span class="pre">generate_arithmetic_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.arithmetic.isfloat"><code class="docutils literal notranslate"><span class="pre">isfloat()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.transforms.html#module-eva.transforms.channel_stats">eva.transforms.channel_stats module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.channel_stats.channel_stats"><code class="docutils literal notranslate"><span class="pre">channel_stats()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.transforms.html#module-eva.transforms.select_time">eva.transforms.select_time module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.select_time.select_time"><code class="docutils literal notranslate"><span class="pre">select_time()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.transforms.html#module-eva.transforms.transform_driver">eva.transforms.transform_driver module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.transform_driver.transform_driver"><code class="docutils literal notranslate"><span class="pre">transform_driver()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.transforms.html#module-eva.transforms.transform_utils">eva.transforms.transform_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.transform_utils.parse_for_dict"><code class="docutils literal notranslate"><span class="pre">parse_for_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.transform_utils.replace_cgv"><code class="docutils literal notranslate"><span class="pre">replace_cgv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html#eva.transforms.transform_utils.split_collectiongroupvariable"><code class="docutils literal notranslate"><span class="pre">split_collectiongroupvariable()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.transforms.html#module-eva.transforms">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eva.utilities.html">eva.utilities package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eva.utilities.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eva.utilities.html#module-eva.utilities.config">eva.utilities.config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.config.Config.get"><code class="docutils literal notranslate"><span class="pre">Config.get()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.config.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.utilities.html#module-eva.utilities.ioda_definitions">eva.utilities.ioda_definitions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.ioda_definitions.find_instrument_from_string"><code class="docutils literal notranslate"><span class="pre">find_instrument_from_string()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.ioda_definitions.ioda_group_dict"><code class="docutils literal notranslate"><span class="pre">ioda_group_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.ioda_definitions.ioda_platform_dict"><code class="docutils literal notranslate"><span class="pre">ioda_platform_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.ioda_definitions.ioda_platform_to_full_name"><code class="docutils literal notranslate"><span class="pre">ioda_platform_to_full_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.utilities.html#module-eva.utilities.ioda_netcdf_api">eva.utilities.ioda_netcdf_api module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.ioda_netcdf_api.read_ioda_variable"><code class="docutils literal notranslate"><span class="pre">read_ioda_variable()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.utilities.html#module-eva.utilities.logger">eva.utilities.logger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger.abort"><code class="docutils literal notranslate"><span class="pre">Logger.abort()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger.debug"><code class="docutils literal notranslate"><span class="pre">Logger.debug()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger.info"><code class="docutils literal notranslate"><span class="pre">Logger.info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger.send_message"><code class="docutils literal notranslate"><span class="pre">Logger.send_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger.trace"><code class="docutils literal notranslate"><span class="pre">Logger.trace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.textcolors"><code class="docutils literal notranslate"><span class="pre">textcolors</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.textcolors.blue"><code class="docutils literal notranslate"><span class="pre">textcolors.blue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.textcolors.cyan"><code class="docutils literal notranslate"><span class="pre">textcolors.cyan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.textcolors.end"><code class="docutils literal notranslate"><span class="pre">textcolors.end</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.textcolors.green"><code class="docutils literal notranslate"><span class="pre">textcolors.green</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.utilities.html#module-eva.utilities.stats">eva.utilities.stats module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.stats.get_field_data"><code class="docutils literal notranslate"><span class="pre">get_field_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.stats.stats_helper"><code class="docutils literal notranslate"><span class="pre">stats_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.utilities.html#module-eva.utilities.timing">eva.utilities.timing module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing"><code class="docutils literal notranslate"><span class="pre">Timing</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing.finalize"><code class="docutils literal notranslate"><span class="pre">Timing.finalize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing.start"><code class="docutils literal notranslate"><span class="pre">Timing.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing.stop"><code class="docutils literal notranslate"><span class="pre">Timing.stop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.utilities.html#module-eva.utilities.utils">eva.utilities.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.camelcase_to_underscore"><code class="docutils literal notranslate"><span class="pre">camelcase_to_underscore()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.fontColors"><code class="docutils literal notranslate"><span class="pre">fontColors</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.fontColors.bold"><code class="docutils literal notranslate"><span class="pre">fontColors.bold</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.fontColors.end"><code class="docutils literal notranslate"><span class="pre">fontColors.end</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.fontColors.underline"><code class="docutils literal notranslate"><span class="pre">fontColors.underline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.get_schema"><code class="docutils literal notranslate"><span class="pre">get_schema()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.is_number"><code class="docutils literal notranslate"><span class="pre">is_number()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.load_yaml_file"><code class="docutils literal notranslate"><span class="pre">load_yaml_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.parse_channel_list"><code class="docutils literal notranslate"><span class="pre">parse_channel_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.remove_empty_from_list_of_strings"><code class="docutils literal notranslate"><span class="pre">remove_empty_from_list_of_strings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.remove_list_duplicates"><code class="docutils literal notranslate"><span class="pre">remove_list_duplicates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.replace_vars_dict"><code class="docutils literal notranslate"><span class="pre">replace_vars_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.replace_vars_notebook"><code class="docutils literal notranslate"><span class="pre">replace_vars_notebook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.replace_vars_str"><code class="docutils literal notranslate"><span class="pre">replace_vars_str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.slice_var_from_str"><code class="docutils literal notranslate"><span class="pre">slice_var_from_str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.string_does_not_contain"><code class="docutils literal notranslate"><span class="pre">string_does_not_contain()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html#eva.utilities.utils.update_object"><code class="docutils literal notranslate"><span class="pre">update_object()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eva.utilities.html#module-eva.utilities">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-eva.eva_driver">
+<span id="eva-eva-driver-module"></span><h2>eva.eva_driver module<a class="headerlink" href="#module-eva.eva_driver" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.eva_driver.eva">
+<span class="sig-prename descclassname"><span class="pre">eva.eva_driver.</span></span><span class="sig-name descname"><span class="pre">eva</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eva_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_driver.html#eva"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_driver.eva" title="Permalink to this definition">#</a></dt>
+<dd><p>Execute the Evaluation and Visualization Analysis (EVA) process based on the provided
+configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eva_config</strong> (<em>dict</em><em> or </em><em>str</em>) – Configuration data for the EVA process. It can be a dictionary or</p></li>
+<li><p><strong>file.</strong> (<em>the path to a YAML configuration</em>) – </p></li>
+<li><p><strong>eva_logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a><em>, </em><em>optional</em>) – An instance of the logger for logging messages. Default is</p></li>
+<li><p><strong>None.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.eva_driver.main">
+<span class="sig-prename descclassname"><span class="pre">eva.eva_driver.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_driver.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_driver.main" title="Permalink to this definition">#</a></dt>
+<dd><p>Entry point for main eva program. Reads configuration from a YAML file and executes eva
+based on what is described in the configuration file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config_file</strong> (<em>str</em>) – The path to the configuration YAML file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-eva.eva_interactive">
+<span id="eva-eva-interactive-module"></span><h2>eva.eva_interactive module<a class="headerlink" href="#module-eva.eva_interactive" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.eva_interactive.</span></span><span class="sig-name descname"><span class="pre">EvaInteractive</span></span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for interactive data manipulation and visualization using the EVA framework.</p>
+<p>This class provides methods to load data collections, perform data transformations, and generate
+various types of plots.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.logger" title="Permalink to this definition">#</a></dt>
+<dd><p>An instance of the Logger class for logging messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger">Logger</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.timer">
+<span class="sig-name descname"><span class="pre">timer</span></span><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.timer" title="Permalink to this definition">#</a></dt>
+<dd><p>An instance of the Timing class for measuring execution time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing">Timing</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.dc_dict">
+<span class="sig-name descname"><span class="pre">dc_dict</span></span><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.dc_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary containing data collections indexed by collection names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.fn_dict">
+<span class="sig-name descname"><span class="pre">fn_dict</span></span><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.fn_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary containing filenames associated with data collections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.ch_required_dict">
+<span class="sig-name descname"><span class="pre">ch_required_dict</span></span><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.ch_required_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>A dictionary indicating whether channel requirements are needed for</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">each</span> <span class="pre">data</span> <span class="pre">collection.</span></span></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.var_cache">
+<span class="sig-name descname"><span class="pre">var_cache</span></span><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.var_cache" title="Permalink to this definition">#</a></dt>
+<dd><p>A list to cache variable names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+<p>Initialize the EvaInteractive instance with necessary attributes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.accept_where">
+<span class="sig-name descname"><span class="pre">accept_where</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.accept_where"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.accept_where" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply an ‘accept_where’ transformation to the data collection based on specified conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_name</strong> (<em>str</em>) – Name of the new variable to be created.</p></li>
+<li><p><strong>starting_field</strong> (<em>str</em>) – Field to which the ‘where’ conditions are applied.</p></li>
+<li><p><strong>where</strong> (<em>list</em>) – List of expressions specifying conditions for accepting data.</p></li>
+<li><p><strong>collection</strong> (<em>str</em>) – Name of the data collection.</p></li>
+<li><p><strong>var_list</strong> (<em>list</em><em>, </em><em>optional</em>) – List of variable names to be used in the expressions. Default</p></li>
+<li><p><strong>list.</strong> (<em>is an empty</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.arithmetic">
+<span class="sig-name descname"><span class="pre">arithmetic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.arithmetic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.arithmetic" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply an arithmetic transformation to the data collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_name</strong> (<em>str</em>) – Name of the new variable to be created.</p></li>
+<li><p><strong>expression</strong> (<em>str</em>) – Arithmetic expression to be evaluated.</p></li>
+<li><p><strong>collection</strong> (<em>str</em>) – Name of the data collection.</p></li>
+<li><p><strong>var_list</strong> (<em>list</em><em>, </em><em>optional</em>) – List of variable names to be used in the expression. Default</p></li>
+<li><p><strong>list.</strong> (<em>is an empty</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.density_plot">
+<span class="sig-name descname"><span class="pre">density_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.density_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.density_plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a density plot using specified data collections and variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plot_list</strong> (<em>list</em>) – List of dictionaries specifying the plot configuration.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The generated density plot.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>holoviews.plotting.ElementPlot</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.get_data_collection">
+<span class="sig-name descname"><span class="pre">get_data_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.get_data_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.get_data_collection" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieve a data collection by its name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>collection_name</strong> (<em>str</em>) – Name of the data collection to retrieve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved data collection instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections">DataCollections</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the specified collection does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.histogram">
+<span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.histogram" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a histogram plot using specified data collections and variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plot_list</strong> (<em>list</em>) – List of dictionaries specifying the plot configuration.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The generated histogram plot.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>holoviews.plotting.ElementPlot</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.line_plot">
+<span class="sig-name descname"><span class="pre">line_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.line_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.line_plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a line plot using specified data collections and variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plot_list</strong> (<em>list</em>) – List of dictionaries specifying the plot configuration.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The generated line plot.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>holoviews.plotting.ElementPlot</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.load_collection">
+<span class="sig-name descname"><span class="pre">load_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eva_class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.load_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.load_collection" title="Permalink to this definition">#</a></dt>
+<dd><p>Load a data collection into the EvaInteractive instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>collection_name</strong> (<em>str</em>) – Name for the loaded data collection.</p></li>
+<li><p><strong>filenames</strong> (<em>str</em><em> or </em><em>list</em>) – Filename(s) containing the data.</p></li>
+<li><p><strong>eva_class_name</strong> (<em>str</em>) – Name of the EVA class for creating the data collection.</p></li>
+<li><p><strong>control_file</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the control file for configuring data collection.</p></li>
+<li><p><strong>None.</strong> (<em>Default is</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.map_gridded">
+<span class="sig-name descname"><span class="pre">map_gridded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.map_gridded"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.map_gridded" title="Permalink to this definition">#</a></dt>
+<dd><p>Placeholder method for generating a gridded map plot.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.map_scatter">
+<span class="sig-name descname"><span class="pre">map_scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_entry</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.map_scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.map_scatter" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a scatter plot on a map using specified data collection and variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plot_entry</strong> (<em>dict</em>) – Dictionary specifying the plot configuration.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The generated scatter plot on a map.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>holoviews.plotting.ElementPlot</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.print_data_collection">
+<span class="sig-name descname"><span class="pre">print_data_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.print_data_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.print_data_collection" title="Permalink to this definition">#</a></dt>
+<dd><p>Print the content of a data collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>collection_name</strong> (<em>str</em>) – Name of the data collection to print.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.print_statistics">
+<span class="sig-name descname"><span class="pre">print_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.print_statistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.print_statistics" title="Permalink to this definition">#</a></dt>
+<dd><p>Print statistics for each column in the given DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>DataFrame</em>) – The DataFrame containing data.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.retrieve_var_list">
+<span class="sig-name descname"><span class="pre">retrieve_var_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.retrieve_var_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.retrieve_var_list" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieve a list of variable names from a data collection’s group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>collection</strong> (<em>str</em>) – Name of the data collection.</p></li>
+<li><p><strong>group</strong> (<em>str</em>) – Name of the group within the data collection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of variable names within the specified group.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eva.eva_interactive.EvaInteractive.scatter">
+<span class="sig-name descname"><span class="pre">scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_interactive.html#EvaInteractive.scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_interactive.EvaInteractive.scatter" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a scatter plot using specified data collections, variables, and coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>str</em>) – Name of the variable for the x-coordinate.</p></li>
+<li><p><strong>y</strong> (<em>str</em>) – Name of the variable for the y-coordinate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The generated scatter plot.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>holoviews.plotting.ElementPlot</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="module-eva.eva_path">
+<span id="eva-eva-path-module"></span><h2>eva.eva_path module<a class="headerlink" href="#module-eva.eva_path" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.eva_path.return_eva_path">
+<span class="sig-prename descclassname"><span class="pre">eva.eva_path.</span></span><span class="sig-name descname"><span class="pre">return_eva_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_path.html#return_eva_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_path.return_eva_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the directory path of the current script file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Directory path of the current script file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-eva.eva_tests">
+<span id="eva-eva-tests-module"></span><h2>eva.eva_tests module<a class="headerlink" href="#module-eva.eva_tests" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.eva_tests.application_tests">
+<span class="sig-prename descclassname"><span class="pre">eva.eva_tests.</span></span><span class="sig-name descname"><span class="pre">application_tests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_tests.html#application_tests"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_tests.application_tests" title="Permalink to this definition">#</a></dt>
+<dd><p>Run Eva application tests using specified configurations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the Logger class for logging messages.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.eva_tests.main">
+<span class="sig-prename descclassname"><span class="pre">eva.eva_tests.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_tests.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_tests.main" title="Permalink to this definition">#</a></dt>
+<dd><p>Main function for running Eva test suite.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.eva_tests.notebook_tests">
+<span class="sig-prename descclassname"><span class="pre">eva.eva_tests.</span></span><span class="sig-name descname"><span class="pre">notebook_tests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/eva_tests.html#notebook_tests"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.eva_tests.notebook_tests" title="Permalink to this definition">#</a></dt>
+<dd><p>Run Eva notebook tests by executing specified notebooks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the Logger class for logging messages.</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-eva">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-eva" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.eva_driver">eva.eva_driver module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_driver.eva"><code class="docutils literal notranslate"><span class="pre">eva()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_driver.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.eva_interactive">eva.eva_interactive module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive"><code class="docutils literal notranslate"><span class="pre">EvaInteractive</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.logger"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.logger</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.timer"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.timer</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.dc_dict"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.dc_dict</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.fn_dict"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.fn_dict</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.ch_required_dict"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.ch_required_dict</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.var_cache"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.var_cache</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.accept_where"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.accept_where()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.arithmetic"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.arithmetic()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.density_plot"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.density_plot()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.get_data_collection"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.get_data_collection()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.histogram"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.histogram()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.line_plot"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.line_plot()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.load_collection"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.load_collection()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.map_gridded"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.map_gridded()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.map_scatter"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.map_scatter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.print_data_collection"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.print_data_collection()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.print_statistics"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.print_statistics()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.retrieve_var_list"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.retrieve_var_list()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_interactive.EvaInteractive.scatter"><code class="docutils literal notranslate"><span class="pre">EvaInteractive.scatter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.eva_path">eva.eva_path module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_path.return_eva_path"><code class="docutils literal notranslate"><span class="pre">return_eva_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.eva_tests">eva.eva_tests module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_tests.application_tests"><code class="docutils literal notranslate"><span class="pre">application_tests()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_tests.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.eva_tests.notebook_tests"><code class="docutils literal notranslate"><span class="pre">notebook_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva">Module contents</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-08-28.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

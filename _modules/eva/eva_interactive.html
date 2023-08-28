@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eva.eva_interactive —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/sphinx_highlight.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = '_modules/eva/eva_interactive';</script>
+<link href="../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="../../_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_developer_guide/index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_developer_guide/index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Eva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eva_design_principles.html">Design principles for eva</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting_started/index.html">Getting started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_hpc.html">Existing installations on supported HPCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/using_eva.html">Using Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_yaml.html">Eva and YAML files</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eva_user_guide/index.html">Eva user guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/data_ingest/index.html">Eva data ingest classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/cubed_sphere_restart.html">Cubed sphere restart ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/gsi_obs_space.html">GSI observaton space (ncdiag) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/ioda_obs_space.html">IODA observaton space (netCDF) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/jedi_log.html">JEDI log files ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/lat_lon.html">Basic latitude-longitude netCDF ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/mon_data_space.html">Monitor data space (NCEP legacy) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/soca_restart.html">SOCA restart ingest class</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/transforms/index.html">Eva transform classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/accept_where.html">Accept where</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/channel_stats.html">Channel statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/select_time.html">Select time</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/index.html">Eva plotting backends</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/index.html">Batch plotting using EMCPy backend</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/emcpy.html">EMCPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/batch_plotting.html">Batch Plotting and Using EMCPy Backend for eva</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/index.html">Interactive plotting using hvPlot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Eva_Interactive_Intro.html">Eva Interactive Intro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Plotting_Options.html">Plotting Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eva_developer_guide/index.html">Eva developer guide</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_developer_guide/developer_best_practices/index.html">Developer best practices</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_developer_guide/developer_best_practices/developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_developer_guide/developer_best_practices/documentation.html">Writing documentation and building the site locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_developer_guide/developer_best_practices/github_actions.html">Automated testing with GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_developer_guide/eva_components/index.html">Eva components</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_developer_guide/eva_components/config.html">Config class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_developer_guide/eva_components/logger.html">Logger class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_developer_guide/eva_components/timing.html">Timing Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_developer_guide/eva_components/data_collections.html">Data collections class for holding data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_developer_guide/API/index.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_developer_guide/API/eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_developer_guide/API/eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_developer_guide/API/eva.data.html">eva.data package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_developer_guide/API/eva.plotting.html">eva.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_developer_guide/API/eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_developer_guide/API/eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Module code</a></li>
+<li aria-current="page" class="breadcrumb-item active">eva.eva_interactive</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<h1>Source code for eva.eva_interactive</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="c1"># (C) Copyright 2023 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">netCDF4</span> <span class="k">as</span> <span class="nn">nc</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">eva.data.data_collections</span> <span class="kn">import</span> <span class="n">DataCollections</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.logger</span> <span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.timing</span> <span class="kn">import</span> <span class="n">Timing</span>
+<span class="kn">from</span> <span class="nn">eva.data.eva_dataset_base</span> <span class="kn">import</span> <span class="n">EvaDatasetFactory</span>
+<span class="kn">from</span> <span class="nn">eva.transforms.arithmetic</span> <span class="kn">import</span> <span class="n">arithmetic</span><span class="p">,</span> <span class="n">generate_arithmetic_config</span>
+<span class="kn">from</span> <span class="nn">eva.transforms.accept_where</span> <span class="kn">import</span> <span class="n">accept_where</span><span class="p">,</span> <span class="n">generate_accept_where_config</span>
+
+<span class="kn">import</span> <span class="nn">eva.plotting.hvplot.interactive_plot_tools</span> <span class="k">as</span> <span class="nn">plot</span>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="EvaInteractive"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive">[docs]</a><span class="k">class</span> <span class="nc">EvaInteractive</span><span class="p">():</span>
+
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    A class for interactive data manipulation and visualization using the EVA framework.</span>
+
+<span class="sd">    This class provides methods to load data collections, perform data transformations, and generate</span>
+<span class="sd">    various types of plots.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        logger (Logger): An instance of the Logger class for logging messages.</span>
+<span class="sd">        timer (Timing): An instance of the Timing class for measuring execution time.</span>
+<span class="sd">        dc_dict (dict): A dictionary containing data collections indexed by collection names.</span>
+<span class="sd">        fn_dict (dict): A dictionary containing filenames associated with data collections.</span>
+<span class="sd">        ch_required_dict (dict): A dictionary indicating whether channel requirements are needed for</span>
+<span class="sd">        each data collection.</span>
+<span class="sd">        var_cache (list): A list to cache variable names.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Initialize the EvaInteractive instance with necessary attributes.</span>
+<span class="sd">        """</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">'EvaInteractive'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">Timing</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fn_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ch_required_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var_cache</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.load_collection"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.load_collection">[docs]</a>    <span class="k">def</span> <span class="nf">load_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">eva_class_name</span><span class="p">,</span> <span class="n">control_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Load a data collection into the EvaInteractive instance.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            collection_name (str): Name for the loaded data collection.</span>
+<span class="sd">            filenames (str or list): Filename(s) containing the data.</span>
+<span class="sd">            eva_class_name (str): Name of the EVA class for creating the data collection.</span>
+<span class="sd">            control_file (str, optional): Path to the control file for configuring data collection.</span>
+<span class="sd">            Default is None.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># Handle filenames input</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">filenames</span><span class="p">]</span>
+
+        <span class="n">creator</span> <span class="o">=</span> <span class="n">EvaDatasetFactory</span><span class="p">()</span>
+        <span class="n">data_collection</span> <span class="o">=</span> <span class="n">DataCollections</span><span class="p">()</span>
+        <span class="n">eva_object</span> <span class="o">=</span> <span class="n">creator</span><span class="o">.</span><span class="n">create_eva_object</span><span class="p">(</span><span class="n">eva_class_name</span><span class="p">,</span> <span class="s1">'data'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">control_file</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">eva_object</span><span class="o">.</span><span class="n">generate_default_config</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">,</span> <span class="n">control_file</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">eva_object</span><span class="o">.</span><span class="n">generate_default_config</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">)</span>
+
+        <span class="n">eva_object</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_collection</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_collection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fn_dict</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">no_ch_dataspaces</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'JediLog'</span><span class="p">,</span> <span class="s1">'MonDataSpace'</span><span class="p">]</span>
+        <span class="c1"># Open up file to find channel requirements</span>
+        <span class="k">if</span> <span class="n">eva_class_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">no_ch_dataspaces</span><span class="p">:</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span> <span class="s1">'Channel'</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">dimensions</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ch_required_dict</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ch_required_dict</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ch_required_dict</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.get_data_collection"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.get_data_collection">[docs]</a>    <span class="k">def</span> <span class="nf">get_data_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Retrieve a data collection by its name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            collection_name (str): Name of the data collection to retrieve.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DataCollections: The retrieved data collection instance.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            Exception: If the specified collection does not exist.</span>
+<span class="sd">        """</span>
+
+        <span class="k">if</span> <span class="n">collection_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Collection name </span><span class="se">\'</span><span class="si">{</span><span class="n">collection_name</span><span class="si">}</span><span class="se">\'</span><span class="s1"> does not exist. '</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.print_data_collection"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.print_data_collection">[docs]</a>    <span class="k">def</span> <span class="nf">print_data_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Print the content of a data collection.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            collection_name (str): Name of the data collection to print.</span>
+<span class="sd">        """</span>
+
+        <span class="k">if</span> <span class="n">collection_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="p">[</span><span class="n">collection_name</span><span class="p">]</span><span class="o">.</span><span class="n">display_collections</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Collection name </span><span class="se">\'</span><span class="si">{</span><span class="n">collection_name</span><span class="si">}</span><span class="se">\'</span><span class="s1"> does not exist. '</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.retrieve_var_list"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.retrieve_var_list">[docs]</a>    <span class="k">def</span> <span class="nf">retrieve_var_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">group</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Retrieve a list of variable names from a data collection's group.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            collection (str): Name of the data collection.</span>
+<span class="sd">            group (str): Name of the group within the data collection.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: List of variable names within the specified group.</span>
+<span class="sd">        """</span>
+
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fn_dict</span><span class="p">[</span><span class="n">collection</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">group</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">groups</span><span class="p">):</span>
+            <span class="n">var_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">group</span><span class="p">]</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">var_cache</span> <span class="o">=</span> <span class="n">var_list</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">var_cache</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.arithmetic"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.arithmetic">[docs]</a>    <span class="k">def</span> <span class="nf">arithmetic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_name</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">var_list</span><span class="o">=</span><span class="p">[]):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Apply an arithmetic transformation to the data collection.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            new_name (str): Name of the new variable to be created.</span>
+<span class="sd">            expression (str): Arithmetic expression to be evaluated.</span>
+<span class="sd">            collection (str): Name of the data collection.</span>
+<span class="sd">            var_list (list, optional): List of variable names to be used in the expression. Default</span>
+<span class="sd">            is an empty list.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># Ensure var_list is not empty</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">var_list</span><span class="p">:</span>
+            <span class="n">group</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\(|\)|-|\*|\+|\/'</span><span class="p">,</span> <span class="n">expression</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">var_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">retrieve_var_list</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+
+        <span class="c1"># Generate default config for transform</span>
+        <span class="n">arithmetic_config</span> <span class="o">=</span> <span class="n">generate_arithmetic_config</span><span class="p">(</span><span class="n">new_name</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">var_list</span><span class="p">)</span>
+
+        <span class="c1"># Execute transform</span>
+        <span class="n">arithmetic</span><span class="p">(</span><span class="n">arithmetic_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="p">[</span><span class="n">collection</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Added </span><span class="se">\'</span><span class="si">{</span><span class="n">new_name</span><span class="si">}</span><span class="se">\'</span><span class="s1"> to data collection </span><span class="se">\'</span><span class="si">{</span><span class="n">collection</span><span class="si">}</span><span class="se">\'</span><span class="s1">.'</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.accept_where"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.accept_where">[docs]</a>    <span class="k">def</span> <span class="nf">accept_where</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_name</span><span class="p">,</span> <span class="n">starting_field</span><span class="p">,</span> <span class="n">where</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">var_list</span><span class="o">=</span><span class="p">[]):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Apply an 'accept_where' transformation to the data collection based on specified conditions.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            new_name (str): Name of the new variable to be created.</span>
+<span class="sd">            starting_field (str): Field to which the 'where' conditions are applied.</span>
+<span class="sd">            where (list): List of expressions specifying conditions for accepting data.</span>
+<span class="sd">            collection (str): Name of the data collection.</span>
+<span class="sd">            var_list (list, optional): List of variable names to be used in the expressions. Default</span>
+<span class="sd">            is an empty list.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># Make sure all expressions are in correct format</span>
+        <span class="k">for</span> <span class="n">expression</span> <span class="ow">in</span> <span class="n">where</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">group</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">expression</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Failed to split </span><span class="se">\'</span><span class="si">{</span><span class="n">expression</span><span class="si">}</span><span class="se">\'</span><span class="s1">. Check that '</span> <span class="o">+</span>
+                                  <span class="s1">'it has the correct format'</span><span class="p">)</span>
+
+        <span class="c1"># Set var_list if empty</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">var_list</span><span class="p">:</span>
+            <span class="n">var_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">retrieve_var_list</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+
+        <span class="c1"># Generate default config for transform</span>
+        <span class="n">accept_where_config</span> <span class="o">=</span> <span class="n">generate_accept_where_config</span><span class="p">(</span><span class="n">new_name</span><span class="p">,</span> <span class="n">starting_field</span><span class="p">,</span>
+                                                           <span class="n">where</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">var_list</span><span class="p">)</span>
+
+        <span class="c1"># Execute transform</span>
+        <span class="n">accept_where</span><span class="p">(</span><span class="n">accept_where_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="p">[</span><span class="n">collection</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Added </span><span class="se">\'</span><span class="si">{</span><span class="n">new_name</span><span class="si">}</span><span class="se">\'</span><span class="s1"> to data collection </span><span class="se">\'</span><span class="si">{</span><span class="n">collection</span><span class="si">}</span><span class="se">\'</span><span class="s1">.'</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.print_statistics"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.print_statistics">[docs]</a>    <span class="k">def</span> <span class="nf">print_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Print statistics for each column in the given DataFrame.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            df (DataFrame): The DataFrame containing data.</span>
+<span class="sd">        """</span>
+
+        <span class="c1"># for each column, print statistics</span>
+        <span class="n">nobs</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"name: "</span> <span class="o">+</span> <span class="n">column</span> <span class="o">+</span>
+                  <span class="s2">"</span><span class="se">\n\t</span><span class="s2"> minimum: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">+</span>
+                  <span class="s2">"</span><span class="se">\n\t</span><span class="s2"> maximum:  "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="o">+</span>
+                  <span class="s2">"</span><span class="se">\n\t</span><span class="s2"> std:  "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.map_gridded"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.map_gridded">[docs]</a>    <span class="k">def</span> <span class="nf">map_gridded</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Placeholder method for generating a gridded map plot.</span>
+<span class="sd">        """</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'map gridded'</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.line_plot"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.line_plot">[docs]</a>    <span class="k">def</span> <span class="nf">line_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_list</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Generate a line plot using specified data collections and variables.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plot_list (list): List of dictionaries specifying the plot configuration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            holoviews.plotting.ElementPlot: The generated line plot.</span>
+<span class="sd">        """</span>
+
+        <span class="k">return</span> <span class="n">plot</span><span class="o">.</span><span class="n">hvplot_line_plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="p">,</span> <span class="n">plot_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_required_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.histogram"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.histogram">[docs]</a>    <span class="k">def</span> <span class="nf">histogram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_list</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Generate a histogram plot using specified data collections and variables.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plot_list (list): List of dictionaries specifying the plot configuration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            holoviews.plotting.ElementPlot: The generated histogram plot.</span>
+<span class="sd">        """</span>
+
+        <span class="k">return</span> <span class="n">plot</span><span class="o">.</span><span class="n">hvplot_histogram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="p">,</span> <span class="n">plot_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_required_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.map_scatter"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.map_scatter">[docs]</a>    <span class="k">def</span> <span class="nf">map_scatter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_entry</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Generate a scatter plot on a map using specified data collection and variables.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plot_entry (dict): Dictionary specifying the plot configuration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            holoviews.plotting.ElementPlot: The generated scatter plot on a map.</span>
+<span class="sd">        """</span>
+
+        <span class="k">return</span> <span class="n">plot</span><span class="o">.</span><span class="n">hvplot_map_scatter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="p">,</span> <span class="n">plot_entry</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.density_plot"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.density_plot">[docs]</a>    <span class="k">def</span> <span class="nf">density_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_list</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Generate a density plot using specified data collections and variables.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plot_list (list): List of dictionaries specifying the plot configuration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            holoviews.plotting.ElementPlot: The generated density plot.</span>
+<span class="sd">        """</span>
+
+        <span class="k">return</span> <span class="n">plot</span><span class="o">.</span><span class="n">hvplot_density_plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="p">,</span> <span class="n">plot_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_required_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="EvaInteractive.scatter"><a class="viewcode-back" href="../../eva_developer_guide/API/eva.html#eva.eva_interactive.EvaInteractive.scatter">[docs]</a>    <span class="k">def</span> <span class="nf">scatter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Generate a scatter plot using specified data collections, variables, and coordinates.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (str): Name of the variable for the x-coordinate.</span>
+<span class="sd">            y (str): Name of the variable for the y-coordinate.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            holoviews.plotting.ElementPlot: The generated scatter plot.</span>
+<span class="sd">        """</span>
+
+        <span class="k">return</span> <span class="n">plot</span><span class="o">.</span><span class="n">hvplot_scatter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dc_dict</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_required_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span></div></div>
+
+    <span class="c1"># ----------------------------------------------------------------------------------------------</span>
+</pre></div>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+</div>
+</footer>
+</div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-08-28.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

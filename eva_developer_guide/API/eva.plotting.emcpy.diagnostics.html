@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
+<title>eva.plotting.emcpy.diagnostics package —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/sphinx_highlight.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'eva_developer_guide/API/eva.plotting.emcpy.diagnostics';</script>
+<link href="../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="eva.plotting.emcpy.plot_tools.html" rel="next" title="eva.plotting.emcpy.plot_tools package"/>
+<link href="eva.plotting.emcpy.html" rel="prev" title="eva.plotting.emcpy package"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="../../_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<label class="sidebar-toggle secondary-toggle" for="__secondary">
+<span class="fa-solid fa-outdent"></span>
+</label>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Eva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eva_design_principles.html">Design principles for eva</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting_started/index.html">Getting started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_hpc.html">Existing installations on supported HPCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/using_eva.html">Using Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_yaml.html">Eva and YAML files</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eva_user_guide/index.html">Eva user guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/data_ingest/index.html">Eva data ingest classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/cubed_sphere_restart.html">Cubed sphere restart ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/gsi_obs_space.html">GSI observaton space (ncdiag) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/ioda_obs_space.html">IODA observaton space (netCDF) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/jedi_log.html">JEDI log files ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/lat_lon.html">Basic latitude-longitude netCDF ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/mon_data_space.html">Monitor data space (NCEP legacy) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/soca_restart.html">SOCA restart ingest class</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/transforms/index.html">Eva transform classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/accept_where.html">Accept where</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/channel_stats.html">Channel statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/select_time.html">Select time</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/index.html">Eva plotting backends</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/index.html">Batch plotting using EMCPy backend</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/emcpy.html">EMCPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/batch_plotting.html">Batch Plotting and Using EMCPy Backend for eva</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/index.html">Interactive plotting using hvPlot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Eva_Interactive_Intro.html">Eva Interactive Intro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Plotting_Options.html">Plotting Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Eva developer guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../developer_best_practices/index.html">Developer best practices</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/documentation.html">Writing documentation and building the site locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/github_actions.html">Automated testing with GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../eva_components/index.html">Eva components</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/config.html">Config class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/logger.html">Logger class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/timing.html">Timing Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/data_collections.html">Data collections class for holding data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">API Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html">eva.data package</a></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="eva.plotting.html">eva.plotting package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4 current active"><a class="reference internal" href="eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Eva Developer Guide</a></li>
+<li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+<li class="breadcrumb-item"><a class="nav-link" href="eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li aria-current="page" class="breadcrumb-item active">eva.plotting.emcpy.diagnostics package</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="eva-plotting-emcpy-diagnostics-package">
+<h1>eva.plotting.emcpy.diagnostics package<a class="headerlink" href="#eva-plotting-emcpy-diagnostics-package" title="Permalink to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-eva.plotting.emcpy.diagnostics.density">
+<span id="eva-plotting-emcpy-diagnostics-density-module"></span><h2>eva.plotting.emcpy.diagnostics.density module<a class="headerlink" href="#module-eva.plotting.emcpy.diagnostics.density" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.plotting.emcpy.diagnostics.density.Density">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.plotting.emcpy.diagnostics.density.</span></span><span class="sig-name descname"><span class="pre">Density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/plotting/emcpy/diagnostics/density.html#Density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.plotting.emcpy.diagnostics.density.Density" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for creating density plots.</p>
+<p>Creates a density plot based on the provided configuration and data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A dictionary containing the configuration for the density plot.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+<li><p><strong>dataobj</strong> – An instance of the data object containing input data.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This class initializes and configures a density plot based on the provided configuration and
+data. The density plot is created using a declarative plotting library from EMCPy
+(<a class="github reference external" href="https://github.com/NOAA-EMC/emcpy">NOAA-EMC/emcpy</a>).</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">,</span>
+        <span class="s2">"channel"</span><span class="p">:</span> <span class="s2">"channel_name"</span><span class="p">,</span>
+        <span class="s2">"slicing"</span><span class="p">:</span> <span class="s2">"slice expression"</span>
+    <span class="p">},</span>
+    <span class="s2">"plot_property"</span><span class="p">:</span> <span class="s2">"property_value"</span><span class="p">,</span>
+    <span class="s2">"plot_option"</span><span class="p">:</span> <span class="s2">"option_value"</span><span class="p">,</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"path_to_schema_file.yaml"</span>
+<span class="p">}</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">dataobj</span> <span class="o">=</span> <span class="n">DataObject</span><span class="p">()</span>
+<span class="n">density_plot</span> <span class="o">=</span> <span class="n">Density</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">dataobj</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.plotting.emcpy.diagnostics.histogram">
+<span id="eva-plotting-emcpy-diagnostics-histogram-module"></span><h2>eva.plotting.emcpy.diagnostics.histogram module<a class="headerlink" href="#module-eva.plotting.emcpy.diagnostics.histogram" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.plotting.emcpy.diagnostics.histogram.Histogram">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.plotting.emcpy.diagnostics.histogram.</span></span><span class="sig-name descname"><span class="pre">Histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/plotting/emcpy/diagnostics/histogram.html#Histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.plotting.emcpy.diagnostics.histogram.Histogram" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for creating histogram plots.</p>
+<p>Creates a histogram plot based on the provided configuration and data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A dictionary containing the configuration for the histogram plot.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+<li><p><strong>dataobj</strong> – An instance of the data object containing input data.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This class initializes and configures a histogram plot based on the provided configuration
+and data. The histogram plot is created using a declarative plotting library from EMCPy
+(<a class="github reference external" href="https://github.com/NOAA-EMC/emcpy">NOAA-EMC/emcpy</a>).</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">,</span>
+        <span class="s2">"channel"</span><span class="p">:</span> <span class="s2">"channel_name"</span><span class="p">,</span>
+        <span class="s2">"slicing"</span><span class="p">:</span> <span class="s2">"slice expression"</span>
+    <span class="p">},</span>
+    <span class="s2">"plot_property"</span><span class="p">:</span> <span class="s2">"property_value"</span><span class="p">,</span>
+    <span class="s2">"plot_option"</span><span class="p">:</span> <span class="s2">"option_value"</span><span class="p">,</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"path_to_schema_file.yaml"</span>
+<span class="p">}</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">dataobj</span> <span class="o">=</span> <span class="n">DataObject</span><span class="p">()</span>
+<span class="n">histogram_plot</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">dataobj</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.plotting.emcpy.diagnostics.horizontal_line">
+<span id="eva-plotting-emcpy-diagnostics-horizontal-line-module"></span><h2>eva.plotting.emcpy.diagnostics.horizontal_line module<a class="headerlink" href="#module-eva.plotting.emcpy.diagnostics.horizontal_line" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.plotting.emcpy.diagnostics.horizontal_line.HorizontalLine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.plotting.emcpy.diagnostics.horizontal_line.</span></span><span class="sig-name descname"><span class="pre">HorizontalLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/plotting/emcpy/diagnostics/horizontal_line.html#HorizontalLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.plotting.emcpy.diagnostics.horizontal_line.HorizontalLine" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for creating horizontal line plots.</p>
+<p>Creates a horizontal line plot based on the provided configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A dictionary containing the configuration for the horizontal line plot.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This class initializes and configures a horizontal line plot based on the provided
+configuration. The horizontal line plot is created using a declarative plotting library from
+EMCPy (<a class="github reference external" href="https://github.com/NOAA-EMC/emcpy">NOAA-EMC/emcpy</a>).</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"y"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="s2">"plot_property"</span><span class="p">:</span> <span class="s2">"property_value"</span><span class="p">,</span>
+    <span class="s2">"plot_option"</span><span class="p">:</span> <span class="s2">"option_value"</span><span class="p">,</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"path_to_schema_file.yaml"</span>
+<span class="p">}</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">horizontal_line_plot</span> <span class="o">=</span> <span class="n">HorizontalLine</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.plotting.emcpy.diagnostics.line_plot">
+<span id="eva-plotting-emcpy-diagnostics-line-plot-module"></span><h2>eva.plotting.emcpy.diagnostics.line_plot module<a class="headerlink" href="#module-eva.plotting.emcpy.diagnostics.line_plot" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.plotting.emcpy.diagnostics.line_plot.LinePlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.plotting.emcpy.diagnostics.line_plot.</span></span><span class="sig-name descname"><span class="pre">LinePlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/plotting/emcpy/diagnostics/line_plot.html#LinePlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.plotting.emcpy.diagnostics.line_plot.LinePlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for creating line plots.</p>
+<p>Creates a line plot based on the provided configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A dictionary containing the configuration for the line plot.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+<li><p><strong>dataobj</strong> – An instance of the data object containing input data.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This class initializes and configures a line plot based on the provided configuration.
+The line plot is created using a declarative plotting library from EMCPy
+(<a class="github reference external" href="https://github.com/NOAA-EMC/emcpy">NOAA-EMC/emcpy</a>).</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"x"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">},</span>
+    <span class="s2">"y"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">},</span>
+    <span class="s2">"channel"</span><span class="p">:</span> <span class="s2">"channel_name"</span><span class="p">,</span>
+    <span class="s2">"plot_property"</span><span class="p">:</span> <span class="s2">"property_value"</span><span class="p">,</span>
+    <span class="s2">"plot_option"</span><span class="p">:</span> <span class="s2">"option_value"</span><span class="p">,</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"path_to_schema_file.yaml"</span>
+<span class="p">}</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">line_plot</span> <span class="o">=</span> <span class="n">LinePlot</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.plotting.emcpy.diagnostics.map_gridded">
+<span id="eva-plotting-emcpy-diagnostics-map-gridded-module"></span><h2>eva.plotting.emcpy.diagnostics.map_gridded module<a class="headerlink" href="#module-eva.plotting.emcpy.diagnostics.map_gridded" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.plotting.emcpy.diagnostics.map_gridded.MapGridded">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.plotting.emcpy.diagnostics.map_gridded.</span></span><span class="sig-name descname"><span class="pre">MapGridded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/plotting/emcpy/diagnostics/map_gridded.html#MapGridded"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.plotting.emcpy.diagnostics.map_gridded.MapGridded" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for creating map gridded plots.</p>
+<p>Creates a gridded map plot based on the provided configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A dictionary containing the configuration for the gridded map plot.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+<li><p><strong>dataobj</strong> – An instance of the data object containing input data.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This class initializes and configures a gridded map plot based on the provided
+configuration. The gridded map plot is created using a declarative plotting library from
+EMCPy (<a class="github reference external" href="https://github.com/NOAA-EMC/emcpy">NOAA-EMC/emcpy</a>).</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"longitude"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">},</span>
+    <span class="s2">"latitude"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">},</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">},</span>
+    <span class="s2">"plot_property"</span><span class="p">:</span> <span class="s2">"property_value"</span><span class="p">,</span>
+    <span class="s2">"plot_option"</span><span class="p">:</span> <span class="s2">"option_value"</span><span class="p">,</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"path_to_schema_file.yaml"</span>
+<span class="p">}</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">map_plot</span> <span class="o">=</span> <span class="n">MapGridded</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.plotting.emcpy.diagnostics.map_scatter">
+<span id="eva-plotting-emcpy-diagnostics-map-scatter-module"></span><h2>eva.plotting.emcpy.diagnostics.map_scatter module<a class="headerlink" href="#module-eva.plotting.emcpy.diagnostics.map_scatter" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.plotting.emcpy.diagnostics.map_scatter.MapScatter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.plotting.emcpy.diagnostics.map_scatter.</span></span><span class="sig-name descname"><span class="pre">MapScatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/plotting/emcpy/diagnostics/map_scatter.html#MapScatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.plotting.emcpy.diagnostics.map_scatter.MapScatter" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for creating map scatter plots.</p>
+<p>Creates a scatter plot on a map based on the provided configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A dictionary containing the configuration for the scatter plot on a map.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+<li><p><strong>dataobj</strong> – An instance of the data object containing input data.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This class initializes and configures a scatter plot on a map based on the provided
+configuration. The scatter plot is created using a declarative plotting library from EMCPy
+(<a class="github reference external" href="https://github.com/NOAA-EMC/emcpy">NOAA-EMC/emcpy</a>).</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"longitude"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">},</span>
+    <span class="s2">"latitude"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">},</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">,</span>
+             <span class="s2">"channel"</span><span class="p">:</span> <span class="s2">"channel_name"</span><span class="p">},</span>
+    <span class="s2">"plot_property"</span><span class="p">:</span> <span class="s2">"property_value"</span><span class="p">,</span>
+    <span class="s2">"plot_option"</span><span class="p">:</span> <span class="s2">"option_value"</span><span class="p">,</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"path_to_schema_file.yaml"</span>
+<span class="p">}</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">map_scatter_plot</span> <span class="o">=</span> <span class="n">MapScatter</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.plotting.emcpy.diagnostics.scatter">
+<span id="eva-plotting-emcpy-diagnostics-scatter-module"></span><h2>eva.plotting.emcpy.diagnostics.scatter module<a class="headerlink" href="#module-eva.plotting.emcpy.diagnostics.scatter" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.plotting.emcpy.diagnostics.scatter.Scatter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.plotting.emcpy.diagnostics.scatter.</span></span><span class="sig-name descname"><span class="pre">Scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/plotting/emcpy/diagnostics/scatter.html#Scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.plotting.emcpy.diagnostics.scatter.Scatter" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for creating scatter plots.</p>
+<p>Creates a scatter plot on a map based on the provided configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A dictionary containing the configuration for the scatter plot on a map.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+<li><p><strong>dataobj</strong> – An instance of the data object containing input data.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This class initializes and configures a scatter plot on a map based on the provided
+configuration. The scatter plot is created using a declarative plotting library from EMCPy
+(<a class="github reference external" href="https://github.com/NOAA-EMC/emcpy">NOAA-EMC/emcpy</a>).</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"longitude"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">},</span>
+    <span class="s2">"latitude"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">},</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"variable"</span><span class="p">:</span> <span class="s2">"collection::group::variable"</span><span class="p">,</span>
+             <span class="s2">"channel"</span><span class="p">:</span> <span class="s2">"channel_name"</span><span class="p">},</span>
+    <span class="s2">"plot_property"</span><span class="p">:</span> <span class="s2">"property_value"</span><span class="p">,</span>
+    <span class="s2">"plot_option"</span><span class="p">:</span> <span class="s2">"option_value"</span><span class="p">,</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"path_to_schema_file.yaml"</span>
+<span class="p">}</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">map_scatter_plot</span> <span class="o">=</span> <span class="n">MapScatter</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.plotting.emcpy.diagnostics.vertical_line">
+<span id="eva-plotting-emcpy-diagnostics-vertical-line-module"></span><h2>eva.plotting.emcpy.diagnostics.vertical_line module<a class="headerlink" href="#module-eva.plotting.emcpy.diagnostics.vertical_line" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="eva.plotting.emcpy.diagnostics.vertical_line.VerticalLine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eva.plotting.emcpy.diagnostics.vertical_line.</span></span><span class="sig-name descname"><span class="pre">VerticalLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/plotting/emcpy/diagnostics/vertical_line.html#VerticalLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.plotting.emcpy.diagnostics.vertical_line.VerticalLine" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for creating vertical line plots.</p>
+<p>Creates a vertical line plot based on the provided configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A dictionary containing the configuration for the vertical line plot.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+<li><p><strong>dataobj</strong> – Not used in this context.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This class initializes and configures a vertical line plot based on the provided
+configuration. The vertical line plot is created using a declarative plotting library from
+EMCPy (<a class="github reference external" href="https://github.com/NOAA-EMC/emcpy">NOAA-EMC/emcpy</a>).</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"x"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"plot_property"</span><span class="p">:</span> <span class="s2">"property_value"</span><span class="p">,</span>
+    <span class="s2">"plot_option"</span><span class="p">:</span> <span class="s2">"option_value"</span><span class="p">,</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"path_to_schema_file.yaml"</span>
+<span class="p">}</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">vertical_line_plot</span> <span class="o">=</span> <span class="n">VerticalLine</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.plotting.emcpy.diagnostics">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-eva.plotting.emcpy.diagnostics" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="eva.plotting.emcpy.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">eva.plotting.emcpy package</p>
+</div>
+</a>
+<a class="right-next" href="eva.plotting.emcpy.plot_tools.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">eva.plotting.emcpy.plot_tools package</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.plotting.emcpy.diagnostics.density">eva.plotting.emcpy.diagnostics.density module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.plotting.emcpy.diagnostics.density.Density"><code class="docutils literal notranslate"><span class="pre">Density</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.plotting.emcpy.diagnostics.histogram">eva.plotting.emcpy.diagnostics.histogram module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.plotting.emcpy.diagnostics.histogram.Histogram"><code class="docutils literal notranslate"><span class="pre">Histogram</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.plotting.emcpy.diagnostics.horizontal_line">eva.plotting.emcpy.diagnostics.horizontal_line module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.plotting.emcpy.diagnostics.horizontal_line.HorizontalLine"><code class="docutils literal notranslate"><span class="pre">HorizontalLine</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.plotting.emcpy.diagnostics.line_plot">eva.plotting.emcpy.diagnostics.line_plot module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.plotting.emcpy.diagnostics.line_plot.LinePlot"><code class="docutils literal notranslate"><span class="pre">LinePlot</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.plotting.emcpy.diagnostics.map_gridded">eva.plotting.emcpy.diagnostics.map_gridded module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.plotting.emcpy.diagnostics.map_gridded.MapGridded"><code class="docutils literal notranslate"><span class="pre">MapGridded</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.plotting.emcpy.diagnostics.map_scatter">eva.plotting.emcpy.diagnostics.map_scatter module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.plotting.emcpy.diagnostics.map_scatter.MapScatter"><code class="docutils literal notranslate"><span class="pre">MapScatter</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.plotting.emcpy.diagnostics.scatter">eva.plotting.emcpy.diagnostics.scatter module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.plotting.emcpy.diagnostics.scatter.Scatter"><code class="docutils literal notranslate"><span class="pre">Scatter</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.plotting.emcpy.diagnostics.vertical_line">eva.plotting.emcpy.diagnostics.vertical_line module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.plotting.emcpy.diagnostics.vertical_line.VerticalLine"><code class="docutils literal notranslate"><span class="pre">VerticalLine</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.plotting.emcpy.diagnostics">Module contents</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-08-28.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

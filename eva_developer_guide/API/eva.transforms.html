@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
+<title>eva.transforms package —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/sphinx_highlight.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'eva_developer_guide/API/eva.transforms';</script>
+<link href="../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="eva.data.html" rel="next" title="eva.data package"/>
+<link href="eva.utilities.html" rel="prev" title="eva.utilities package"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="../../_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<label class="sidebar-toggle secondary-toggle" for="__secondary">
+<span class="fa-solid fa-outdent"></span>
+</label>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_design_principles.html">
+                        Design principles for eva
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../eva_user_guide/index.html">
+                        Eva user guide
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+                        Eva developer guide
+                      </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Eva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eva_design_principles.html">Design principles for eva</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting_started/index.html">Getting started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_hpc.html">Existing installations on supported HPCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/using_eva.html">Using Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/eva_yaml.html">Eva and YAML files</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eva_user_guide/index.html">Eva user guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/data_ingest/index.html">Eva data ingest classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/cubed_sphere_restart.html">Cubed sphere restart ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/gsi_obs_space.html">GSI observaton space (ncdiag) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/ioda_obs_space.html">IODA observaton space (netCDF) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/jedi_log.html">JEDI log files ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/lat_lon.html">Basic latitude-longitude netCDF ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/mon_data_space.html">Monitor data space (NCEP legacy) ingest class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/data_ingest/soca_restart.html">SOCA restart ingest class</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/transforms/index.html">Eva transform classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/accept_where.html">Accept where</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/channel_stats.html">Channel statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../eva_user_guide/transforms/select_time.html">Select time</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/index.html">Eva plotting backends</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/index.html">Batch plotting using EMCPy backend</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/emcpy.html">EMCPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/EMCPy/batch_plotting.html">Batch Plotting and Using EMCPy Backend for eva</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/index.html">Interactive plotting using hvPlot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Eva_Interactive_Intro.html">Eva Interactive Intro</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../eva_user_guide/plotting_backends/hvplot/Plotting_Options.html">Plotting Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Eva developer guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../developer_best_practices/index.html">Developer best practices</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/documentation.html">Writing documentation and building the site locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_best_practices/github_actions.html">Automated testing with GitHub Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../eva_components/index.html">Eva components</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/config.html">Config class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/logger.html">Logger class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/timing.html">Timing Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../eva_components/data_collections.html">Data collections class for holding data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">API Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">eva.transforms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eva.data.html">eva.data package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="eva.plotting.html">eva.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.emcpy.html">eva.plotting.emcpy package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Eva Developer Guide</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">API Documentation</a></li>
+<li aria-current="page" class="breadcrumb-item active">eva.transforms package</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="eva-transforms-package">
+<h1>eva.transforms package<a class="headerlink" href="#eva-transforms-package" title="Permalink to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-eva.transforms.accept_where">
+<span id="eva-transforms-accept-where-module"></span><h2>eva.transforms.accept_where module<a class="headerlink" href="#module-eva.transforms.accept_where" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.accept_where.accept_where">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.accept_where.</span></span><span class="sig-name descname"><span class="pre">accept_where</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/accept_where.html#accept_where"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.accept_where.accept_where" title="Permalink to this definition">#</a></dt>
+<dd><p>Applies a filtering transformation to data variables based on specified conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A configuration dictionary containing transformation parameters.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – An instance of the DataCollections class containing</p></li>
+<li><p><strong>data.</strong> (<em>input</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the ‘where’ expression format is incorrect.</p>
+</dd>
+</dl>
+<p>This function applies a filtering transformation to data variables within the provided
+data collections. It iterates over the specified collections, groups, and variables, and
+applies filtering conditions as defined in the ‘where’ expressions within the configuration.
+The resulting filtered variables are added to the data collections.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'collections'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'groups'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'variables'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'new name'</span><span class="p">:</span> <span class="s1">'filtered_variable'</span><span class="p">,</span>
+    <span class="s1">'starting field'</span><span class="p">:</span> <span class="s1">'original_variable'</span><span class="p">,</span>
+    <span class="s1">'where'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'$</span><span class="si">{collection}</span><span class="s1">::$</span><span class="si">{group}</span><span class="s1">::$</span><span class="si">{variable}</span><span class="s1"> &gt;= 0.0'</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">accept_where</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.accept_where.generate_accept_where_config">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.accept_where.</span></span><span class="sig-name descname"><span class="pre">generate_accept_where_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/accept_where.html#generate_accept_where_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.accept_where.generate_accept_where_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a configuration dictionary for the ‘accept where’ transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_name</strong> (<em>str</em>) – The new variable name after the transformation.</p></li>
+<li><p><strong>starting_field</strong> (<em>str</em>) – The starting variable field for the transformation.</p></li>
+<li><p><strong>where</strong> (<em>list</em>) – A list of filter expressions to be applied.</p></li>
+<li><p><strong>collection</strong> (<em>str</em>) – The collection name.</p></li>
+<li><p><strong>var_list</strong> (<em>list</em>) – A list of variables to apply the transformation to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A configuration dictionary for the ‘accept where’ transformation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p>This function generates a configuration dictionary for the ‘accept where’ transformation based
+on the provided parameters. It updates the ‘new name’ and ‘starting field’ fields, adjusts
+expressions in ‘where’ based on the provided collection and group names, and specifies the
+‘for’ dictionary to apply the transformation to the specified variables.</p>
+<p class="rubric">Example</p>
+<dl>
+<dt>::</dt><dd><p>new_name = ‘filtered_variable’
+starting_field = ‘original_variable’
+where = [‘group1 &gt;= 0’, ‘group2 &lt; 10’]
+collection = ‘my_collection’
+var_list = [‘variable1’, ‘variable2’]
+config = generate_accept_where_config(new_name, starting_field, where,</p>
+<blockquote>
+<div><p>collection, var_list)</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-eva.transforms.arithmetic">
+<span id="eva-transforms-arithmetic-module"></span><h2>eva.transforms.arithmetic module<a class="headerlink" href="#module-eva.transforms.arithmetic" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.arithmetic.arithmetic">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.arithmetic.</span></span><span class="sig-name descname"><span class="pre">arithmetic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/arithmetic.html#arithmetic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.arithmetic.arithmetic" title="Permalink to this definition">#</a></dt>
+<dd><p>Applies arithmetic transformations to data variables using specified expressions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A configuration dictionary containing transformation parameters.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – An instance of the DataCollections class containing</p></li>
+<li><p><strong>data.</strong> (<em>input</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This function applies arithmetic transformations to data variables within the provided data
+collections. It iterates over the specified collections, groups, and variables, and applies
+arithmetic expressions as defined in the ‘equals’ expressions within the configuration. The
+resulting variables are added to the data collections.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'collections'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'groups'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'variables'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'new name'</span><span class="p">:</span> <span class="s1">'result_variable'</span><span class="p">,</span>
+    <span class="s1">'equals'</span><span class="p">:</span> <span class="s1">'($</span><span class="si">{collection}</span><span class="s1">::$</span><span class="si">{group}</span><span class="s1">::$</span><span class="si">{var1}</span><span class="s1"> + $</span><span class="si">{collection}</span><span class="s1">::$</span><span class="si">{group}</span><span class="s1">::$</span><span class="si">{var2}</span><span class="s1">)</span>
+               <span class="o">/</span> <span class="mi">2</span><span class="s1">'</span>
+<span class="p">}</span>
+<span class="n">arithmetic</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.arithmetic.generate_arithmetic_config">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.arithmetic.</span></span><span class="sig-name descname"><span class="pre">generate_arithmetic_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/arithmetic.html#generate_arithmetic_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.arithmetic.generate_arithmetic_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a configuration dictionary for the ‘arithmetic’ transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_name</strong> (<em>str</em>) – The new variable name after the transformation.</p></li>
+<li><p><strong>expression</strong> (<em>str</em>) – The arithmetic expression to be applied.</p></li>
+<li><p><strong>collection</strong> (<em>str</em>) – The collection name.</p></li>
+<li><p><strong>var_list</strong> (<em>list</em>) – A list of variables to apply the transformation to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A configuration dictionary for the ‘arithmetic’ transformation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p>This function generates a configuration dictionary for the ‘arithmetic’ transformation based
+on the provided parameters. It updates the ‘new name’ field, adjusts the arithmetic expression
+based on the provided collection and group names, and specifies the ‘for’ dictionary to apply
+the transformation to the specified variables.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_name</span> <span class="o">=</span> <span class="s1">'result_variable'</span>
+<span class="n">expression</span> <span class="o">=</span> <span class="s1">'($</span><span class="si">{group1}</span><span class="s1"> + $</span><span class="si">{group2}</span><span class="s1">) / 2'</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="s1">'my_collection'</span>
+<span class="n">var_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'variable1'</span><span class="p">,</span> <span class="s1">'variable2'</span><span class="p">]</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">generate_arithmetic_config</span><span class="p">(</span><span class="n">new_name</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">var_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.arithmetic.isfloat">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.arithmetic.</span></span><span class="sig-name descname"><span class="pre">isfloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/arithmetic.html#isfloat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.arithmetic.isfloat" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks if a string can be converted to a floating-point number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>a_string</strong> (<em>str</em>) – The string to be checked.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the string can be converted to a float, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<p>This function determines whether a given string can be successfully converted to a
+floating-point number.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">isfloat</span><span class="p">(</span><span class="s2">"3.14"</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.transforms.channel_stats">
+<span id="eva-transforms-channel-stats-module"></span><h2>eva.transforms.channel_stats module<a class="headerlink" href="#module-eva.transforms.channel_stats" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.channel_stats.channel_stats">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.channel_stats.</span></span><span class="sig-name descname"><span class="pre">channel_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/channel_stats.html#channel_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.channel_stats.channel_stats" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates statistical measures for data variables along a specified dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A configuration dictionary containing transformation parameters.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – An instance of the DataCollections class containing</p></li>
+<li><p><strong>data.</strong> (<em>input</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This function calculates statistical measures for specified channel data variables within the
+provided data collections. It iterates over the specified collections, groups, and variables,
+and calculates statistical measures as defined in the ‘statistic list’ expressions within the
+configuration. The resulting variables are added to the data collections.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'collections'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'groups'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'variables'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'variable_name'</span><span class="p">:</span> <span class="s1">'data_variable'</span><span class="p">,</span>
+    <span class="s1">'statistic list'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Mean'</span><span class="p">,</span> <span class="s1">'Std'</span><span class="p">,</span> <span class="s1">'Count'</span><span class="p">],</span>
+    <span class="s1">'statistic_dimension'</span><span class="p">:</span> <span class="s1">'Location'</span>
+<span class="p">}</span>
+<span class="n">channel_stats</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.transforms.select_time">
+<span id="eva-transforms-select-time-module"></span><h2>eva.transforms.select_time module<a class="headerlink" href="#module-eva.transforms.select_time" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.select_time.select_time">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.select_time.</span></span><span class="sig-name descname"><span class="pre">select_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/select_time.html#select_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.select_time.select_time" title="Permalink to this definition">#</a></dt>
+<dd><p>Selects and processes data variables for specified time cycles or a single time point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A configuration dictionary containing transformation parameters.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – An instance of the DataCollections class containing</p></li>
+<li><p><strong>data.</strong> (<em>input</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This function selects and processes data variables within the provided data collections based
+on specified time cycles or a single time point (given as YYYYMMDDHH). It iterates over the
+specified collections, groups, and variables, and selects data for the specified time period. If
+two time cycles are provided, it calculates the mean of a time slice; otherwise, it selects data
+for a single time point. The resulting processed variables are added to the data collections.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'collections'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'groups'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'variables'</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s1">'new name'</span><span class="p">:</span> <span class="s1">'time_selected_variable'</span><span class="p">,</span>
+    <span class="s1">'starting field'</span><span class="p">:</span> <span class="s1">'original_variable'</span><span class="p">,</span>
+    <span class="s1">'cycle'</span><span class="p">:</span> <span class="s1">'YYYYMMDDHH'</span><span class="p">,</span>
+    <span class="c1"># OR</span>
+    <span class="s1">'start cycle'</span><span class="p">:</span> <span class="s1">'YYYYMMDDHH'</span><span class="p">,</span>
+    <span class="s1">'end cycle'</span><span class="p">:</span> <span class="s1">'YYYYMMDDHH'</span>
+<span class="p">}</span>
+<span class="n">select_time</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.transforms.transform_driver">
+<span id="eva-transforms-transform-driver-module"></span><h2>eva.transforms.transform_driver module<a class="headerlink" href="#module-eva.transforms.transform_driver" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.transform_driver.transform_driver">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.transform_driver.</span></span><span class="sig-name descname"><span class="pre">transform_driver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_collections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/transform_driver.html#transform_driver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.transform_driver.transform_driver" title="Permalink to this definition">#</a></dt>
+<dd><p>Applies a series of transformation methods to data collections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A configuration dictionary containing transformation parameters.</p></li>
+<li><p><strong>data_collections</strong> (<a class="reference internal" href="eva.data.html#eva.data.data_collections.DataCollections" title="eva.data.data_collections.DataCollections"><em>DataCollections</em></a>) – An instance of the DataCollections class containing</p></li>
+<li><p><strong>data.</strong> (<em>input</em>) – </p></li>
+<li><p><strong>timing</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.timing.Timing" title="eva.utilities.timing.Timing"><em>Timing</em></a>) – An instance of the Timing class for tracking execution times.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p>This function applies a series of transformation methods to the provided data collections. It
+iterates over a list of transform dictionaries specified in the configuration. For each
+transform, it identifies the transform type, instantiates the corresponding transform object,
+and calls the transform method. Execution times for each transform are tracked using the Timing
+instance.</p>
+</dd></dl>
+</section>
+<section id="module-eva.transforms.transform_utils">
+<span id="eva-transforms-transform-utils-module"></span><h2>eva.transforms.transform_utils module<a class="headerlink" href="#module-eva.transforms.transform_utils" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.transform_utils.parse_for_dict">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.transform_utils.</span></span><span class="sig-name descname"><span class="pre">parse_for_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/transform_utils.html#parse_for_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.transform_utils.parse_for_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Parses the ‘for’ dictionary from the configuration and extracts collection, group, and variable
+values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – A configuration dictionary containing transformation parameters.</p></li>
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing collection, group, and variable values extracted from the ‘for’
+dictionary.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p>This function parses the ‘for’ dictionary provided in the configuration and extracts the
+collection, group, and variable values specified. It returns a list containing these extracted
+components.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">for_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'collection'</span><span class="p">:</span> <span class="s1">'my_collection'</span><span class="p">,</span>
+    <span class="s1">'group'</span><span class="p">:</span> <span class="s1">'my_group'</span><span class="p">,</span>
+    <span class="s1">'variable'</span><span class="p">:</span> <span class="s1">'my_variable'</span>
+<span class="p">}</span>
+<span class="n">cgv</span> <span class="o">=</span> <span class="n">parse_for_dict</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.transform_utils.replace_cgv">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.transform_utils.</span></span><span class="sig-name descname"><span class="pre">replace_cgv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">argv</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/transform_utils.html#replace_cgv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.transform_utils.replace_cgv" title="Permalink to this definition">#</a></dt>
+<dd><p>Replaces placeholders in template strings with collection, group, and variable values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+<li><p><strong>collection</strong> (<em>str</em>) – The collection value.</p></li>
+<li><p><strong>group</strong> (<em>str</em>) – The group value.</p></li>
+<li><p><strong>variable</strong> (<em>str</em>) – The variable value.</p></li>
+<li><p><strong>*argv</strong> (<em>str</em>) – Variable number of template strings to replace.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of template strings with placeholders replaced by corresponding values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p>This function replaces placeholders in the provided template strings with the specified
+collection, group, and variable values. It returns a list of template strings with replaced
+placeholders.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">replaced_templates</span> <span class="o">=</span> <span class="n">replace_cgv</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'my_collection'</span><span class="p">,</span> <span class="s1">'my_group'</span><span class="p">,</span>
+                                 <span class="s1">'my_variable'</span><span class="p">,</span> <span class="n">template1</span><span class="p">,</span> <span class="n">template2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="eva.transforms.transform_utils.split_collectiongroupvariable">
+<span class="sig-prename descclassname"><span class="pre">eva.transforms.transform_utils.</span></span><span class="sig-name descname"><span class="pre">split_collectiongroupvariable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collectiongroupvariable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/eva/transforms/transform_utils.html#split_collectiongroupvariable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eva.transforms.transform_utils.split_collectiongroupvariable" title="Permalink to this definition">#</a></dt>
+<dd><p>Splits a collectiongroupvariable string into its components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logger</strong> (<a class="reference internal" href="eva.utilities.html#eva.utilities.logger.Logger" title="eva.utilities.logger.Logger"><em>Logger</em></a>) – An instance of the logger for logging messages.</p></li>
+<li><p><strong>collectiongroupvariable</strong> (<em>str</em>) – The collectiongroupvariable string to split.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the collection, group, and variable components.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p>This function splits a collectiongroupvariable string into its components (collection,
+group, variable). It returns a list containing these components.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cgv</span> <span class="o">=</span> <span class="n">split_collectiongroupvariable</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'my_collection::my_group::my_variable'</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="module-eva.transforms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-eva.transforms" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="eva.utilities.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">eva.utilities package</p>
+</div>
+</a>
+<a class="right-next" href="eva.data.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">eva.data package</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.transforms.accept_where">eva.transforms.accept_where module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.accept_where.accept_where"><code class="docutils literal notranslate"><span class="pre">accept_where()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.accept_where.generate_accept_where_config"><code class="docutils literal notranslate"><span class="pre">generate_accept_where_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.transforms.arithmetic">eva.transforms.arithmetic module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.arithmetic.arithmetic"><code class="docutils literal notranslate"><span class="pre">arithmetic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.arithmetic.generate_arithmetic_config"><code class="docutils literal notranslate"><span class="pre">generate_arithmetic_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.arithmetic.isfloat"><code class="docutils literal notranslate"><span class="pre">isfloat()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.transforms.channel_stats">eva.transforms.channel_stats module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.channel_stats.channel_stats"><code class="docutils literal notranslate"><span class="pre">channel_stats()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.transforms.select_time">eva.transforms.select_time module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.select_time.select_time"><code class="docutils literal notranslate"><span class="pre">select_time()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.transforms.transform_driver">eva.transforms.transform_driver module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.transform_driver.transform_driver"><code class="docutils literal notranslate"><span class="pre">transform_driver()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.transforms.transform_utils">eva.transforms.transform_utils module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.transform_utils.parse_for_dict"><code class="docutils literal notranslate"><span class="pre">parse_for_dict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.transform_utils.replace_cgv"><code class="docutils literal notranslate"><span class="pre">replace_cgv()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eva.transforms.transform_utils.split_collectiongroupvariable"><code class="docutils literal notranslate"><span class="pre">split_collectiongroupvariable()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-eva.transforms">Module contents</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-08-28.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>
