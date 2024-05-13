@@ -55,14 +55,15 @@ jobs:
     # Clone eva repository
     # Install eva
     - name: Install eva and dependencies
-      run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
+      #run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
+      run: $CONDA/bin/pip3 install -r ./eva/requirements-github.txt --user ./eva/
       #run: $CONDA/bin/pip3 install ./eva/ --user
     - name: Put eva in the path
       run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
     # Install correct version of sphinx
-    - name: Change sphinx version
-      run: conda install -c conda-forge sphinx==5.3.0
+    #- name: Change sphinx version
+    #  run: conda install -c conda-forge sphinx==5.3.0
 
     # Install ipykernel
     - name: Install ipykernel
