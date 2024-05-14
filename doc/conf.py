@@ -9,7 +9,7 @@ import sys
 sys.path.insert(0, os.path.abspath('eva/src/'))
 sys.path.insert(0, os.path.abspath('../eva/src/')
 sys.path.insert(0, os.path.abspath('/home/runner/work/eva/eva/eva/src/')
-print(sys.path)
+print("sys.path: ", sys.path)
 
 project = u''
 copyright = u''
