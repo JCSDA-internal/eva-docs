@@ -8,6 +8,8 @@ import sys
 # edit things below as appropriate for your project
 sys.path.insert(0, os.path.abspath('eva/src/'))
 sys.path.insert(0, os.path.abspath('../eva/src/')
+sys.path.insert(0, os.path.abspath('/home/runner/work/eva/eva/eva/src/')
+print(sys.path)
 
 project = u''
 copyright = u''
