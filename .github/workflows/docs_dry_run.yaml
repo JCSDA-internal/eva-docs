@@ -44,7 +44,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: JCSDA-internal/eva
-        path: './doc/eva'
+        path: './eva'
         lfs: true
 
     #- name: Add eva directory to path
