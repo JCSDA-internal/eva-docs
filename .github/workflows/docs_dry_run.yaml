@@ -71,7 +71,7 @@ jobs:
     - name: Install eva and dependencies
       #run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
       #run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
-      run: $CONDA/bin/pip3 install ./eva/ --user
+      run: $CONDA/bin/pip3 install ./doc/eva/ --user
     - name: Put eva in the path
       run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
