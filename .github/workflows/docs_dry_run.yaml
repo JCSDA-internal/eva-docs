@@ -47,6 +47,12 @@ jobs:
         path: './eva'
         lfs: true
 
+    - name: Add eva directory to path
+      run: echo "./eva" >> $GITHUB_PATH
+
+    - name: Show github path
+      run: echo $GITHUB_PATH
+
     - name: Install Python dependencies for eva-docs
       uses: py-actions/py-dependency-install@v4
       with:
