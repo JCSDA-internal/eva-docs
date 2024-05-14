@@ -66,12 +66,14 @@ jobs:
     #- name: Install myst-parser
     #  run: conda install -c conda-forge myst-parser==0.18.0
 
+    # Copy contents of eva into docs after it's been cloned and installed?
+
     # Clone eva repository
     # Install eva
     - name: Install eva and dependencies
       #run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
       #run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r ./eva/requirements-github.txt --user ./eva/
-      run: $CONDA/bin/pip3 install ./doc/eva/ --user
+      run: $CONDA/bin/pip3 install ./eva/ --user
     - name: Put eva in the path
       run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
@@ -90,9 +92,13 @@ jobs:
     - name: generate rst
       run: nbsite generate-rst --org JCSDA-internal --project-name eva-docs --examples notebooks
 
+    # Copy contents of eva to doc
+    - name: copy eva to doc
+      run: cp -r ./eva/src/ ./doc/
+
     # Generate sphinx-api docs
     - name: Generate sphinx-api docs
-      run: sphinx-apidoc -o doc/eva_developer_guide/API/ doc/eva/src
+      run: sphinx-apidoc -o doc/eva_developer_guide/API/ eva/src
 
     # Fix API index.md to include sphinx-api docs
     - name: Fix API index.md
