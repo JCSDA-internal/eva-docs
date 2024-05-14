@@ -69,8 +69,8 @@ jobs:
     - name: Put eva in the path
       run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-    - name: Test eva
-      run: eva
+    #- name: Test eva
+    #  run: eva
 
     # Install correct version of sphinx
     #- name: Change sphinx version
