@@ -4,6 +4,7 @@
 from nbsite.shared_conf import *
 import os
 import sys
+import eva
 ###################################################
 # edit things below as appropriate for your project
 sys.path.insert(0, os.path.abspath('eva/src/'))
