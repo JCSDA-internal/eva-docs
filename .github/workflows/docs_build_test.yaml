@@ -34,7 +34,7 @@ jobs:
 
     # Install cartopy
     - name: Install cartopy
-      run: conda install -c conda-forge cartopy
+      run: conda install -c conda-forge --solver=classic cartopy
 
     # Clone the eva-docs repository
     - name: Clone eva-docs repo
